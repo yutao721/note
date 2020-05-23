@@ -1,4 +1,5 @@
 module.exports = {
+  base: "/vuepress/"
   title: 'jiaHang的博客',
   description: '专注前端技术栈分享，做一个爱折腾的前端',
   themeConfig: {
