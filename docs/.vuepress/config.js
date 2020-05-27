@@ -32,6 +32,7 @@ module.exports = {
             ['js/new', "手写实现New"],
             ['js/bind', "手写实现bind"],
             ['js/call', "手写实现call"],
+            ['js/Promise', "Promise实现"],
           ]
         },
         {
