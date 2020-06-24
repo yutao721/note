@@ -349,3 +349,362 @@ console.log('end')
 
 接下来就是要实现Promise的链式调用，这个是Promise的核心
 ### 3.实现Promise链式调用
+####3.1 先来看一个例子，看下实际场景中是如何使用链式调用的  
+> 有如下场景，第一次读取的是文件名字，拿到文件名字后，再去读这个名字文件的内容。很显然这是两次异步操作，并且第二次的异步操作依赖第一次的异步操作结果。     
+
+```js
+// 简要说明 创建一个js文件 与这个文件同级的 name.txt, text.txt 
+// 其中name.txt内容是text.txt， 而text.txt的内容是 文本1
+// node 运行这个js文件
+
+let fs = require('fs')
+
+fs.readFile('./name.txt', 'utf8', function (err, data) {
+  console.log(data)
+  fs.readFile(data, 'utf8', function (err, data) {
+    console.log(data)
+  })
+})
+
+```
+很显然，上面的回调模式不是我们想要的，那么我们如何把上面写法给promise化呢？为了表述的更清晰一下，我还是分步来写：
+
+```js
+function read(url){
+    return new Promise((resolve,reject)=>{
+        fs.readFile(url,'utf8',(err,data)=>{
+            if(err)reject(err);
+            resolve(data);
+        })
+    })
+}
+```
+
+这个函数执行就会返回promise实例，也就是有then方法可以使用,我们有以下2种调用方式
+
+```js
+readFile('./name.txt').then(
+  (data) => {
+    console.log(data)
+    readFile(data).then(
+      (data) => {console.log(data)},
+      (err) => {console.log(err)}
+    )
+  },
+  (err) => {console.log(err)}
+)
+
+```
+
+这种在回调中加回调，promise说你还不如不用我。
+
+```js
+readFile('./name.txt')
+.then(
+  (data) => {
+    console.log(data)
+    return readFile(data)
+  },
+  (err) => {console.log(err)}
+)
+.then(
+  (data) => { console.log(data) },
+  (err) => { console.log(err) }
+)
+
+```
+这种调用方式才是符合Promise的正确使用方式。   
+
+
+####3.2 回顾链式调用的常见场景  
+- 验证then中第一个回调返回普通值情况
+```js
+readFile('./name.txt')
+.then(
+  (data) => {
+    console.log(data)
+    // return {'a': 100} // 1 返回引用类型
+    // return 100 // 2 返回基本类型
+    // return undefined 3 返回undefined
+    // 4 不写return
+  },
+  (err) => {console.log(err)}
+)
+.then(
+  (data) => { console.log(data) },
+  (err) => { console.log(err) }
+)
+
+```
+
+上面4种情况对应一下运行结果：
+
+```
+// text.txt  {a: 100}
+// text.txt  100
+// text.txt  undefined
+// text.txt  undefined
+```
+
+- 验证第一个then中，返回promise情况，链式的第二个then怎么回应
+
+```js
+readFile('./name.txt')
+.then(
+  (data) => {
+    console.log(data)
+    return new Promise(function(resolve, reject){
+      setTimeout(function(){
+      // resolve('ok')
+      reject('error')
+      },1000)
+    })
+  },
+  (err) => {console.log(err)}
+)
+.then(
+  (data) => { console.log(data) },
+  (err) => { console.log(err) }
+)
+
+// 运行结果如下：
+// resolve结果为： text.txt ok
+// reject结果为： text.txt error
+```
+
+- 验证第一个then中，返回错误情况，链式的第二个then怎么相应
+
+```js
+readFile('./name.txt')
+.then(
+  (data) => {
+    console.log(data)
+    throw TypeError()
+  },
+  (err) => {console.log(err)}
+)
+.then(
+  (data) => { console.log(data) },
+  (err) => { console.log(err) }
+)
+
+// 执行结果如下 text.txt err:TypeError
+```
+
+基于上面这些测试，以及 [promise A+](https://promisesaplus.com) 文档规范，我们可以总结出以下关于链式调用的几点：
+1. jquery 链式调用 是因为jquery返回了this，promise能一直then下去，是因为promise的then方法返回了promise  
+2. 返回的是新的promise，因为上面说过，promise实例状态一旦修改，不能再次修改，所以要返回全新的promise  
+3. 如果then方法返回的是一个常量 包括undefined，会把这个结果传递给外层的then的成功的结果    
+4. 如果then方法中抛出异常 会走到下一次then的失败的结果
+5. then方法执行后可能会返回一个promise,那么会采用这个promise的返回结果作为下一个then的成功或者失败
+6. 走失败 两种可能 第一种发生了错误 第二种就是返回一个失败的promise    
+
+
+#### 3.3 基于上述完善Promise的链式调用
+##### 1 then返回的是全新的promise
+```js
+then(onFulfilled, onRejected) {
+    let promise2;
+    // 调用then后必须返回一个新的promise
+    promise2 = new Promise((resolve, reject) => {
+      if (this.status === FULFILLED) {
+        // 用try catch包裹是因为promise2 可能在运行的时候就出错了，如果出错直接reject出去即可
+        try{
+          // 需要对then的成功的回调和失败的回调取到他的返回结果，如果是普通值就让promise2成功即可
+          let x = onFulfilled(this.value);
+          resolve(x)
+        } catch (e) {
+          reject(e)
+        }
+        
+      }
+      if (this.status === REJECTED) {
+        try{
+          let x = onRejected(this.reason)
+          resolve(x)
+        }catch (e) {
+          reject(e)
+        }
+      }
+      if(this.status === PENDING){
+        // ... 先把成功的回调和失败的回调分开存放
+        this.resolveCallbacks.push(()=>{
+          try{
+            let x = onFulfilled(this.value)
+            resolve(x)
+          }catch (e) {
+            reject(e)
+          }
+        });
+        this.rejectCallbacks.push(()=>{
+          try{
+            let x = onRejected(this.reason);
+            resolve(x)
+          }catch (e) {
+            reject(e)
+          }
+        })
+      }
+    })
+    return promise2
+  }
+```
+用上面的代码来测试下
+
+```js
+const Promise = require('./promise')
+let p = new Promise((resolve, reject) => {
+  console.log('start')
+  resolve('jiaHang')
+  // reject('jiaHang')
+})
+p.then((res) => {
+  console.log('success:' + res);
+}, (err) => {
+  console.log('fail' + err);
+}).then((res) => {
+  console.log('success:' + res);
+}, (err) => {
+  console.log('fail' + err);
+})
+
+
+// 运行结果
+// start
+// success:jiaHang
+// success:undefined
+```
+
+
+> 需要注意的是，需要对then的成功的回调和失败的回调取到到的返回结果进行处理,如果是普通值就让promise2成功即可
+如果是promise 那应该让x这个promise执行 x.then。  
+
+我们将之前resolve(x)的地方替换成一个方法，统一处理这块的逻辑
+
+```js
+if (this.status === FULFILLED) {
+    // 用try catch包裹是因为promise2 可能在运行的时候就出错了，如果出错直接reject出去即可
+    try{
+      // 需要对then的成功的回调和失败的回调取到他的返回结果
+      // 如果是普通值就让promise2成功即可
+      // 如果是promise 那应该让x这个promise执行 x.then
+      let x = onFulfilled(this.value);
+      resolvePromise(promise2,x,resolve,reject);
+    } catch (e) {
+      reject(e)
+    }
+  }
+```
+
+其他地方也是如此替换，我们单独写一个方法
+
+```js
+let resolvePromise = (promise2,x,resolve,reject) => {
+  console.log(promise2);
+}
+```
+
+思考下，这里能拿到promise2吗？为什么？其实目前是拿不到promise2的，打印结果为undefined。那怎么蔡才能拿到
+其实规范2.2.4也说明了 要确保 onFulfilled 和 onRejected 方法异步执行(且应该在 then 方法被调用的那一轮事件循环之后的新执行栈中执行) 所以要在resolve里加上setTimeout
+
+```js
+then(onFulfilled, onRejected) {
+    let promise2;
+    // 调用then后必须返回一个新的promise
+    promise2 = new Promise((resolve, reject) => {
+      if (this.status === FULFILLED) {
+        // 2.2.4 规范
+        setTimeout(()=> {
+          // 用try catch包裹是因为promise2 可能在运行的时候就出错了，如果出错直接reject出去即可
+          try{
+            // 需要对then的成功的回调和失败的回调取到他的返回结果
+            // 如果是普通值就让promise2成功即可
+            // 如果是promise 那应该让x这个promise执行 x.then
+            let x = onFulfilled(this.value);
+            resolvePromise(promise2,x,resolve,reject);
+          } catch (e) {
+            reject(e)
+          }
+        }, 0)
+      }
+
+
+      if (this.status === REJECTED) {
+        setTimeout(()=> {
+          try{
+            let x = onRejected(this.reason)
+            resolvePromise(promise2,x,resolve,reject);
+          }catch (e) {
+            reject(e)
+          }
+        }, 0)
+      }
+
+      if(this.status === PENDING){
+        // ... 先把成功的回调和失败的回调分开存放
+        this.resolveCallbacks.push(()=>{
+          setTimeout(()=> {
+            try{
+              let x = onFulfilled(this.value)
+              resolvePromise(promise2,x,resolve,reject);
+            }catch (e) {
+              reject(e)
+            }
+          }, 0)
+        });
+
+        this.rejectCallbacks.push(()=>{
+          setTimeout(()=> {
+            try{
+              let x = onRejected(this.reason);
+              resolvePromise(promise2,x,resolve,reject);
+            }catch (e) {
+              reject(e)
+            }
+          }, 0)
+        })
+      }
+    })
+    return promise2
+  }
+```
+
+来测试下，看下Promise2能有结果吗
+```js
+const Promise = require('./promise')
+let p = new Promise((resolve, reject) => {
+  console.log('start')
+  resolve('jiaHang')
+  // reject('jiaHang')
+})
+p.then((res) => {
+  console.log('success:' + res);
+  return new Promise((resolve, reject) => {
+    resolve(2)
+  })
+}, (err) => {
+  console.log('fail' + err);
+}).then((res) => {
+  console.log('success:' + res);
+}, (err) => {
+  console.log('fail' + err);
+})
+
+```
+
+结果为：
+```
+start
+success:jiaHang
+Promise {
+  status: 'pending',
+  value: undefined,
+  reason: undefined,
+  resolveCallbacks: [ [Function] ],
+  rejectCallbacks: [ [Function] ] }
+
+```
+
+可以看到promise2打印出来是一个Promise对象，接下来，我们把重心就可以放到来处理resolvePromise了。
+
+##### 2 resolvePromise函数处理
