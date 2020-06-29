@@ -7,10 +7,7 @@
 > Promise/A+规范地址   
 >[中文翻译地址](https://malcolmyu.github.io/2015/06/12/Promises-A-Plus/)  
 >[英文原版地址](https://promisesaplus.com/)  
->[csdn](https://www.cnblogs.com/zhouyangla/p/10781697.html)  
->[掘金1](https://juejin.im/post/5d59757f6fb9a06ae76405c6)  
->[掘金2](https://juejin.im/post/5c6ad98e6fb9a049d51a0f5e#heading-9)  
-   
+ 
 ### 1.结合Promise/A+规范和使用例子实现简易版本Promise
 > 先来看一下promise使用的一个小例子：  
 ```js
@@ -501,7 +498,7 @@ readFile('./name.txt')
 
 
 #### 3.3 基于上述完善Promise的链式调用
-##### 1 then返回的是全新的promise
+then返回的是全新的promise
 ```js
 then(onFulfilled, onRejected) {
     let promise2;
@@ -707,7 +704,7 @@ Promise {
 
 可以看到promise2打印出来是一个Promise对象，接下来，我们把重心就可以放到来处理resolvePromise了。 
 
-#### 2.resolvePromise函数处理    
+resolvePromise函数处理    
 
 resolvePromise函数处理的情况有很多情况，我们也是一步步来处理，具体可以参考规范2.3
 - Promise循环引用的问题   
@@ -913,9 +910,9 @@ then(onFulfilled, onRejected) { // onFulfilled, onRejected 是两个可选参数
  promises-aplus-tests 文件名
 ```
 
-### 3.实现Promise其他方法
+### 4.实现Promise其他方法
 
-- Promise.resolve()方法
+- Promise.resolve()方法  
 Promise.resolve(value) 返回一个以给定值解析后的Promise 对象.
 如果 value 是个 thenable 对象，返回的promise会“跟随”这个thenable的对象，采用它的最终状态
 如果传入的value本身就是promise对象，那么Promise.resolve将不做任何修改、原封不动地返回这个promise对象。
