@@ -44,6 +44,15 @@ module.exports = {
           title: "ES6",
           name: "ES6",
           collabsable: false
+        },
+        {
+          title: "webpack",
+          name: "webpack",
+          collabsable: false,
+          children: [
+            ["webpack/", "目录"],
+            ['webpack/devServer', "devServer开发配置"]
+          ]
         }
       ]
     }
