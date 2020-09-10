@@ -1,0 +1,72 @@
+/*
+ * 收集模块
+ * */
+import { forEachValue } from '../util';
+import Module from './module'
+
+export default class ModuleCollection {
+  constructor(options) {
+    // 注册模块 需要用到栈结构数据，[根，a],每次循环递归的时候将其入栈。这样每个模块可以清楚的知道自己的父级是谁
+    this.register([], options)
+  }
+
+  // 获取命名空间, 返回一个字符串
+  getNamespaced(path) {
+    let root = this.root; // 从根模块找起来
+    return path.reduce((str, key) => { // [a,c]
+      root = root.getChild(key); // 不停的去找当前的模块
+      return str + (root.namespaced ? key + '/' : '')
+    }, ''); // 参数就是一个字符串
+  }
+
+  register(path, rootModule) {
+    // 格式化后的结果
+    let newModule = new Module(rootModule)
+
+    if (path.length === 0) { // 说明是根模块
+      this.root = newModule
+    } else {
+      // this.register(path.concat(moduleName), module); 递归注册前会把module 的名放在 path的位
+      // path.splice(0, -1) 是最后一项，是需要被挂的模块
+      let parent = path.splice(0, -1).reduce((memo, current) => {
+        return memo.getChild(current);
+      }, this.root);
+      parent.addChild(path[path.length - 1], newModule)
+    }
+
+    // 用户在模块中传了modules属性
+    if (rootModule.modules) {
+      // 循环模块 module模块的定义 moduleName模块的名字
+      forEachValue(rootModule.modules, (module, moduleName) => {
+        this.register(path.concat(moduleName), module)
+      })
+    }
+
+  }
+}
+
+/**
+ * 需要的结果
+ * this.root = {
+ *    _raw: '根模块',
+ *    _children:{
+ *        a:{
+ *          _raw:"a模块",
+ *          _children:{
+ *              c:{
+ *                  .....
+ *              }
+ *          },
+ *          state:'a的状态'
+ *        },
+ *        b:{
+ *          _raw:"b模块",
+ *          _children:{},
+ *          state:'b的状态'
+ *        }
+ *    },
+ *    state:'根模块自己的状态'
+ * }
+ *
+ *
+ */

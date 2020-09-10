@@ -46,6 +46,15 @@ module.exports = {
           collabsable: false
         },
         {
+          title: 'vue',
+          name: 'vue',
+          collabsable: false,
+          children: [
+            ['vue/', '目录'],
+            ['vue/vuex', 'vuex实现']
+          ]
+        },
+        {
           title: 'webpack',
           name: 'webpack',
           collabsable: false,
