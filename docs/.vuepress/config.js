@@ -32,7 +32,8 @@ module.exports = {
             ['js/new', '手写实现New'],
             ['js/bind', '手写实现bind'],
             ['js/call', '手写实现call'],
-            ['js/Promise', 'Promise实现']
+            ['js/Promise', 'Promise实现'],
+            ['js/dataStructure', '数据结构与算法']
           ]
         },
         {
@@ -64,12 +65,12 @@ module.exports = {
           ]
         },
         {
-          title: "其他",
-          name: "其他",
+          title: '其他',
+          name: '其他',
           collabsable: false,
           children: [
-            ["other/", "目录"],
-            ['other/typora+picgo+gitee图床使用教程', "typora+picgo+gitee图床使用教程"]
+            ['other/', '目录'],
+            ['other/typora+picgo+gitee图床使用教程', 'typora+picgo+gitee图床使用教程']
           ]
         }
       ]
