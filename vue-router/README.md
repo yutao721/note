@@ -234,6 +234,8 @@ class VueRouter {
 }
 ```
 
+> 这个地方为什么会把matcher绑定在vueRouter的实例上呢？是因为官方API中vueRouter实例有addRouters方法，createMatcher返回的有addRouters以及match方法。
+
 ### matcher 匹配函数
 
 create-matcher.js
@@ -321,4 +323,214 @@ function addRoutes(routes) {
 传入一个新的路由配置表，再通过createRouteMap 组成新的路由映射表；无非就是把用户传入的路由配置变成下图所展示的格式。
 
 ![](https://gitee.com/yutao618/images/raw/master/images/20201215172750.png)
+
+如此，不管是通过路由配置或者是动态添加的路由，都可以通过路径匹配到对应的组件；既然已经有这个匹配规则了，接下来应该处理什么呢？答案应该是处理vueRouter构造函数。再来看下之前的构造函数；
+
+```js
+class VueRouter {
+    constructor(options) {
+      this.mode = options.mode;
+      this.matcher = createMatcher(options.routes || []);
+    }
+}
+```
+
+此时，在实例化vueRouter的时候已经可以知道用户的路由配置（不同的路径对应的组件）以及用何种模式（hash/history）来实现路由的变化；
+
+### 不同模式的路由跳转
+
+```js
+constructor(options) {
+    this.mode = options.mode;
+    switch (this.mode) {
+      case 'hash': // this是router实例
+        this.history = new HashHistory(this)
+        break;
+      case 'history':
+        this.history = new HTML5History(this);
+        break;
+    }
+  }
+```
+
+这2中模式实现方式不一样，但功能是一样的,可以采用继承的模式，HashHistory 和 HTML5History 这个2个类都传入router实例。
+
+#### base.js
+
+```js
+export default class Base {
+  constructor(router) {
+    this.router = router;
+  }
+
+  transitionTo(location, handler) {
+    // 根据路径，match出对应的记录
+    console.log(location)
+
+    handler && handler();
+  }
+}
+```
+
+#### hash.js
+
+```js
+import Base from './base';
+
+// 确保有hash值
+function ensureSlash() {
+  if (window.location.hash) { // 取hash 会有兼容新问题
+    return;
+  }
+  window.location.hash = '/'
+}
+
+export default class Hash extends Base {
+  constructor(router) {
+    super(router);
+    // 确保有hash值
+    ensureSlash();
+  }
+
+  // 获取当前路径
+  getCurrentLocation() {
+    return window.location.hash.slice(1);
+  }
+
+  // 启动一个路由监听
+  setupListener() {
+    // hash值就是监控hash的变化
+    window.addEventListener('hashchange', () => {
+      console.log('hashchange', this.getCurrentLocation());
+      this.transitionTo(this.getCurrentLocation());
+    })
+  }
+}
+
+```
+
+虽然这个类有了监听hash值的变化的函数，那是需要再哪个时机调用？那页面第一次进来的时候也是需要监听，怎么触发这个监听？
+
+```js
+import install from './install';
+import createMatcher from './create-matcher';
+import HashHistory from './history/hash';
+import HTML5History from './history/html5'
+
+class VueRouter {
+  constructor(options) {
+    this.mode = options.mode;
+    // 根据路由对应映射关系
+
+    // 需要创建一个匹配器  (核心1.匹配 2.动态添加)
+    this.matcher = createMatcher(options.routes || []);
+    console.log(this.matcher);
+
+    switch (this.mode) {
+      case 'hash': // this是router实例
+        this.history = new HashHistory(this)
+        break;
+      case 'history':
+        this.history = new HTML5History(this);
+        break;
+    }
+  }
+
+
+  // 路由的初始化,app是根实例
+  init(app) { 
+    // 初始化后需要先根据路径做一次匹配，后续根据值的变化再次匹配
+    
+    const history = this.history; // hash或者history的实例
+    
+
+    // 此方法应该属于 base中的
+    const setupListener = () => {
+      history.setupListener(); // 每种模式监控的方式不一样而已
+    }
+
+    // 跳转到哪里
+    this.history.transitionTo(
+      history.getCurrentLocation(),
+      setupListener
+    )
+
+  }
+}
+
+VueRouter.install = install;
+
+export default VueRouter;
+```
+
+init方法就是路由初始化的时候执行，那在哪个时机去执行这个init方法呢？此时就应该想到的是在vue跟组件实例化的时候。
+
+```diff
+// export 一个 Vue 引用
+export let _Vue
+// 为了保证我们的VueRouter内部不需要依赖于Vue，用户在使用插件时可以传入对应的vue
+const install = function (Vue) {
+ 		_Vue = Vue
+    // install的作用就是 将我们的router实例共享给每个组件
+    // 把所有的方法都和组件初始化的时候进行混合
+    // 只是将这个router 挂载到了每个组件上
+    Vue.mixin({ 
+        beforeCreate(){
+            // 区分父子关系
+            // 先找到父亲 ，儿子找父亲的属性,孙子找父亲的
+            // 组件的声明周期调用顺序 先父后子
+            if(this.$options.router){
+                // 我将根实例放到了_routerRoot上
+               this._routerRoot = this;
+               this._router = this.$options.router;
+               +this._router.init(this);
+            }else{
+                // 将根属性全部增加到了每个组件上的_routerRoot上
+                // 所有组件都可以获取_routerRoot._router获取路由的实例
+               this._routerRoot = this.$parent && this.$parent._routerRoot
+            }
+        }
+    })
+}
+export default install
+```
+
+相应的history模式也是和hash模式大同小异：
+
+#### html5.js
+
+```js
+import Base from './base'
+
+export default class Html5 extends Base {
+  constructor(router) {
+    super(router);
+  }
+
+  getCurrentLocation() {
+    return window.location.pathname
+  }
+
+  setupListener() {
+    // 监控浏览器路 前进后退变化的 径变化的
+    console.log('popstate')
+    window.addEventListener('popstate', () => {
+      console.log('popstate', this.getCurrentLocation())
+      this.transitionTo(this.getCurrentLocation())
+    })
+  }
+}
+```
+
+至此，基本实现了vueRouter根据不同模式不同路径跳转到相应页面的功能就简单实现了，接下来是需要实现vue组件根据不同的路径渲染的问题，router-link以及router-view。
+
+### router-view
+
+
+
+### router-link
+
+
+
+
 
