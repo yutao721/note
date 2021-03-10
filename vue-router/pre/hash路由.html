@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <body>
     <ul>
       <ul>
@@ -19,16 +20,14 @@
       routerView.innerHTML = hash
     })
     window.addEventListener('DOMContentLoaded', () => {
-      console.log(location.hash);
-      if (!location.hash) {//如果不存在hash值，那么重定向到#/
+      if (!location.hash) { //如果不存在hash值，那么重定向到#/
         location.hash = '/'
-        console.log(location.hash);
-      } else {//如果存在hash值，那就渲染对应UI
+      } else { //如果存在hash值，那就渲染对应UI
         let hash = location.hash;
         routerView.innerHTML = hash
       }
     })
+
   </script>
+
 </html>
-
-

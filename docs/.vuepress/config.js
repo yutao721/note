@@ -9,18 +9,6 @@ module.exports = {
       { text: '面试问题', link: '/interview/' }
     ],
     sidebar: {
-      // "/web/":[
-      //   {
-      //     title: "JavaScript",
-      //     collabsable: false,
-      //     children: [
-      //       {title: 'new', path:'/web/js/new'},
-      //       {title: '手写bind', path:'/web/js/bind'},
-      //       {title: '手写call', path:'/web/js/call'},
-      //       {title: '手写深克隆', path:'/web/js/deepClone'}
-      //     ]
-      //   }
-      // ]
       '/web/': [
         ['', '前端'],
         {
@@ -62,6 +50,15 @@ module.exports = {
           children: [
             ['webpack/', '目录'],
             ['webpack/devServer', 'devServer开发配置']
+          ]
+        },
+        {
+          title: '小程序',
+          name: '小程序',
+          collabsable: false,
+          children: [
+            ['wxApp/', '目录'],
+            ['wxApp/swiper', 'swiper自定义样式']
           ]
         },
         {

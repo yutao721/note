@@ -15,5 +15,4 @@ p.then((res) => {
 }, (err) => {
   console.log('fail' + err);
 })
-
 console.log('end')
