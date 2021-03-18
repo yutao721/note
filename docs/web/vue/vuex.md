@@ -73,8 +73,6 @@ export default {
 
 vuex/store.js
 
-### 
-
 ```js
 export let Vue;
 

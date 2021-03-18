@@ -58,7 +58,8 @@ module.exports = {
           collabsable: false,
           children: [
             ['wxApp/', '目录'],
-            ['wxApp/swiper', 'swiper自定义样式']
+            ['wxApp/swiper', 'swiper自定义样式'],
+            ['wxApp/request', '小程序中实现token过期重新登录再重新请求业务接口']
           ]
         },
         {
