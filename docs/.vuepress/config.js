@@ -40,7 +40,8 @@ module.exports = {
           collabsable: false,
           children: [
             ['vue/', '目录'],
-            ['vue/vuex', 'vuex实现']
+            ['vue/vuex', 'vuex实现'],
+            ['vue/vueRouter', 'vue-router实现']
           ]
         },
         {
