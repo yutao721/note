@@ -54,6 +54,15 @@ module.exports = {
           ]
         },
         {
+          title: 'rollup',
+          name: 'rollup',
+          collabsable: false,
+          children: [
+            ['rollup/', '目录'],
+            ['rollup/rollupUse', 'rollup使用教程']
+          ]
+        },
+        {
           title: '小程序',
           name: '小程序',
           collabsable: false,
