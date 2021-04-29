@@ -4,6 +4,4 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-docs/.vuepress/dist
-
-htmlToMd/src/doodle.
+htmlToMd/src/doodle\.
