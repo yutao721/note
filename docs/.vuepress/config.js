@@ -59,7 +59,8 @@ module.exports = {
           collabsable: false,
           children: [
             ['rollup/', '目录'],
-            ['rollup/rollupUse', 'rollup使用教程']
+            ['rollup/rollupUse', 'rollup使用教程'],
+            ['rollup/rollupTheory', 'rollup打包原理']
           ]
         },
         {
