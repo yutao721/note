@@ -1,0 +1,16 @@
+.header-text {
+  font-size: 32px;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  background-color: #000;
+  font-size: 32px;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
