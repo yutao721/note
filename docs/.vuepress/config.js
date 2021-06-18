@@ -6,6 +6,7 @@ module.exports = {
     nav: [
       { text: '主页', link: '/' },
       { text: '前端', link: '/web/' },
+      { text: 'node', link: '/node/' },
       { text: '面试问题', link: '/interview/' }
     ],
     sidebar: {
@@ -82,6 +83,11 @@ module.exports = {
             ['other/typora+picgo+gitee图床使用教程', 'typora+picgo+gitee图床使用教程']
           ]
         }
+      ],
+      '/node/': [
+        ['', 'node目录'],
+        ['01_what', 'Node介绍'],
+        ['02_module', 'Node模块机制']
       ]
     }
   }
