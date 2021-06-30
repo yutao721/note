@@ -27,11 +27,19 @@ app.get('/', function(req, res) {
 // 表单
 app.post('/resolve/mark', async (req, res) => {
   let query = req.body;
-  console.log('开始解析 请求地址为: ' + query.blogUrl);
-  let markDown = new MarkDown(query);
-  let result = await markDown.init();
-  res.send({
-    code: 0,
-    markDown: result
-  })
+  console.log('开始解析 \n请求地址为: ' + query.blogUrl);
+  try {
+    let markDown = new MarkDown(query);
+    let result = await markDown.init();
+    res.send({
+      code: 0,
+      markDown: result
+    })
+  } catch (e) {
+    res.send({
+      code: 1,
+      msg: '解析错误',
+      markDown: e
+    })
+  }
 })

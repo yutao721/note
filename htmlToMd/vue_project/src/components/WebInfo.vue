@@ -17,12 +17,17 @@
           </a-collapse-panel>
 
           <a-collapse-panel key="3" header="自定义配置">
-            <a-form-model-item label="存图片到:" prop="blogUrl">
-              <a-input v-model="webinfo.imagePath" placeholder="请输入存图片到哪里--[服务器存图片的目录]-可不填"/>
+            <a-form-model-item label="是否下载图片:" prop="blogUrl">
+              <a-switch v-model="webinfo.isDown" @change="onChange"/>
             </a-form-model-item>
-            <a-form-model-item label="文中图片链接:" prop="blogUrl">
-              <a-input v-model="webinfo.imageUrl" placeholder="请输入解析后文章中图片的链接--[外网,本地服务器的ip或域名]-可不填"/>
-            </a-form-model-item>
+            <template v-if="webinfo.isDown">
+              <a-form-model-item label="存图片到:" prop="blogUrl">
+                <a-input v-model="webinfo.imagePath" placeholder="请输入存图片到哪里--[服务器存图片的目录]-可不填"/>
+              </a-form-model-item>
+              <a-form-model-item label="文中图片链接:" prop="blogUrl">
+                <a-input v-model="webinfo.imageUrl" placeholder="请输入解析后文章中图片的链接--[外网,本地服务器的ip或域名]-可不填"/>
+              </a-form-model-item>
+            </template>
           </a-collapse-panel>
 
         </a-collapse>
@@ -56,7 +61,8 @@
           blogUrl: 'https://juejin.cn/post/6953868764362309639',
           imagePath: '/work/images/images/',
           imageUrl: 'https://gitee.com/yutao618/images/raw/master/images/',
-          imageName: 'ThirdPartyImage'
+          imageName: 'ThirdPartyImage',
+          isDown: false
         },
         rules: {
           blogUrl: [
@@ -68,6 +74,10 @@
     },
 
     methods: {
+      onChange(checked) {
+        this.webinfo.isDown = checked
+      },
+
       onSubmit() {
         if (this.webinfo.blogUrl.length > 10) {
           this.spinning = true;
@@ -77,7 +87,7 @@
 
           }).catch(reason => {
             console.log(reason);
-            alert('报错啦,打开console查看报错信息');
+            this.$message.error('解析出错，请查看控制台');
             this.spinning = false;
           });
         } else {
