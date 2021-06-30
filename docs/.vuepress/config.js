@@ -87,8 +87,8 @@ module.exports = {
       '/node/': [
         ['', 'node目录'],
         ['01_what', 'Node介绍'],
-        ['02_module', 'Node模块机制']
-        ['path', 'path模块']
+        ['02_module', 'Node模块机制'],
+        ['path', 'path模块'],
         ['fs', 'fs模块']
       ]
     }
