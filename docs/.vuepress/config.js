@@ -46,6 +46,15 @@ module.exports = {
           ]
         },
         {
+          title: 'react',
+          name: 'react',
+          collabsable: false,
+          children: [
+            ['react/', '目录'],
+            ['react/1', 'react初次渲染'],
+          ]
+        },
+        {
           title: 'webpack',
           name: 'webpack',
           collabsable: false,
