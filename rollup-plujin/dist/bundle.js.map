@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","sources":["../src/index.js"],"sourcesContent":["export let name = 'jiaHang'\r\nconsole.log(name);\r\n"],"names":[],"mappings":";;;;AAAU,IAAC,IAAI,GAAG,UAAS;AAC3B,OAAO,CAAC,GAAG,CAAC,IAAI,CAAC;;;;"}
