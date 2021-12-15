@@ -53,6 +53,7 @@ module.exports = {
             ['react/', '目录'],
             ['react/1', 'react初次渲染'],
             ['react/2', 'react单节点diff'],
+            ['react/3', 'react多节点diff'],
           ]
         },
         {
