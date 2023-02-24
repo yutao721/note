@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>1. 一个完整的webpack配置代理代码 | jiaHang的博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="专注前端技术栈分享，做一个爱折腾的前端">
+    <link rel="preload" href="/note/assets/css/0.styles.725ed339.css" as="style"><link rel="preload" href="/note/assets/js/app.02190172.js" as="script"><link rel="preload" href="/note/assets/js/2.2dccd611.js" as="script"><link rel="preload" href="/note/assets/js/40.3ec1b99e.js" as="script"><link rel="prefetch" href="/note/assets/js/10.a05513c9.js"><link rel="prefetch" href="/note/assets/js/11.7ceb6923.js"><link rel="prefetch" href="/note/assets/js/12.fb88bae4.js"><link rel="prefetch" href="/note/assets/js/13.4b17ba74.js"><link rel="prefetch" href="/note/assets/js/14.ce1cd100.js"><link rel="prefetch" href="/note/assets/js/15.6a480c60.js"><link rel="prefetch" href="/note/assets/js/16.6d6b8a6a.js"><link rel="prefetch" href="/note/assets/js/17.c36721ad.js"><link rel="prefetch" href="/note/assets/js/18.77bcea9f.js"><link rel="prefetch" href="/note/assets/js/19.f262839a.js"><link rel="prefetch" href="/note/assets/js/20.5b1b9830.js"><link rel="prefetch" href="/note/assets/js/21.76b74656.js"><link rel="prefetch" href="/note/assets/js/22.e663cec2.js"><link rel="prefetch" href="/note/assets/js/23.c1f1c7e7.js"><link rel="prefetch" href="/note/assets/js/24.5ddffc93.js"><link rel="prefetch" href="/note/assets/js/25.95b0061c.js"><link rel="prefetch" href="/note/assets/js/26.c4c127de.js"><link rel="prefetch" href="/note/assets/js/27.234a7f7e.js"><link rel="prefetch" href="/note/assets/js/28.3bb3b4b8.js"><link rel="prefetch" href="/note/assets/js/29.1339c108.js"><link rel="prefetch" href="/note/assets/js/3.6e8c2ef0.js"><link rel="prefetch" href="/note/assets/js/30.3235f9a2.js"><link rel="prefetch" href="/note/assets/js/31.2a4efe07.js"><link rel="prefetch" href="/note/assets/js/32.d3d3c893.js"><link rel="prefetch" href="/note/assets/js/33.eaca5eef.js"><link rel="prefetch" href="/note/assets/js/34.684f8bf3.js"><link rel="prefetch" href="/note/assets/js/35.c486c7ec.js"><link rel="prefetch" href="/note/assets/js/36.2f90f872.js"><link rel="prefetch" href="/note/assets/js/37.92460be1.js"><link rel="prefetch" href="/note/assets/js/38.8532070d.js"><link rel="prefetch" href="/note/assets/js/39.9cc3b3d9.js"><link rel="prefetch" href="/note/assets/js/4.2b7fc900.js"><link rel="prefetch" href="/note/assets/js/41.d22f0de1.js"><link rel="prefetch" href="/note/assets/js/42.4796d96b.js"><link rel="prefetch" href="/note/assets/js/43.4c97d146.js"><link rel="prefetch" href="/note/assets/js/44.6e02569c.js"><link rel="prefetch" href="/note/assets/js/5.bb5b8508.js"><link rel="prefetch" href="/note/assets/js/6.ec170bea.js"><link rel="prefetch" href="/note/assets/js/7.12a33526.js"><link rel="prefetch" href="/note/assets/js/8.70ad78c1.js"><link rel="prefetch" href="/note/assets/js/9.b2f872fe.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.725ed339.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/" class="home-link router-link-active"><!----> <span class="site-name">jiaHang的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/note/web/" class="nav-link router-link-active">
+  前端
+</a></div><div class="nav-item"><a href="/note/node/" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/note/interview/" class="nav-link">
+  面试问题
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/note/web/" class="nav-link router-link-active">
+  前端
+</a></div><div class="nav-item"><a href="/note/node/" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/note/interview/" class="nav-link">
+  面试问题
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note/web/" aria-current="page" class="sidebar-link">前端</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ES6</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>react</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>webpack</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/web/webpack/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/note/web/webpack/devServer.html" aria-current="page" class="active sidebar-link">devServer开发配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note/web/webpack/devServer.html#_1-一个完整的webpack配置代理代码" class="sidebar-link">1. 一个完整的webpack配置代理代码</a></li><li class="sidebar-sub-header"><a href="/note/web/webpack/devServer.html#_2-配置中主要的参数说明" class="sidebar-link">2. 配置中主要的参数说明</a></li><li class="sidebar-sub-header"><a href="/note/web/webpack/devServer.html#_3-参考资料" class="sidebar-link">3. 参考资料</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>rollup</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>小程序</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>调试</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>其他</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="_1-一个完整的webpack配置代理代码"><a href="#_1-一个完整的webpack配置代理代码" class="header-anchor">#</a> 1. 一个完整的webpack配置代理代码</h2> <p>设置代理的前提条件：<br>
+1、需要使用本地开发插件：webpack-dev-server。<br>
+2、webpack-dev-server使用的是http-proxy-middleware来实现跨域代理的。<br>
+3、webpack版本： 3.0、4.0亲测有效</p> <p>一个webpack配置信息：</p> <div class="language- extra-class"><pre class="language-text"><code>module.exports = {
+  //...
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://www.baidu.com/',
+        pathRewrite: {'^/api' : ''},
+        changeOrigin: true,     // target是域名的话，需要这个参数，
+        secure: false,          // 设置支持https协议的代理
+      },
+      '/api2': {
+          .....
+      }
+    }
+  }
+};
+</code></pre></div><h2 id="_2-配置中主要的参数说明"><a href="#_2-配置中主要的参数说明" class="header-anchor">#</a> 2. 配置中主要的参数说明</h2> <h3 id="_2-1-api"><a href="#_2-1-api" class="header-anchor">#</a> 2.1 '/api'</h3> <p>捕获API的标志，如果API中有这个字符串，那么就开始匹配代理，
+比如API请求/api/users, 会被代理到请求 http://www.baidu.com/api/users 。</p> <h3 id="_2-2-target"><a href="#_2-2-target" class="header-anchor">#</a> 2.2 target</h3> <p>代理的API地址，就是需要跨域的API地址。
+地址可以是域名,如：http://www.baidu.com
+也可以是IP地址：http://127.0.0.1:3000
+如果是域名需要额外添加一个参数changeOrigin: true，否则会代理失败。</p> <h3 id="_2-3-pathrewrite"><a href="#_2-3-pathrewrite" class="header-anchor">#</a> 2.3 pathRewrite</h3> <p>路径重写，也就是说会修改最终请求的API路径。
+比如访问的API路径：/api/users,
+设置pathRewrite: {'^/api' : ''},后，
+最终代理访问的路径：http://www.baidu.com/users，
+这个参数的目的是给代理命名后，在访问时把命名删除掉。</p> <h3 id="_2-4-changeorigin"><a href="#_2-4-changeorigin" class="header-anchor">#</a> 2.4 changeOrigin</h3> <p>这个参数可以让target参数是域名。</p> <h3 id="_2-5-secure"><a href="#_2-5-secure" class="header-anchor">#</a> 2.5 secure</h3> <p>secure: false,不检查安全问题。
+设置后，可以接受运行在 HTTPS 上，可以使用无效证书的后端服务器</p> <h3 id="_2-6-其他参数配置查看http-proxy-middleware文档"><a href="#_2-6-其他参数配置查看http-proxy-middleware文档" class="header-anchor">#</a> 2.6 其他参数配置查看http-proxy-middleware文档</h3> <p>其他的配置参数等信息，<a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="noopener noreferrer">可以查看这里<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="_3-参考资料"><a href="#_3-参考资料" class="header-anchor">#</a> 3. 参考资料</h2> <p>webpack-dev-server： <a href="https://github.com/webpack/webpack-dev-server" target="_blank" rel="noopener noreferrer">https://github.com/webpack/we...<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br>
+http-proxy-middleware： <a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="noopener noreferrer">https://github.com/chimurai/h...<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br> <a href="https://webpack.docschina.org/configuration/dev-server/#devserver-proxy" target="_blank" rel="noopener noreferrer">webpack官网 devServer.proxy配置<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/web/webpack/" class="prev router-link-active">
+        目录
+      </a></span> <span class="next"><a href="/note/web/rollup/">
+        目录
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/note/assets/js/app.02190172.js" defer></script><script src="/note/assets/js/2.2dccd611.js" defer></script><script src="/note/assets/js/40.3ec1b99e.js" defer></script>
+  </body>
+</html>

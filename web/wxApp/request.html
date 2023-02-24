@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>小程序中实现token过期重新登录再重新请求业务接口 | jiaHang的博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="专注前端技术栈分享，做一个爱折腾的前端">
+    <link rel="preload" href="/note/assets/css/0.styles.725ed339.css" as="style"><link rel="preload" href="/note/assets/js/app.02190172.js" as="script"><link rel="preload" href="/note/assets/js/2.2dccd611.js" as="script"><link rel="preload" href="/note/assets/js/43.4c97d146.js" as="script"><link rel="prefetch" href="/note/assets/js/10.a05513c9.js"><link rel="prefetch" href="/note/assets/js/11.7ceb6923.js"><link rel="prefetch" href="/note/assets/js/12.fb88bae4.js"><link rel="prefetch" href="/note/assets/js/13.4b17ba74.js"><link rel="prefetch" href="/note/assets/js/14.ce1cd100.js"><link rel="prefetch" href="/note/assets/js/15.6a480c60.js"><link rel="prefetch" href="/note/assets/js/16.6d6b8a6a.js"><link rel="prefetch" href="/note/assets/js/17.c36721ad.js"><link rel="prefetch" href="/note/assets/js/18.77bcea9f.js"><link rel="prefetch" href="/note/assets/js/19.f262839a.js"><link rel="prefetch" href="/note/assets/js/20.5b1b9830.js"><link rel="prefetch" href="/note/assets/js/21.76b74656.js"><link rel="prefetch" href="/note/assets/js/22.e663cec2.js"><link rel="prefetch" href="/note/assets/js/23.c1f1c7e7.js"><link rel="prefetch" href="/note/assets/js/24.5ddffc93.js"><link rel="prefetch" href="/note/assets/js/25.95b0061c.js"><link rel="prefetch" href="/note/assets/js/26.c4c127de.js"><link rel="prefetch" href="/note/assets/js/27.234a7f7e.js"><link rel="prefetch" href="/note/assets/js/28.3bb3b4b8.js"><link rel="prefetch" href="/note/assets/js/29.1339c108.js"><link rel="prefetch" href="/note/assets/js/3.6e8c2ef0.js"><link rel="prefetch" href="/note/assets/js/30.3235f9a2.js"><link rel="prefetch" href="/note/assets/js/31.2a4efe07.js"><link rel="prefetch" href="/note/assets/js/32.d3d3c893.js"><link rel="prefetch" href="/note/assets/js/33.eaca5eef.js"><link rel="prefetch" href="/note/assets/js/34.684f8bf3.js"><link rel="prefetch" href="/note/assets/js/35.c486c7ec.js"><link rel="prefetch" href="/note/assets/js/36.2f90f872.js"><link rel="prefetch" href="/note/assets/js/37.92460be1.js"><link rel="prefetch" href="/note/assets/js/38.8532070d.js"><link rel="prefetch" href="/note/assets/js/39.9cc3b3d9.js"><link rel="prefetch" href="/note/assets/js/4.2b7fc900.js"><link rel="prefetch" href="/note/assets/js/40.3ec1b99e.js"><link rel="prefetch" href="/note/assets/js/41.d22f0de1.js"><link rel="prefetch" href="/note/assets/js/42.4796d96b.js"><link rel="prefetch" href="/note/assets/js/44.6e02569c.js"><link rel="prefetch" href="/note/assets/js/5.bb5b8508.js"><link rel="prefetch" href="/note/assets/js/6.ec170bea.js"><link rel="prefetch" href="/note/assets/js/7.12a33526.js"><link rel="prefetch" href="/note/assets/js/8.70ad78c1.js"><link rel="prefetch" href="/note/assets/js/9.b2f872fe.js">
+    <link rel="stylesheet" href="/note/assets/css/0.styles.725ed339.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note/" class="home-link router-link-active"><!----> <span class="site-name">jiaHang的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/note/web/" class="nav-link router-link-active">
+  前端
+</a></div><div class="nav-item"><a href="/note/node/" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/note/interview/" class="nav-link">
+  面试问题
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/note/web/" class="nav-link router-link-active">
+  前端
+</a></div><div class="nav-item"><a href="/note/node/" class="nav-link">
+  node
+</a></div><div class="nav-item"><a href="/note/interview/" class="nav-link">
+  面试问题
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/note/web/" aria-current="page" class="sidebar-link">前端</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ES6</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>react</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>rollup</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>小程序</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note/web/wxApp/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/note/web/wxApp/swiper.html" class="sidebar-link">swiper自定义样式</a></li><li><a href="/note/web/wxApp/request.html" aria-current="page" class="active sidebar-link">小程序中实现token过期重新登录再重新请求业务接口</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>调试</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>其他</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="小程序中实现token过期重新登录再重新请求业务接口"><a href="#小程序中实现token过期重新登录再重新请求业务接口" class="header-anchor">#</a> 小程序中实现token过期重新登录再重新请求业务接口</h3> <p>首先还是来看下小程序官方给出的小程序登录流程：</p> <ul><li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/login.html" target="_blank" rel="noopener noreferrer">小程序官方登录地址<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li>小程序官方登录流程图</li></ul> <p><img src="https://res.wx.qq.com/wxdoc/dist/assets/img/api-login.2fcc9f35.jpg" alt=""></p> <p>我们这里所说的token就是指的官方说的<code>自定义登录态</code>，token一般都是有时效性，按照此流程，当token失效的时候，页面在请求接口的时候服务端肯定会认为token是非法的，此时就需要小程序端重新获取新的token，然后继续接着后面的流程走。一般服务端都会给一个特定的状态码标记需要重新获取token，后面的场景我们都以服务端返回code码401认为需要去登录。</p> <h4 id="场景1：token失效之后直接跳转到特定的一个授权登录页面"><a href="#场景1：token失效之后直接跳转到特定的一个授权登录页面" class="header-anchor">#</a> 场景1：token失效之后直接跳转到特定的一个授权登录页面</h4> <p>由于getUserInfo接口变动的缘故，必须用户手动去触发一个按钮，一般都会做一个特定的授权登录页面或者弹窗，那此时在接口返回401的时候那我们直接就跳转到那个授权页面或者弹起授权登录弹窗即可，相当于是走了用户第一次进入该小程序的流程。</p> <blockquote><p>这种方案是最简单的解决方案，但是缺点也很明显：打断了用户的操作流程，重复了第一次授权登录的流程，很繁琐。</p></blockquote> <h4 id="场景2：token失效之后无感知获取新token并继续之前的操作"><a href="#场景2：token失效之后无感知获取新token并继续之前的操作" class="header-anchor">#</a> 场景2：token失效之后无感知获取新token并继续之前的操作</h4> <p>分2步来解决这个问题，无感知获取token</p> <p>这个其实很简单，调wx.login()获取code之后再调服务端新的接口，此接口只需要接受code返回当前登录账户最新的信息（token以及其他），拿到最新token。</p> <p>具体代码实现如下：</p> <p>http.js文件核心代码</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">Http</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span> url<span class="token punctuation">,</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> method<span class="token punctuation">,</span> header<span class="token punctuation">,</span> callback <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> _this <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        url<span class="token punctuation">,</span>
+        data<span class="token punctuation">,</span>
+        method<span class="token punctuation">,</span>
+        header<span class="token operator">:</span> <span class="token punctuation">{</span> Authorization<span class="token operator">:</span> <span class="token string">'Bearer '</span> <span class="token operator">+</span> storge<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token constant">LOGIN_TOKEN</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        callback<span class="token punctuation">,</span>
+        <span class="token function">fail</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">reject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">complete</span><span class="token operator">:</span> <span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">callback</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">let</span> statusCode <span class="token operator">=</span> res<span class="token punctuation">.</span>statusCode<span class="token punctuation">;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode <span class="token operator">==</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'接口不存在'</span><span class="token punctuation">)</span>
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode <span class="token operator">==</span> <span class="token number">401</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+           <span class="token function">getNewToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+              _this<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span> url<span class="token punctuation">,</span> data<span class="token punctuation">,</span> method<span class="token punctuation">,</span> callback<span class="token operator">:</span> resolve <span class="token punctuation">}</span><span class="token punctuation">)</span>
+           <span class="token punctuation">}</span><span class="token punctuation">)</span>
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'5'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            wx<span class="token punctuation">.</span><span class="token function">showModal</span><span class="token punctuation">(</span><span class="token punctuation">{</span> content<span class="token operator">:</span> <span class="token string">'服务器报错，请重试！'</span><span class="token punctuation">,</span> showCancel<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span> 
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 获取token</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getNewToken</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          url<span class="token operator">:</span> <span class="token string">'获取最新token接口地址'</span><span class="token punctuation">,</span>
+          method<span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+          <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> r <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+            <span class="token comment">// 将所有存储到观察者数组中的请求重新执行。</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>r<span class="token punctuation">.</span>code <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">const</span> token <span class="token operator">=</span> r<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'token'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+              wx<span class="token punctuation">.</span><span class="token function">setStorageSyn</span><span class="token punctuation">(</span><span class="token string">'LOGIN_TOKEN'</span><span class="token punctuation">,</span> token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">fail</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'wx login fail'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>接下来看下如何使用：</p> <p>api/index.js文件部分api</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> Http <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../utils/http.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">Index</span> <span class="token keyword">extends</span> <span class="token class-name">Http</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token comment">// 获取商品分类</span>
+  <span class="token function">goodsList</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      url<span class="token operator">:</span> <span class="token string">'goodsList'</span><span class="token punctuation">,</span>
+      method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
+      data<span class="token operator">:</span> data
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>pages/index/index.js文件中调用该接口，部分代码：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> Index <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../../api/index.js'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token constant">API</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+  <span class="token comment">/**
+   * 页面的初始数据
+   */</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  
+  <span class="token comment">// 获取商品列表</span>
+  <span class="token function">getGoodList</span><span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> param <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>params<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token punctuation">{</span> page<span class="token operator">:</span> page<span class="token punctuation">,</span> <span class="token operator">...</span>param <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token constant">API</span><span class="token punctuation">.</span><span class="token function">getGoodList</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 业务逻辑</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token operator">...</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>如此，我们来试验一番，看到底可以不</p> <p><img src="https://gitee.com/yutao618/images/raw/master/images/20210318142443.png" alt=""></p> <p>如图，看到在调user接口的时候发现token失效（服务端返回了401），会调issue获取最新的token,然后继续走user接口，整个过程用户无感知，而且也不会中断之前的操作，是不是很完美，答案是NO! 往下看</p> <p><img src="https://gitee.com/yutao618/images/raw/master/images/20210318143225.png" alt=""></p> <p>遇到业务复杂的页面，会有多个请求，此时，获取最新token的这个接口就会多次调用，这个接口其实只需要调一次就可以了，这样就影响性能了，那如何对这种进行优化呢？其实方法有很多种，最简单的就是利用发布订阅模式，简单修改代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> isRefreshing <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> subscribers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">onAccessTokenFetched</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  subscribers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  subscribers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">addSubscriber</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  subscribers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">Http</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span> url<span class="token punctuation">,</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> method<span class="token punctuation">,</span> header<span class="token punctuation">,</span> callback <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> _this <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        url<span class="token punctuation">,</span>
+        data<span class="token punctuation">,</span>
+        method<span class="token punctuation">,</span>
+        header<span class="token operator">:</span> <span class="token punctuation">{</span> Authorization<span class="token operator">:</span> <span class="token string">'Bearer '</span> <span class="token operator">+</span> storge<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token constant">LOGIN_TOKEN</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        callback<span class="token punctuation">,</span>
+        <span class="token function">fail</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">reject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">complete</span><span class="token operator">:</span> <span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">callback</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">let</span> statusCode <span class="token operator">=</span> res<span class="token punctuation">.</span>statusCode<span class="token punctuation">;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode <span class="token operator">==</span> <span class="token number">404</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'接口不存在'</span><span class="token punctuation">)</span>
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode <span class="token operator">==</span> <span class="token number">401</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            
+            <span class="token comment">// 将需要重新执行的接口缓存到一个队列中</span>
+           <span class="token function">addSubscriber</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+             _this<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span> url<span class="token punctuation">,</span> data<span class="token punctuation">,</span> method<span class="token punctuation">,</span> header<span class="token punctuation">,</span> callback<span class="token operator">:</span> resolve <span class="token punctuation">}</span><span class="token punctuation">)</span>
+           <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            
+           <span class="token keyword">if</span> <span class="token punctuation">(</span>isRefreshing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token function">getNewToken</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 依次去执行缓存的接口</span>
+                <span class="token function">onAccessTokenFetched</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                isRefreshing <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+            isRefreshing <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> 
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+          <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>statusCode<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'5'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            wx<span class="token punctuation">.</span><span class="token function">showModal</span><span class="token punctuation">(</span><span class="token punctuation">{</span> content<span class="token operator">:</span> <span class="token string">'服务器报错，请重试！'</span><span class="token punctuation">,</span> showCancel<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span> 
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 获取token</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getNewToken</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    wx<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          url<span class="token operator">:</span> <span class="token string">'获取最新token接口地址'</span><span class="token punctuation">,</span>
+          method<span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+          <span class="token function">success</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> r <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+            <span class="token comment">// 将所有存储到观察者数组中的请求重新执行。</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>r<span class="token punctuation">.</span>code <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">const</span> token <span class="token operator">=</span> r<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'token'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+              wx<span class="token punctuation">.</span><span class="token function">setStorageSyn</span><span class="token punctuation">(</span><span class="token string">'LOGIN_TOKEN'</span><span class="token punctuation">,</span> token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">fail</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'wx login fail'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>对，就是这么简答，把所有401的接口执行缓存到一个队列中，拿到最新token（这里使用了请求锁，只执行一次获取token的接口），接着再依次去走之前的逻辑，整个过程无感知，而且页面不管有多少个请求，始终只会调一次获取token的接口。下面来简单测试下：</p> <p><img src="https://gitee.com/yutao618/images/raw/master/images/20210318144706.png" alt=""></p> <p>看到，issue接口只调取了一次，如此就可以完美的解决小程序中token过期重新无感知登录并重新请求之前所有的接口。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note/web/wxApp/swiper.html" class="prev">
+        swiper自定义样式
+      </a></span> <span class="next"><a href="/note/web/debug/">
+        目录
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/note/assets/js/app.02190172.js" defer></script><script src="/note/assets/js/2.2dccd611.js" defer></script><script src="/note/assets/js/43.4c97d146.js" defer></script>
+  </body>
+</html>
