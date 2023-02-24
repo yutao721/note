@@ -53,7 +53,7 @@ module.exports = {
             ['react/', '目录'],
             ['react/1', 'react初次渲染'],
             ['react/2', 'react单节点diff'],
-            ['react/3', 'react多节点diff'],
+            ['react/3', 'react多节点diff']
           ]
         },
         {
@@ -86,6 +86,16 @@ module.exports = {
           ]
         },
         {
+          title: '调试',
+          name: '调试',
+          collabsable: false,
+          children: [
+            ['debug/', '目录'],
+            ['debug/微信公众号本地调试', 'charles代理本地调试微信公众号'],
+            ['debug/微信公众号本地如何调试', '微信公众号本地如何调试'],
+          ]
+        },
+        {
           title: '其他',
           name: '其他',
           collabsable: false,
@@ -101,6 +111,9 @@ module.exports = {
         ['02_module', 'Node模块机制'],
         ['path', 'path模块'],
         ['fs', 'fs模块']
+      ],
+      '/interview/': [
+        ['', '目录']
       ]
     }
   }
