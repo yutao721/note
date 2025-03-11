@@ -83,7 +83,8 @@ module.exports = {
           children: [
             ['wxApp/', '目录'],
             ['wxApp/swiper', 'swiper自定义样式'],
-            ['wxApp/request', '小程序中实现token过期重新登录再重新请求业务接口']
+            ['wxApp/request', '小程序中实现token过期重新登录再重新请求业务接口'],
+            ['wxApp/IntersectionObserver', '小程序中实现Observer监听元素进入视口']
           ]
         },
         {
@@ -116,11 +117,12 @@ module.exports = {
       '/interview/': [
         ['', '目录']
       ],
+
+      // strong sidebar
       '/strong/': [
         ['', '目录'],
         ['0.Async', '0.Async'],
         ['0.module', '0.module'],
-        ['index', 'index'],
         ['1.ES2015', '1.ES2015'],
         ['2.Promise', '2.Promise'],
         ['3.Node', '3.Node'],
@@ -332,8 +334,8 @@ module.exports = {
         ['94.4.EventLoop', '94.4.EventLoop'],
         ['94.5.文件上传', '94.5.文件上传'],
         ['94.6.https', '94.6.https'],
-        ['94.7. nginx', '94.7. nginx'],
-        ['95.1. react', '95.1. react'],
+        ['94.7.nginx', '94.7.nginx'],
+        ['95.1.react', '95.1.react'],
         ['95.2.react', '95.2.react'],
         ['96.1.react16', '96.1.react16'],
         ['96.2.fiber', '96.2.fiber'],
@@ -468,7 +470,7 @@ module.exports = {
         ['146.browser', '146.browser'],
         ['147.lighthouse', '147.lighthouse'],
         ['148.1.basic', '148.1.basic'],
-        ['148.2.basic ', '148.2.basic '],
+        ['148.2.basic', '148.2.basic'],
         ['148.3.basic', '148.3.basic'],
         ['148.4.basic', '148.4.basic'],
         ['148.5.basic', '148.5.basic'],
