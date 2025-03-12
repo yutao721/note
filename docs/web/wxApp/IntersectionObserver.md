@@ -479,3 +479,125 @@ Component({
 
 通过`relativeTo`，可以监听相对于某个元素，并且可以设置相对于某个元素的位置，比如距离顶部多少，距离底部多少，距离左侧多少，距离右侧多少。可以通过这个实现pageScroll对某个元素的的监听，监听某个元素距离顶部多少。
 
+## 5. 完整`IntersectionObserver`类代码
+
+```js
+export default class IntersectionObserver {
+  constructor(options) {
+    this.options = {
+      // 阈值 0-1
+      thresholds: options.thresholds || 0.5,
+      // 是否观察所有节点
+      observeAll: options.observeAll || false,
+      // 初始的相交比例
+      initialRatio: options.initialRatio || 0,
+      // 上下文，默认为当前页面
+      context: options.context || null,
+      // 目标节点
+      selector: options.selector || null,
+      // 延迟时间
+      delayTime: options.delayTime || 200,
+      // 相对于某个元素
+      relativeToTarget: options.relativeToTarget || null,
+      // 相对于某个元素的位置
+      relativeToOptions: options.relativeToOptions || {},
+      // 相对于视口的位置
+      relativeToViewportOptions: options.relativeToViewportOptions || {},
+      // 每次触发的回调
+      onForEach: options.onForEach || ((res) => res.dataset),
+      // 最后触发的回调
+      onFinalCallback: options.onFinalCallback || (() => null),
+      ...options,
+    };
+    
+    // 监听器
+    this.observer = null;
+    // 定时器
+    this.timer = null;
+    // 当前收集的数据
+    this.observerData = [];
+  }
+
+  connect() {
+    if (this.observer) return this;
+    this.observer = this.createObserver();
+    return this;
+  }
+
+  // 重新连接
+  reconnect() {
+    this.disconnect();
+    this.connect();
+  }
+
+  createObserver() {
+    const observerOptions = {
+      thresholds: [this.options.thresholds],
+      observeAll: this.options.observeAll,
+      initialRatio: this.options.initialRatio,
+    };
+    // 创建监听器
+    const ob = this.options.context
+      ? this.options.context.createIntersectionObserver(observerOptions)
+      : wx.createIntersectionObserver(null, observerOptions);
+
+    // 设置相对于某个元素
+    if (this.options.relativeToTarget) {
+      ob.relativeTo(this.options.relativeToTarget, this.options.relativeToOptions);
+    } else {
+      ob.relativeToViewport(this.options.relativeToViewportOptions);
+    }
+
+    let isCollecting = false;
+    let observerData = [];
+    // 监听回调
+    ob.observe(this.options.selector, (res) => {
+      const { intersectionRatio, intersectionRect } = res;
+      const visible = intersectionRatio >= this.options.thresholds;
+
+      if (!visible) return;
+
+      const data = this.options.onForEach(res);
+      observerData.push(data);
+      
+
+      if (isCollecting) return
+      isCollecting = true
+
+      // 延迟执行
+      this.timer = setTimeout(() => {
+        
+        // 重新连接的时候，需要过滤掉之前已经监听到的数据
+        const lastObserverData = this.observerData.length ? this.observerData[this.observerData.length - 1] : null;
+        const index = observerData.findIndex(item => item === lastObserverData);
+        if (index !== -1) {
+          observerData = observerData.slice(index + 1);
+        }
+        
+        this.options.onFinalCallback(observerData);
+        // 保存当前数据,需要断开连接时使用
+        this.observerData = observerData;
+        isCollecting = false;
+        observerData = [];
+      }, this.options.delayTime);
+    })
+
+    return ob;
+  }
+
+
+
+  // 断开连接
+  disconnect() {
+    if (!this.observer) return;
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    } 
+    console.log('disconnect', this.observerData);
+
+    this.observer.disconnect();
+    this.observer = null;
+  }
+}
+```
