@@ -282,7 +282,7 @@ Page({
 
 上面是通过`onReachBottom`方法来模拟分页加载，每次加载10条数据，当用户滑动到底部时，会触发`onReachBottom`方法，然后通过`setData`方法将新加载的数据更新到页面中。实际测试效果如下：
 
-![演示2](![](https://fastly.jsdelivr.net/gh/yutao721/blogImage@main/img/20250311152204885.png))
+![演示2](https://fastly.jsdelivr.net/gh/yutao721/blogImage@main/img/20250311152204885.png)
 
 >解决方案：在分页加载时，我们需要在`setData`的回调函数中，`重连`,也就是调用`this.ob.reconnect();`,这个时候，`IntersectionObserver`就相当于关闭之前的观察期，然后重新链接，因为这个时候`IntersectionObserver`会监听到新加进来的元素，这样就能保证获取到新加载的节点的数据了。实际测试效果如下：
 
