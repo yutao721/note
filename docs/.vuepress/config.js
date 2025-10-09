@@ -1,503 +1,1725 @@
-module.exports = {
-  base: '/note/',
-  title: 'jiaHang的博客',
+
+import { defineUserConfig } from 'vuepress';
+import { defaultTheme } from '@vuepress/theme-default';
+import { viteBundler } from '@vuepress/bundler-vite';
+
+
+export default defineUserConfig({
+  base: '/',
+  title: 'jiaHang前端学习笔记',
   description: '专注前端技术栈分享，做一个爱折腾的前端',
-  themeConfig: {
-    nav: [
+  theme: defaultTheme({
+    navbar: [
       { text: '主页', link: '/' },
       { text: '前端', link: '/web/' },
       { text: 'node', link: '/node/' },
       { text: '前端架构', link: '/strong/' },
-      { text: '面试问题', link: '/interview/' }
+      // { text: '面试问题', link: '/interview/' }
     ],
+
     sidebar: {
       '/web/': [
-        ['', '前端'],
         {
-          title: 'JavaScript',
-          name: 'JavaScript',
-          collabsable: false,
+          text: 'JavaScript',
+          prefix: '/web/js',
+          link: '/web/js/',
+          collapsible: true,
           children: [
-            ['js/', '目录'],
-            ['js/new', '手写实现New'],
-            ['js/bind', '手写实现bind'],
-            ['js/call', '手写实现call'],
-            ['js/Promise', 'Promise实现'],
-            ['js/dataStructure', '数据结构与算法']
+            {
+              text: '手写实现New',
+              link: 'new'
+            },
+            {
+              text: '手写实现bind',
+              link: 'bind'
+            },
+            {
+              text: '手写实现call',
+              link: 'call'
+            },
+            {
+              text: 'Promise实现',
+              link: 'Promise'
+            },
+            {
+              text: '数据结构与算法',
+              link: 'dataStructure'
+            }
+          ],
+        },
+        {
+          text: 'vue',
+          collapsible: true,
+          prefix: '/web/vue',
+          link: '/web/vue/',
+          children: [
+            {
+              text: 'vuex实现',
+              link: 'vuex'
+            },
+            {
+              text: 'vue-router实现',
+              link: 'vueRouter'
+            }
           ]
         },
         {
-          title: 'css',
-          name: 'css',
-          collabsable: false
-        },
-        {
-          title: 'ES6',
-          name: 'ES6',
-          collabsable: false
-        },
-        {
-          title: 'vue',
-          name: 'vue',
-          collabsable: false,
+          text: 'react',
+          prefix: '/web/react',
+          link: '/web/react/',
+          collapsible: true,
           children: [
-            ['vue/', '目录'],
-            ['vue/vuex', 'vuex实现'],
-            ['vue/vueRouter', 'vue-router实现']
+            {
+              text: 'react初次渲染',
+              link: '1'
+            },
+            {
+              text: 'react单节点diff',
+              link: '2'
+            },
+            {
+              text: 'react多节点diff',
+              link: '3'
+            }
           ]
         },
         {
-          title: 'react',
-          name: 'react',
-          collabsable: false,
+          text: 'webpack',
+          prefix: '/web/webpack',
+          link: '/web/webpack/',
+          collapsible: true,
           children: [
-            ['react/', '目录'],
-            ['react/1', 'react初次渲染'],
-            ['react/2', 'react单节点diff'],
-            ['react/3', 'react多节点diff']
+            {
+              text: 'devServer开发配置',
+              link: 'devServer'
+            },
+            {
+              text: 'webpack性能优化之dllPlugin',
+              link: 'dllPlugin'
+            }
           ]
         },
         {
-          title: 'webpack',
-          name: 'webpack',
-          collabsable: false,
+          text: 'rollup',
+          prefix: '/web/rollup',
+          link: '/web/rollup/',
+          collapsible: true,
           children: [
-            ['webpack/', '目录'],
-            ['webpack/devServer', 'devServer开发配置']
+            {
+              text: 'rollup使用教程',
+              link: 'rollupUse'
+            },
+            {
+              text: 'rollup打包原理',
+              link: 'rollupTheory'
+            },
           ]
         },
         {
-          title: 'rollup',
-          name: 'rollup',
-          collabsable: false,
+          text: '小程序',
+          prefix: '/web/wxApp',
+          link: '/web/wxApp/',
+          collapsible: true,
           children: [
-            ['rollup/', '目录'],
-            ['rollup/rollupUse', 'rollup使用教程'],
-            ['rollup/rollupTheory', 'rollup打包原理']
+            {
+              text: 'swiper自定义样式',
+              link: 'swiper'
+            },
+            {
+              text: '小程序中实现token过期重新登录再重新请求业务接口',
+              link: 'request'
+            },
+            {
+              text: '小程序中实现Observer监听元素进入视口',
+              link: 'IntersectionObserver'
+            }
           ]
         },
         {
-          title: '小程序',
-          name: '小程序',
-          collabsable: false,
+          text: '调试',
+          prefix: '/web/debug',
+          link: '/web/debug/',
+          collapsible: true,
           children: [
-            ['wxApp/', '目录'],
-            ['wxApp/swiper', 'swiper自定义样式'],
-            ['wxApp/request', '小程序中实现token过期重新登录再重新请求业务接口'],
-            ['wxApp/IntersectionObserver', '小程序中实现Observer监听元素进入视口']
+            {
+              text: 'charles代理本地调试微信公众号',
+              link: '微信公众号本地调试'
+            },
+            {
+              text: '微信公众号本地如何调试',
+              link: '微信公众号本地如何调试'
+            }
           ]
         },
         {
-          title: '调试',
-          name: '调试',
-          collabsable: false,
+          text: '其他',
+          prefix: '/web/other',
+          link: '/web/other/',
+          collapsible: true,
           children: [
-            ['debug/', '目录'],
-            ['debug/微信公众号本地调试', 'charles代理本地调试微信公众号'],
-            ['debug/微信公众号本地如何调试', '微信公众号本地如何调试'],
-          ]
-        },
-        {
-          title: '其他',
-          name: '其他',
-          collabsable: false,
-          children: [
-            ['other/', '目录'],
-            ['other/typora+picgo+gitee图床使用教程', 'typora+picgo+gitee图床使用教程']
+            {
+              text: 'typora+picgo+gitee图床使用教程',
+              link: 'typora+picgo+gitee图床使用教程'
+            }
           ]
         }
       ],
       '/node/': [
-        ['', 'node目录'],
-        ['01_what', 'Node介绍'],
-        ['02_module', 'Node模块机制'],
-        ['path', 'path模块'],
-        ['fs', 'fs模块']
+        {
+          text: '原生Node',
+          prefix: '/node',
+          link: '/node/',
+          collapsible: true,
+          children: [
+            {
+              text: 'Node介绍',
+              link: '01_what'
+            },
+            {
+              text: 'Node模块机制',
+              link: '02_module'
+            },
+            {
+              text: 'path模块',
+              link: 'path'
+            },
+            {
+              text: 'fs模块',
+              link: 'fs'
+            }
+          ]
+        },
+        {
+          text: 'koa',
+          collapsible: true,
+          children: []
+        }
       ],
-      '/interview/': [
-        ['', '目录']
-      ],
+      // '/interview/': [
+      //   ['', '目录']
+      // ],
 
       // strong sidebar
       '/strong/': [
-        ['', '目录'],
-        ['0.Async', '0.Async'],
-        ['0.module', '0.module'],
-        ['1.ES2015', '1.ES2015'],
-        ['2.Promise', '2.Promise'],
-        ['3.Node', '3.Node'],
-        ['4.NodeInstall', '4.NodeInstall'],
-        ['5.REPL', '5.REPL'],
-        ['6.NodeCore', '6.NodeCore'],
-        ['7.module&NPM', '7.module&NPM'],
-        ['7.npm2', '7.npm2'],
-        ['8.Encoding', '8.Encoding'],
-        ['9.Buffer', '9.Buffer'],
-        ['10.fs', '10.fs'],
-        ['11.Stream-1', '11.Stream-1'],
-        ['11.Stream-2', '11.Stream-2'],
-        ['11.Stream-3', '11.Stream-3'],
-        ['11.Stream-4', '11.Stream-4'],
-        ['12-Network-2', '12-Network-2'],
-        ['12.NetWork-3', '12.NetWork-3'],
-        ['12.Network-1', '12.Network-1'],
-        ['13.tcp', '13.tcp'],
-        ['14.http-1', '14.http-1'],
-        ['14.http-2', '14.http-2'],
-        ['15.compress', '15.compress'],
-        ['16.crypto', '16.crypto'],
-        ['17.process', '17.process'],
-        ['18.yargs', '18.yargs'],
-        ['19.cache', '19.cache'],
-        ['20.action', '20.action'],
-        ['21.https', '21.https'],
-        ['22.cookie', '22.cookie'],
-        ['23.session', '23.session'],
-        ['24.express-1', '24.express-1'],
-        ['24.express-2', '24.express-2'],
-        ['24.express-3', '24.express-3'],
-        ['24.express-4', '24.express-4'],
-        ['25.koa-1', '25.koa-1'],
-        ['26.webpack-1-basic', '26.webpack-1-basic'],
-        ['26.webpack-10-prepare', '26.webpack-10-prepare'],
-        ['26.webpack-2-optimize', '26.webpack-2-optimize'],
-        ['26.webpack-3-file', '26.webpack-3-file'],
-        ['26.webpack-4.tapable', '26.webpack-4.tapable'],
-        ['26.webpack-5-AST', '26.webpack-5-AST'],
-        ['26.webpack-6-sources', '26.webpack-6-sources'],
-        ['26.webpack-7-loader', '26.webpack-7-loader'],
-        ['26.webpack-8-plugin', '26.webpack-8-plugin'],
-        ['26.webpack-9-hand', '26.webpack-9-hand'],
-        ['28.redux-jwt-back', '28.redux-jwt-back'],
-        ['28.redux-jwt-front', '28.redux-jwt-front'],
-        ['28.redux', '28.redux'],
-        ['29.mongodb-1', '29.mongodb-1'],
-        ['29.mongodb-2', '29.mongodb-2'],
-        ['29.mongodb-3', '29.mongodb-3'],
-        ['29.mongodb-4', '29.mongodb-4'],
-        ['29.mongodb-5', '29.mongodb-5'],
-        ['29.mongodb-6', '29.mongodb-6'],
-        ['30.cms-1-mysql', '30.cms-1-mysql'],
-        ['30.cms-10-umi', '30.cms-10-umi'],
-        ['30.cms-12-dva', '30.cms-12-dva'],
-        ['30.cms-13-dva-ant', '30.cms-13-dva-ant'],
-        ['30.cms-14-front', '30.cms-14-front'],
-        ['30.cms-15-deploy', '30.cms-15-deploy'],
-        ['30.cms-2-mysql', '30.cms-2-mysql'],
-        ['30.cms-3-mysql', '30.cms-3-mysql'],
-        ['30.cms-4-nunjucks', '30.cms-4-nunjucks'],
-        ['30.cms-5-mock', '30.cms-5-mock'],
-        ['30.cms-6-egg', '30.cms-6-egg'],
-        ['30.cms-7-api', '30.cms-7-api'],
-        ['30.cms-8-roadhog', '30.cms-8-roadhog'],
-        ['30.cms-9-yaml', '30.cms-9-yaml'],
-        ['31.cms-13-dva-antdesign', '31.cms-13-dva-antdesign'],
-        ['31.dva', '31.dva'],
-        ['33.redis', '33.redis'],
-        ['34.unittest', '34.unittest'],
-        ['35.jwt', '35.jwt'],
-        ['36.websocket-1', '36.websocket-1'],
-        ['36.websocket-2', '36.websocket-2'],
-        ['38.chat-3', '38.chat-3'],
-        ['38.chat-api-1', '38.chat-api-1'],
-        ['38.chat-api-2', '38.chat-api-2'],
-        ['38.chat-api-3', '38.chat-api-3'],
-        ['38.chat', '38.chat'],
-        ['38.chat2', '38.chat2'],
-        ['39.crawl-0', '39.crawl-0'],
-        ['39.crawl-1', '39.crawl-1'],
-        ['39.crawl-2', '39.crawl-2'],
-        ['40.deploy', '40.deploy'],
-        ['41.safe', '41.safe'],
-        ['42.test', '42.test'],
-        ['43.nginx', '43.nginx'],
-        ['44.enzyme', '44.enzyme'],
-        ['45.docker', '45.docker'],
-        ['46.elastic', '46.elastic'],
-        ['47.oauth', '47.oauth'],
-        ['48.wxpay', '48.wxpay'],
-        ['52.UML', '52.UML'],
-        ['53.design', '53.design'],
-        ['54.linux', '54.linux'],
-        ['56.react-ssr', '56.react-ssr'],
-        ['57.ts', '57.ts'],
-        ['58.ts_react', '58.ts_react'],
-        ['59.ketang', '59.ketang'],
-        ['59.ketang2', '59.ketang2'],
-        ['61.1.devops-linux', '61.1.devops-linux'],
-        ['61.10.devops-nginx', '61.10.devops-nginx'],
-        ['61.11.devops-docker', '61.11.devops-docker'],
-        ['61.12.devops-jekins', '61.12.devops-jekins'],
-        ['61.13.devops-groovy', '61.13.devops-groovy'],
-        ['61.14.devops-php', '61.14.devops-php'],
-        ['61.15.devops-java', '61.15.devops-java'],
-        ['61.16.devops-node', '61.16.devops-node'],
-        ['61.17.devops-k8s', '61.17.devops-k8s'],
-        ['61.2.devops-vi', '61.2.devops-vi'],
-        ['61.3.devops-user', '61.3.devops-user'],
-        ['61.4.devops-auth', '61.4.devops-auth'],
-        ['61.5.devops-shell', '61.5.devops-shell'],
-        ['61.6.devops-install', '61.6.devops-install'],
-        ['61.7.devops-system', '61.7.devops-system'],
-        ['61.8.devops-service', '61.8.devops-service'],
-        ['61.9.devops-network', '61.9.devops-network'],
-        ['62.1.react-basic', '62.1.react-basic'],
-        ['62.2.react-state', '62.2.react-state'],
-        ['62.3.react-high', '62.3.react-high'],
-        ['62.4.react-optimize', '62.4.react-optimize'],
-        ['62.5.react-hooks', '62.5.react-hooks'],
-        ['62.6.react-immutable', '62.6.react-immutable'],
-        ['62.7.react-mobx', '62.7.react-mobx'],
-        ['62.8.react-source', '62.8.react-source'],
-        ['63.1.redux', '63.1.redux'],
-        ['63.2.redux-middleware', '63.2.redux-middleware'],
-        ['63.3.redux-hooks', '63.3.redux-hooks'],
-        ['63.4.redux-saga', '63.4.redux-saga'],
-        ['63.5.redux-saga-hand', '63.5.redux-saga-hand'],
-        ['64.1.router', '64.1.router'],
-        ['64.2.router-connected', '64.2.router-connected'],
-        ['65.1.typescript', '65.1.typescript'],
-        ['65.2.typescript', '65.2.typescript'],
-        ['65.3.typescript', '65.3.typescript'],
-        ['65.4.antd', '65.4.antd'],
-        ['65.4.definition', '65.4.definition'],
-        ['66-1.vue-base', '66-1.vue-base'],
-        ['66-10.jwt-vue', '66-10.jwt-vue'],
-        ['66-11.vue-ssr', '66-11.vue-ssr'],
-        ['66-12.nuxt-apply', '66-12.nuxt-apply'],
-        ['66-13.pwa', '66-13.pwa'],
-        ['66-14.vue单元测试', '66-14.vue单元测试'],
-        ['66-15.权限校验', '66-15.权限校验'],
-        ['66-2.vue-component', '66-2.vue-component'],
-        ['66-3.vue-cli3.0', '66-3.vue-cli3.0'],
-        ['66-4.$message组件', '66-4.$message组件'],
-        ['66-5.Form组件', '66-5.Form组件'],
-        ['66-6.tree', '66-6.tree'],
-        ['66-7.vue-router-apply', '66-7.vue-router-apply'],
-        ['66-8.axios-apply', '66-8.axios-apply'],
-        ['66-9.vuex-apply', '66-9.vuex-apply'],
-        ['67-1-network', '67-1-network'],
-        ['68-2-wireshark', '68-2-wireshark'],
-        ['69-hooks', '69-hooks'],
-        ['70-deploy', '70-deploy'],
-        ['71-hmr', '71-hmr'],
-        ['72.deploy', '72.deploy'],
-        ['73.import', '73.import'],
-        ['74.mobile', '74.mobile'],
-        ['75.webpack-1.文件分析', '75.webpack-1.文件分析'],
-        ['75.webpack-10.asset', '75.webpack-10.asset'],
-        ['75.webpack-11.实现', '75.webpack-11.实现'],
-        ['75.webpack-2.loader', '75.webpack-2.loader'],
-        ['75.webpack-3.源码流程', '75.webpack-3.源码流程'],
-        ['75.webpack-4.tapable', '75.webpack-4.tapable'],
-        ['75.webpack-5.prepare', '75.webpack-5.prepare'],
-        ['75.webpack-6.resolve', '75.webpack-6.resolve'],
-        ['75.webpack-7.loader', '75.webpack-7.loader'],
-        ['75.webpack-8.module', '75.webpack-8.module'],
-        ['75.webpack-9.chunk', '75.webpack-9.chunk'],
-        ['76.react_optimize', '76.react_optimize'],
-        ['77.ts_ketang_back', '77.ts_ketang_back'],
-        ['77.ts_ketang_front', '77.ts_ketang_front'],
-        ['78.vue-domdiff', '78.vue-domdiff'],
-        ['79.grammar', '79.grammar'],
-        ['80.tree', '80.tree'],
-        ['81.axios', '81.axios'],
-        ['82.1.react', '82.1.react'],
-        ['82.10.umi', '82.10.umi'],
-        ['82.11.antdesign', '82.11.antdesign'],
-        ['82.12.ketang-back', '82.12.ketang-back'],
-        ['82.12.ketang-front', '82.12.ketang-front'],
-        ['82.2.react-high', '82.2.react-high'],
-        ['82.3.react-router', '82.3.react-router'],
-        ['82.4.redux', '82.4.redux'],
-        ['82.5.redux_middleware', '82.5.redux_middleware'],
-        ['82.6.connected', '82.6.connected'],
-        ['82.7.saga', '82.7.saga'],
-        ['82.8.dva-source', '82.8.dva-source'],
-        ['82.8.dva', '82.8.dva'],
-        ['82.9.roadhog', '82.9.roadhog'],
-        ['83.upload', '83.upload'],
-        ['84.graphql', '84.graphql'],
-        ['85.antpro', '85.antpro'],
-        ['86.1.uml', '86.1.uml'],
-        ['86.2.design', '86.2.design'],
-        ['87.postcss', '87.postcss'],
-        ['88.react16-1', '88.react16-1'],
-        ['89.nextjs', '89.nextjs'],
-        ['90.react-test', '90.react-test'],
-        ['91.react-ts', '91.react-ts'],
-        ['92.rbac', '92.rbac'],
-        ['93.tsnode', '93.tsnode'],
-        ['94.1.JavaScript', '94.1.JavaScript'],
-        ['94.2.JavaScript', '94.2.JavaScript'],
-        ['94.3.MODULE', '94.3.MODULE'],
-        ['94.4.EventLoop', '94.4.EventLoop'],
-        ['94.5.文件上传', '94.5.文件上传'],
-        ['94.6.https', '94.6.https'],
-        ['94.7.nginx', '94.7.nginx'],
-        ['95.1.react', '95.1.react'],
-        ['95.2.react', '95.2.react'],
-        ['96.1.react16', '96.1.react16'],
-        ['96.2.fiber', '96.2.fiber'],
-        ['96.3.fiber', '96.3.fiber'],
-        ['97.serverless', '97.serverless'],
-        ['98.websocket', '98.websocket'],
-        ['100.1.react-basic', '100.1.react-basic'],
-        ['101.1.monitor', '101.1.monitor'],
-        ['101.2.monitor', '101.2.monitor'],
-        ['102.java', '102.java'],
-        ['103.1.webpack-usage', '103.1.webpack-usage'],
-        ['103.10.webpack-hand', '103.10.webpack-hand'],
-        ['103.11.mf', '103.11.mf'],
-        ['103.11.webpack-hmr', '103.11.webpack-hmr'],
-        ['103.11.webpack5', '103.11.webpack5'],
-        ['103.13.splitChunks', '103.13.splitChunks'],
-        ['103.14.webpack-sourcemap', '103.14.webpack-sourcemap'],
-        ['103.15.webpack-compiler1', '103.15.webpack-compiler1'],
-        ['103.15.webpack-compiler2', '103.15.webpack-compiler2'],
-        ['103.16.rollup.1', '103.16.rollup.1'],
-        ['103.16.rollup.2', '103.16.rollup.2'],
-        ['103.16.rollup.3', '103.16.rollup.3'],
-        ['103.16.vite.1', '103.16.vite.1'],
-        ['103.16.vite.2', '103.16.vite.2'],
-        ['103.16.vite.basic', '103.16.vite.basic'],
-        ['103.16.vite.plugin', '103.16.vite.plugin'],
-        ['103.16.vite.source', '103.16.vite.source'],
-        ['103.17.polyfill', '103.17.polyfill'],
-        ['103.2.webpack-bundle', '103.2.webpack-bundle'],
-        ['103.3.webpack-ast', '103.3.webpack-ast'],
-        ['103.4.webpack-flow', '103.4.webpack-flow'],
-        ['103.5.webpack-loader', '103.5.webpack-loader'],
-        ['103.6.webpack-tapable', '103.6.webpack-tapable'],
-        ['103.7.webpack-plugin', '103.7.webpack-plugin'],
-        ['103.8.webpack-optimize1', '103.8.webpack-optimize1'],
-        ['103.9.webpack-optimize2', '103.9.webpack-optimize2'],
-        ['104.1.binary', '104.1.binary'],
-        ['104.2.binary', '104.2.binary'],
-        ['105.skeleton', '105.skeleton'],
-        ['106.1.react', '106.1.react'],
-        ['106.10.ketang', '106.10.ketang'],
-        ['106.11.antdesign', '106.11.antdesign'],
-        ['106.12.antpro', '106.12.antpro'],
-        ['106.13.router-6', '106.13.router-6'],
-        ['106.14.ssr', '106.14.ssr'],
-        ['106.15.nextjs', '106.15.nextjs'],
-        ['106.16.1.cms', '106.16.1.cms'],
-        ['106.16.2.cms', '106.16.2.cms'],
-        ['106.16.3.cms', '106.16.3.cms'],
-        ['106.16.4.cms', '106.16.4.cms'],
-        ['106.16.mobx', '106.16.mobx'],
-        ['106.17.fomily', '106.17.fomily'],
-        ['106.2.react_hooks', '106.2.react_hooks'],
-        ['106.3.react_router', '106.3.react_router'],
-        ['106.4.redux', '106.4.redux'],
-        ['106.5.redux_middleware', '106.5.redux_middleware'],
-        ['106.6.connected-react-router', '106.6.connected-react-router'],
-        ['106.6.redux-first-history', '106.6.redux-first-history'],
-        ['106.7.redux-saga', '106.7.redux-saga'],
-        ['106.8.dva', '106.8.dva'],
-        ['106.9.umi', '106.9.umi'],
-        ['107.fiber', '107.fiber'],
-        ['108.http', '108.http'],
-        ['109.1.webpack_usage', '109.1.webpack_usage'],
-        ['109.2.webpack_source', '109.2.webpack_source'],
-        ['109.3.dll', '109.3.dll'],
-        ['110.nest.js', '110.nest.js'],
-        ['111.xstate', '111.xstate'],
-        ['112.Form', '112.Form'],
-        ['113.redux-saga', '113.redux-saga'],
-        ['114.react+typescript', '114.react+typescript'],
-        ['115.immer', '115.immer'],
-        ['116.pro5', '116.pro5'],
-        ['117.css-loader', '117.css-loader'],
-        ['118.1.umi-core', '118.1.umi-core'],
-        ['119.1.module-federation', '119.1.module-federation'],
-        ['119.2.module-federation', '119.2.module-federation'],
-        ['120.create-react-app', '120.create-react-app'],
-        ['121.react-scripts', '121.react-scripts'],
-        ['122.react-optimize', '122.react-optimize'],
-        ['123.jsx-runtime', '123.jsx-runtime'],
-        ['124.next.js', '124.next.js'],
-        ['125.1.linux', '125.1.linux'],
-        ['125.10.nginx', '125.10.nginx'],
-        ['125.11.docker', '125.11.docker'],
-        ['125.12.ci', '125.12.ci'],
-        ['125.13.k8s', '125.13.k8s'],
-        ['125.14.k8s', '125.14.k8s'],
-        ['125.15.k8s', '125.15.k8s'],
-        ['125.16.k8s', '125.16.k8s'],
-        ['125.2.linux-vi', '125.2.linux-vi'],
-        ['125.3.linux-user', '125.3.linux-user'],
-        ['125.4.linux-auth', '125.4.linux-auth'],
-        ['125.5.linux-shell', '125.5.linux-shell'],
-        ['125.6.linux-install', '125.6.linux-install'],
-        ['125.7.linux-system', '125.7.linux-system'],
-        ['125.8.linux-service', '125.8.linux-service'],
-        ['125.9.linux-network', '125.9.linux-network'],
-        ['126.11.react-1', '126.11.react-1'],
-        ['126.12.react-2', '126.12.react-2'],
-        ['126.12.react-3', '126.12.react-3'],
-        ['126.12.react-4', '126.12.react-4'],
-        ['126.12.react-5', '126.12.react-5'],
-        ['126.12.react-6', '126.12.react-6'],
-        ['126.12.react-7', '126.12.react-7'],
-        ['126.12.react-8', '126.12.react-8'],
-        ['127.frontend', '127.frontend'],
-        ['128.rollup', '128.rollup'],
-        ['129.px2rem-loader', '129.px2rem-loader'],
-        ['130.health', '130.health'],
-        ['131.hooks', '131.hooks'],
-        ['132.keepalive', '132.keepalive'],
-        ['133.vue-cli', '133.vue-cli'],
-        ['134.2.react18', '134.2.react18'],
-        ['134.3.react18', '134.3.react18'],
-        ['134.react18', '134.react18'],
-        ['135.function', '135.function'],
-        ['136.toolkit', '136.toolkit'],
-        ['137.lerna', '137.lerna'],
-        ['138.create-vite', '138.create-vite'],
-        ['139.cli', '139.cli'],
-        ['140.antd', '140.antd'],
-        ['141.react-dnd', '141.react-dnd'],
-        ['142.1.link', '142.1.link'],
-        ['143.1.gulp', '143.1.gulp'],
-        ['143.2.stream', '143.2.stream'],
-        ['143.3.gulp', '143.3.gulp'],
-        ['144.1.closure', '144.1.closure'],
-        ['144.2.v8', '144.2.v8'],
-        ['144.3.gc', '144.3.gc'],
-        ['145.react-router-v6', '145.react-router-v6'],
-        ['146.browser', '146.browser'],
-        ['147.lighthouse', '147.lighthouse'],
-        ['148.1.basic', '148.1.basic'],
-        ['148.2.basic', '148.2.basic'],
-        ['148.3.basic', '148.3.basic'],
-        ['148.4.basic', '148.4.basic'],
-        ['148.5.basic', '148.5.basic'],
-        ['149.1.vite', '149.1.vite'],
-        ['149.2.vite', '149.2.vite'],
-        ['149.3.vite', '149.3.vite'],
-        ['149.4.vite', '149.4.vite'],
-        ['150.react-window', '150.react-window'],
-        ['151.react-query', '151.react-query'],
-        ['152.useRequest', '152.useRequest'],
-        ['153.transition', '153.transition'],
-        ['154.emotion', '154.emotion'],
-        ['155.1.formily', '155.1.formily'],
-        ['155.2.formily', '155.2.formily'],
-        ['155.3.1.mobx.usage', '155.3.1.mobx.usage'],
-        ['155.3.2.mobx.source', '155.3.2.mobx.source'],
-        ['155.3.formily', '155.3.formily'],
-        ['156.vue-loader', '156.vue-loader'],
-        ['157.1.react18', '157.1.react18'],
-        ['158.umi4', '158.umi4'],
-        ['159.rxjs', '159.rxjs'],
-        ['159.rxjs2', '159.rxjs2'],
-        ['160.bff', '160.bff'],
-        ['161.zustand', '161.zustand'],
-        ['162.vscode', '162.vscode'],
-        ['163.emp', '163.emp']
+        {
+          text: '前端',
+          prefix: '/strong',
+          link: '/strong/',
+          collapsible: true,
+          children: [
+            {
+              text: '目录',
+              link: ''
+            },
+            {
+              text: '0.Async',
+              link: '0.Async'
+            },
+            {
+              text: '0.module',
+              link: '0.module'
+            },
+            {
+              text: '1.ES2015',
+              link: '1.ES2015'
+            },
+            {
+              text: '2.Promise',
+              link: '2.Promise'
+            },
+            {
+              text: '3.Node',
+              link: '3.Node'
+            },
+            {
+              text: '4.NodeInstall',
+              link: '4.NodeInstall'
+            },
+            {
+              text: '5.REPL',
+              link: '5.REPL'
+            },
+            {
+              text: '6.NodeCore',
+              link: '6.NodeCore'
+            },
+            {
+              text: '7.module&NPM',
+              link: '7.module&NPM'
+            },
+            {
+              text: '7.npm2',
+              link: '7.npm2'
+            },
+            {
+              text: '8.Encoding',
+              link: '8.Encoding'
+            },
+            {
+              text: '9.Buffer',
+              link: '9.Buffer'
+            },
+            {
+              text: '10.fs',
+              link: '10.fs'
+            },
+            {
+              text: '11.Stream-1',
+              link: '11.Stream-1'
+            },
+            {
+              text: '11.Stream-2',
+              link: '11.Stream-2'
+            },
+            {
+              text: '11.Stream-3',
+              link: '11.Stream-3'
+            },
+            {
+              text: '11.Stream-4',
+              link: '11.Stream-4'
+            },
+            {
+              text: '12-Network-2',
+              link: '12-Network-2'
+            },
+            {
+              text: '12.NetWork-3',
+              link: '12.NetWork-3'
+            },
+            {
+              text: '12.Network-1',
+              link: '12.Network-1'
+            },
+            {
+              text: '13.tcp',
+              link: '13.tcp'
+            },
+            {
+              text: '14.http-1',
+              link: '14.http-1'
+            },
+            {
+              text: '14.http-2',
+              link: '14.http-2'
+            },
+            {
+              text: '15.compress',
+              link: '15.compress'
+            },
+            {
+              text: '16.crypto',
+              link: '16.crypto'
+            },
+            {
+              text: '17.process',
+              link: '17.process'
+            },
+            {
+              text: '18.yargs',
+              link: '18.yargs'
+            },
+            {
+              text: '19.cache',
+              link: '19.cache'
+            },
+            {
+              text: '20.action',
+              link: '20.action'
+            },
+            {
+              text: '21.https',
+              link: '21.https'
+            },
+            {
+              text: '22.cookie',
+              link: '22.cookie'
+            },
+            {
+              text: '23.session',
+              link: '23.session'
+            },
+            {
+              text: '24.express-1',
+              link: '24.express-1'
+            },
+            {
+              text: '24.express-2',
+              link: '24.express-2'
+            },
+            {
+              text: '24.express-3',
+              link: '24.express-3'
+            },
+            {
+              text: '24.express-4',
+              link: '24.express-4'
+            },
+            {
+              text: '25.koa-1',
+              link: '25.koa-1'
+            },
+            {
+              text: '26.webpack-1-basic',
+              link: '26.webpack-1-basic'
+            },
+            {
+              text: '26.webpack-10-prepare',
+              link: '26.webpack-10-prepare'
+            },
+            {
+              text: '26.webpack-2-optimize',
+              link: '26.webpack-2-optimize'
+            },
+            {
+              text: '26.webpack-3-file',
+              link: '26.webpack-3-file'
+            },
+            {
+              text: '26.webpack-4.tapable',
+              link: '26.webpack-4.tapable'
+            },
+            {
+              text: '26.webpack-5-AST',
+              link: '26.webpack-5-AST'
+            },
+            {
+              text: '26.webpack-6-sources',
+              link: '26.webpack-6-sources'
+            },
+            {
+              text: '26.webpack-7-loader',
+              link: '26.webpack-7-loader'
+            },
+            {
+              text: '26.webpack-8-plugin',
+              link: '26.webpack-8-plugin'
+            },
+            {
+              text: '26.webpack-9-hand',
+              link: '26.webpack-9-hand'
+            },
+            {
+              text: '28.redux-jwt-back',
+              link: '28.redux-jwt-back'
+            },
+            {
+              text: '28.redux-jwt-front',
+              link: '28.redux-jwt-front'
+            },
+            {
+              text: '28.redux',
+              link: '28.redux'
+            },
+            {
+              text: '29.mongodb-1',
+              link: '29.mongodb-1'
+            },
+            {
+              text: '29.mongodb-2',
+              link: '29.mongodb-2'
+            },
+            {
+              text: '29.mongodb-3',
+              link: '29.mongodb-3'
+            },
+            {
+              text: '29.mongodb-4',
+              link: '29.mongodb-4'
+            },
+            {
+              text: '29.mongodb-5',
+              link: '29.mongodb-5'
+            },
+            {
+              text: '29.mongodb-6',
+              link: '29.mongodb-6'
+            },
+            {
+              text: '30.cms-1-mysql',
+              link: '30.cms-1-mysql'
+            },
+            {
+              text: '30.cms-10-umi',
+              link: '30.cms-10-umi'
+            },
+            {
+              text: '30.cms-12-dva',
+              link: '30.cms-12-dva'
+            },
+            {
+              text: '30.cms-13-dva-ant',
+              link: '30.cms-13-dva-ant'
+            },
+            {
+              text: '30.cms-14-front',
+              link: '30.cms-14-front'
+            },
+            {
+              text: '30.cms-15-deploy',
+              link: '30.cms-15-deploy'
+            },
+            {
+              text: '30.cms-2-mysql',
+              link: '30.cms-2-mysql'
+            },
+            {
+              text: '30.cms-3-mysql',
+              link: '30.cms-3-mysql'
+            },
+            {
+              text: '30.cms-4-nunjucks',
+              link: '30.cms-4-nunjucks'
+            },
+            {
+              text: '30.cms-5-mock',
+              link: '30.cms-5-mock'
+            },
+            {
+              text: '30.cms-6-egg',
+              link: '30.cms-6-egg'
+            },
+            {
+              text: '30.cms-7-api',
+              link: '30.cms-7-api'
+            },
+            {
+              text: '30.cms-8-roadhog',
+              link: '30.cms-8-roadhog'
+            },
+            {
+              text: '30.cms-9-yaml',
+              link: '30.cms-9-yaml'
+            },
+            {
+              text: '31.cms-13-dva-antdesign',
+              link: '31.cms-13-dva-antdesign'
+            },
+            {
+              text: '31.dva',
+              link: '31.dva'
+            },
+            {
+              text: '33.redis',
+              link: '33.redis'
+            },
+            {
+              text: '34.unittest',
+              link: '34.unittest'
+            },
+            {
+              text: '35.jwt',
+              link: '35.jwt'
+            },
+            {
+              text: '36.websocket-1',
+              link: '36.websocket-1'
+            },
+            {
+              text: '36.websocket-2',
+              link: '36.websocket-2'
+            },
+            {
+              text: '38.chat-3',
+              link: '38.chat-3'
+            },
+            {
+              text: '38.chat-api-1',
+              link: '38.chat-api-1'
+            },
+            {
+              text: '38.chat-api-2',
+              link: '38.chat-api-2'
+            },
+            {
+              text: '38.chat-api-3',
+              link: '38.chat-api-3'
+            },
+            {
+              text: '38.chat',
+              link: '38.chat'
+            },
+            {
+              text: '38.chat2',
+              link: '38.chat2'
+            },
+            {
+              text: '39.crawl-0',
+              link: '39.crawl-0'
+            },
+            {
+              text: '39.crawl-1',
+              link: '39.crawl-1'
+            },
+            {
+              text: '39.crawl-2',
+              link: '39.crawl-2'
+            },
+            {
+              text: '40.deploy',
+              link: '40.deploy'
+            },
+            {
+              text: '41.safe',
+              link: '41.safe'
+            },
+            {
+              text: '42.test',
+              link: '42.test'
+            },
+            {
+              text: '43.nginx',
+              link: '43.nginx'
+            },
+            {
+              text: '44.enzyme',
+              link: '44.enzyme'
+            },
+            {
+              text: '45.docker',
+              link: '45.docker'
+            },
+            {
+              text: '46.elastic',
+              link: '46.elastic'
+            },
+            {
+              text: '47.oauth',
+              link: '47.oauth'
+            },
+            {
+              text: '48.wxpay',
+              link: '48.wxpay'
+            },
+            {
+              text: '52.UML',
+              link: '52.UML'
+            },
+            {
+              text: '53.design',
+              link: '53.design'
+            },
+            {
+              text: '54.linux',
+              link: '54.linux'
+            },
+            {
+              text: '56.react-ssr',
+              link: '56.react-ssr'
+            },
+            {
+              text: '57.ts',
+              link: '57.ts'
+            },
+            {
+              text: '58.ts_react',
+              link: '58.ts_react'
+            },
+            {
+              text: '59.ketang',
+              link: '59.ketang'
+            },
+            {
+              text: '59.ketang2',
+              link: '59.ketang2'
+            },
+            {
+              text: '61.1.devops-linux',
+              link: '61.1.devops-linux'
+            },
+            {
+              text: '61.10.devops-nginx',
+              link: '61.10.devops-nginx'
+            },
+            {
+              text: '61.11.devops-docker',
+              link: '61.11.devops-docker'
+            },
+            {
+              text: '61.12.devops-jekins',
+              link: '61.12.devops-jekins'
+            },
+            {
+              text: '61.13.devops-groovy',
+              link: '61.13.devops-groovy'
+            },
+            {
+              text: '61.14.devops-php',
+              link: '61.14.devops-php'
+            },
+            {
+              text: '61.15.devops-java',
+              link: '61.15.devops-java'
+            },
+            {
+              text: '61.16.devops-node',
+              link: '61.16.devops-node'
+            },
+            {
+              text: '61.17.devops-k8s',
+              link: '61.17.devops-k8s'
+            },
+            {
+              text: '61.2.devops-vi',
+              link: '61.2.devops-vi'
+            },
+            {
+              text: '61.3.devops-user',
+              link: '61.3.devops-user'
+            },
+            {
+              text: '61.4.devops-auth',
+              link: '61.4.devops-auth'
+            },
+            {
+              text: '61.5.devops-shell',
+              link: '61.5.devops-shell'
+            },
+            {
+              text: '61.6.devops-install',
+              link: '61.6.devops-install'
+            },
+            {
+              text: '61.7.devops-system',
+              link: '61.7.devops-system'
+            },
+            {
+              text: '61.8.devops-service',
+              link: '61.8.devops-service'
+            },
+            {
+              text: '61.9.devops-network',
+              link: '61.9.devops-network'
+            },
+            {
+              text: '62.1.react-basic',
+              link: '62.1.react-basic'
+            },
+            {
+              text: '62.2.react-state',
+              link: '62.2.react-state'
+            },
+            {
+              text: '62.3.react-high',
+              link: '62.3.react-high'
+            },
+            {
+              text: '62.4.react-optimize',
+              link: '62.4.react-optimize'
+            },
+            {
+              text: '62.5.react-hooks',
+              link: '62.5.react-hooks'
+            },
+            {
+              text: '62.6.react-immutable',
+              link: '62.6.react-immutable'
+            },
+            {
+              text: '62.7.react-mobx',
+              link: '62.7.react-mobx'
+            },
+            {
+              text: '62.8.react-source',
+              link: '62.8.react-source'
+            },
+            {
+              text: '63.1.redux',
+              link: '63.1.redux'
+            },
+            {
+              text: '63.2.redux-middleware',
+              link: '63.2.redux-middleware'
+            },
+            {
+              text: '63.3.redux-hooks',
+              link: '63.3.redux-hooks'
+            },
+            {
+              text: '63.4.redux-saga',
+              link: '63.4.redux-saga'
+            },
+            {
+              text: '63.5.redux-saga-hand',
+              link: '63.5.redux-saga-hand'
+            },
+            {
+              text: '64.1.router',
+              link: '64.1.router'
+            },
+            {
+              text: '64.2.router-connected',
+              link: '64.2.router-connected'
+            },
+            {
+              text: '65.1.typescript',
+              link: '65.1.typescript'
+            },
+            {
+              text: '65.2.typescript',
+              link: '65.2.typescript'
+            },
+            {
+              text: '65.3.typescript',
+              link: '65.3.typescript'
+            },
+            {
+              text: '65.4.antd',
+              link: '65.4.antd'
+            },
+            {
+              text: '65.4.definition',
+              link: '65.4.definition'
+            },
+            {
+              text: '66-1.vue-base',
+              link: '66-1.vue-base'
+            },
+            {
+              text: '66-10.jwt-vue',
+              link: '66-10.jwt-vue'
+            },
+            {
+              text: '66-11.vue-ssr',
+              link: '66-11.vue-ssr'
+            },
+            {
+              text: '66-12.nuxt-apply',
+              link: '66-12.nuxt-apply'
+            },
+            {
+              text: '66-13.pwa',
+              link: '66-13.pwa'
+            },
+            {
+              text: '66-14.vue单元测试',
+              link: '66-14.vue单元测试'
+            },
+            {
+              text: '66-15.权限校验',
+              link: '66-15.权限校验'
+            },
+            {
+              text: '66-2.vue-component',
+              link: '66-2.vue-component'
+            },
+            {
+              text: '66-3.vue-cli3.0',
+              link: '66-3.vue-cli3.0'
+            },
+            {
+              text: '66-4.$message组件',
+              link: '66-4.$message组件'
+            },
+            {
+              text: '66-5.Form组件',
+              link: '66-5.Form组件'
+            },
+            {
+              text: '66-6.tree',
+              link: '66-6.tree'
+            },
+            {
+              text: '66-7.vue-router-apply',
+              link: '66-7.vue-router-apply'
+            },
+            {
+              text: '66-8.axios-apply',
+              link: '66-8.axios-apply'
+            },
+            {
+              text: '66-9.vuex-apply',
+              link: '66-9.vuex-apply'
+            },
+            {
+              text: '67-1-network',
+              link: '67-1-network'
+            },
+            {
+              text: '68-2-wireshark',
+              link: '68-2-wireshark'
+            },
+            {
+              text: '69-hooks',
+              link: '69-hooks'
+            },
+            {
+              text: '70-deploy',
+              link: '70-deploy'
+            },
+            {
+              text: '71-hmr',
+              link: '71-hmr'
+            },
+            {
+              text: '72.deploy',
+              link: '72.deploy'
+            },
+            {
+              text: '73.import',
+              link: '73.import'
+            },
+            {
+              text: '74.mobile',
+              link: '74.mobile'
+            },
+            {
+              text: '75.webpack-1.文件分析',
+              link: '75.webpack-1.文件分析'
+            },
+            {
+              text: '75.webpack-10.asset',
+              link: '75.webpack-10.asset'
+            },
+            {
+              text: '75.webpack-11.实现',
+              link: '75.webpack-11.实现'
+            },
+            {
+              text: '75.webpack-2.loader',
+              link: '75.webpack-2.loader'
+            },
+            {
+              text: '75.webpack-3.源码流程',
+              link: '75.webpack-3.源码流程'
+            },
+            {
+              text: '75.webpack-4.tapable',
+              link: '75.webpack-4.tapable'
+            },
+            {
+              text: '75.webpack-5.prepare',
+              link: '75.webpack-5.prepare'
+            },
+            {
+              text: '75.webpack-6.resolve',
+              link: '75.webpack-6.resolve'
+            },
+            {
+              text: '75.webpack-7.loader',
+              link: '75.webpack-7.loader'
+            },
+            {
+              text: '75.webpack-8.module',
+              link: '75.webpack-8.module'
+            },
+            {
+              text: '75.webpack-9.chunk',
+              link: '75.webpack-9.chunk'
+            },
+            {
+              text: '76.react_optimize',
+              link: '76.react_optimize'
+            },
+            {
+              text: '77.ts_ketang_back',
+              link: '77.ts_ketang_back'
+            },
+            {
+              text: '77.ts_ketang_front',
+              link: '77.ts_ketang_front'
+            },
+            {
+              text: '78.vue-domdiff',
+              link: '78.vue-domdiff'
+            },
+            {
+              text: '79.grammar',
+              link: '79.grammar'
+            },
+            {
+              text: '80.tree',
+              link: '80.tree'
+            },
+            {
+              text: '81.axios',
+              link: '81.axios'
+            },
+            {
+              text: '82.1.react',
+              link: '82.1.react'
+            },
+            {
+              text: '82.10.umi',
+              link: '82.10.umi'
+            },
+            {
+              text: '82.11.antdesign',
+              link: '82.11.antdesign'
+            },
+            {
+              text: '82.12.ketang-back',
+              link: '82.12.ketang-back'
+            },
+            {
+              text: '82.12.ketang-front',
+              link: '82.12.ketang-front'
+            },
+            {
+              text: '82.2.react-high',
+              link: '82.2.react-high'
+            },
+            {
+              text: '82.3.react-router',
+              link: '82.3.react-router'
+            },
+            {
+              text: '82.4.redux',
+              link: '82.4.redux'
+            },
+            {
+              text: '82.5.redux_middleware',
+              link: '82.5.redux_middleware'
+            },
+            {
+              text: '82.6.connected',
+              link: '82.6.connected'
+            },
+            {
+              text: '82.7.saga',
+              link: '82.7.saga'
+            },
+            {
+              text: '82.8.dva-source',
+              link: '82.8.dva-source'
+            },
+            {
+              text: '82.8.dva',
+              link: '82.8.dva'
+            },
+            {
+              text: '82.9.roadhog',
+              link: '82.9.roadhog'
+            },
+            {
+              text: '83.upload',
+              link: '83.upload'
+            },
+            {
+              text: '84.graphql',
+              link: '84.graphql'
+            },
+            {
+              text: '85.antpro',
+              link: '85.antpro'
+            },
+            {
+              text: '86.1.uml',
+              link: '86.1.uml'
+            },
+            {
+              text: '86.2.design',
+              link: '86.2.design'
+            },
+            {
+              text: '87.postcss',
+              link: '87.postcss'
+            },
+            {
+              text: '88.react16-1',
+              link: '88.react16-1'
+            },
+            {
+              text: '89.nextjs',
+              link: '89.nextjs'
+            },
+            {
+              text: '90.react-test',
+              link: '90.react-test'
+            },
+            {
+              text: '91.react-ts',
+              link: '91.react-ts'
+            },
+            {
+              text: '92.rbac',
+              link: '92.rbac'
+            },
+            {
+              text: '93.tsnode',
+              link: '93.tsnode'
+            },
+            {
+              text: '94.1.JavaScript',
+              link: '94.1.JavaScript'
+            },
+            {
+              text: '94.2.JavaScript',
+              link: '94.2.JavaScript'
+            },
+            {
+              text: '94.3.MODULE',
+              link: '94.3.MODULE'
+            },
+            {
+              text: '94.4.EventLoop',
+              link: '94.4.EventLoop'
+            },
+            {
+              text: '94.5.文件上传',
+              link: '94.5.文件上传'
+            },
+            {
+              text: '94.6.https',
+              link: '94.6.https'
+            },
+            {
+              text: '94.7.nginx',
+              link: '94.7.nginx'
+            },
+            {
+              text: '95.1.react',
+              link: '95.1.react'
+            },
+            {
+              text: '95.2.react',
+              link: '95.2.react'
+            },
+            {
+              text: '96.1.react16',
+              link: '96.1.react16'
+            },
+            {
+              text: '96.2.fiber',
+              link: '96.2.fiber'
+            },
+            {
+              text: '96.3.fiber',
+              link: '96.3.fiber'
+            },
+            {
+              text: '97.serverless',
+              link: '97.serverless'
+            },
+            {
+              text: '98.websocket',
+              link: '98.websocket'
+            },
+            {
+              text: '100.1.react-basic',
+              link: '100.1.react-basic'
+            },
+            {
+              text: '101.1.monitor',
+              link: '101.1.monitor'
+            },
+            {
+              text: '101.2.monitor',
+              link: '101.2.monitor'
+            },
+            {
+              text: '102.java',
+              link: '102.java'
+            },
+            {
+              text: '103.1.webpack-usage',
+              link: '103.1.webpack-usage'
+            },
+            {
+              text: '103.10.webpack-hand',
+              link: '103.10.webpack-hand'
+            },
+            {
+              text: '103.11.mf',
+              link: '103.11.mf'
+            },
+            {
+              text: '103.11.webpack-hmr',
+              link: '103.11.webpack-hmr'
+            },
+            {
+              text: '103.11.webpack5',
+              link: '103.11.webpack5'
+            },
+            {
+              text: '103.13.splitChunks',
+              link: '103.13.splitChunks'
+            },
+            {
+              text: '103.14.webpack-sourcemap',
+              link: '103.14.webpack-sourcemap'
+            },
+            {
+              text: '103.15.webpack-compiler1',
+              link: '103.15.webpack-compiler1'
+            },
+            {
+              text: '103.15.webpack-compiler2',
+              link: '103.15.webpack-compiler2'
+            },
+            {
+              text: '103.16.rollup.1',
+              link: '103.16.rollup.1'
+            },
+            {
+              text: '103.16.rollup.2',
+              link: '103.16.rollup.2'
+            },
+            {
+              text: '103.16.rollup.3',
+              link: '103.16.rollup.3'
+            },
+            {
+              text: '103.16.vite.1',
+              link: '103.16.vite.1'
+            },
+            {
+              text: '103.16.vite.2',
+              link: '103.16.vite.2'
+            },
+            {
+              text: '103.16.vite.basic',
+              link: '103.16.vite.basic'
+            },
+            {
+              text: '103.16.vite.plugin',
+              link: '103.16.vite.plugin'
+            },
+            {
+              text: '103.16.vite.source',
+              link: '103.16.vite.source'
+            },
+            {
+              text: '103.17.polyfill',
+              link: '103.17.polyfill'
+            },
+            {
+              text: '103.2.webpack-bundle',
+              link: '103.2.webpack-bundle'
+            },
+            {
+              text: '103.3.webpack-ast',
+              link: '103.3.webpack-ast'
+            },
+            {
+              text: '103.4.webpack-flow',
+              link: '103.4.webpack-flow'
+            },
+            {
+              text: '103.5.webpack-loader',
+              link: '103.5.webpack-loader'
+            },
+            {
+              text: '103.6.webpack-tapable',
+              link: '103.6.webpack-tapable'
+            },
+            {
+              text: '103.7.webpack-plugin',
+              link: '103.7.webpack-plugin'
+            },
+            {
+              text: '103.8.webpack-optimize1',
+              link: '103.8.webpack-optimize1'
+            },
+            {
+              text: '103.9.webpack-optimize2',
+              link: '103.9.webpack-optimize2'
+            },
+            {
+              text: '104.1.binary',
+              link: '104.1.binary'
+            },
+            {
+              text: '104.2.binary',
+              link: '104.2.binary'
+            },
+            {
+              text: '105.skeleton',
+              link: '105.skeleton'
+            },
+            {
+              text: '106.1.react',
+              link: '106.1.react'
+            },
+            {
+              text: '106.10.ketang',
+              link: '106.10.ketang'
+            },
+            {
+              text: '106.11.antdesign',
+              link: '106.11.antdesign'
+            },
+            {
+              text: '106.12.antpro',
+              link: '106.12.antpro'
+            },
+            {
+              text: '106.13.router-6',
+              link: '106.13.router-6'
+            },
+            {
+              text: '106.14.ssr',
+              link: '106.14.ssr'
+            },
+            {
+              text: '106.15.nextjs',
+              link: '106.15.nextjs'
+            },
+            {
+              text: '106.16.1.cms',
+              link: '106.16.1.cms'
+            },
+            {
+              text: '106.16.2.cms',
+              link: '106.16.2.cms'
+            },
+            {
+              text: '106.16.3.cms',
+              link: '106.16.3.cms'
+            },
+            {
+              text: '106.16.4.cms',
+              link: '106.16.4.cms'
+            },
+            {
+              text: '106.16.mobx',
+              link: '106.16.mobx'
+            },
+            {
+              text: '106.17.fomily',
+              link: '106.17.fomily'
+            },
+            {
+              text: '106.2.react_hooks',
+              link: '106.2.react_hooks'
+            },
+            {
+              text: '106.3.react_router',
+              link: '106.3.react_router'
+            },
+            {
+              text: '106.4.redux',
+              link: '106.4.redux'
+            },
+            {
+              text: '106.5.redux_middleware',
+              link: '106.5.redux_middleware'
+            },
+            {
+              text: '106.6.connected-react-router',
+              link: '106.6.connected-react-router'
+            },
+            {
+              text: '106.6.redux-first-history',
+              link: '106.6.redux-first-history'
+            },
+            {
+              text: '106.7.redux-saga',
+              link: '106.7.redux-saga'
+            },
+            {
+              text: '106.8.dva',
+              link: '106.8.dva'
+            },
+            {
+              text: '106.9.umi',
+              link: '106.9.umi'
+            },
+            {
+              text: '107.fiber',
+              link: '107.fiber'
+            },
+            {
+              text: '108.http',
+              link: '108.http'
+            },
+            {
+              text: '109.1.webpack_usage',
+              link: '109.1.webpack_usage'
+            },
+            {
+              text: '109.2.webpack_source',
+              link: '109.2.webpack_source'
+            },
+            {
+              text: '109.3.dll',
+              link: '109.3.dll'
+            },
+            {
+              text: '110.nest.js',
+              link: '110.nest.js'
+            },
+            {
+              text: '111.xstate',
+              link: '111.xstate'
+            },
+            {
+              text: '112.Form',
+              link: '112.Form'
+            },
+            {
+              text: '113.redux-saga',
+              link: '113.redux-saga'
+            },
+            {
+              text: '114.react+typescript',
+              link: '114.react+typescript'
+            },
+            {
+              text: '115.immer',
+              link: '115.immer'
+            },
+            {
+              text: '116.pro5',
+              link: '116.pro5'
+            },
+            {
+              text: '117.css-loader',
+              link: '117.css-loader'
+            },
+            {
+              text: '118.1.umi-core',
+              link: '118.1.umi-core'
+            },
+            {
+              text: '119.1.module-federation',
+              link: '119.1.module-federation'
+            },
+            {
+              text: '119.2.module-federation',
+              link: '119.2.module-federation'
+            },
+            {
+              text: '120.create-react-app',
+              link: '120.create-react-app'
+            },
+            {
+              text: '121.react-scripts',
+              link: '121.react-scripts'
+            },
+            {
+              text: '122.react-optimize',
+              link: '122.react-optimize'
+            },
+            {
+              text: '123.jsx-runtime',
+              link: '123.jsx-runtime'
+            },
+            {
+              text: '124.next.js',
+              link: '124.next.js'
+            },
+            {
+              text: '125.1.linux',
+              link: '125.1.linux'
+            },
+            {
+              text: '125.10.nginx',
+              link: '125.10.nginx'
+            },
+            {
+              text: '125.11.docker',
+              link: '125.11.docker'
+            },
+            {
+              text: '125.12.ci',
+              link: '125.12.ci'
+            },
+            {
+              text: '125.13.k8s',
+              link: '125.13.k8s'
+            },
+            {
+              text: '125.14.k8s',
+              link: '125.14.k8s'
+            },
+            {
+              text: '125.15.k8s',
+              link: '125.15.k8s'
+            },
+            {
+              text: '125.16.k8s',
+              link: '125.16.k8s'
+            },
+            {
+              text: '125.2.linux-vi',
+              link: '125.2.linux-vi'
+            },
+            {
+              text: '125.3.linux-user',
+              link: '125.3.linux-user'
+            },
+            {
+              text: '125.4.linux-auth',
+              link: '125.4.linux-auth'
+            },
+            {
+              text: '125.5.linux-shell',
+              link: '125.5.linux-shell'
+            },
+            {
+              text: '125.6.linux-install',
+              link: '125.6.linux-install'
+            },
+            {
+              text: '125.7.linux-system',
+              link: '125.7.linux-system'
+            },
+            {
+              text: '125.8.linux-service',
+              link: '125.8.linux-service'
+            },
+            {
+              text: '125.9.linux-network',
+              link: '125.9.linux-network'
+            },
+            {
+              text: '126.11.react-1',
+              link: '126.11.react-1'
+            },
+            {
+              text: '126.12.react-2',
+              link: '126.12.react-2'
+            },
+            {
+              text: '126.12.react-3',
+              link: '126.12.react-3'
+            },
+            {
+              text: '126.12.react-4',
+              link: '126.12.react-4'
+            },
+            {
+              text: '126.12.react-5',
+              link: '126.12.react-5'
+            },
+            {
+              text: '126.12.react-6',
+              link: '126.12.react-6'
+            },
+            {
+              text: '126.12.react-7',
+              link: '126.12.react-7'
+            },
+            {
+              text: '126.12.react-8',
+              link: '126.12.react-8'
+            },
+            {
+              text: '127.frontend',
+              link: '127.frontend'
+            },
+            {
+              text: '128.rollup',
+              link: '128.rollup'
+            },
+            {
+              text: '129.px2rem-loader',
+              link: '129.px2rem-loader'
+            },
+            {
+              text: '130.health',
+              link: '130.health'
+            },
+            {
+              text: '131.hooks',
+              link: '131.hooks'
+            },
+            {
+              text: '132.keepalive',
+              link: '132.keepalive'
+            },
+            {
+              text: '133.vue-cli',
+              link: '133.vue-cli'
+            },
+            {
+              text: '134.2.react18',
+              link: '134.2.react18'
+            },
+            {
+              text: '134.3.react18',
+              link: '134.3.react18'
+            },
+            {
+              text: '134.react18',
+              link: '134.react18'
+            },
+            {
+              text: '135.function',
+              link: '135.function'
+            },
+            {
+              text: '136.toolkit',
+              link: '136.toolkit'
+            },
+            {
+              text: '137.lerna',
+              link: '137.lerna'
+            },
+            {
+              text: '138.create-vite',
+              link: '138.create-vite'
+            },
+            {
+              text: '139.cli',
+              link: '139.cli'
+            },
+            {
+              text: '140.antd',
+              link: '140.antd'
+            },
+            {
+              text: '141.react-dnd',
+              link: '141.react-dnd'
+            },
+            {
+              text: '142.1.link',
+              link: '142.1.link'
+            },
+            {
+              text: '143.1.gulp',
+              link: '143.1.gulp'
+            },
+            {
+              text: '143.2.stream',
+              link: '143.2.stream'
+            },
+            {
+              text: '143.3.gulp',
+              link: '143.3.gulp'
+            },
+            {
+              text: '144.1.closure',
+              link: '144.1.closure'
+            },
+            {
+              text: '144.2.v8',
+              link: '144.2.v8'
+            },
+            {
+              text: '144.3.gc',
+              link: '144.3.gc'
+            },
+            {
+              text: '145.react-router-v6',
+              link: '145.react-router-v6'
+            },
+            {
+              text: '146.browser',
+              link: '146.browser'
+            },
+            {
+              text: '147.lighthouse',
+              link: '147.lighthouse'
+            },
+            {
+              text: '148.1.basic',
+              link: '148.1.basic'
+            },
+            {
+              text: '148.2.basic',
+              link: '148.2.basic'
+            },
+            {
+              text: '148.3.basic',
+              link: '148.3.basic'
+            },
+            {
+              text: '148.4.basic',
+              link: '148.4.basic'
+            },
+            {
+              text: '148.5.basic',
+              link: '148.5.basic'
+            },
+            {
+              text: '149.1.vite',
+              link: '149.1.vite'
+            },
+            {
+              text: '149.2.vite',
+              link: '149.2.vite'
+            },
+            {
+              text: '149.3.vite',
+              link: '149.3.vite'
+            },
+            {
+              text: '149.4.vite',
+              link: '149.4.vite'
+            },
+            {
+              text: '150.react-window',
+              link: '150.react-window'
+            },
+            {
+              text: '151.react-query',
+              link: '151.react-query'
+            },
+            {
+              text: '152.useRequest',
+              link: '152.useRequest'
+            },
+            {
+              text: '153.transition',
+              link: '153.transition'
+            },
+            {
+              text: '154.emotion',
+              link: '154.emotion'
+            },
+            {
+              text: '155.1.formily',
+              link: '155.1.formily'
+            },
+            {
+              text: '155.2.formily',
+              link: '155.2.formily'
+            },
+            {
+              text: '155.3.1.mobx.usage',
+              link: '155.3.1.mobx.usage'
+            },
+            {
+              text: '155.3.2.mobx.source',
+              link: '155.3.2.mobx.source'
+            },
+            {
+              text: '155.3.formily',
+              link: '155.3.formily'
+            },
+            {
+              text: '156.vue-loader',
+              link: '156.vue-loader'
+            },
+            {
+              text: '157.1.react18',
+              link: '157.1.react18'
+            },
+            {
+              text: '158.umi4',
+              link: '158.umi4'
+            },
+            {
+              text: '159.rxjs',
+              link: '159.rxjs'
+            },
+            {
+              text: '159.rxjs2',
+              link: '159.rxjs2'
+            },
+            {
+              text: '160.bff',
+              link: '160.bff'
+            },
+            {
+              text: '161.zustand',
+              link: '161.zustand'
+            },
+            {
+              text: '162.vscode',
+              link: '162.vscode'
+            },
+            {
+              text: '163.emp',
+              link: '163.emp'
+            }
+          ]
+        }
       ]
-    }
-  }
-}
+    },
+    repo: 'https://github.com/yutao721/note'
+  }),
+  bundler: viteBundler(),
+})
