@@ -1,0 +1,4141 @@
+import{_ as n,c as a,a as e,o as p}from"./app-CD1YpnS1.js";const t={};function l(i,s){return p(),a("div",null,[...s[0]||(s[0]=[e(`<h2 id="_1-项目介绍" tabindex="-1"><a class="header-anchor" href="#_1-项目介绍"><span>1.项目介绍</span></a></h2><h3 id="_1-1-用例图" tabindex="-1"><a class="header-anchor" href="#_1-1-用例图"><span>1.1 用例图</span></a></h3><ul><li>用例图(use case diagram)是用户与系统交互的最简表示形式，展现了用户和与他相关的用例之间的关系</li></ul><p><img src="https://upload-markdown-images.oss-cn-beijing.aliyuncs.com/zhu_feng_ke_tang_yong_li_tu_1628938190975.jpg" alt="uescase"></p><h3 id="_1-2-流程图" tabindex="-1"><a class="header-anchor" href="#_1-2-流程图"><span>1.2 流程图</span></a></h3><h4 id="_1-2-1-注册登录" tabindex="-1"><a class="header-anchor" href="#_1-2-1-注册登录"><span>1.2.1 注册登录</span></a></h4><p><img src="https://upload-markdown-images.oss-cn-beijing.aliyuncs.com/zhu_ce_deng_lu_1_1628939229570.jpg" alt="注册登录"></p><h4 id="_1-2-2-购买课程" tabindex="-1"><a class="header-anchor" href="#_1-2-2-购买课程"><span>1.2.2 购买课程</span></a></h4><p><img src="https://upload-markdown-images.oss-cn-beijing.aliyuncs.com/gou_mai_ke_cheng_1628939469115.jpg" alt="gou_mai"></p><h2 id="_2-搭建开发环境" tabindex="-1"><a class="header-anchor" href="#_2-搭建开发环境"><span>2. 搭建开发环境</span></a></h2><h3 id="_2-1-本节目录" tabindex="-1"><a class="header-anchor" href="#_2-1-本节目录"><span>2.1 本节目录</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">-- client</span>
+<span class="line">    |-- package.json</span>
+<span class="line">    |-- public</span>
+<span class="line">    |   |-- index.html</span>
+<span class="line">    |-- src</span>
+<span class="line">    |   |-- index.tsx</span>
+<span class="line">    |-- tsconfig.json</span>
+<span class="line">    |-- webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-2-初始化项目" tabindex="-1"><a class="header-anchor" href="#_2-2-初始化项目"><span>2.2 初始化项目</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">mkdir client</span>
+<span class="line">cd client</span>
+<span class="line">cnpm init -y</span>
+<span class="line">touch .gitignore</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-3-安装依赖" tabindex="-1"><a class="header-anchor" href="#_2-3-安装依赖"><span>2.3 安装依赖</span></a></h3><ul><li>@types开头的包都是typeScript的声明文件，可以进入node_modules/@types/XX/index.d.ts进行查看</li><li><a href="https://github.com/DefinitelyTyped/DefinitelyTyped" target="_blank" rel="noopener noreferrer">常见的声明文件</a></li><li><a href="https://ant.design/components/overview-cn/" target="_blank" rel="noopener noreferrer">ant.design</a></li></ul><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line">cnpm install react react<span class="token operator">-</span>dom @types<span class="token operator">/</span>react @types<span class="token operator">/</span>react<span class="token operator">-</span>dom react<span class="token operator">-</span>router<span class="token operator">-</span>dom @types<span class="token operator">/</span>react<span class="token operator">-</span>router<span class="token operator">-</span>dom @ant<span class="token operator">-</span>design<span class="token operator">/</span>icons antd redux react<span class="token operator">-</span>redux @types<span class="token operator">/</span>react<span class="token operator">-</span>redux redux<span class="token operator">-</span>thunk  redux<span class="token operator">-</span>logger @types<span class="token operator">/</span>redux<span class="token operator">-</span>logger redux<span class="token operator">-</span>promise @types<span class="token operator">/</span>redux<span class="token operator">-</span>promise redux<span class="token operator">-</span>first<span class="token operator">-</span>history  classnames @types<span class="token operator">/</span>classnames react<span class="token operator">-</span>transition<span class="token operator">-</span>group @types<span class="token operator">/</span>react<span class="token operator">-</span>transition<span class="token operator">-</span>group express express<span class="token operator">-</span>session body<span class="token operator">-</span>parser cors axios  redux<span class="token operator">-</span>persist immer redux<span class="token operator">-</span>immer <span class="token operator">--</span>save</span>
+<span class="line"></span>
+<span class="line">cnpm install webpack webpack<span class="token operator">-</span>cli webpack<span class="token operator">-</span>dev<span class="token operator">-</span>server copy<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin html<span class="token operator">-</span>webpack<span class="token operator">-</span>plugin babel<span class="token operator">-</span>loader typescript @babel<span class="token operator">/</span>core @babel<span class="token operator">/</span>preset<span class="token operator">-</span>env @babel<span class="token operator">/</span>preset<span class="token operator">-</span>react @babel<span class="token operator">/</span>preset<span class="token operator">-</span>typescript  babel<span class="token operator">-</span>plugin<span class="token operator">-</span><span class="token keyword">import</span> style<span class="token operator">-</span>loader css<span class="token operator">-</span>loader postcss<span class="token operator">-</span>loader less<span class="token operator">-</span>loader less autoprefixer px2rem<span class="token operator">-</span>loader  lib<span class="token operator">-</span>flexible eslint @types<span class="token operator">/</span>eslint file<span class="token operator">-</span>loader url<span class="token operator">-</span>loader <span class="token operator">--</span>save<span class="token operator">-</span>dev</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table><thead><tr><th style="text-align:left;">模块名</th><th style="text-align:left;">英文</th><th style="text-align:left;">中文</th></tr></thead><tbody><tr><td style="text-align:left;">react</td><td style="text-align:left;">React is a JavaScript library for creating user interfaces.</td><td style="text-align:left;">React 是一个用于创建用户界面的 JavaScript 库</td></tr><tr><td style="text-align:left;">@types/react</td><td style="text-align:left;">This package contains type definitions for React</td><td style="text-align:left;">包含 React 的类型定义</td></tr><tr><td style="text-align:left;">react-dom</td><td style="text-align:left;">This package serves as the entry point to the DOM and server renderers for React. It is intended to be paired with the generic React package, which is shipped as react to npm</td><td style="text-align:left;">把 React 渲染到 DOM 上</td></tr><tr><td style="text-align:left;">@types/react-dom</td><td style="text-align:left;">This package contains type definitions for React (react-dom)</td><td style="text-align:left;">包含 React (react-dom)的类型定义</td></tr><tr><td style="text-align:left;">react-router-dom</td><td style="text-align:left;">DOM bindings for React Router</td><td style="text-align:left;">React 路由的 DOM 渲染</td></tr><tr><td style="text-align:left;">@types/react-router-dom</td><td style="text-align:left;">This package contains type definitions for React Router</td><td style="text-align:left;">React Router 的类型定义</td></tr><tr><td style="text-align:left;">react-transition-group</td><td style="text-align:left;">A set of components for managing component states (including mounting and unmounting) over time, specifically designed with animation in mind</td><td style="text-align:left;">一组用于随时间管理组件状态（包括安装和卸载）的组件，特别设计时考虑了动画</td></tr><tr><td style="text-align:left;">@types/react-transition-group</td><td style="text-align:left;">This package contains type definitions for react-transition-group</td><td style="text-align:left;">react-transition-group 的类型定义</td></tr><tr><td style="text-align:left;">react-swipe</td><td style="text-align:left;">Brad Birdsall&#39;s Swipe.js as a React component</td><td style="text-align:left;">React 轮播图组件</td></tr><tr><td style="text-align:left;">@types/react-swipe</td><td style="text-align:left;">This package contains type definitions for react-swipe</td><td style="text-align:left;">React 轮播图组件的类型定义</td></tr><tr><td style="text-align:left;">antd</td><td style="text-align:left;">An enterprise-class UI design language and React UI library</td><td style="text-align:left;">企业级 UI 设计语言和 React UI 库</td></tr><tr><td style="text-align:left;">qs</td><td style="text-align:left;">A querystring parsing and stringifying library with some added security</td><td style="text-align:left;">一个带有一些附加安全性的 querystring 解析和字符串化库</td></tr><tr><td style="text-align:left;">@types/qs</td><td style="text-align:left;">This package contains type definitions for qs</td><td style="text-align:left;">该软件包包含 qs 的类型定义</td></tr><tr><td style="text-align:left;">webpack</td><td style="text-align:left;">webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.</td><td style="text-align:left;">webpack 是一个模块打包器。它的主要目的是打包 JavaScript 文件以在浏览器中使用，但它也能够转换或打包几乎任何资源</td></tr><tr><td style="text-align:left;">webpack-cli</td><td style="text-align:left;">webpack CLI provides a flexible set of commands for developers to increase speed when setting up a custom webpack project. As of webpack v4, webpack is not expecting a configuration file, but often developers want to create a more custom webpack configuration based on their use-cases and needs. webpack CLI addresses these needs by providing a set of tools to improve the setup of custom webpack configuration.</td><td style="text-align:left;">webpack cli 提供了一组灵活的命令，供开发人员在设置自定义 webpack 项目时提高速度</td></tr><tr><td style="text-align:left;">webpack-dev-server</td><td style="text-align:left;">Use webpack with a development server that provides live reloading. This should be used for development only</td><td style="text-align:left;">将 webpack 与提供实时重载的开发服务器一起使用。 这应该仅用于开发</td></tr><tr><td style="text-align:left;">html-webpack-plugin</td><td style="text-align:left;">Plugin that simplifies creation of HTML files to serve your bundles</td><td style="text-align:left;">简化 HTML 文件的创建插件</td></tr><tr><td style="text-align:left;">ts-import-plugin</td><td style="text-align:left;">Modular import plugin for TypeScript, compatible with antd, antd-mobile and so on</td><td style="text-align:left;">用于 TypeScript 的模块化导入插件，与 antd，antd-mobile 等兼容</td></tr><tr><td style="text-align:left;">typescript</td><td style="text-align:left;">TypeScript is a language for application-scale JavaScript</td><td style="text-align:left;">TypeScript 是用于应用程序级 JavaScript 的语言</td></tr><tr><td style="text-align:left;">ts-loader</td><td style="text-align:left;">TypeScript loader for webpack</td><td style="text-align:left;">用于 Webpack 的 TypeScript 加载器</td></tr><tr><td style="text-align:left;">source-map-loader</td><td style="text-align:left;">Extracts source maps from existing source files (from their sourceMappingURL)</td><td style="text-align:left;">从现有源文件(从其 sourceMappingURL)中提取源映射</td></tr><tr><td style="text-align:left;">style-loader</td><td style="text-align:left;">Inject CSS into the DOM</td><td style="text-align:left;">将 CSS 注入 DOM</td></tr><tr><td style="text-align:left;">css-loader</td><td style="text-align:left;">The css-loader interprets @import and url() like import/require() and will resolve them</td><td style="text-align:left;">css-loader 会像 importt()/require()一样解释@import 和 url 并将解析它们</td></tr><tr><td style="text-align:left;">less-loader</td><td style="text-align:left;">A Less loader for webpack. Compiles Less to CSS</td><td style="text-align:left;">把 less 编译成 CSS</td></tr><tr><td style="text-align:left;">less</td><td style="text-align:left;">This is the JavaScript, official, stable version of Less</td><td style="text-align:left;">这是 Less 的 JavaScript 官方稳定版本</td></tr><tr><td style="text-align:left;">autoprefixer</td><td style="text-align:left;">PostCSS plugin to parse CSS and add vendor prefixes to CSS rules using values from Can I Use. It is recommended by Google and used in Twitter and Alibaba</td><td style="text-align:left;">根据<code>can i use</code>网站的 CSS 规则给 CSS 规则添加厂商前缀</td></tr><tr><td style="text-align:left;">px2rem-loader</td><td style="text-align:left;">a webpack loader for px2rem</td><td style="text-align:left;">px2rem 的 Webpack 加载器</td></tr><tr><td style="text-align:left;">postcss-loader</td><td style="text-align:left;">Loader for webpack to process CSS with PostCSS</td><td style="text-align:left;">用于 webpack 的 Loader 以使用 PostCSS 处理 CSS</td></tr><tr><td style="text-align:left;">lib-flexible</td><td style="text-align:left;">可伸缩布局解决方案</td><td style="text-align:left;"></td></tr><tr><td style="text-align:left;">redux</td><td style="text-align:left;">Redux is a predictable state container for JavaScript apps</td><td style="text-align:left;">Redux 是 JavaScript 应用程序的可预测状态容器</td></tr><tr><td style="text-align:left;">react-redux</td><td style="text-align:left;">Official React bindings for Redux</td><td style="text-align:left;">Redux 的官方 React 绑定</td></tr><tr><td style="text-align:left;">@types/react-redux</td><td style="text-align:left;">his package contains type definitions for react-redux</td><td style="text-align:left;">该软件包包含 react-redux 的类型定义</td></tr><tr><td style="text-align:left;">redux-thunk</td><td style="text-align:left;">Thunk middleware for Redux</td><td style="text-align:left;">用于 Redux 的 Thunk 中间件</td></tr><tr><td style="text-align:left;">redux-logger</td><td style="text-align:left;">Logger for Redux</td><td style="text-align:left;">用于 Redux 的 logger 中间件</td></tr><tr><td style="text-align:left;">@types/redux-logger</td><td style="text-align:left;">This package contains type definitions for redux-logger</td><td style="text-align:left;">该软件包包含 redux-logger 的类型定义</td></tr><tr><td style="text-align:left;">redux-promise</td><td style="text-align:left;">FSA-compliant promise middleware for Redux.</td><td style="text-align:left;">符合 FSA 的 Redux 的 promise 中间件</td></tr><tr><td style="text-align:left;">@types/redux-promise</td><td style="text-align:left;">This package contains type definitions for redux-promise</td><td style="text-align:left;">该软件包包含 redux-promise 的类型定义</td></tr><tr><td style="text-align:left;">immer</td><td style="text-align:left;">Create the next immutable state tree by simply modifying the current tree</td><td style="text-align:left;">通过简单地修改当前树来创建下一个不可变状态树</td></tr><tr><td style="text-align:left;">redux-immer</td><td style="text-align:left;">redux-immer is used to create an equivalent function of Redux combineReducers that works with immer state.</td><td style="text-align:left;">redux-immer 用于创建<code>Redux combineReducers</code>的等效功能，该功能可与<code>immer</code>状态一起使用</td></tr><tr><td style="text-align:left;">redux-first-history</td><td style="text-align:left;">A Redux binding for React Router v4 and v5</td><td style="text-align:left;">用于 React Router v4 和 v5 的 Redux 绑定</td></tr></tbody></table><h3 id="_2-4-支持-typescript" tabindex="-1"><a class="header-anchor" href="#_2-4-支持-typescript"><span>2.4 支持 typescript</span></a></h3><ul><li>需要生成一个tsconfig.json文件来告诉ts-loader如何编译代码TypeScript代码</li></ul><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">tsc --init</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token punctuation">{</span></span>
+<span class="line">  <span class="token string-property property">&quot;compilerOptions&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token string-property property">&quot;moduleResolution&quot;</span><span class="token operator">:</span><span class="token string">&quot;Node&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token string-property property">&quot;outDir&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./dist&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token string-property property">&quot;sourceMap&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token string-property property">&quot;noImplicitAny&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token string-property property">&quot;module&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ESNext&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token string-property property">&quot;target&quot;</span><span class="token operator">:</span> <span class="token string">&quot;es5&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token string-property property">&quot;jsx&quot;</span><span class="token operator">:</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token string-property property">&quot;esModuleInterop&quot;</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token string-property property">&quot;baseUrl&quot;</span><span class="token operator">:</span> <span class="token string">&quot;.&quot;</span><span class="token punctuation">,</span>  <span class="token comment">// 解析非相对模块的基地址，默认是当前目录</span></span>
+<span class="line">    <span class="token string-property property">&quot;paths&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>       <span class="token comment">// 路径映射，相对于baseUrl</span></span>
+<span class="line">      <span class="token string-property property">&quot;@/*&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;./src/*&quot;</span> <span class="token punctuation">]</span> <span class="token comment">//把@映射为src目录</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token string-property property">&quot;include&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">    <span class="token string">&quot;./src/**/*&quot;</span></span>
+<span class="line">  <span class="token punctuation">]</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><table><thead><tr><th style="text-align:left;">项目</th><th style="text-align:left;">含义</th></tr></thead><tbody><tr><td style="text-align:left;">outDir</td><td style="text-align:left;">指定输出目录</td></tr><tr><td style="text-align:left;">sourceMap</td><td style="text-align:left;">把 ts 文件编译成 js 文件的时候，同时生成对应的 sourceMap 文件</td></tr><tr><td style="text-align:left;">noImplicitAny</td><td style="text-align:left;">如果为 true 的话，TypeScript 编译器无法推断出类型时，它仍然会生成 JavaScript 文件，但是它也会报告一个错误</td></tr><tr><td style="text-align:left;">module：代码规范</td><td style="text-align:left;">target：转换成 es5</td></tr><tr><td style="text-align:left;">jsx</td><td style="text-align:left;">react 模式会生成 React.createElement，在使用前不需要再进行转换操作了，输出文件的扩展名为.js</td></tr><tr><td style="text-align:left;">include</td><td style="text-align:left;">需要编译的目录</td></tr><tr><td style="text-align:left;">allowSyntheticDefaultImports</td><td style="text-align:left;">允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。</td></tr><tr><td style="text-align:left;">esModuleInterop</td><td style="text-align:left;">设置 esModuleInterop: true 使 typescript 来兼容所有模块方案的导入</td></tr></tbody></table><blockquote><p>在 TypeScript 中，有多种 import 的方式，分别对应了 JavaScript 中不同的 export</p></blockquote><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token comment">// commonjs 模块</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> xx <span class="token keyword">from</span> <span class="token string">&quot;xx&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token comment">// 标准 es6 模块</span></span>
+<span class="line"><span class="token keyword">import</span> xx <span class="token keyword">from</span> <span class="token string">&quot;xx&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-5-支持图片" tabindex="-1"><a class="header-anchor" href="#_2-5-支持图片"><span>2.5 支持图片</span></a></h3><p>src\\typings\\images.d.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token doc-comment comment">/**</span>
+<span class="line"> * 如果在js中引入本地静态资源图片时使用import img from &#39;./img/logo.png&#39;这种写法是没有问题的</span>
+<span class="line"> * 但是在typescript中是无法识别非代码资源的，所以会报错TS2307: cannot find module &#39;.png&#39;</span>
+<span class="line"> * 因此，我们需要主动的去声明这个module</span>
+<span class="line"> * 新建一个ts声明文件如：images.d.ts就可以了,这样ts就可以识别svg、png、jpg等等图片类型文件</span>
+<span class="line"> * 项目编译过程中会自动去读取.d.ts这种类型的文件，所以不需要我们手动地加载他们</span>
+<span class="line"> * 当然.d.ts文件也不能随便放置在项目中，这类文件和ts文件一样需要被typescript编译，所以一样只能放置在tsconfig.json中include属性所配置的文件夹下</span>
+<span class="line"> * </span>
+<span class="line"> */</span></span>
+<span class="line">declare module <span class="token string">&#39;*.svg&#39;</span><span class="token punctuation">;</span></span>
+<span class="line">declare module <span class="token string">&#39;*.png&#39;</span><span class="token punctuation">;</span></span>
+<span class="line">declare module <span class="token string">&#39;*.jpg&#39;</span><span class="token punctuation">;</span></span>
+<span class="line">declare module <span class="token string">&#39;*.jpeg&#39;</span><span class="token punctuation">;</span></span>
+<span class="line">declare module <span class="token string">&#39;*.gif&#39;</span><span class="token punctuation">;</span></span>
+<span class="line">declare module <span class="token string">&#39;*.bmp&#39;</span><span class="token punctuation">;</span></span>
+<span class="line">declare module <span class="token string">&#39;*.tiff&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-6-编写-webpack-配置文件" tabindex="-1"><a class="header-anchor" href="#_2-6-编写-webpack-配置文件"><span>2.6 编写 webpack 配置文件</span></a></h3><p>webpack.config.js</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;webpack&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;html-webpack-plugin&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> CopyWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;copy-webpack-plugin&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">mode</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">==</span> <span class="token string">&quot;production&quot;</span> <span class="token operator">?</span> <span class="token string">&quot;production&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;development&quot;</span><span class="token punctuation">,</span> <span class="token comment">//默认是开发模块</span></span>
+<span class="line">    <span class="token literal-property property">entry</span><span class="token operator">:</span> <span class="token string">&quot;./src/index.tsx&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">path</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;dist&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">&quot;main.js&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">outputPath</span><span class="token operator">:</span><span class="token string">&#39;/&#39;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">devtool</span><span class="token operator">:</span> <span class="token string">&quot;source-map&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">devServer</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">hot</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//热更新插件</span></span>
+<span class="line">        <span class="token keyword">static</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;static&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">historyApiFallback</span><span class="token operator">:</span><span class="token boolean">true</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">alias</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token string-property property">&quot;@&quot;</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;src&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">            <span class="token string-property property">&quot;~&quot;</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;node_modules&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token comment">//当你加载一个文件的时候,没有指定扩展名的时候，会自动寻找哪些扩展名</span></span>
+<span class="line">        <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;.ts&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;.tsx&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;.js&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;.json&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">            <span class="token punctuation">{</span></span>
+<span class="line">                <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\\.(j|t)sx?$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">&quot;babel-loader&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">                    <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">                        <span class="token string">&#39;@babel/preset-env&#39;</span><span class="token punctuation">,</span></span>
+<span class="line">                        <span class="token string">&#39;@babel/preset-react&#39;</span><span class="token punctuation">,</span></span>
+<span class="line">                        <span class="token string">&#39;@babel/preset-typescript&#39;</span></span>
+<span class="line">                    <span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token comment">//默认引less,我们引css</span></span>
+<span class="line">                        <span class="token punctuation">[</span><span class="token string">&#39;import&#39;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">libraryName</span><span class="token operator">:</span> <span class="token string">&#39;antd&#39;</span><span class="token punctuation">,</span> <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token string">&#39;css&#39;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span></span>
+<span class="line">                    <span class="token punctuation">]</span></span>
+<span class="line">                <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token literal-property property">include</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">&#39;src&#39;</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span></span>
+<span class="line">            <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">            <span class="token punctuation">{</span><span class="token comment">//引入antdesign中用的css</span></span>
+<span class="line">                <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">                    <span class="token string">&quot;style-loader&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token punctuation">{</span></span>
+<span class="line">                        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">&quot;css-loader&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">                        <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">importLoaders</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token punctuation">}</span></span>
+<span class="line">                <span class="token punctuation">]</span></span>
+<span class="line">            <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">            <span class="token punctuation">{</span><span class="token comment">//我们自己的代码都是less</span></span>
+<span class="line">                <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\\.less$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">                    <span class="token string">&quot;style-loader&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token punctuation">{</span></span>
+<span class="line">                        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">&quot;css-loader&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">                        <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">importLoaders</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token punctuation">{</span></span>
+<span class="line">                        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">&quot;postcss-loader&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">                        <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">                            <span class="token literal-property property">postcssOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">                                <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">                                    <span class="token string">&quot;autoprefixer&quot;</span></span>
+<span class="line">                                <span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">                            <span class="token punctuation">}</span></span>
+<span class="line">                        <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token punctuation">{</span></span>
+<span class="line">                        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">&quot;px2rem-loader&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">                        <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">                            <span class="token literal-property property">remUnit</span><span class="token operator">:</span> <span class="token number">75</span><span class="token punctuation">,</span></span>
+<span class="line">                            <span class="token literal-property property">remPrecesion</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span></span>
+<span class="line">                        <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">                    <span class="token string">&quot;less-loader&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">            <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">            <span class="token punctuation">{</span></span>
+<span class="line">                <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\\.(jpg|png|gif|svg|jpeg)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">&#39;asset&#39;</span></span>
+<span class="line">            <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">        <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">            <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">&quot;./public/index.html&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token keyword">new</span> <span class="token class-name">CopyWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">            <span class="token literal-property property">patterns</span><span class="token operator">:</span> <span class="token punctuation">[</span></span>
+<span class="line">                <span class="token punctuation">{</span> <span class="token literal-property property">from</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&#39;static&#39;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">to</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&#39;dist&#39;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span></span>
+<span class="line">            <span class="token punctuation">]</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">    <span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-7-src-index-tsx" tabindex="-1"><a class="header-anchor" href="#_2-7-src-index-tsx"><span>2.7 src\\index.tsx</span></a></h3><p>src\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">&quot;react-dom&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>h1<span class="token operator">&gt;</span>hello<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">&gt;</span><span class="token punctuation">,</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-8-public-index-html" tabindex="-1"><a class="header-anchor" href="#_2-8-public-index-html"><span>2.8 public\\index.html</span></a></h3><p>public\\index.html</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token constant">DOCTYPE</span> html<span class="token operator">&gt;</span></span>
+<span class="line"><span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">&quot;en&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">  <span class="token operator">&lt;</span>head<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">&quot;UTF-8&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span>meta name<span class="token operator">=</span><span class="token string">&quot;viewport&quot;</span> content<span class="token operator">=</span><span class="token string">&quot;width=device-width, initial-scale=1.0&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span>title<span class="token operator">&gt;</span>珠峰课堂<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">&gt;</span></span>
+<span class="line">  <span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">&gt;</span></span>
+<span class="line">  <span class="token operator">&lt;</span>body<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token keyword">let</span> docEle <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">function</span> <span class="token function">setRemUnit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        docEle<span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontSize <span class="token operator">=</span> docEle<span class="token punctuation">.</span>clientWidth <span class="token operator">/</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token string">&quot;px&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">      <span class="token function">setRemUnit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;resize&quot;</span><span class="token punctuation">,</span> setRemUnit<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">&quot;root&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span></span>
+<span class="line">  <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">&gt;</span></span>
+<span class="line"><span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">&gt;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-9-package-json" tabindex="-1"><a class="header-anchor" href="#_2-9-package-json"><span>2.9 package.json</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">  &quot;scripts&quot;: {</span>
+<span class="line">    &quot;build&quot;: &quot;webpack&quot;,</span>
+<span class="line">    &quot;dev&quot;: &quot;webpack serve&quot;,</span>
+<span class="line">    &quot;lint&quot;: &quot;eslint --ext .tsx src --fix&quot;,</span>
+<span class="line">  }</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-10-移动端适配" tabindex="-1"><a class="header-anchor" href="#_2-10-移动端适配"><span>2.10 移动端适配</span></a></h3><h4 id="_2-10-1-设备物理像素" tabindex="-1"><a class="header-anchor" href="#_2-10-1-设备物理像素"><span>2.10.1 设备物理像素</span></a></h4><ul><li>是一个物理概念，是显示器显示的最小物理单位</li><li><code>iPhone6</code>的像素分辨率是750*1334\`</li><li><code>px</code>是一个相对单位，相对的是设备像素(device pixel)</li></ul><h5 id="_2-10-2-设备独立像素" tabindex="-1"><a class="header-anchor" href="#_2-10-2-设备独立像素"><span>2.10.2 设备独立像素</span></a></h5><ul><li>是一个逻辑概念,用于向CSS中的宽度、高度等提供信息</li><li>iPhone6的逻辑分辨率是<code>375*667</code></li></ul><h4 id="_2-10-3-设备像素比" tabindex="-1"><a class="header-anchor" href="#_2-10-3-设备像素比"><span>2.10.3 设备像素比</span></a></h4><ul><li>DPR(设备像素比) = 设备像素/CSS像素</li><li>设备像素比 <code>window.devicePixelRatio</code></li></ul><p><img src="https://img.zhufengpeixun.com/8335aff90708c99fe6dd75a92e0cd787" alt="8335aff90708c99fe6dd75a92e0cd787"></p><h4 id="_2-10-4-移动端适配" tabindex="-1"><a class="header-anchor" href="#_2-10-4-移动端适配"><span>2.10.4 移动端适配</span></a></h4><ul><li>一般由设计师按照<code>iPhone6</code>的像素分辨率是<code>750*1334</code>制作设计稿</li><li>然后由前端工程师参进行换算</li></ul><h4 id="_2-10-5-rem" tabindex="-1"><a class="header-anchor" href="#_2-10-5-rem"><span>2.10.5 rem</span></a></h4><ul><li>参照根元素的字体大小</li><li>适配就是让根元素的字体大小根据分辨率进行动态改变</li><li><a href="https://www.npmjs.com/package/px2rem-loader" target="_blank" rel="noopener noreferrer">px2rem-loader</a></li></ul><h4 id="_2-10-6-vw和vh" tabindex="-1"><a class="header-anchor" href="#_2-10-6-vw和vh"><span>2.10.6 vw和vh</span></a></h4><ul><li>参照的是viewport视口</li><li>vw参照的是视口的宽度(1vw=视口宽度/100)</li><li>vh参照的是视口的高度(1vh=视口高度/100)</li><li>iPhone6 <code>1vw=3.75px</code></li><li><a href="https://www.npmjs.com/package/postcss-px-to-viewport" target="_blank" rel="noopener noreferrer">postcss-px-to-viewport</a></li></ul><h2 id="_3-实现底部路由" tabindex="-1"><a class="header-anchor" href="#_3-实现底部路由"><span>3.实现底部路由</span></a></h2><h3 id="_3-1-参考" tabindex="-1"><a class="header-anchor" href="#_3-1-参考"><span>3.1 参考</span></a></h3><h4 id="_3-1-1-介绍" tabindex="-1"><a class="header-anchor" href="#_3-1-1-介绍"><span>3.1.1 介绍</span></a></h4><ul><li>这一章我们开始配置路由,我们的应用在尾部有三个页签,分别对应首页,购物车和个人中心三个页面</li><li>在本章节我们实践以下内容 <ul><li><ol><li>如何使用 react 全家桶配置路由</li></ol></li><li><ol start="2"><li>如何按需加载<code>antd</code>并使用图标组件</li></ol></li><li><ol start="3"><li>如何在 react 样式中使用<code>less</code>编写样式</li></ol></li><li><ol start="4"><li>如何在移动端中使用 <code>rem</code> 实现布局以及如何使用 <code>flex</code>布局</li></ol></li><li><ol start="5"><li>如何使用 typescript 编写 react 代码</li></ol></li></ul></li></ul><h4 id="_3-1-2-目录" tabindex="-1"><a class="header-anchor" href="#_3-1-2-目录"><span>3.1.2 目录</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── style</span>
+<span class="line">│   │   └── common.less   </span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Profile</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   └── store</span>
+<span class="line">│       ├── action-types.tsx</span>
+<span class="line">│       ├── history.tsx</span>
+<span class="line">│       ├── index.tsx</span>
+<span class="line">│       └── reducers</span>
+<span class="line">│           ├── home.tsx</span>
+<span class="line">│           ├── index.tsx</span>
+<span class="line">│           ├── cart.tsx</span>
+<span class="line">│           └── profile.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_3-1-3-效果预览" tabindex="-1"><a class="header-anchor" href="#_3-1-3-效果预览"><span>3.1.3 效果预览</span></a></h4><p><img src="http://img.zhufengpeixun.cn/zhufengketang_day1.gif" alt="day1"></p><h4 id="_3-1-4-页面布局" tabindex="-1"><a class="header-anchor" href="#_3-1-4-页面布局"><span>3.1.4 页面布局</span></a></h4><p><img src="https://img.zhufengpeixun.com/tabs.png" alt="tabs"></p><h3 id="_3-2-src-index-tsx" tabindex="-1"><a class="header-anchor" href="#_3-2-src-index-tsx"><span>3.2 src\\index.tsx</span></a></h3><p>src\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">&quot;react-dom&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Routes<span class="token punctuation">,</span> Route <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-router-dom&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Provider <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> store<span class="token punctuation">,</span> history <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./store&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;./style/common.less&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> Tabs <span class="token keyword">from</span> <span class="token string">&quot;./components/Tabs&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> Home <span class="token keyword">from</span> <span class="token string">&quot;./routes/Home&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> Cart <span class="token keyword">from</span> <span class="token string">&quot;./routes/Cart&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> Profile <span class="token keyword">from</span> <span class="token string">&quot;./routes/Profile&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> HistoryRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux-first-history/rr6&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span></span>
+<span class="line">    <span class="token operator">&lt;</span>Provider store<span class="token operator">=</span><span class="token punctuation">{</span>store<span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span>HistoryRouter history<span class="token operator">=</span><span class="token punctuation">{</span>history<span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>main className<span class="token operator">=</span><span class="token string">&quot;main-container&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Routes<span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">&quot;/&quot;</span> element<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>Home <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">&quot;/Cart&quot;</span> element<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>Cart <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">&quot;/profile&quot;</span> element<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>Profile <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Routes<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>Tabs <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>HistoryRouter<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span><span class="token operator">/</span>Provider<span class="token operator">&gt;</span><span class="token punctuation">,</span></span>
+<span class="line">    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;root&quot;</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-3-common-less" tabindex="-1"><a class="header-anchor" href="#_3-3-common-less"><span>3.3 common.less</span></a></h3><p>src\\style\\common.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token operator">*</span><span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">padding</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">margin</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">ul<span class="token punctuation">,</span>li<span class="token punctuation">{</span></span>
+<span class="line">    list<span class="token operator">-</span>style<span class="token operator">:</span> none<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"> </span>
+<span class="line">    <span class="token literal-property property">margin</span><span class="token operator">:</span><span class="token number">0</span> auto<span class="token punctuation">;</span></span>
+<span class="line">    max<span class="token operator">-</span>width<span class="token operator">:</span> 750px<span class="token punctuation">;</span></span>
+<span class="line">    box<span class="token operator">-</span>sizing<span class="token operator">:</span> border<span class="token operator">-</span>box<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">.</span>main<span class="token operator">-</span>container<span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">padding</span><span class="token operator">:</span>100px <span class="token number">0</span> 120px <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-4-tabs-index-tsx" tabindex="-1"><a class="header-anchor" href="#_3-4-tabs-index-tsx"><span>3.4 Tabs\\index.tsx</span></a></h3><p>src\\components\\Tabs\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> NavLink <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-router-dom&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> HomeOutlined<span class="token punctuation">,</span> ShoppingCartOutlined<span class="token punctuation">,</span> UserOutlined <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@ant-design/icons&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;./index.less&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Tabs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span>footer<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>NavLink to<span class="token operator">=</span><span class="token string">&quot;/&quot;</span> <span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>HomeOutlined <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>首页<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>NavLink<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>NavLink to<span class="token operator">=</span><span class="token string">&quot;/cart&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>ShoppingCartOutlined <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>购物车<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>NavLink<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>NavLink to<span class="token operator">=</span><span class="token string">&quot;/profile&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>UserOutlined <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>个人中心<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>NavLink<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>footer<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> Tabs<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-5-tabs-index-less" tabindex="-1"><a class="header-anchor" href="#_3-5-tabs-index-less"><span>3.5 Tabs\\index.less</span></a></h3><p>src\\components\\Tabs\\index.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line">footer <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">position</span><span class="token operator">:</span> fixed<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">left</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">bottom</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">height</span><span class="token operator">:</span> 120px<span class="token punctuation">;</span></span>
+<span class="line">  z<span class="token operator">-</span>index<span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">;</span></span>
+<span class="line">   background<span class="token operator">-</span>color<span class="token operator">:</span> </span>
+<span class="line">   border<span class="token operator">-</span>top<span class="token operator">:</span> 1px solid </span>
+<span class="line">  <span class="token literal-property property">display</span><span class="token operator">:</span> flex<span class="token punctuation">;</span></span>
+<span class="line">  justify<span class="token operator">-</span>content<span class="token operator">:</span> center<span class="token punctuation">;</span></span>
+<span class="line">  align<span class="token operator">-</span>items<span class="token operator">:</span> center<span class="token punctuation">;</span></span>
+<span class="line">  a <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">display</span><span class="token operator">:</span> flex<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">flex</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span></span>
+<span class="line">    flex<span class="token operator">-</span>direction<span class="token operator">:</span> column<span class="token punctuation">;</span></span>
+<span class="line">    justify<span class="token operator">-</span>content<span class="token operator">:</span> center<span class="token punctuation">;</span></span>
+<span class="line">    align<span class="token operator">-</span>items<span class="token operator">:</span> center<span class="token punctuation">;</span></span>
+<span class="line">     <span class="token literal-property property">color</span><span class="token operator">:</span> </span>
+<span class="line">    span <span class="token punctuation">{</span></span>
+<span class="line">      font<span class="token operator">-</span>size<span class="token operator">:</span> 30px<span class="token punctuation">;</span></span>
+<span class="line">      line<span class="token operator">-</span>height<span class="token operator">:</span> 50px<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token operator">&amp;</span><span class="token punctuation">.</span>anticon <span class="token punctuation">{</span></span>
+<span class="line">        font<span class="token operator">-</span>size<span class="token operator">:</span> 50px<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token operator">&amp;</span><span class="token punctuation">.</span>active <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">color</span><span class="token operator">:</span> orangered<span class="token punctuation">;</span></span>
+<span class="line">      font<span class="token operator">-</span>weight<span class="token operator">:</span> bold<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-6-history-tsx" tabindex="-1"><a class="header-anchor" href="#_3-6-history-tsx"><span>3.6 history.tsx</span></a></h3><p>src\\store\\history.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createBrowserHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;history&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createReduxHistoryContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux-first-history&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> history <span class="token operator">=</span> <span class="token function">createBrowserHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token punctuation">{</span> routerReducer<span class="token punctuation">,</span> routerMiddleware<span class="token punctuation">,</span> createReduxHistory <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createReduxHistoryContext</span><span class="token punctuation">(</span><span class="token punctuation">{</span> history <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token punctuation">{</span></span>
+<span class="line">    routerReducer<span class="token punctuation">,</span></span>
+<span class="line">    routerMiddleware<span class="token punctuation">,</span></span>
+<span class="line">    createReduxHistory</span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-7-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_3-7-action-types-tsx"><span>3.7 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h3 id="_3-8-reducers-home-tsx" tabindex="-1"><a class="header-anchor" href="#_3-8-reducers-home-tsx"><span>3.8 reducers\\home.tsx</span></a></h3><p>src\\store\\reducers\\home.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> AnyAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">HomeState</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">let</span> <span class="token literal-property property">initialState</span><span class="token operator">:</span> HomeState <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token parameter"><span class="token literal-property property">state</span><span class="token operator">:</span> HomeState <span class="token operator">=</span> initialState<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">action</span><span class="token operator">:</span> AnyAction</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token operator">:</span> HomeState <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">default</span><span class="token operator">:</span></span>
+<span class="line">            <span class="token keyword">return</span> state<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-9-reducers-cart-tsx" tabindex="-1"><a class="header-anchor" href="#_3-9-reducers-cart-tsx"><span>3.9 reducers\\cart.tsx</span></a></h3><p>src\\store\\reducers\\cart.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> AnyAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">MineState</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">let</span> <span class="token literal-property property">initialState</span><span class="token operator">:</span> MineState <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token parameter"><span class="token literal-property property">state</span><span class="token operator">:</span> MineState <span class="token operator">=</span> initialState<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">action</span><span class="token operator">:</span> AnyAction</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token operator">:</span> MineState <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">default</span><span class="token operator">:</span></span>
+<span class="line">            <span class="token keyword">return</span> state<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-10-reducers-profile-tsx" tabindex="-1"><a class="header-anchor" href="#_3-10-reducers-profile-tsx"><span>3.10 reducers\\profile.tsx</span></a></h3><p>src\\store\\reducers\\profile.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> AnyAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ProfileState</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">let</span> <span class="token literal-property property">initialState</span><span class="token operator">:</span> ProfileState <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token parameter"><span class="token literal-property property">state</span><span class="token operator">:</span> ProfileState <span class="token operator">=</span> initialState<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">action</span><span class="token operator">:</span> AnyAction</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token operator">:</span> ProfileState <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">default</span><span class="token operator">:</span></span>
+<span class="line">            <span class="token keyword">return</span> state<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-11-reducers-index-tsx" tabindex="-1"><a class="header-anchor" href="#_3-11-reducers-index-tsx"><span>3.11 reducers\\index.tsx</span></a></h3><p>src\\store\\reducers\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> combineReducers<span class="token punctuation">,</span> ReducersMapObject<span class="token punctuation">,</span> Reducer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;redux&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> routerReducer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;@/history&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> home <span class="token keyword">from</span> <span class="token string">&#39;./home&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> cart <span class="token keyword">from</span> <span class="token string">&#39;./cart&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> profile <span class="token keyword">from</span> <span class="token string">&#39;./profile&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">let</span> <span class="token literal-property property">reducers</span><span class="token operator">:</span> ReducersMapObject <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">router</span><span class="token operator">:</span> routerReducer<span class="token punctuation">,</span></span>
+<span class="line">    home<span class="token punctuation">,</span></span>
+<span class="line">    cart<span class="token punctuation">,</span></span>
+<span class="line">    profile<span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">type CombinedState <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token punctuation">[</span>key <span class="token keyword">in</span> keyof <span class="token keyword">typeof</span> reducers<span class="token punctuation">]</span><span class="token operator">:</span> ReturnType<span class="token operator">&lt;</span><span class="token keyword">typeof</span> reducers<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">&gt;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">let</span> <span class="token literal-property property">reducer</span><span class="token operator">:</span> Reducer<span class="token operator">&lt;</span>CombinedState<span class="token operator">&gt;</span> <span class="token operator">=</span> combineReducers<span class="token operator">&lt;</span>CombinedState<span class="token operator">&gt;</span><span class="token punctuation">(</span>reducers<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token punctuation">{</span> CombinedState <span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> reducer<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-12-store-index-tsx" tabindex="-1"><a class="header-anchor" href="#_3-12-store-index-tsx"><span>3.12 store\\index.tsx</span></a></h3><p>src\\store\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> createStore<span class="token punctuation">,</span> applyMiddleware <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;redux&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> reducers <span class="token keyword">from</span> <span class="token string">&#39;./reducers&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> logger <span class="token keyword">from</span> <span class="token string">&#39;redux-logger&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> thunk <span class="token keyword">from</span> <span class="token string">&#39;redux-thunk&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> promise <span class="token keyword">from</span> <span class="token string">&#39;redux-promise&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> routerMiddleware<span class="token punctuation">,</span> createReduxHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;../history&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">applyMiddleware</span><span class="token punctuation">(</span>thunk<span class="token punctuation">,</span> routerMiddleware<span class="token punctuation">,</span> promise<span class="token punctuation">,</span> logger<span class="token punctuation">)</span><span class="token punctuation">(</span>createStore<span class="token punctuation">)</span><span class="token punctuation">(</span>reducers<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> history <span class="token operator">=</span> <span class="token function">createReduxHistory</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-13-home-index-tsx" tabindex="-1"><a class="header-anchor" href="#_3-13-home-index-tsx"><span>3.13 Home\\index.tsx</span></a></h3><p>src\\routes\\Home\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">Props</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Home</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>Home<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> Home<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-14-cart-index-tsx" tabindex="-1"><a class="header-anchor" href="#_3-14-cart-index-tsx"><span>3.14 Cart\\index.tsx</span></a></h3><p>src\\routes\\Cart\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">Props</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Cart</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>Cart<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> Cart<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-15-profile-index-tsx" tabindex="-1"><a class="header-anchor" href="#_3-15-profile-index-tsx"><span>3.15 Profile\\index.tsx</span></a></h3><p>src\\routes\\Profile\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">Props</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Profile</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>Profile<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> Profile<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_4-实现首页头部导航" tabindex="-1"><a class="header-anchor" href="#_4-实现首页头部导航"><span>4. 实现首页头部导航</span></a></h2><h3 id="_4-1-参考" tabindex="-1"><a class="header-anchor" href="#_4-1-参考"><span>4.1 参考</span></a></h3><h4 id="_4-1-1-文档" tabindex="-1"><a class="header-anchor" href="#_4-1-1-文档"><span>4.1.1 文档</span></a></h4><ul><li>本章我们将要实现首页的头部导航</li><li>本章我们要掌握的知识点 <ul><li>React 动画库的使用</li><li>如何创建 redux 仓库以及如何关联组件</li></ul></li><li><a href="https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts" target="_blank" rel="noopener noreferrer">react类型声明</a></li></ul><h4 id="_4-1-2-logo图" tabindex="-1"><a class="header-anchor" href="#_4-1-2-logo图"><span>4.1.2 logo图</span></a></h4><p><img src="https://img.zhufengpeixun.com/logo.png" alt="logo"></p><h4 id="_4-1-3-本章代码" tabindex="-1"><a class="header-anchor" href="#_4-1-3-本章代码"><span>4.1.3 本章代码</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── style</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   └── HomeHeader</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Profile</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   └── home.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   └── typings</span>
+<span class="line">│       └── images.d.ts</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_4-1-4-效果预览" tabindex="-1"><a class="header-anchor" href="#_4-1-4-效果预览"><span>4.1.4 效果预览</span></a></h4><p><img src="http://img.zhufengpeixun.cn/homenavigation.gif" alt="homenavigation"></p><h4 id="_4-1-5-本章布局" tabindex="-1"><a class="header-anchor" href="#_4-1-5-本章布局"><span>4.1.5 本章布局</span></a></h4><p><img src="https://img.zhufengpeixun.com/home-header.png" alt="home-header.png"></p><h3 id="_4-2-homeheader-index-tsx" tabindex="-1"><a class="header-anchor" href="#_4-2-homeheader-index-tsx"><span>4.2 HomeHeader\\index.tsx</span></a></h3><p>src\\routes\\Home\\components\\HomeHeader\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> CSSProperties <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;react&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> BarsOutlined <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;@ant-design/icons&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> classnames <span class="token keyword">from</span> <span class="token string">&#39;classnames&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Transition <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;react-transition-group&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token comment">//ts默认不支持png格式,需要添加images.d.ts声明文件以支持加载png</span></span>
+<span class="line"><span class="token keyword">import</span> logo <span class="token keyword">from</span> <span class="token string">&#39;@/assets/images/logo.png&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&#39;./index.less&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> duration <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token comment">//默认样式</span></span>
+<span class="line"><span class="token keyword">const</span> defaultStyle <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">transition</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">opacity </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>duration<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">ms ease-in-out</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">opacity</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">TransitionStyles</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">entering</span><span class="token operator">:</span> CSSProperties<span class="token punctuation">;</span><span class="token comment">//进入时的样式</span></span>
+<span class="line">    <span class="token literal-property property">entered</span><span class="token operator">:</span> CSSProperties<span class="token punctuation">;</span><span class="token comment">//进入成功时的样式</span></span>
+<span class="line">    <span class="token literal-property property">exiting</span><span class="token operator">:</span> CSSProperties<span class="token punctuation">;</span><span class="token comment">//退出时的样式</span></span>
+<span class="line">    <span class="token literal-property property">exited</span><span class="token operator">:</span> CSSProperties<span class="token punctuation">;</span><span class="token comment">//退出成功时的样式</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token literal-property property">transitionStyles</span><span class="token operator">:</span> TransitionStyles <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">entering</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">opacity</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token comment">//不透明度为1</span></span>
+<span class="line">    <span class="token literal-property property">entered</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">opacity</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//不透明度为1</span></span>
+<span class="line">    <span class="token literal-property property">exiting</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">opacity</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//不透明度为0</span></span>
+<span class="line">    <span class="token literal-property property">exited</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">opacity</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token comment">//不透明度为0</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">Props</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">currentCategory</span><span class="token operator">:</span> string<span class="token punctuation">;</span><span class="token comment">//当前选中的分类 此数据会放在redux仓库中</span></span>
+<span class="line">    <span class="token function-variable function">setCurrentCategory</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">currentCategory</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> any<span class="token punctuation">;</span><span class="token comment">// 改变仓库中的分类</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">HomeHeader</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">let</span> <span class="token punctuation">[</span>isMenuVisible<span class="token punctuation">,</span> setIsMenuVisible<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设定标识位表示菜单是否显示</span></span>
+<span class="line">    <span class="token comment">//设置当前分类,把当前选中的分类传递给redux仓库</span></span>
+<span class="line">    <span class="token keyword">const</span> <span class="token function-variable function">setCurrentCategory</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">event</span><span class="token operator">:</span> React<span class="token punctuation">.</span>MouseEvent<span class="token operator">&lt;</span>HTMLUListElement<span class="token operator">&gt;</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">let</span> <span class="token literal-property property">target</span><span class="token operator">:</span> HTMLLIElement <span class="token operator">=</span> event<span class="token punctuation">.</span>target <span class="token keyword">as</span> HTMLLIElement<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">let</span> category <span class="token operator">=</span> target<span class="token punctuation">.</span>dataset<span class="token punctuation">.</span>category<span class="token punctuation">;</span><span class="token comment">//获取用户选择的分类名称</span></span>
+<span class="line">        props<span class="token punctuation">.</span><span class="token function">setCurrentCategory</span><span class="token punctuation">(</span>category<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设置分类名称</span></span>
+<span class="line">        <span class="token function">setIsMenuVisible</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//关闭分类选择层</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span>header className<span class="token operator">=</span><span class="token string">&quot;home-header&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;logo-header&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token punctuation">{</span>logo<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>BarsOutlined onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setIsMenuVisible</span><span class="token punctuation">(</span><span class="token operator">!</span>isMenuVisible<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>Transition <span class="token keyword">in</span><span class="token operator">=</span><span class="token punctuation">{</span>isMenuVisible<span class="token punctuation">}</span> timeout<span class="token operator">=</span><span class="token punctuation">{</span>duration<span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token punctuation">{</span></span>
+<span class="line">                    <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">state</span><span class="token operator">:</span> keyof TransitionStyles</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span></span>
+<span class="line">                        <span class="token operator">&lt;</span>ul</span>
+<span class="line">                            className<span class="token operator">=</span><span class="token string">&quot;category&quot;</span></span>
+<span class="line">                            onClick<span class="token operator">=</span><span class="token punctuation">{</span>setCurrentCategory<span class="token punctuation">}</span></span>
+<span class="line">                            style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span></span>
+<span class="line">                                <span class="token operator">...</span>defaultStyle<span class="token punctuation">,</span></span>
+<span class="line">                                <span class="token operator">...</span>transitionStyles<span class="token punctuation">[</span>state<span class="token punctuation">]</span></span>
+<span class="line">                            <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="line">                        <span class="token operator">&gt;</span></span>
+<span class="line">                            <span class="token operator">&lt;</span>li data<span class="token operator">-</span>category<span class="token operator">=</span><span class="token string">&quot;all&quot;</span> className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token function">classnames</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">active</span><span class="token operator">:</span> props<span class="token punctuation">.</span>currentCategory <span class="token operator">===</span> <span class="token string">&#39;all&#39;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>全部课程<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span></span>
+<span class="line">                            <span class="token operator">&lt;</span>li data<span class="token operator">-</span>category<span class="token operator">=</span><span class="token string">&quot;react&quot;</span> className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token function">classnames</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">active</span><span class="token operator">:</span> props<span class="token punctuation">.</span>currentCategory <span class="token operator">===</span> <span class="token string">&#39;react&#39;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>React课程<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span></span>
+<span class="line">                            <span class="token operator">&lt;</span>li data<span class="token operator">-</span>category<span class="token operator">=</span><span class="token string">&quot;vue&quot;</span> className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token function">classnames</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">active</span><span class="token operator">:</span> props<span class="token punctuation">.</span>currentCategory <span class="token operator">===</span> <span class="token string">&#39;vue&#39;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>Vue课程<span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">&gt;</span></span>
+<span class="line">                        <span class="token operator">&lt;</span><span class="token operator">/</span>ul<span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token punctuation">)</span></span>
+<span class="line">                <span class="token punctuation">}</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>Transition<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>header<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> HomeHeader<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-3-homeheader-index-less" tabindex="-1"><a class="header-anchor" href="#_4-3-homeheader-index-less"><span>4.3 HomeHeader\\index.less</span></a></h3><p>src\\routes\\Home\\components\\HomeHeader\\index.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"> @<span class="token constant">BG</span><span class="token operator">:</span> </span>
+<span class="line"><span class="token punctuation">.</span>home<span class="token operator">-</span>header <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">position</span><span class="token operator">:</span> fixed<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">top</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">left</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span></span>
+<span class="line">  z<span class="token operator">-</span>index<span class="token operator">:</span> <span class="token number">999</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">.</span>logo<span class="token operator">-</span>header <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">height</span><span class="token operator">:</span> 100px<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">background</span><span class="token operator">:</span> @<span class="token constant">BG</span><span class="token punctuation">;</span></span>
+<span class="line">     <span class="token literal-property property">color</span><span class="token operator">:</span> </span>
+<span class="line">    <span class="token literal-property property">display</span><span class="token operator">:</span> flex<span class="token punctuation">;</span></span>
+<span class="line">    justify<span class="token operator">-</span>content<span class="token operator">:</span> space<span class="token operator">-</span>between<span class="token punctuation">;</span></span>
+<span class="line">    align<span class="token operator">-</span>items<span class="token operator">:</span> center<span class="token punctuation">;</span></span>
+<span class="line">    img <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">width</span><span class="token operator">:</span> 200px<span class="token punctuation">;</span></span>
+<span class="line">      margin<span class="token operator">-</span>left<span class="token operator">:</span> 20px<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    span<span class="token punctuation">.</span>anticon<span class="token punctuation">.</span>anticon<span class="token operator">-</span>bars <span class="token punctuation">{</span></span>
+<span class="line">      font<span class="token operator">-</span>size<span class="token operator">:</span> 60px<span class="token punctuation">;</span></span>
+<span class="line">      margin<span class="token operator">-</span>right<span class="token operator">:</span> 20px<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">.</span>category <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">position</span><span class="token operator">:</span> absolute<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">top</span><span class="token operator">:</span> 100px<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">left</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">background</span><span class="token operator">:</span> @<span class="token constant">BG</span><span class="token punctuation">;</span></span>
+<span class="line">    li <span class="token punctuation">{</span></span>
+<span class="line">      line<span class="token operator">-</span>height<span class="token operator">:</span> 60px<span class="token punctuation">;</span></span>
+<span class="line">      text<span class="token operator">-</span>align<span class="token operator">:</span> center<span class="token punctuation">;</span></span>
+<span class="line">       <span class="token literal-property property">color</span><span class="token operator">:</span> </span>
+<span class="line">      font<span class="token operator">-</span>size<span class="token operator">:</span> 30px<span class="token punctuation">;</span></span>
+<span class="line">      border<span class="token operator">-</span>top<span class="token operator">:</span> 1px solid <span class="token function">lighten</span><span class="token punctuation">(</span>@<span class="token constant">BG</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token operator">%</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token operator">&amp;</span><span class="token punctuation">.</span>active <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">color</span><span class="token operator">:</span> red<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-4-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_4-4-action-types-tsx"><span>4.4 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">//设置当前分类的名称</span>
+<span class="line">+export const SET_CURRENT_CATEGORY = &#39;SET_CURRENT_CATEGORY&#39;;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-5-reducers-home-tsx" tabindex="-1"><a class="header-anchor" href="#_4-5-reducers-home-tsx"><span>4.5 reducers\\home.tsx</span></a></h3><p>src\\store\\reducers\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { AnyAction } from &#39;redux&#39;;</span>
+<span class="line">+import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">export interface HomeState {</span>
+<span class="line">+    currentCategory: string;</span>
+<span class="line">}</span>
+<span class="line">let initialState: HomeState = {</span>
+<span class="line">+    currentCategory: &#39;all&#39;//默认当前的分类是显示全部类型的课程</span>
+<span class="line">};</span>
+<span class="line">export default function (state: HomeState = initialState, action: AnyAction): HomeState {</span>
+<span class="line">    switch (action.type) {</span>
+<span class="line">+        case actionTypes.SET_CURRENT_CATEGORY://修改当前分类</span>
+<span class="line">+            return { ...state, currentCategory: action.payload };</span>
+<span class="line">        default:</span>
+<span class="line">            return state;</span>
+<span class="line">    }</span>
+<span class="line">}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-6-actioncreators-home-tsx" tabindex="-1"><a class="header-anchor" href="#_4-6-actioncreators-home-tsx"><span>4.6 actionCreators\\home.tsx</span></a></h3><p>src\\store\\actionCreators\\home.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> actionTypes <span class="token keyword">from</span> <span class="token string">&quot;../action-types&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">setCurrentCategory</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">currentCategory</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> actionTypes<span class="token punctuation">.</span><span class="token constant">SET_CURRENT_CATEGORY</span><span class="token punctuation">,</span> <span class="token literal-property property">payload</span><span class="token operator">:</span> currentCategory <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-7-home-index-tsx" tabindex="-1"><a class="header-anchor" href="#_4-7-home-index-tsx"><span>4.7 Home\\index.tsx</span></a></h3><p>src\\routes\\Home\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React from &quot;react&quot;;</span>
+<span class="line">+import actionCreators from &#39;@/store/actionCreators/home&#39;;</span>
+<span class="line">+import HomeHeader from &#39;@/components/HomeHeader&#39;;</span>
+<span class="line">+import { CombinedState } from &#39;@/store/reducers&#39;;</span>
+<span class="line">+import { HomeState } from &#39;@/store/reducers/home&#39;;</span>
+<span class="line">+import { connect } from &#39;react-redux&#39;;</span>
+<span class="line">+import &#39;./index.less&#39;;</span>
+<span class="line">+type StateProps = ReturnType&lt;typeof mapStateToProps&gt;;</span>
+<span class="line">+type DispatchProps = typeof actionCreators;</span>
+<span class="line">+type Props = StateProps &amp; DispatchProps</span>
+<span class="line">+function Home(props: Props) {</span>
+<span class="line">+    return (</span>
+<span class="line">+        &lt;&gt;</span>
+<span class="line">+            &lt;HomeHeader</span>
+<span class="line">+                currentCategory={props.currentCategory}</span>
+<span class="line">+                setCurrentCategory={props.setCurrentCategory}</span>
+<span class="line">+            /&gt;</span>
+<span class="line">+        &lt;/&gt;</span>
+<span class="line">+    )</span>
+<span class="line">+}</span>
+<span class="line">+let mapStateToProps = (state: CombinedState): HomeState =&gt; state.home;</span>
+<span class="line">+export default connect(</span>
+<span class="line">+    mapStateToProps,</span>
+<span class="line">+    actionCreators</span>
+<span class="line">+)(Home);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-8-home-index-less" tabindex="-1"><a class="header-anchor" href="#_4-8-home-index-less"><span>4.8 Home\\index.less</span></a></h3><p>src\\routes\\Home\\index.less</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h2 id="_5-个人中心" tabindex="-1"><a class="header-anchor" href="#_5-个人中心"><span>5. 个人中心</span></a></h2><ul><li>本章主要编写<code>Profile</code>组件,就是切换到个人中心页的时候,先发起一个 ajax 请求判断此用户是否登录,如果已经登录的话显示用户信息,如果未登录的请提示跳转到登录和注册页</li><li>本章实践的内容 <ul><li>路由的切换</li><li>如何在 hooks 中发起 ajax 请求</li><li>如何保存及发送时携带 jwt 和 token</li><li>如何根据环境不同加载不同的接口地址</li><li>如何编写<code>axios</code>拦截器</li></ul></li></ul><h3 id="_5-1-参考" tabindex="-1"><a class="header-anchor" href="#_5-1-参考"><span>5.1 参考</span></a></h3><h4 id="_5-1-1-本章目录" tabindex="-1"><a class="header-anchor" href="#_5-1-1-本章目录"><span>5.1.1 本章目录</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── api</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── profile.tsx</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   ├── css</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   ├── NavHeader</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   └── HomeHeader</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Profile</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   ├── home.tsx</span>
+<span class="line">│   │   │   └── profile.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   └── typings</span>
+<span class="line">│       ├── images.d.ts</span>
+<span class="line">│       └── login-types.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_5-1-2-本章效果" tabindex="-1"><a class="header-anchor" href="#_5-1-2-本章效果"><span>5.1.2 本章效果</span></a></h4><p><img src="http://img.zhufengpeixun.cn/profileroute.gif" alt="profileroute"></p><h3 id="_5-2-profile-index-tsx" tabindex="-1"><a class="header-anchor" href="#_5-2-profile-index-tsx"><span>5.2 Profile\\index.tsx</span></a></h3><p>src\\routes\\Profile\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> PropsWithChildren<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> CombinedState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../store/reducers&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ProfileState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../store/reducers/profile&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> actionCreators <span class="token keyword">from</span> <span class="token string">&quot;../../store/actionCreators/profile&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token constant">LOGIN_TYPES</span> <span class="token keyword">from</span> <span class="token string">&quot;../../typings/login-types&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Descriptions<span class="token punctuation">,</span> Button<span class="token punctuation">,</span> Alert<span class="token punctuation">,</span> message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;antd&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> NavHeader <span class="token keyword">from</span> <span class="token string">&quot;../../components/NavHeader&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> AxiosError <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;axios&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> useNavigate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;react-router-dom&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;./index.less&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token comment">//当前的组件有三个属性来源</span></span>
+<span class="line"><span class="token comment">//1.mapStateToProps的返回值 2.actions对象类型 3. 来自路由 4.用户传入进来的其它属性</span></span>
+<span class="line">type StateProps <span class="token operator">=</span> ReturnType<span class="token operator">&lt;</span><span class="token keyword">typeof</span> mapStateToProps<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line">type DispatchProps <span class="token operator">=</span> <span class="token keyword">typeof</span> actionCreators<span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">Params</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></span>
+<span class="line">type Props <span class="token operator">=</span> PropsWithChildren<span class="token operator">&lt;</span>StateProps <span class="token operator">&amp;</span> DispatchProps<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Profile</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">const</span> navigate <span class="token operator">=</span> <span class="token function">useNavigate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token comment">//组件加载后直接 发起验证请求,查看此用户是否已经登录过了,如果没有登录则提示错误</span></span>
+<span class="line">    <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">        props<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">error</span><span class="token operator">:</span> AxiosError</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">let</span> content<span class="token punctuation">;</span> <span class="token comment">//里存放着要渲染的内容</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>props<span class="token punctuation">.</span>loginState <span class="token operator">==</span> <span class="token constant">LOGIN_TYPES</span><span class="token punctuation">.</span><span class="token constant">UN_VALIDATE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token comment">//如果未验证则内容为null</span></span>
+<span class="line">        content <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>props<span class="token punctuation">.</span>loginState <span class="token operator">==</span> <span class="token constant">LOGIN_TYPES</span><span class="token punctuation">.</span><span class="token constant">LOGINED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token comment">//如果已经登录显示用户信息</span></span>
+<span class="line">        content <span class="token operator">=</span> <span class="token punctuation">(</span></span>
+<span class="line">            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;user-info&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Descriptions title<span class="token operator">=</span><span class="token string">&quot;当前登录用户&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Descriptions<span class="token punctuation">.</span>Item label<span class="token operator">=</span><span class="token string">&quot;用户名&quot;</span><span class="token operator">&gt;</span>珠峰架构<span class="token operator">&lt;</span><span class="token operator">/</span>Descriptions<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Descriptions<span class="token punctuation">.</span>Item label<span class="token operator">=</span><span class="token string">&quot;手机号&quot;</span><span class="token operator">&gt;</span><span class="token number">15718856132</span><span class="token operator">&lt;</span><span class="token operator">/</span>Descriptions<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Descriptions<span class="token punctuation">.</span>Item label<span class="token operator">=</span><span class="token string">&quot;邮箱&quot;</span><span class="token operator">&gt;</span>zhangsan@qq<span class="token punctuation">.</span>com<span class="token operator">&lt;</span><span class="token operator">/</span>Descriptions<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Descriptions<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Button type<span class="token operator">=</span><span class="token string">&quot;primary&quot;</span><span class="token operator">&gt;</span>退出登录<span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token comment">//如果没有登录,则显示注册和登录按钮</span></span>
+<span class="line">        content <span class="token operator">=</span> <span class="token punctuation">(</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Alert</span>
+<span class="line">                    type<span class="token operator">=</span><span class="token string">&quot;warning&quot;</span></span>
+<span class="line">                    message<span class="token operator">=</span><span class="token string">&quot;当前未登录&quot;</span></span>
+<span class="line">                    description<span class="token operator">=</span><span class="token string">&quot;亲爱的用户你好，你当前尚未登录，请你选择注册或者登录&quot;</span></span>
+<span class="line">                <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">textAlign</span><span class="token operator">:</span> <span class="token string">&quot;center&quot;</span><span class="token punctuation">,</span> <span class="token literal-property property">padding</span><span class="token operator">:</span> <span class="token string">&quot;50px&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Button type<span class="token operator">=</span><span class="token string">&quot;dashed&quot;</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">&quot;/login&quot;</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">                        登录</span>
+<span class="line">                    <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Button</span>
+<span class="line">                        type<span class="token operator">=</span><span class="token string">&quot;dashed&quot;</span></span>
+<span class="line">                        style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">marginLeft</span><span class="token operator">:</span> <span class="token string">&quot;50px&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="line">                        onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">&quot;/register&quot;</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+<span class="line">                    <span class="token operator">&gt;</span></span>
+<span class="line">                        注册</span>
+<span class="line">                    <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span>section<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>NavHeader <span class="token operator">&gt;</span>个人中心<span class="token operator">&lt;</span><span class="token operator">/</span>NavHeader<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token punctuation">{</span>content<span class="token punctuation">}</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>section<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">let</span> mapStateToProps <span class="token operator">=</span> <span class="token punctuation">(</span>state<span class="token operator">:</span> CombinedState<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter">ProfileState</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>profile<span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>mapStateToProps<span class="token punctuation">,</span> actionCreators<span class="token punctuation">)</span><span class="token punctuation">(</span>Profile<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-3-profile-index-less" tabindex="-1"><a class="header-anchor" href="#_5-3-profile-index-less"><span>5.3 Profile\\index.less</span></a></h3><p>src\\routes\\Profile\\index.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token punctuation">.</span>user<span class="token operator">-</span>info <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">padding</span><span class="token operator">:</span> 20px<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-4-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_5-4-action-types-tsx"><span>5.4 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export const ADD = &#39;ADD&#39;;</span>
+<span class="line">//设置当前分类的名称</span>
+<span class="line">export const SET_CURRENT_CATEGORY = &#39;SET_CURRENT_CATEGORY&#39;;</span>
+<span class="line">//发起验证用户是否登录的请求</span>
+<span class="line">+export const VALIDATE = &#39;VALIDATE&#39;;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-5-typings-login-types-tsx" tabindex="-1"><a class="header-anchor" href="#_5-5-typings-login-types-tsx"><span>5.5 typings\\login-types.tsx</span></a></h3><p>src\\typings\\login-types.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">enum</span> <span class="token constant">LOGIN_TYPES</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token constant">UN_VALIDATE</span><span class="token punctuation">,</span> <span class="token comment">//未验证过</span></span>
+<span class="line">    <span class="token constant">LOGINED</span><span class="token punctuation">,</span>     <span class="token comment">//登录</span></span>
+<span class="line">    <span class="token constant">UNLOGIN</span>      <span class="token comment">//未登录</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token constant">LOGIN_TYPES</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-6-reducers-profile-tsx" tabindex="-1"><a class="header-anchor" href="#_5-6-reducers-profile-tsx"><span>5.6 reducers\\profile.tsx</span></a></h3><p>src\\store\\reducers\\profile.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> AnyAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> actionTypes <span class="token keyword">from</span> <span class="token string">&quot;../action-types&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token constant">LOGIN_TYPES</span> <span class="token keyword">from</span> <span class="token string">&quot;../../typings/login-types&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ProfileState</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">loginState</span><span class="token operator">:</span> <span class="token constant">LOGIN_TYPES</span><span class="token punctuation">;</span> <span class="token comment">//当前用户的登录状态</span></span>
+<span class="line">  <span class="token literal-property property">user</span><span class="token operator">:</span> any<span class="token punctuation">;</span> <span class="token comment">//当前已经登录的用户信息</span></span>
+<span class="line">  <span class="token literal-property property">error</span><span class="token operator">:</span> string <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">//错误信息</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">let</span> <span class="token literal-property property">initialState</span><span class="token operator">:</span> ProfileState <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token comment">//初始状态</span></span>
+<span class="line">  <span class="token literal-property property">loginState</span><span class="token operator">:</span> <span class="token constant">LOGIN_TYPES</span><span class="token punctuation">.</span><span class="token constant">UN_VALIDATE</span><span class="token punctuation">,</span> <span class="token comment">//当前用户的登录状态</span></span>
+<span class="line">  <span class="token literal-property property">user</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">//当前已经登录的用户信息</span></span>
+<span class="line">  <span class="token literal-property property">error</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">//错误信息</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span></span>
+<span class="line">  <span class="token parameter"><span class="token literal-property property">state</span><span class="token operator">:</span> ProfileState <span class="token operator">=</span> initialState<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">action</span><span class="token operator">:</span> AnyAction</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token operator">:</span> ProfileState <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">case</span> actionTypes<span class="token punctuation">.</span><span class="token constant">VALIDATE</span><span class="token operator">:</span></span>
+<span class="line">      <span class="token keyword">if</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token comment">//如果此用户已经登录了</span></span>
+<span class="line">        <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
+<span class="line">          <span class="token operator">...</span>state<span class="token punctuation">,</span></span>
+<span class="line">          <span class="token literal-property property">loginState</span><span class="token operator">:</span> <span class="token constant">LOGIN_TYPES</span><span class="token punctuation">.</span><span class="token constant">LOGINED</span><span class="token punctuation">,</span></span>
+<span class="line">          <span class="token literal-property property">user</span><span class="token operator">:</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>data<span class="token punctuation">,</span> <span class="token comment">//设置用户名</span></span>
+<span class="line">          <span class="token literal-property property">error</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">//没有错误</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
+<span class="line">          <span class="token operator">...</span>state<span class="token punctuation">,</span></span>
+<span class="line">          <span class="token literal-property property">loginState</span><span class="token operator">:</span> <span class="token constant">LOGIN_TYPES</span><span class="token punctuation">.</span><span class="token constant">UNLOGIN</span><span class="token punctuation">,</span></span>
+<span class="line">          <span class="token literal-property property">user</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">//用户名为空</span></span>
+<span class="line">          <span class="token literal-property property">error</span><span class="token operator">:</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">,</span> <span class="token comment">//错误对象赋值</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token keyword">default</span><span class="token operator">:</span></span>
+<span class="line">      <span class="token keyword">return</span> state<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-7-actioncreators-profile-tsx" tabindex="-1"><a class="header-anchor" href="#_5-7-actioncreators-profile-tsx"><span>5.7 actionCreators\\profile.tsx</span></a></h3><p>src\\store\\actionCreators\\profile.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> AnyAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> actionTypes <span class="token keyword">from</span> <span class="token string">&quot;../action-types&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> validate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../api/profile&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token comment">//https://github.com/redux-utilities/redux-promise/blob/master/src/index.js</span></span>
+<span class="line">  <span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> AnyAction <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token comment">//发起判断当前用户是否登录的请求</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">type</span><span class="token operator">:</span> actionTypes<span class="token punctuation">.</span><span class="token constant">VALIDATE</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token literal-property property">payload</span><span class="token operator">:</span> <span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-8-api-index-tsx" tabindex="-1"><a class="header-anchor" href="#_5-8-api-index-tsx"><span>5.8 api\\index.tsx</span></a></h3><p>src\\api\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">&quot;axios&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>baseURL <span class="token operator">=</span> <span class="token string">&quot;http://ketang.zhufengpeixun.com&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token comment">//设置请求体类型为 application/json</span></span>
+<span class="line">axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>post<span class="token punctuation">[</span><span class="token string">&quot;Content-Type&quot;</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;application/json;charset=UTF-8&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span></span>
+<span class="line">  <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token comment">//在发送请求前把sessionStorage中的token写到请求头里</span></span>
+<span class="line">    <span class="token keyword">let</span> access_token <span class="token operator">=</span> sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">&quot;access_token&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    config<span class="token punctuation">.</span>headers <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">Authorization</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">Bearer </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>access_token<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">return</span> config<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span></span>
+<span class="line">  <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> response<span class="token punctuation">.</span>data<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> axios<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-10-api-profile-tsx" tabindex="-1"><a class="header-anchor" href="#_5-10-api-profile-tsx"><span>5.10 api\\profile.tsx</span></a></h3><p>src\\api\\profile.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">&quot;./index&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/user/validate&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-11-navheader-index-tsx" tabindex="-1"><a class="header-anchor" href="#_5-11-navheader-index-tsx"><span>5.11 NavHeader\\index.tsx</span></a></h3><p>src\\components\\NavHeader\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;./index.less&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> LeftOutlined <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@ant-design/icons&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> UNSAFE_NavigationContext <span class="token keyword">as</span> NavigationContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;react-router-dom&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">Props</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">children</span><span class="token operator">:</span> any<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">NavHeader</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">const</span> <span class="token punctuation">{</span> navigator <span class="token punctuation">}</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useContext</span><span class="token punctuation">(</span>NavigationContext<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">&quot;nav-header&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>LeftOutlined onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>navigator <span class="token keyword">as</span> unknown <span class="token keyword">as</span> History<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token punctuation">{</span>props<span class="token punctuation">.</span>children<span class="token punctuation">}</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_5-12-navheader-index-less" tabindex="-1"><a class="header-anchor" href="#_5-12-navheader-index-less"><span>5.12 NavHeader\\index.less</span></a></h3><p>src\\components\\NavHeader\\index.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token punctuation">.</span>nav<span class="token operator">-</span>header <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">position</span><span class="token operator">:</span> fixed<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">left</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">top</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">height</span><span class="token operator">:</span> 100px<span class="token punctuation">;</span></span>
+<span class="line">  z<span class="token operator">-</span>index<span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span></span>
+<span class="line">  box<span class="token operator">-</span>sizing<span class="token operator">:</span> border<span class="token operator">-</span>box<span class="token punctuation">;</span></span>
+<span class="line">  text<span class="token operator">-</span>align<span class="token operator">:</span> center<span class="token punctuation">;</span></span>
+<span class="line">  line<span class="token operator">-</span>height<span class="token operator">:</span> 100px<span class="token punctuation">;</span></span>
+<span class="line">   background<span class="token operator">-</span>color<span class="token operator">:</span> </span>
+<span class="line">   <span class="token literal-property property">color</span><span class="token operator">:</span> </span>
+<span class="line">  font<span class="token operator">-</span>size<span class="token operator">:</span>35px<span class="token punctuation">;</span></span>
+<span class="line">  span <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">position</span><span class="token operator">:</span> absolute<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">left</span><span class="token operator">:</span> 20px<span class="token punctuation">;</span></span>
+<span class="line">    line<span class="token operator">-</span>height<span class="token operator">:</span> 100px<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_6-注册登陆" tabindex="-1"><a class="header-anchor" href="#_6-注册登陆"><span>6. 注册登陆</span></a></h2><ul><li>本章我们主要是实现注册登录的功能</li><li>本章主要要实践的内容 <ul><li>如何使用<code>antd4</code>中的表单功能</li></ul></li></ul><h3 id="_6-1-参考" tabindex="-1"><a class="header-anchor" href="#_6-1-参考"><span>6.1 参考</span></a></h3><h4 id="_6-1-1-目录结构" tabindex="-1"><a class="header-anchor" href="#_6-1-1-目录结构"><span>6.1.1 目录结构</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── api</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── profile.tsx</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   ├── css</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   ├── NavHeader</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   └── HomeHeader</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Login</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Profile</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Register</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   ├── home.tsx</span>
+<span class="line">│   │   │   └── profile.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   └── typings</span>
+<span class="line">│       ├── images.d.ts</span>
+<span class="line">│       ├── login-types.tsx</span>
+<span class="line">│       └── user.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_6-1-2-本章效果" tabindex="-1"><a class="header-anchor" href="#_6-1-2-本章效果"><span>6.1.2 本章效果</span></a></h4><p><img src="http://img.zhufengpeixun.cn/registerlogin.gif" alt="registerlogin"></p><h3 id="_6-2-src-index-tsx" tabindex="-1"><a class="header-anchor" href="#_6-2-src-index-tsx"><span>6.2 src\\index.tsx</span></a></h3><p>src\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React from &quot;react&quot;;</span>
+<span class="line">import ReactDOM from &quot;react-dom&quot;;</span>
+<span class="line">import { Switch, Route, Redirect } from &quot;react-router-dom&quot;;//三个路由组件</span>
+<span class="line">import { Provider } from &quot;react-redux&quot;;//负责把属性中的store传递给子组件</span>
+<span class="line">import store from &quot;./store&quot;;//引入仓库</span>
+<span class="line">import { ConfigProvider } from &quot;antd&quot;;//配置</span>
+<span class="line">import zh_CN from &quot;antd/lib/locale-provider/zh_CN&quot;;//国际化中文</span>
+<span class="line">import &quot;./assets/css/common.less&quot;;//通用的样式</span>
+<span class="line">import Tabs from &quot;./components/Tabs&quot;;//引入底部的页签导航</span>
+<span class="line">import Home from &quot;./routes/Home&quot;;//首页</span>
+<span class="line">import Cart from &quot;./routes/Cart&quot;;//我的课程</span>
+<span class="line">import Profile from &quot;./routes/Profile&quot;;//个人中心</span>
+<span class="line">+import Register from &quot;./routes/Register&quot;;</span>
+<span class="line">+import Login from &quot;./routes/Login&quot;;</span>
+<span class="line">import { ConnectedRouter } from &#39;redux-first-history&#39;;//redux绑定路由</span>
+<span class="line">import history from &#39;./store/history&#39;;</span>
+<span class="line">ReactDOM.render(</span>
+<span class="line">    &lt;Provider store={store}&gt;</span>
+<span class="line">        &lt;ConnectedRouter history={history}&gt;</span>
+<span class="line">            &lt;ConfigProvider locale={zh_CN}&gt;</span>
+<span class="line">                &lt;main className=&quot;main-container&quot;&gt;</span>
+<span class="line">                    &lt;Switch&gt;</span>
+<span class="line">                        &lt;Route path=&quot;/&quot; exact component={Home} /&gt;</span>
+<span class="line">                        &lt;Route path=&quot;/cart&quot; component={Cart} /&gt;</span>
+<span class="line">                        &lt;Route path=&quot;/profile&quot; component={Profile} /&gt;</span>
+<span class="line">+                        &lt;Route path=&quot;/register&quot; component={Register} /&gt;</span>
+<span class="line">+                        &lt;Route path=&quot;/login&quot; component={Login} /&gt;</span>
+<span class="line">                        &lt;Redirect to=&quot;/&quot; /&gt;</span>
+<span class="line">                    &lt;/Switch&gt;</span>
+<span class="line">                &lt;/main&gt;</span>
+<span class="line">                &lt;Tabs /&gt;</span>
+<span class="line">            &lt;/ConfigProvider&gt;</span>
+<span class="line">        &lt;/ConnectedRouter&gt;</span>
+<span class="line">    &lt;/Provider&gt;,</span>
+<span class="line">    document.getElementById(&quot;root&quot;)</span>
+<span class="line">);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-3-api-profile-tsx" tabindex="-1"><a class="header-anchor" href="#_6-3-api-profile-tsx"><span>6.3 api\\profile.tsx</span></a></h3><p>src\\api\\profile.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import axios from &#39;./index&#39;;</span>
+<span class="line">+import { RegisterPayload, LoginPayload } from &#39;../typings/user&#39;;</span>
+<span class="line">export function validate() {</span>
+<span class="line">    return axios.get(&#39;/user/validate&#39;);</span>
+<span class="line">}</span>
+<span class="line">+export function register&lt;T&gt;(values: RegisterPayload) {</span>
+<span class="line">+        return axios.post&lt;T, T&gt;(&#39;/user/register&#39;, values);</span>
+<span class="line">+}</span>
+<span class="line">+export function login&lt;T&gt;(values: LoginPayload) {</span>
+<span class="line">+    return axios.post&lt;T, T&gt;(&#39;/user/login&#39;, values);</span>
+<span class="line">+}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-4-profile-index-tsx" tabindex="-1"><a class="header-anchor" href="#_6-4-profile-index-tsx"><span>6.4 Profile\\index.tsx</span></a></h3><p>src\\routes\\Profile\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React, { PropsWithChildren, useEffect } from &#39;react&#39;;</span>
+<span class="line">import { connect } from &#39;react-redux&#39;;</span>
+<span class="line">import { CombinedState } from &#39;../../store/reducers&#39;;</span>
+<span class="line">import { ProfileState } from &#39;../../store/reducers/profile&#39;;</span>
+<span class="line">import actionCreators from &#39;../../store/actionCreators/profile&#39;;</span>
+<span class="line">import LOGIN_TYPES from &#39;../../typings/login-types&#39;;</span>
+<span class="line">import { Descriptions, Button, Alert, message } from &#39;antd&#39;;</span>
+<span class="line">import NavHeader from &#39;../../components/NavHeader&#39;;</span>
+<span class="line">import { useNavigate } from &#39;react-router-dom&#39;;</span>
+<span class="line">import { AxiosError } from &#39;axios&#39;;</span>
+<span class="line">import &#39;./index.less&#39;;</span>
+<span class="line">//当前的组件有三个属性来源</span>
+<span class="line">//1.mapStateToProps的返回值 2.actions对象类型 3. 来自路由 4.用户传入进来的其它属性</span>
+<span class="line">type StateProps = ReturnType&lt;typeof mapStateToProps&gt;;</span>
+<span class="line">type DispatchProps = typeof actionCreators;</span>
+<span class="line">type Props = PropsWithChildren&lt;StateProps &amp; DispatchProps&gt;</span>
+<span class="line">function Profile(props: Props) {</span>
+<span class="line">   const navigate = useNavigate();</span>
+<span class="line">    //组件加载后直接 发起验证请求,查看此用户是否已经登录过了,如果没有登录则提示错误</span>
+<span class="line">    useEffect(() =&gt; {</span>
+<span class="line">        props.validate().catch((error: AxiosError) =&gt; message.error(error.message));</span>
+<span class="line">    }, []);</span>
+<span class="line">    let content;//里存放着要渲染的内容</span>
+<span class="line">    if (props.loginState == LOGIN_TYPES.UN_VALIDATE) {//如果未验证则内容为null</span>
+<span class="line">        content = null;</span>
+<span class="line">    } else if (props.loginState == LOGIN_TYPES.LOGINED) {//如果已经登录显示用户信息</span>
+<span class="line">        content = (</span>
+<span class="line">            &lt;div className=&quot;user-info&quot;&gt;</span>
+<span class="line">                &lt;Descriptions title=&quot;当前登录用户&quot;&gt;</span>
+<span class="line">+                &lt;Descriptions.Item label=&quot;用户名&quot;&gt;{props.user.username}&lt;/Descriptions.Item&gt;</span>
+<span class="line">+                &lt;Descriptions.Item label=&quot;邮箱&quot;&gt;{props.user.email}&lt;/Descriptions.Item&gt;</span>
+<span class="line">                &lt;/Descriptions&gt;</span>
+<span class="line">+                &lt;Button type={&quot;primary&quot;} onClick={() =&gt; props.logout() }&gt;退出登录&lt;/Button&gt;</span>
+<span class="line">            &lt;/div&gt;</span>
+<span class="line">        )</span>
+<span class="line">    } else {//如果没有登录,则显示注册和登录按钮</span>
+<span class="line">        content = (</span>
+<span class="line">            &lt;&gt;</span>
+<span class="line">                &lt;Alert type=&quot;warning&quot; message=&quot;当前未登录&quot; description=&quot;亲爱的用户你好，你当前尚未登录，请你选择注册或者登录&quot; /&gt;</span>
+<span class="line">                &lt;div style={{ textAlign: &#39;center&#39;, padding: &#39;50px&#39; }}&gt;</span>
+<span class="line">                    &lt;Button type=&quot;dashed&quot; onClick={() =&gt; navigate(&#39;/login&#39;)}&gt;登录&lt;/Button&gt;</span>
+<span class="line">                    &lt;Button type=&quot;dashed&quot; style={{ marginLeft: &#39;50px&#39; }} onClick={() =&gt; navigate(&#39;/register&#39;)}&gt;注册&lt;/Button&gt;</span>
+<span class="line">                &lt;/div&gt;</span>
+<span class="line">            &lt;/&gt;</span>
+<span class="line">        )</span>
+<span class="line">    }</span>
+<span class="line">    return (</span>
+<span class="line">        (</span>
+<span class="line">            &lt;section&gt;</span>
+<span class="line">                &lt;NavHeader&gt;个人中心&lt;/NavHeader&gt;</span>
+<span class="line">                {content}</span>
+<span class="line">            &lt;/section&gt;</span>
+<span class="line">        )</span>
+<span class="line">    )</span>
+<span class="line">}</span>
+<span class="line"></span>
+<span class="line">let mapStateToProps = (state: CombinedState): ProfileState =&gt; state.profile</span>
+<span class="line">export default connect(</span>
+<span class="line">    mapStateToProps,</span>
+<span class="line">    actionCreators</span>
+<span class="line">)(Profile);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-5-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_6-5-action-types-tsx"><span>6.5 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export const ADD = &#39;ADD&#39;;</span>
+<span class="line">//设置当前分类的名称</span>
+<span class="line">export const SET_CURRENT_CATEGORY = &#39;SET_CURRENT_CATEGORY&#39;;</span>
+<span class="line">//发起验证用户是否登录的请求</span>
+<span class="line">export const VALIDATE = &#39;VALIDATE&#39;;</span>
+<span class="line"></span>
+<span class="line">+export const LOGOUT = &#39;LOGOUT&#39;;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-6-actioncreators-profile-tsx" tabindex="-1"><a class="header-anchor" href="#_6-6-actioncreators-profile-tsx"><span>6.6 actionCreators\\profile.tsx</span></a></h3><p>src\\store\\actionCreators\\profile.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { AnyAction } from &#39;redux&#39;;</span>
+<span class="line">import * as actionTypes from &#39;../action-types&#39;;</span>
+<span class="line">+import { validate, register, login } from &#39;@/api/profile&#39;;</span>
+<span class="line">+import { push } from &#39;redux-first-history&#39;;</span>
+<span class="line">+import { RegisterPayload, LoginPayload, RegisterResult, LoginResult } from &#39;@/typings/user&#39;;</span>
+<span class="line">+import { message } from &quot;antd&quot;;</span>
+<span class="line">export default {</span>
+<span class="line">    //https://github.com/redux-utilities/redux-promise/blob/master/src/index.js</span>
+<span class="line">    validate(): AnyAction {//发起判断当前用户是否登录的请求</span>
+<span class="line">        return {</span>
+<span class="line">            type: actionTypes.VALIDATE,</span>
+<span class="line">            payload: validate()</span>
+<span class="line">        }</span>
+<span class="line">    },</span>
+<span class="line">+    register(values: RegisterPayload) {</span>
+<span class="line">+        return function (dispatch: any) {</span>
+<span class="line">+            (async function () {</span>
+<span class="line">+                try {</span>
+<span class="line">+                    let result: RegisterResult = await register&lt;RegisterResult&gt;(values);</span>
+<span class="line">+                    if (result.success) {</span>
+<span class="line">+                        dispatch(push(&#39;/login&#39;));</span>
+<span class="line">+                    } else {</span>
+<span class="line">+                        message.error(result.message);</span>
+<span class="line">+                    }</span>
+<span class="line">+                } catch (error) {</span>
+<span class="line">+                    message.error(&#39;注册失败&#39;);</span>
+<span class="line">+                }</span>
+<span class="line">+            })();</span>
+<span class="line">+        }</span>
+<span class="line">+    },</span>
+<span class="line">+    login(values: LoginPayload) {</span>
+<span class="line">+        return function (dispatch: any) {</span>
+<span class="line">+            (async function () {</span>
+<span class="line">+                try {</span>
+<span class="line">+                    let result: LoginResult = await login&lt;LoginResult&gt;(values);</span>
+<span class="line">+                    if (result.success) {</span>
+<span class="line">+                        sessionStorage.setItem(&#39;access_token&#39;, result.data.token);</span>
+<span class="line">+                        dispatch(push(&#39;/profile&#39;));</span>
+<span class="line">+                    } else {</span>
+<span class="line">+                        message.error(result.message);</span>
+<span class="line">+                    }</span>
+<span class="line">+                } catch (error) {</span>
+<span class="line">+                    message.error(&#39;登录失败&#39;);</span>
+<span class="line">+                }</span>
+<span class="line">+            })();</span>
+<span class="line">+        }</span>
+<span class="line">+    },</span>
+<span class="line">+    logout() {</span>
+<span class="line">+            return function (dispatch: any) {</span>
+<span class="line">+                sessionStorage.removeItem(&#39;access_token&#39;);</span>
+<span class="line">+                dispatch({ type: actionTypes.LOGOUT });</span>
+<span class="line">+                dispatch(push(&#39;/login&#39;));</span>
+<span class="line">+            }</span>
+<span class="line">+    }</span>
+<span class="line">+}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-7-src-typings-user-tsx" tabindex="-1"><a class="header-anchor" href="#_6-7-src-typings-user-tsx"><span>6.7 src\\typings\\user.tsx</span></a></h3><p>src\\typings\\user.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">RegisterPayload</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">username</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">password</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">email</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">confirmPassword</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">LoginPayload</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">username</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">password</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">RegisterResult</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">token</span><span class="token operator">:</span> string <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token literal-property property">success</span><span class="token operator">:</span> boolean<span class="token punctuation">,</span></span>
+<span class="line">    message<span class="token operator">?</span><span class="token operator">:</span> any</span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">LoginResult</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">token</span><span class="token operator">:</span> string <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token literal-property property">success</span><span class="token operator">:</span> boolean<span class="token punctuation">,</span></span>
+<span class="line">    message<span class="token operator">?</span><span class="token operator">:</span> any</span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-8-register-index-tsx" tabindex="-1"><a class="header-anchor" href="#_6-8-register-index-tsx"><span>6.8 Register\\index.tsx</span></a></h3><p>src\\routes\\Register\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> actionCreators <span class="token keyword">from</span> <span class="token string">&quot;../../store/actionCreators/profile&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Link <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-router-dom&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> NavHeader <span class="token keyword">from</span> <span class="token string">&quot;../../components/NavHeader&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Form<span class="token punctuation">,</span> Input<span class="token punctuation">,</span> Button<span class="token punctuation">,</span> message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;antd&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> CombinedState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../store/reducers&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ProfileState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../../store/reducers/profile&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> UserAddOutlined<span class="token punctuation">,</span> LockOutlined<span class="token punctuation">,</span> MailOutlined <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@ant-design/icons&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;./index.less&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">type StateProps <span class="token operator">=</span> ReturnType<span class="token operator">&lt;</span><span class="token keyword">typeof</span> mapStateToProps<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line">type DispatchProps <span class="token operator">=</span> <span class="token keyword">typeof</span> actionCreators<span class="token punctuation">;</span></span>
+<span class="line">type Props <span class="token operator">=</span> StateProps <span class="token operator">&amp;</span> DispatchProps<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Register</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">const</span> <span class="token function-variable function">onFinish</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">values</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">        props<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">const</span> <span class="token function-variable function">onFinishFailed</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">errorInfo</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">        message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">&quot;表单验证失败! &quot;</span> <span class="token operator">+</span> errorInfo<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>NavHeader<span class="token operator">&gt;</span>用户注册<span class="token operator">&lt;</span><span class="token operator">/</span>NavHeader<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>Form</span>
+<span class="line">                onFinish<span class="token operator">=</span><span class="token punctuation">{</span>onFinish<span class="token punctuation">}</span></span>
+<span class="line">                onFinishFailed<span class="token operator">=</span><span class="token punctuation">{</span>onFinishFailed<span class="token punctuation">}</span></span>
+<span class="line">                className<span class="token operator">=</span><span class="token string">&quot;login-form&quot;</span></span>
+<span class="line">            <span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item</span>
+<span class="line">                    label<span class="token operator">=</span><span class="token string">&quot;用户名&quot;</span></span>
+<span class="line">                    name<span class="token operator">=</span><span class="token string">&quot;username&quot;</span></span>
+<span class="line">                    rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">&quot;请输入你的用户名!&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>
+<span class="line">                <span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Input prefix<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>UserAddOutlined <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span> placeholder<span class="token operator">=</span><span class="token string">&quot;用户名&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item</span>
+<span class="line">                    label<span class="token operator">=</span><span class="token string">&quot;密码&quot;</span></span>
+<span class="line">                    name<span class="token operator">=</span><span class="token string">&quot;password&quot;</span></span>
+<span class="line">                    rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">&quot;请输入你的密码!&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>
+<span class="line">                <span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Input prefix<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>LockOutlined <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span> type<span class="token operator">=</span><span class="token string">&quot;password&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;密码&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item</span>
+<span class="line">                    label<span class="token operator">=</span><span class="token string">&quot;确认密码&quot;</span></span>
+<span class="line">                    name<span class="token operator">=</span><span class="token string">&quot;confirmPassword&quot;</span></span>
+<span class="line">                    rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">&quot;请输入你的确认密码!&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>
+<span class="line">                <span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Input</span>
+<span class="line">                        prefix<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>LockOutlined <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span></span>
+<span class="line">                        type<span class="token operator">=</span><span class="token string">&quot;password&quot;</span></span>
+<span class="line">                        placeholder<span class="token operator">=</span><span class="token string">&quot;确认密码&quot;</span></span>
+<span class="line">                    <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item</span>
+<span class="line">                    label<span class="token operator">=</span><span class="token string">&quot;邮箱&quot;</span></span>
+<span class="line">                    name<span class="token operator">=</span><span class="token string">&quot;email&quot;</span></span>
+<span class="line">                    rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">&quot;请输入你的邮箱!&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>
+<span class="line">                <span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Input prefix<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>MailOutlined <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span> type<span class="token operator">=</span><span class="token string">&quot;email&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;邮箱&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Button</span>
+<span class="line">                        type<span class="token operator">=</span><span class="token string">&quot;primary&quot;</span></span>
+<span class="line">                        htmlType<span class="token operator">=</span><span class="token string">&quot;submit&quot;</span></span>
+<span class="line">                        className<span class="token operator">=</span><span class="token string">&quot;login-form-button&quot;</span></span>
+<span class="line">                    <span class="token operator">&gt;</span></span>
+<span class="line">                        注册</span>
+<span class="line">                    <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">                    或者 <span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">&quot;/login&quot;</span><span class="token operator">&gt;</span>立刻登录<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">let</span> mapStateToProps <span class="token operator">=</span> <span class="token punctuation">(</span>state<span class="token operator">:</span> CombinedState<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter">ProfileState</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>profile<span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>mapStateToProps<span class="token punctuation">,</span> actionCreators<span class="token punctuation">)</span><span class="token punctuation">(</span>Register<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>routes\\Register\\index.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token punctuation">.</span>login<span class="token operator">-</span>form <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">padding</span><span class="token operator">:</span> 20px<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-9-login-index-tsx" tabindex="-1"><a class="header-anchor" href="#_6-9-login-index-tsx"><span>6.9 Login\\index.tsx</span></a></h3><p>src\\routes\\Login\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> actionCreators <span class="token keyword">from</span> <span class="token string">&quot;@/store/actionCreators/profile&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Link <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-router-dom&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> NavHeader <span class="token keyword">from</span> <span class="token string">&quot;@/components/NavHeader&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Form<span class="token punctuation">,</span> Input<span class="token punctuation">,</span> Button<span class="token punctuation">,</span> message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;antd&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;./index.less&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> CombinedState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/store/reducers&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ProfileState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/store/reducers/profile&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> UserAddOutlined<span class="token punctuation">,</span> LockOutlined<span class="token punctuation">,</span> MailOutlined <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@ant-design/icons&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">type StateProps <span class="token operator">=</span> ReturnType<span class="token operator">&lt;</span><span class="token keyword">typeof</span> mapStateToProps<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line">type DispatchProps <span class="token operator">=</span> <span class="token keyword">typeof</span> actionCreators<span class="token punctuation">;</span></span>
+<span class="line">type Props <span class="token operator">=</span> StateProps <span class="token operator">&amp;</span> DispatchProps<span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Register</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">const</span> <span class="token function-variable function">onFinish</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">values</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">        props<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">const</span> <span class="token function-variable function">onFinishFailed</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">errorInfo</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">        message<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">&quot;表单验证失败! &quot;</span> <span class="token operator">+</span> errorInfo<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>NavHeader<span class="token operator">&gt;</span>用户登录<span class="token operator">&lt;</span><span class="token operator">/</span>NavHeader<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>Form</span>
+<span class="line">                onFinish<span class="token operator">=</span><span class="token punctuation">{</span>onFinish<span class="token punctuation">}</span></span>
+<span class="line">                onFinishFailed<span class="token operator">=</span><span class="token punctuation">{</span>onFinishFailed<span class="token punctuation">}</span></span>
+<span class="line">                className<span class="token operator">=</span><span class="token string">&quot;login-form&quot;</span></span>
+<span class="line">            <span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item</span>
+<span class="line">                    label<span class="token operator">=</span><span class="token string">&quot;用户名&quot;</span></span>
+<span class="line">                    name<span class="token operator">=</span><span class="token string">&quot;username&quot;</span></span>
+<span class="line">                    rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">&quot;请输入你的用户名!&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>
+<span class="line">                <span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Input prefix<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>UserAddOutlined <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span> placeholder<span class="token operator">=</span><span class="token string">&quot;用户名&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item</span>
+<span class="line">                    label<span class="token operator">=</span><span class="token string">&quot;密码&quot;</span></span>
+<span class="line">                    name<span class="token operator">=</span><span class="token string">&quot;password&quot;</span></span>
+<span class="line">                    rules<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">&quot;请输入你的密码!&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>
+<span class="line">                <span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Input prefix<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>LockOutlined <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span> type<span class="token operator">=</span><span class="token string">&quot;password&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;密码&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">                    <span class="token operator">&lt;</span>Button</span>
+<span class="line">                        type<span class="token operator">=</span><span class="token string">&quot;primary&quot;</span></span>
+<span class="line">                        htmlType<span class="token operator">=</span><span class="token string">&quot;submit&quot;</span></span>
+<span class="line">                        className<span class="token operator">=</span><span class="token string">&quot;login-form-button&quot;</span></span>
+<span class="line">                    <span class="token operator">&gt;</span></span>
+<span class="line">                        登录</span>
+<span class="line">                    <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">                    或者 <span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">&quot;/register&quot;</span><span class="token operator">&gt;</span>立刻注册<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token punctuation">.</span>Item<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">const</span> mapStateToProps <span class="token operator">=</span> <span class="token punctuation">(</span>state<span class="token operator">:</span> CombinedState<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter">ProfileState</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>profile<span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>mapStateToProps<span class="token punctuation">,</span> actionCreators<span class="token punctuation">)</span><span class="token punctuation">(</span>Register<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_6-10-login-index-less" tabindex="-1"><a class="header-anchor" href="#_6-10-login-index-less"><span>6.10 Login\\index.less</span></a></h3><p>src\\routes\\Login\\index.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token punctuation">.</span>login<span class="token operator">-</span>form <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">padding</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">.</span>2rem<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_7-上传头像" tabindex="-1"><a class="header-anchor" href="#_7-上传头像"><span>7.上传头像</span></a></h2><ul><li>本章节我们学习如何向服务器端上传头像</li><li>本章学习如下内容 <ul><li>如何使用 antdesign 的图片上传组件</li></ul></li></ul><h3 id="_7-1-参考" tabindex="-1"><a class="header-anchor" href="#_7-1-参考"><span>7.1 参考</span></a></h3><h4 id="_7-1-1-本章目录" tabindex="-1"><a class="header-anchor" href="#_7-1-1-本章目录"><span>7.1.1 本章目录</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── api</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── profile.tsx</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   ├── css</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   ├── NavHeader</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   └── HomeHeader</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Login</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Profile</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Register</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   ├── home.tsx</span>
+<span class="line">│   │   │   └── profile.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   └── typings</span>
+<span class="line">│       ├── images.d.ts</span>
+<span class="line">│       ├── login-types.tsx</span>
+<span class="line">│       └── user.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_7-1-2-本章效果" tabindex="-1"><a class="header-anchor" href="#_7-1-2-本章效果"><span>7.1.2 本章效果</span></a></h4><p><img src="http://img.zhufengpeixun.cn/uploadavatar.gif" alt="uploadavatar.gif"></p><h3 id="_7-2-profile-index-tsx" tabindex="-1"><a class="header-anchor" href="#_7-2-profile-index-tsx"><span>7.2 Profile\\index.tsx</span></a></h3><p>src\\routes\\Profile\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">+import React, { PropsWithChildren, useEffect, useState } from &quot;react&quot;;</span>
+<span class="line">import { connect } from &quot;react-redux&quot;;</span>
+<span class="line">import { CombinedState } from &quot;../../store/reducers&quot;;</span>
+<span class="line">import { ProfileState } from &quot;../../store/reducers/profile&quot;;</span>
+<span class="line">import actionCreators from &quot;../../store/actionCreators/profile&quot;;</span>
+<span class="line">import LOGIN_TYPES from &quot;../../typings/login-types&quot;;</span>
+<span class="line">+import { Descriptions, Button, Alert, message, Upload } from &quot;antd&quot;;</span>
+<span class="line">import NavHeader from &quot;../../components/NavHeader&quot;;</span>
+<span class="line">import { AxiosError } from &quot;axios&quot;;</span>
+<span class="line">import &quot;./index.less&quot;;</span>
+<span class="line">+import { LoadingOutlined, UploadOutlined } from &quot;@ant-design/icons&quot;;</span>
+<span class="line">//当前的组件有三个属性来源</span>
+<span class="line">//1.mapStateToProps的返回值 2.actions对象类型 3. 来自路由 4.用户传入进来的其它属性</span>
+<span class="line">type StateProps = ReturnType&lt;typeof mapStateToProps&gt;;</span>
+<span class="line">type DispatchProps = typeof actionCreators;</span>
+<span class="line">type Props = StateProps &amp; DispatchProps</span>
+<span class="line">+const mapStateToProps = (initialState: CombinedState): ProfileState =&gt;initialState.profile;</span>
+<span class="line">function Profile(props: Props) {</span>
+<span class="line">+  let [loading, setLoading] = useState(false);</span>
+<span class="line">  //组件加载后直接 发起验证请求,查看此用户是否已经登录过了,如果没有登录则提示错误</span>
+<span class="line">  useEffect(() =&gt; {</span>
+<span class="line">    props.validate().catch((error: AxiosError) =&gt; message.error(error.message));</span>
+<span class="line">  }, []);</span>
+<span class="line">+  const handleChange = (info: any) =&gt; {</span>
+<span class="line">+    if (info.file.status === &quot;uploading&quot;) {</span>
+<span class="line">+      setLoading(true);</span>
+<span class="line">+    } else if (info.file.status === &quot;done&quot;) {</span>
+<span class="line">+      let { success, data, message } = info.file.response;</span>
+<span class="line">+      if (success) {</span>
+<span class="line">+        setLoading(false);</span>
+<span class="line">+        props.changeAvatar(data);</span>
+<span class="line">+      } else {</span>
+<span class="line">+        message.error(message);</span>
+<span class="line">+      }</span>
+<span class="line">+    }</span>
+<span class="line">+  };</span>
+<span class="line">  let content; //里存放着要渲染的内容</span>
+<span class="line">  if (props.loginState == LOGIN_TYPES.UN_VALIDATE) {</span>
+<span class="line">    //如果未验证则内容为null</span>
+<span class="line">    content = null;</span>
+<span class="line">  } else if (props.loginState == LOGIN_TYPES.LOGINED) {</span>
+<span class="line">+    const uploadButton = (</span>
+<span class="line">+      &lt;div&gt;</span>
+<span class="line">+        {loading ? &lt;LoadingOutlined /&gt; : &lt;UploadOutlined /&gt;}</span>
+<span class="line">+        &lt;div className=&quot;ant-upload-text&quot;&gt;上传&lt;/div&gt;</span>
+<span class="line">+      &lt;/div&gt;</span>
+<span class="line">+    );</span>
+<span class="line">    //如果已经登录显示用户信息</span>
+<span class="line">    content = (</span>
+<span class="line">      &lt;div className=&quot;user-info&quot;&gt;</span>
+<span class="line">        &lt;Descriptions title=&quot;当前登录用户&quot;&gt;</span>
+<span class="line">          &lt;Descriptions.Item label=&quot;用户名&quot;&gt;</span>
+<span class="line">            {props.user.username}</span>
+<span class="line">          &lt;/Descriptions.Item&gt;</span>
+<span class="line">          &lt;Descriptions.Item label=&quot;邮箱&quot;&gt;{props.user.email}&lt;/Descriptions.Item&gt;</span>
+<span class="line">+          &lt;Descriptions.Item label=&quot;头像&quot;&gt;</span>
+<span class="line">+            &lt;Upload</span>
+<span class="line">+              name=&quot;avatar&quot;</span>
+<span class="line">+              listType=&quot;picture-card&quot;</span>
+<span class="line">+              className=&quot;avatar-uploader&quot;</span>
+<span class="line">+              showUploadList={false}</span>
+<span class="line">+              action=&quot;http://ketang.zhufengpeixun.com/user/uploadAvatar&quot;</span>
+<span class="line">+              beforeUpload={beforeUpload}</span>
+<span class="line">+              data={{ userId: props.user.id }}</span>
+<span class="line">+              onChange={handleChange}</span>
+<span class="line">+            &gt;</span>
+<span class="line">+              {props.user.avatar ? (</span>
+<span class="line">+                &lt;img</span>
+<span class="line">+                  src={props.user.avatar}</span>
+<span class="line">+                  alt=&quot;avatar&quot;</span>
+<span class="line">+                  style={{ width: &quot;100%&quot; }}</span>
+<span class="line">+                /&gt;</span>
+<span class="line">+              ) : (</span>
+<span class="line">+                uploadButton</span>
+<span class="line">+              )}</span>
+<span class="line">+            &lt;/Upload&gt;</span>
+<span class="line">+          &lt;/Descriptions.Item&gt;</span>
+<span class="line">        &lt;/Descriptions&gt;</span>
+<span class="line">        &lt;Button</span>
+<span class="line">          type={&quot;primary&quot;}</span>
+<span class="line">          onClick={async () =&gt; {</span>
+<span class="line">            await props.logout();</span>
+<span class="line">            navigate(&quot;/login&quot;);</span>
+<span class="line">          }}</span>
+<span class="line">        &gt;</span>
+<span class="line">          退出登录</span>
+<span class="line">        &lt;/Button&gt;</span>
+<span class="line">      &lt;/div&gt;</span>
+<span class="line">    );</span>
+<span class="line">  } else {</span>
+<span class="line">    //如果没有登录,则显示注册和登录按钮</span>
+<span class="line">    content = (</span>
+<span class="line">      &lt;&gt;</span>
+<span class="line">        &lt;Alert</span>
+<span class="line">          type=&quot;warning&quot;</span>
+<span class="line">          message=&quot;当前未登录&quot;</span>
+<span class="line">          description=&quot;亲爱的用户你好，你当前尚未登录，请你选择注册或者登录&quot;</span>
+<span class="line">        /&gt;</span>
+<span class="line">        &lt;div style={{ textAlign: &quot;center&quot;, padding: &quot;50px&quot; }}&gt;</span>
+<span class="line">          &lt;Button type=&quot;dashed&quot; onClick={() =&gt; navigate(&quot;/login&quot;)}&gt;</span>
+<span class="line">            登录</span>
+<span class="line">          &lt;/Button&gt;</span>
+<span class="line">          &lt;Button</span>
+<span class="line">            type=&quot;dashed&quot;</span>
+<span class="line">            style={{ marginLeft: &quot;50px&quot; }}</span>
+<span class="line">            onClick={() =&gt; navigate(&quot;/register&quot;)}</span>
+<span class="line">          &gt;</span>
+<span class="line">            注册</span>
+<span class="line">          &lt;/Button&gt;</span>
+<span class="line">        &lt;/div&gt;</span>
+<span class="line">      &lt;/&gt;</span>
+<span class="line">    );</span>
+<span class="line">  }</span>
+<span class="line">  return (</span>
+<span class="line">    &lt;section&gt;</span>
+<span class="line">      &lt;NavHeader&gt;个人中心&lt;/NavHeader&gt;</span>
+<span class="line">      {content}</span>
+<span class="line">    &lt;/section&gt;</span>
+<span class="line">  );</span>
+<span class="line">}</span>
+<span class="line"></span>
+<span class="line">+export default connect(mapStateToProps, actionCreators)(Profile);</span>
+<span class="line">+function beforeUpload(file: any) {</span>
+<span class="line">+  const isJpgOrPng = file.type === &quot;image/jpeg&quot; || file.type === &quot;image/png&quot;;</span>
+<span class="line">+  if (!isJpgOrPng) {</span>
+<span class="line">+    message.error(&quot;你只能上传JPG/PNG 文件!&quot;);</span>
+<span class="line">+  }</span>
+<span class="line">+  const isLessThan2M = file.size / 1024 / 1024 &lt; 2;</span>
+<span class="line">+  if (!isLessThan2M) {</span>
+<span class="line">+    message.error(&quot;图片必须小于2MB!&quot;);</span>
+<span class="line">+  }</span>
+<span class="line">+  return isJpgOrPng &amp;&amp; isLessThan2M;</span>
+<span class="line">+}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_7-3-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_7-3-action-types-tsx"><span>7.3 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export const ADD = &quot;ADD&quot;;</span>
+<span class="line">//设置当前分类的名称</span>
+<span class="line">export const SET_CURRENT_CATEGORY = &quot;SET_CURRENT_CATEGORY&quot;;</span>
+<span class="line">//发起验证用户是否登录的请求</span>
+<span class="line">export const VALIDATE = &quot;VALIDATE&quot;;</span>
+<span class="line"></span>
+<span class="line">export const LOGOUT = &quot;LOGOUT&quot;;</span>
+<span class="line">+//上传头像</span>
+<span class="line">+export const CHANGE_AVATAR = &quot;CHANGE_AVATAR&quot;;</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_7-4-reducers-profile-tsx" tabindex="-1"><a class="header-anchor" href="#_7-4-reducers-profile-tsx"><span>7.4 reducers\\profile.tsx</span></a></h3><p>src\\store\\reducers\\profile.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { AnyAction } from &quot;redux&quot;;</span>
+<span class="line">import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">import LOGIN_TYPES from &quot;../../typings/login-types&quot;;</span>
+<span class="line">export interface ProfileState {</span>
+<span class="line">  loginState: LOGIN_TYPES; //当前用户的登录状态</span>
+<span class="line">  user: any; //当前已经登录的用户信息</span>
+<span class="line">  error: string | null; //错误信息</span>
+<span class="line">}</span>
+<span class="line">let initialState: ProfileState = {</span>
+<span class="line">  //初始状态</span>
+<span class="line">  loginState: LOGIN_TYPES.UN_VALIDATE, //当前用户的登录状态</span>
+<span class="line">  user: null, //当前已经登录的用户信息</span>
+<span class="line">  error: null, //错误信息</span>
+<span class="line">};</span>
+<span class="line">export default function (</span>
+<span class="line">  state: ProfileState = initialState,</span>
+<span class="line">  action: AnyAction</span>
+<span class="line">): ProfileState {</span>
+<span class="line">  switch (action.type) {</span>
+<span class="line">    case actionTypes.VALIDATE:</span>
+<span class="line">      if (action.payload.success) {</span>
+<span class="line">        //如果此用户已经登录了</span>
+<span class="line">        return {</span>
+<span class="line">          ...state,</span>
+<span class="line">          loginState: LOGIN_TYPES.LOGINED,</span>
+<span class="line">          user: action.payload.data, //设置用户名</span>
+<span class="line">          error: null, //没有错误</span>
+<span class="line">        };</span>
+<span class="line">      } else {</span>
+<span class="line">        return {</span>
+<span class="line">          ...state,</span>
+<span class="line">          loginState: LOGIN_TYPES.UNLOGIN,</span>
+<span class="line">          user: null, //用户名为空</span>
+<span class="line">          error: action.payload, //错误对象赋值</span>
+<span class="line">        };</span>
+<span class="line">      }</span>
+<span class="line">+    case actionTypes.LOGOUT:</span>
+<span class="line">+      return {</span>
+<span class="line">+        ...state,</span>
+<span class="line">+        loginState: LOGIN_TYPES.UN_VALIDATE,</span>
+<span class="line">+        user: null,</span>
+<span class="line">+        error: null,</span>
+<span class="line">+      };</span>
+<span class="line">+    case actionTypes.CHANGE_AVATAR:</span>
+<span class="line">+      return { ...state, user: { ...state.user, avatar: action.payload } };</span>
+<span class="line">    default:</span>
+<span class="line">      return state;</span>
+<span class="line">  }</span>
+<span class="line">}</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_7-5-actioncreators-profile-tsx" tabindex="-1"><a class="header-anchor" href="#_7-5-actioncreators-profile-tsx"><span>7.5 actionCreators\\profile.tsx</span></a></h3><p>src\\store\\actionCreators\\profile.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { AnyAction } from &quot;redux&quot;;</span>
+<span class="line">import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">import { validate, register, login } from &quot;@/api/profile&quot;;</span>
+<span class="line">import { push } from &quot;redux-first-history&quot;;</span>
+<span class="line">import {</span>
+<span class="line">  RegisterPayload,</span>
+<span class="line">  LoginPayload,</span>
+<span class="line">  RegisterResult,</span>
+<span class="line">  LoginResult,</span>
+<span class="line">} from &quot;@/typings/user&quot;;</span>
+<span class="line">import { message } from &quot;antd&quot;;</span>
+<span class="line">export default {</span>
+<span class="line">  //https://github.com/redux-utilities/redux-promise/blob/master/src/index.js</span>
+<span class="line">  validate(): AnyAction {</span>
+<span class="line">    //发起判断当前用户是否登录的请求</span>
+<span class="line">    return {</span>
+<span class="line">      type: actionTypes.VALIDATE,</span>
+<span class="line">      payload: validate(),</span>
+<span class="line">    };</span>
+<span class="line">  },</span>
+<span class="line">  register(values: RegisterPayload) {</span>
+<span class="line">    return function (dispatch: any) {</span>
+<span class="line">      (async function () {</span>
+<span class="line">        try {</span>
+<span class="line">          let result: RegisterResult = await register&lt;RegisterResult&gt;(values);</span>
+<span class="line">          if (result.success) {</span>
+<span class="line">            dispatch(push(&quot;/login&quot;));</span>
+<span class="line">          } else {</span>
+<span class="line">            message.error(result.message);</span>
+<span class="line">          }</span>
+<span class="line">        } catch (error) {</span>
+<span class="line">          message.error(&quot;注册失败&quot;);</span>
+<span class="line">        }</span>
+<span class="line">      })();</span>
+<span class="line">    };</span>
+<span class="line">  },</span>
+<span class="line">  login(values: LoginPayload) {</span>
+<span class="line">    return function (dispatch: any) {</span>
+<span class="line">      (async function () {</span>
+<span class="line">        try {</span>
+<span class="line">          let result: LoginResult = await login&lt;LoginResult&gt;(values);</span>
+<span class="line">          if (result.success) {</span>
+<span class="line">            sessionStorage.setItem(&quot;access_token&quot;, result.data.token);</span>
+<span class="line">            dispatch(push(&quot;/profile&quot;));</span>
+<span class="line">          } else {</span>
+<span class="line">            message.error(result.message);</span>
+<span class="line">          }</span>
+<span class="line">        } catch (error) {</span>
+<span class="line">          message.error(&quot;登录失败&quot;);</span>
+<span class="line">        }</span>
+<span class="line">      })();</span>
+<span class="line">    };</span>
+<span class="line">  },</span>
+<span class="line">  logout() {</span>
+<span class="line">    return function (dispatch: any) {</span>
+<span class="line">      sessionStorage.removeItem(&quot;access_token&quot;);</span>
+<span class="line">      dispatch({ type: actionTypes.LOGOUT });</span>
+<span class="line">      dispatch(push(&quot;/login&quot;));</span>
+<span class="line">    };</span>
+<span class="line">  },</span>
+<span class="line">+  changeAvatar(avatar: string) {</span>
+<span class="line">+    return {</span>
+<span class="line">+      type: actionTypes.CHANGE_AVATAR,</span>
+<span class="line">+      payload: avatar,</span>
+<span class="line">+    };</span>
+<span class="line">+  },</span>
+<span class="line">};</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_8-前台轮播图" tabindex="-1"><a class="header-anchor" href="#_8-前台轮播图"><span>8. 前台轮播图</span></a></h2><ul><li>本章实践前台轮播图</li><li>本章需要实践的内容 <ul><li>使用<code>useRef</code>取得 DOM 元素</li><li>使用 <code>antdesign</code> 的轮播图组件</li></ul></li></ul><h3 id="_8-1-参考" tabindex="-1"><a class="header-anchor" href="#_8-1-参考"><span>8.1 参考</span></a></h3><h4 id="_8-1-1-本章目录" tabindex="-1"><a class="header-anchor" href="#_8-1-1-本章目录"><span>8.1.1 本章目录</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── README.md</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── api</span>
+<span class="line">│   │   ├── home.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── profile.tsx</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   ├── css</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   ├── NavHeader</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   ├── HomeHeader</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   └── HomeSliders</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Login</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Profile</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Register</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   ├── home.tsx</span>
+<span class="line">│   │   │   └── profile.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   └── typings</span>
+<span class="line">│       ├── images.d.ts</span>
+<span class="line">│       ├── login-types.tsx</span>
+<span class="line">│       ├── slider.tsx</span>
+<span class="line">│       └── user.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_8-1-2-本章效果" tabindex="-1"><a class="header-anchor" href="#_8-1-2-本章效果"><span>8.1.2 本章效果</span></a></h4><p><img src="http://img.zhufengpeixun.cn/homesliders.gif" alt="homesliders"></p><h3 id="_8-2-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_8-2-action-types-tsx"><span>8.2 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export const ADD = &quot;ADD&quot;;</span>
+<span class="line">//设置当前分类的名称</span>
+<span class="line">export const SET_CURRENT_CATEGORY = &quot;SET_CURRENT_CATEGORY&quot;;</span>
+<span class="line">//发起验证用户是否登录的请求</span>
+<span class="line">export const VALIDATE = &quot;VALIDATE&quot;;</span>
+<span class="line"></span>
+<span class="line">export const LOGOUT = &quot;LOGOUT&quot;;</span>
+<span class="line">//上传头像</span>
+<span class="line">export const CHANGE_AVATAR = &quot;CHANGE_AVATAR&quot;;</span>
+<span class="line">+export const GET_SLIDERS = &quot;GET_SLIDERS&quot;;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_8-3-actioncreators-home-tsx" tabindex="-1"><a class="header-anchor" href="#_8-3-actioncreators-home-tsx"><span>8.3 actionCreators\\home.tsx</span></a></h3><p>src\\store\\actionCreators\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">+import { getSliders } from &quot;@/api/home&quot;;</span>
+<span class="line">export default {</span>
+<span class="line">  setCurrentCategory(currentCategory: string) {</span>
+<span class="line">    return { type: actionTypes.SET_CURRENT_CATEGORY, payload: currentCategory };</span>
+<span class="line">  },</span>
+<span class="line">+  getSliders() {</span>
+<span class="line">+    return {</span>
+<span class="line">+      type: actionTypes.GET_SLIDERS,</span>
+<span class="line">+      payload: getSliders(),</span>
+<span class="line">+    };</span>
+<span class="line">+  }</span>
+<span class="line">};</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_8-4-typings-slider-tsx" tabindex="-1"><a class="header-anchor" href="#_8-4-typings-slider-tsx"><span>8.4 typings\\slider.tsx</span></a></h3><p>src\\typings\\slider.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">interface</span> <span class="token class-name">Slider</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">url</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_8-5-reducers-home-tsx" tabindex="-1"><a class="header-anchor" href="#_8-5-reducers-home-tsx"><span>8.5 reducers\\home.tsx</span></a></h3><p>src\\store\\reducers\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { AnyAction } from &quot;redux&quot;;</span>
+<span class="line">import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">+import Slider from &quot;@/typings/slider&quot;;</span>
+<span class="line">export interface HomeState {</span>
+<span class="line">  currentCategory: string;</span>
+<span class="line">+  sliders: Slider[];</span>
+<span class="line">}</span>
+<span class="line">let initialState: HomeState = {</span>
+<span class="line">  currentCategory: &quot;all&quot;, //默认当前的分类是显示全部类型的课程</span>
+<span class="line">+ sliders: [],</span>
+<span class="line">};</span>
+<span class="line">export default function (</span>
+<span class="line">  state: HomeState = initialState,</span>
+<span class="line">  action: AnyAction</span>
+<span class="line">): HomeState {</span>
+<span class="line">  switch (action.type) {</span>
+<span class="line">    case actionTypes.SET_CURRENT_CATEGORY: //修改当前分类</span>
+<span class="line">      return { ...state, currentCategory: action.payload };</span>
+<span class="line">+    case actionTypes.GET_SLIDERS:</span>
+<span class="line">+      return { ...state, sliders: action.payload.data };</span>
+<span class="line">    default:</span>
+<span class="line">      return state;</span>
+<span class="line">  }</span>
+<span class="line">}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_8-6-api-home-tsx" tabindex="-1"><a class="header-anchor" href="#_8-6-api-home-tsx"><span>8.6 api\\home.tsx</span></a></h3><p>src\\api\\home.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">&quot;./index&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">getSliders</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">return</span> axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/slider/list&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_8-7-homesliders-index-tsx" tabindex="-1"><a class="header-anchor" href="#_8-7-homesliders-index-tsx"><span>8.7 HomeSliders\\index.tsx</span></a></h3><p>src\\routes\\Home\\components\\HomeSliders\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> PropsWithChildren<span class="token punctuation">,</span> useRef<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Carousel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;antd&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;./index.less&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> Slider <span class="token keyword">from</span> <span class="token string">&quot;@/typings/slider&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">type Props <span class="token operator">=</span> PropsWithChildren<span class="token operator">&lt;</span><span class="token punctuation">{</span></span>
+<span class="line">  children<span class="token operator">?</span><span class="token operator">:</span> any<span class="token punctuation">,</span></span>
+<span class="line">  sliders<span class="token operator">?</span><span class="token operator">:</span> Slider<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">  getSliders<span class="token operator">?</span><span class="token operator">:</span> any<span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">HomeSliders</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>props<span class="token punctuation">.</span>sliders<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      props<span class="token punctuation">.</span><span class="token function">getSliders</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token operator">&lt;</span>Carousel effect<span class="token operator">=</span><span class="token string">&quot;scrollx&quot;</span> autoplay<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token punctuation">{</span>props<span class="token punctuation">.</span>sliders<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">item</span><span class="token operator">:</span> Slider<span class="token punctuation">,</span> <span class="token literal-property property">index</span><span class="token operator">:</span> number</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token punctuation">{</span>index<span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">          <span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>url<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+<span class="line">    <span class="token operator">&lt;</span><span class="token operator">/</span>Carousel<span class="token operator">&gt;</span></span>
+<span class="line">  <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> HomeSliders<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_8-8-homesliders-index-less" tabindex="-1"><a class="header-anchor" href="#_8-8-homesliders-index-less"><span>8.8 HomeSliders\\index.less</span></a></h3><p>src\\routes\\Home\\components\\HomeSliders\\index.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token punctuation">.</span>ant<span class="token operator">-</span>carousel <span class="token punctuation">.</span>slick<span class="token operator">-</span>slide <span class="token punctuation">{</span></span>
+<span class="line">  text<span class="token operator">-</span>align<span class="token operator">:</span> center<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">height</span><span class="token operator">:</span> 320px<span class="token punctuation">;</span></span>
+<span class="line">  line<span class="token operator">-</span>height<span class="token operator">:</span> 320px<span class="token punctuation">;</span></span>
+<span class="line">   <span class="token literal-property property">background</span><span class="token operator">:</span> </span>
+<span class="line">  <span class="token literal-property property">overflow</span><span class="token operator">:</span> hidden<span class="token punctuation">;</span></span>
+<span class="line">   <span class="token literal-property property">color</span><span class="token operator">:</span> </span>
+<span class="line">  img <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">100</span><span class="token operator">%</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">height</span><span class="token operator">:</span> 320px<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_8-9-home-index-tsx" tabindex="-1"><a class="header-anchor" href="#_8-9-home-index-tsx"><span>8.9 Home\\index.tsx</span></a></h3><p>src\\routes\\Home\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React, { PropsWithChildren, useRef } from &quot;react&quot;;</span>
+<span class="line">import { connect } from &quot;react-redux&quot;;</span>
+<span class="line">import actionCreators from &quot;@/store/actionCreators/home&quot;;</span>
+<span class="line">import HomeHeader from &quot;./components/HomeHeader&quot;;</span>
+<span class="line">import { CombinedState } from &quot;@/store/reducers&quot;;</span>
+<span class="line">import { HomeState } from &quot;@/store/reducers/home&quot;;</span>
+<span class="line">+import HomeSliders from &quot;./components/HomeSliders&quot;;</span>
+<span class="line">import &quot;./index.less&quot;;</span>
+<span class="line">type StateProps = ReturnType&lt;typeof mapStateToProps&gt;;</span>
+<span class="line">type DispatchProps = typeof actionCreators;</span>
+<span class="line">type Props = PropsWithChildren&lt;</span>
+<span class="line">StateProps &amp; DispatchProps</span>
+<span class="line">&gt;;</span>
+<span class="line">function Home(props: Props) {</span>
+<span class="line">+  const homeContainerRef = useRef(null);</span>
+<span class="line">  return (</span>
+<span class="line">    &lt;&gt;</span>
+<span class="line">      &lt;HomeHeader</span>
+<span class="line">        currentCategory={props.currentCategory}</span>
+<span class="line">        setCurrentCategory={props.setCurrentCategory}</span>
+<span class="line">      /&gt;</span>
+<span class="line">+      &lt;div className=&quot;home-container&quot; ref={homeContainerRef}&gt;</span>
+<span class="line">+        &lt;HomeSliders sliders={props.sliders} getSliders={props.getSliders} /&gt;</span>
+<span class="line">+      &lt;/div&gt;</span>
+<span class="line">    &lt;/&gt;</span>
+<span class="line">  );</span>
+<span class="line">}</span>
+<span class="line">let mapStateToProps = (state: CombinedState): HomeState =&gt; state.home;</span>
+<span class="line">export default connect(mapStateToProps, actionCreators)(Home);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_9-课程列表" tabindex="-1"><a class="header-anchor" href="#_9-课程列表"><span>9. 课程列表</span></a></h2><ul><li>本章实践的内容 <ul><li>加载课程列表</li><li>上拉加载</li></ul></li></ul><h3 id="_9-1-参考" tabindex="-1"><a class="header-anchor" href="#_9-1-参考"><span>9.1 参考</span></a></h3><h4 id="_9-1-1-目录结构" tabindex="-1"><a class="header-anchor" href="#_9-1-1-目录结构"><span>9.1.1 目录结构</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── api</span>
+<span class="line">│   │   ├── home.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── profile.tsx</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   ├── css</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   ├── NavHeader</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   ├── HomeHeader</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   ├── HomeSliders</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   └── LessonList</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Login</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Profile</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Register</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   ├── home.tsx</span>
+<span class="line">│   │   │   └── profile.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   ├── typings</span>
+<span class="line">│   │   ├── images.d.ts</span>
+<span class="line">│   │   ├── lesson.tsx</span>
+<span class="line">│   │   ├── login-types.tsx</span>
+<span class="line">│   │   ├── slider.tsx</span>
+<span class="line">│   │   └── user.tsx</span>
+<span class="line">│   └── utils.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_9-1-2-页面效果" tabindex="-1"><a class="header-anchor" href="#_9-1-2-页面效果"><span>9.1.2 页面效果</span></a></h4><p><img src="http://img.zhufengpeixun.cn/lessonlist2.gif" alt="lessonlist2"></p><h3 id="_9-2-api-home-tsx" tabindex="-1"><a class="header-anchor" href="#_9-2-api-home-tsx"><span>9.2 api\\home.tsx</span></a></h3><p>src\\api\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import axios from &quot;./index&quot;;</span>
+<span class="line">export function getSliders() {</span>
+<span class="line">  return axios.get(&quot;/slider/list&quot;);</span>
+<span class="line">}</span>
+<span class="line">+export function getLessons(</span>
+<span class="line">+  currentCategory: string = &quot;all&quot;,</span>
+<span class="line">+  offset: number,</span>
+<span class="line">+  limit: number</span>
+<span class="line">+) {</span>
+<span class="line">+  return axios.get(</span>
+<span class="line">+    \`/lesson/list?category=\${currentCategory}&amp;offset=\${offset}&amp;limit=\${limit}\`</span>
+<span class="line">+  );</span>
+<span class="line">+}</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-3-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_9-3-action-types-tsx"><span>9.3 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export const ADD = &quot;ADD&quot;;</span>
+<span class="line">//设置当前分类的名称</span>
+<span class="line">export const SET_CURRENT_CATEGORY = &quot;SET_CURRENT_CATEGORY&quot;;</span>
+<span class="line">//发起验证用户是否登录的请求</span>
+<span class="line">export const VALIDATE = &quot;VALIDATE&quot;;</span>
+<span class="line"></span>
+<span class="line">export const LOGOUT = &quot;LOGOUT&quot;;</span>
+<span class="line">//上传头像</span>
+<span class="line">export const CHANGE_AVATAR = &quot;CHANGE_AVATAR&quot;;</span>
+<span class="line">export const GET_SLIDERS = &quot;GET_SLIDERS&quot;;</span>
+<span class="line"></span>
+<span class="line">+export const GET_LESSONS = &quot;GET_LESSONS&quot;;</span>
+<span class="line">+export const SET_LESSONS_LOADING = &quot;SET_LESSONS_LOADING&quot;;</span>
+<span class="line">+export const SET_LESSONS = &quot;SET_LESSONS&quot;;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-4-typings-lesson-tsx" tabindex="-1"><a class="header-anchor" href="#_9-4-typings-lesson-tsx"><span>9.4 typings\\lesson.tsx</span></a></h3><p>src\\typings\\lesson.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">interface</span> <span class="token class-name">Lesson</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">id</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">title</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">video</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">poster</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">url</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">price</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">category</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">LessonResult</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">data</span><span class="token operator">:</span> Lesson<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">success</span><span class="token operator">:</span> boolean<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token punctuation">{</span></span>
+<span class="line">  Lesson<span class="token punctuation">,</span></span>
+<span class="line">  LessonResult</span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-5-reducers-home-tsx" tabindex="-1"><a class="header-anchor" href="#_9-5-reducers-home-tsx"><span>9.5 reducers\\home.tsx</span></a></h3><p>src\\store\\reducers\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { AnyAction } from &quot;redux&quot;;</span>
+<span class="line">import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">import Slider from &quot;@/typings/slider&quot;;</span>
+<span class="line">+import Lesson from &quot;@/typings/Lesson&quot;;</span>
+<span class="line"></span>
+<span class="line">+export interface Lessons {</span>
+<span class="line">+  loading: boolean;</span>
+<span class="line">+  list: Lesson[];</span>
+<span class="line">+  hasMore: boolean;</span>
+<span class="line">+  offset: number;</span>
+<span class="line">+  limit: number;</span>
+<span class="line">+}</span>
+<span class="line">export interface HomeState {</span>
+<span class="line">  currentCategory: string;</span>
+<span class="line">  sliders: Slider[];</span>
+<span class="line">+  lessons: Lessons;</span>
+<span class="line">}</span>
+<span class="line">let initialState: HomeState = {</span>
+<span class="line">  currentCategory: &quot;all&quot;, //默认当前的分类是显示全部类型的课程</span>
+<span class="line">  sliders: [],</span>
+<span class="line">+  lessons: {</span>
+<span class="line">+    loading: false,</span>
+<span class="line">+    list: [],</span>
+<span class="line">+    hasMore: true,</span>
+<span class="line">+    offset: 0,</span>
+<span class="line">+    limit: 5,</span>
+<span class="line">+  },</span>
+<span class="line">};</span>
+<span class="line">export default function (</span>
+<span class="line">  state: HomeState = initialState,</span>
+<span class="line">  action: AnyAction</span>
+<span class="line">): HomeState {</span>
+<span class="line">  switch (action.type) {</span>
+<span class="line">    case actionTypes.SET_CURRENT_CATEGORY: //修改当前分类</span>
+<span class="line">      return { ...state, currentCategory: action.payload };</span>
+<span class="line">    case actionTypes.GET_SLIDERS:</span>
+<span class="line">      return { ...state, sliders: action.payload.data };</span>
+<span class="line">+    case actionTypes.SET_LESSONS_LOADING:</span>
+<span class="line">+      return {</span>
+<span class="line">+        ...state,</span>
+<span class="line">+        lessons: { ...state.lessons, loading: action.payload },</span>
+<span class="line">+      };</span>
+<span class="line">+    case actionTypes.SET_LESSONS:</span>
+<span class="line">+      return {</span>
+<span class="line">+        ...state,</span>
+<span class="line">+        lessons: {</span>
+<span class="line">+          ...state.lessons,</span>
+<span class="line">+          loading: false,</span>
+<span class="line">+          hasMore: action.payload.hasMore,</span>
+<span class="line">+          list: [...state.lessons.list, ...action.payload.list],</span>
+<span class="line">+          offset: state.lessons.offset + action.payload.list.length,</span>
+<span class="line">+        },</span>
+<span class="line">+      };</span>
+<span class="line">    default:</span>
+<span class="line">      return state;</span>
+<span class="line">  }</span>
+<span class="line">}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-6-actioncreators-home-tsx" tabindex="-1"><a class="header-anchor" href="#_9-6-actioncreators-home-tsx"><span>9.6 actionCreators\\home.tsx</span></a></h3><p>src\\store\\actionCreators\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">+import { getSliders, getLessons } from &quot;@/api/home&quot;;</span>
+<span class="line">export default {</span>
+<span class="line">  setCurrentCategory(currentCategory: string) {</span>
+<span class="line">    return { type: actionTypes.SET_CURRENT_CATEGORY, payload: currentCategory };</span>
+<span class="line">  },</span>
+<span class="line">  getSliders() {</span>
+<span class="line">    return {</span>
+<span class="line">      type: actionTypes.GET_SLIDERS,</span>
+<span class="line">      payload: getSliders(),</span>
+<span class="line">    };</span>
+<span class="line">  },</span>
+<span class="line">+  getLessons() {</span>
+<span class="line">+    return (dispatch: any, getState: any) =&gt; {</span>
+<span class="line">+      (async function () {</span>
+<span class="line">+        let {</span>
+<span class="line">+          currentCategory,</span>
+<span class="line">+          lessons: { hasMore, offset, limit, loading },</span>
+<span class="line">+        } = getState().home;</span>
+<span class="line">+        if (hasMore &amp;&amp; !loading) {</span>
+<span class="line">+          dispatch({ type: actionTypes.SET_LESSONS_LOADING, payload: true });</span>
+<span class="line">+          let result = await getLessons(currentCategory, offset, limit);</span>
+<span class="line">+          dispatch({ type: actionTypes.SET_LESSONS, payload: result.data });</span>
+<span class="line">+        }</span>
+<span class="line">+      })();</span>
+<span class="line">+    };</span>
+<span class="line">+  }</span>
+<span class="line">};</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-7-src-utils-tsx" tabindex="-1"><a class="header-anchor" href="#_9-7-src-utils-tsx"><span>9.7 src\\utils.tsx</span></a></h3><p>src\\utils.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token comment">//element 要实现此功能DOM对象 callback加载更多的方法</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">loadMore</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">element</span><span class="token operator">:</span> HTMLElement<span class="token punctuation">,</span> <span class="token literal-property property">callback</span><span class="token operator">:</span> Function</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">function</span> <span class="token function">_loadMore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token keyword">let</span> clientHeight <span class="token operator">=</span> element<span class="token punctuation">.</span>clientHeight<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">let</span> scrollTop <span class="token operator">=</span> element<span class="token punctuation">.</span>scrollTop<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">let</span> scrollHeight <span class="token operator">=</span> element<span class="token punctuation">.</span>scrollHeight<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">if</span> <span class="token punctuation">(</span>clientHeight <span class="token operator">+</span> scrollTop <span class="token operator">+</span> <span class="token number">10</span> <span class="token operator">&gt;=</span> scrollHeight<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    element<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;scroll&quot;</span><span class="token punctuation">,</span> <span class="token function">debounce</span><span class="token punctuation">(</span>_loadMore<span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">fn</span><span class="token operator">:</span> any<span class="token punctuation">,</span> <span class="token literal-property property">wait</span><span class="token operator">:</span> number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">var</span> <span class="token literal-property property">timeout</span><span class="token operator">:</span> any <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    timeout <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> wait<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-8-lessonlist-index-tsx" tabindex="-1"><a class="header-anchor" href="#_9-8-lessonlist-index-tsx"><span>9.8 LessonList\\index.tsx</span></a></h3><p>src\\routes\\Home\\components\\LessonList\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useEffect<span class="token punctuation">,</span> forwardRef<span class="token punctuation">,</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;./index.less&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Card<span class="token punctuation">,</span> Skeleton<span class="token punctuation">,</span> Button<span class="token punctuation">,</span> Alert<span class="token punctuation">,</span> Menu <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;antd&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Link <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-router-dom&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> Lesson <span class="token keyword">from</span> <span class="token string">&quot;@/typings/lesson&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> MenuOutlined <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@ant-design/icons&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">Props</span> <span class="token punctuation">{</span></span>
+<span class="line">  children<span class="token operator">?</span><span class="token operator">:</span> any<span class="token punctuation">;</span></span>
+<span class="line">  lessons<span class="token operator">?</span><span class="token operator">:</span> any<span class="token punctuation">;</span></span>
+<span class="line">  getLessons<span class="token operator">?</span><span class="token operator">:</span> any<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">LessonList</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>props<span class="token punctuation">.</span>lessons<span class="token punctuation">.</span>list<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      props<span class="token punctuation">.</span><span class="token function">getLessons</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token operator">&lt;</span>section className<span class="token operator">=</span><span class="token string">&quot;lesson-list&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span>h2<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span>MenuOutlined <span class="token operator">/</span><span class="token operator">&gt;</span> 全部课程</span>
+<span class="line">      <span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span>Skeleton</span>
+<span class="line">        loading<span class="token operator">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>lessons<span class="token punctuation">.</span>list<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> props<span class="token punctuation">.</span>lessons<span class="token punctuation">.</span>loading<span class="token punctuation">}</span></span>
+<span class="line">        active</span>
+<span class="line">        paragraph<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">rows</span><span class="token operator">:</span> <span class="token number">8</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="line">      <span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token punctuation">{</span>props<span class="token punctuation">.</span>lessons<span class="token punctuation">.</span>list<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">lesson</span><span class="token operator">:</span> Lesson<span class="token punctuation">,</span> <span class="token literal-property property">index</span><span class="token operator">:</span> number</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span><span class="token punctuation">(</span></span>
+<span class="line">            <span class="token operator">&lt;</span>Link</span>
+<span class="line">            key<span class="token operator">=</span><span class="token punctuation">{</span>lesson<span class="token punctuation">.</span>id<span class="token punctuation">}</span></span>
+<span class="line">            to<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">pathname</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">/detail/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>lesson<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">,</span> <span class="token literal-property property">state</span><span class="token operator">:</span> lesson <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="line">            <span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span>Card</span>
+<span class="line">                hoverable<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">true</span><span class="token punctuation">}</span></span>
+<span class="line">                style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token string">&quot;100%&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="line">                cover<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>img alt<span class="token operator">=</span><span class="token punctuation">{</span>lesson<span class="token punctuation">.</span>title<span class="token punctuation">}</span> src<span class="token operator">=</span><span class="token punctuation">{</span>lesson<span class="token punctuation">.</span>poster<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span></span>
+<span class="line">            <span class="token operator">&gt;</span></span>
+<span class="line">                <span class="token operator">&lt;</span>Card<span class="token punctuation">.</span>Meta</span>
+<span class="line">                title<span class="token operator">=</span><span class="token punctuation">{</span>lesson<span class="token punctuation">.</span>title<span class="token punctuation">}</span></span>
+<span class="line">                description<span class="token operator">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">价格: ¥</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>lesson<span class="token punctuation">.</span>price<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">元</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">}</span></span>
+<span class="line">                <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>Card<span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token operator">&lt;</span><span class="token operator">/</span>Link<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+<span class="line">        <span class="token punctuation">{</span>props<span class="token punctuation">.</span>lessons<span class="token punctuation">.</span>hasMore <span class="token operator">?</span> <span class="token punctuation">(</span></span>
+<span class="line">          <span class="token operator">&lt;</span>Button</span>
+<span class="line">            onClick<span class="token operator">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>getLessons<span class="token punctuation">}</span></span>
+<span class="line">            loading<span class="token operator">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>lessons<span class="token punctuation">.</span>loading<span class="token punctuation">}</span></span>
+<span class="line">            type<span class="token operator">=</span><span class="token string">&quot;primary&quot;</span></span>
+<span class="line">            block</span>
+<span class="line">          <span class="token operator">&gt;</span></span>
+<span class="line">            <span class="token punctuation">{</span>props<span class="token punctuation">.</span>lessons<span class="token punctuation">.</span>loading <span class="token operator">?</span> <span class="token string">&quot;&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;加载更多&quot;</span><span class="token punctuation">}</span></span>
+<span class="line">          <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span></span>
+<span class="line">          <span class="token operator">&lt;</span>Alert</span>
+<span class="line">            style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">textAlign</span><span class="token operator">:</span> <span class="token string">&quot;center&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="line">            message<span class="token operator">=</span><span class="token string">&quot;到底了&quot;</span></span>
+<span class="line">            type<span class="token operator">=</span><span class="token string">&quot;warning&quot;</span></span>
+<span class="line">          <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+<span class="line">      <span class="token operator">&lt;</span><span class="token operator">/</span>Skeleton<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span><span class="token operator">/</span>section<span class="token operator">&gt;</span></span>
+<span class="line">  <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> LessonList<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-9-lessonlist-index-less" tabindex="-1"><a class="header-anchor" href="#_9-9-lessonlist-index-less"><span>9.9 LessonList\\index.less</span></a></h3><p>src\\routes\\Home\\components\\LessonList\\index.less</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token punctuation">.</span>lesson<span class="token operator">-</span>list <span class="token punctuation">{</span></span>
+<span class="line">  h2 <span class="token punctuation">{</span></span>
+<span class="line">    line<span class="token operator">-</span>height<span class="token operator">:</span> 100px<span class="token punctuation">;</span></span>
+<span class="line">    i <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">margin</span><span class="token operator">:</span> <span class="token number">0</span> 10px<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token punctuation">.</span>ant<span class="token operator">-</span>card<span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">height</span><span class="token operator">:</span> 650px<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">overflow</span><span class="token operator">:</span> hidden<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-10-home-index-tsx" tabindex="-1"><a class="header-anchor" href="#_9-10-home-index-tsx"><span>9.10 Home\\index.tsx</span></a></h3><p>src\\routes\\Home\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">+import React, { PropsWithChildren, useRef, useEffect } from &quot;react&quot;;</span>
+<span class="line">import { connect } from &quot;react-redux&quot;;</span>
+<span class="line">import actionCreators from &quot;@/store/actionCreators/home&quot;;</span>
+<span class="line">import HomeHeader from &quot;./components/HomeHeader&quot;;</span>
+<span class="line">import { CombinedState } from &quot;@/store/reducers&quot;;</span>
+<span class="line">import { HomeState } from &quot;@/store/reducers/home&quot;;</span>
+<span class="line">import HomeSliders from &quot;./components/HomeSliders&quot;;</span>
+<span class="line">import &quot;./index.less&quot;;</span>
+<span class="line">+import LessonList from &quot;./components/LessonList&quot;;</span>
+<span class="line">+import { loadMore} from &quot;@/utils&quot;;</span>
+<span class="line">type StateProps = ReturnType&lt;typeof mapStateToProps&gt;;</span>
+<span class="line">type DispatchProps = typeof actionCreators;</span>
+<span class="line">type Props = PropsWithChildren&lt;</span>
+<span class="line">  StateProps &amp; DispatchProps</span>
+<span class="line">&gt;;</span>
+<span class="line">function Home(props: Props) {</span>
+<span class="line">  const homeContainerRef = useRef(null);</span>
+<span class="line">  useEffect(() =&gt; {</span>
+<span class="line">        loadMore(homeContainerRef.current, props.getLessons);</span>
+<span class="line">  }, []);</span>
+<span class="line">  return (</span>
+<span class="line">    &lt;&gt;</span>
+<span class="line">      &lt;HomeHeader</span>
+<span class="line">        currentCategory={props.currentCategory}</span>
+<span class="line">        setCurrentCategory={props.setCurrentCategory}</span>
+<span class="line">        refreshLessons={props.refreshLessons}</span>
+<span class="line">      /&gt;</span>
+<span class="line">      &lt;div className=&quot;home-container&quot; ref={homeContainerRef}&gt;</span>
+<span class="line">        &lt;HomeSliders sliders={props.sliders} getSliders={props.getSliders} /&gt;</span>
+<span class="line">+       &lt;LessonList</span>
+<span class="line">+          ref={lessonListRef}</span>
+<span class="line">+          container={homeContainerRef}</span>
+<span class="line">+          lessons={props.lessons}</span>
+<span class="line">+          getLessons={props.getLessons}</span>
+<span class="line">+       /&gt;</span>
+<span class="line">      &lt;/div&gt;</span>
+<span class="line">    &lt;/&gt;</span>
+<span class="line">  );</span>
+<span class="line">}</span>
+<span class="line">let mapStateToProps = (state: CombinedState): HomeState =&gt; state.home;</span>
+<span class="line">export default connect(mapStateToProps, actionCreators)(Home);</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_9-11-home-index-less" tabindex="-1"><a class="header-anchor" href="#_9-11-home-index-less"><span>9.11 Home\\index.less</span></a></h3><p>src\\routes\\Home\\index.less</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">+.home-container {</span>
+<span class="line">+  position: fixed;</span>
+<span class="line">+  top: 100px;</span>
+<span class="line">+  left: 0;</span>
+<span class="line">+  width: 100%;</span>
+<span class="line">+  overflow-y: auto;</span>
+<span class="line">+  height: calc(100vh - 220px);</span>
+<span class="line"> +  background-color: </span>
+<span class="line">+}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_10-课程详情" tabindex="-1"><a class="header-anchor" href="#_10-课程详情"><span>10. 课程详情</span></a></h2><h3 id="_10-1-参考" tabindex="-1"><a class="header-anchor" href="#_10-1-参考"><span>10.1 参考</span></a></h3><h4 id="_10-1-1-目录结构" tabindex="-1"><a class="header-anchor" href="#_10-1-1-目录结构"><span>10.1.1 目录结构</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── README.md</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── api</span>
+<span class="line">│   │   ├── home.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── profile.tsx</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   ├── css</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   ├── NavHeader</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Detail</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   ├── HomeHeader</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   ├── HomeSliders</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   └── LessonList</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Login</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Profile</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Register</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   ├── home.tsx</span>
+<span class="line">│   │   │   └── profile.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   ├── typings</span>
+<span class="line">│   │   ├── images.d.ts</span>
+<span class="line">│   │   ├── lesson.tsx</span>
+<span class="line">│   │   ├── login-types.tsx</span>
+<span class="line">│   │   ├── slider.tsx</span>
+<span class="line">│   │   └── user.tsx</span>
+<span class="line">│   └── utils.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_10-1-2-页面效果" tabindex="-1"><a class="header-anchor" href="#_10-1-2-页面效果"><span>10.1.2 页面效果</span></a></h4><p><img src="http://img.zhufengpeixun.cn/lessondetail.gif" alt="lessondetail"></p><h3 id="_10-2-src-index-tsx" tabindex="-1"><a class="header-anchor" href="#_10-2-src-index-tsx"><span>10.2 src\\index.tsx</span></a></h3><p>src\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React from &quot;react&quot;;</span>
+<span class="line">import ReactDOM from &quot;react-dom&quot;;</span>
+<span class="line">import { Switch, Route, Redirect } from &quot;react-router-dom&quot;; //三个路由组件</span>
+<span class="line">import { Provider } from &quot;react-redux&quot;; //负责把属性中的store传递给子组件</span>
+<span class="line">import store from &quot;./store&quot;; //引入仓库</span>
+<span class="line">import { ConfigProvider } from &quot;antd&quot;; //配置</span>
+<span class="line">import zh_CN from &quot;antd/lib/locale-provider/zh_CN&quot;; //国际化中文</span>
+<span class="line">import &quot;./assets/css/common.less&quot;; //通用的样式</span>
+<span class="line">import Tabs from &quot;./components/Tabs&quot;; //引入底部的页签导航</span>
+<span class="line">import Home from &quot;./routes/Home&quot;; //首页</span>
+<span class="line">import Cart from &quot;./routes/Cart&quot;; //我的课程</span>
+<span class="line">import Profile from &quot;./routes/Profile&quot;; //个人中心</span>
+<span class="line">import Register from &quot;./routes/Register&quot;;</span>
+<span class="line">import Login from &quot;./routes/Login&quot;;</span>
+<span class="line">+import Detail from &quot;./routes/Detail&quot;;</span>
+<span class="line">import { ConnectedRouter } from &quot;redux-first-history&quot;; //redux绑定路由</span>
+<span class="line">import history from &quot;./store/history&quot;;</span>
+<span class="line">ReactDOM.render(</span>
+<span class="line">  &lt;Provider store={store}&gt;</span>
+<span class="line">    &lt;ConnectedRouter history={history}&gt;</span>
+<span class="line">      &lt;ConfigProvider locale={zh_CN}&gt;</span>
+<span class="line">        &lt;main className=&quot;main-container&quot;&gt;</span>
+<span class="line">          &lt;Switch&gt;</span>
+<span class="line">            &lt;Route path=&quot;/&quot; exact component={Home} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/cart&quot; component={Cart} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/profile&quot; component={Profile} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/register&quot; component={Register} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/login&quot; component={Login} /&gt;</span>
+<span class="line">+           &lt;Route path=&quot;/detail/:id&quot; component={Detail} /&gt;</span>
+<span class="line">            &lt;Redirect to=&quot;/&quot; /&gt;</span>
+<span class="line">          &lt;/Switch&gt;</span>
+<span class="line">        &lt;/main&gt;</span>
+<span class="line">        &lt;Tabs /&gt;</span>
+<span class="line">      &lt;/ConfigProvider&gt;</span>
+<span class="line">    &lt;/ConnectedRouter&gt;</span>
+<span class="line">  &lt;/Provider&gt;,</span>
+<span class="line">  document.getElementById(&quot;root&quot;)</span>
+<span class="line">);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_10-3-api-home-tsx" tabindex="-1"><a class="header-anchor" href="#_10-3-api-home-tsx"><span>10.3 api\\home.tsx</span></a></h3><p>src\\api\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import axios from &quot;./index&quot;;</span>
+<span class="line">export function getSliders() {</span>
+<span class="line">  return axios.get(&quot;/slider/list&quot;);</span>
+<span class="line">}</span>
+<span class="line">export function getLessons(</span>
+<span class="line">  currentCategory: string = &quot;all&quot;,</span>
+<span class="line">  offset: number,</span>
+<span class="line">  limit: number</span>
+<span class="line">) {</span>
+<span class="line">  return axios.get(</span>
+<span class="line">    \`/lesson/list?category=\${currentCategory}&amp;offset=\${offset}&amp;limit=\${limit}\`</span>
+<span class="line">  );</span>
+<span class="line">}</span>
+<span class="line">+export function getLesson&lt;T&gt;(id: string) {</span>
+<span class="line">+  return axios.get&lt;T, T&gt;(\`/lesson/\${id}\`);</span>
+<span class="line">+}</span>
+<span class="line"></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_10-4-routes-detail-index-tsx" tabindex="-1"><a class="header-anchor" href="#_10-4-routes-detail-index-tsx"><span>10.4 routes\\Detail\\index.tsx</span></a></h3><p>src\\routes\\Detail\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Card<span class="token punctuation">,</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;antd&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> NavHeader <span class="token keyword">from</span> <span class="token string">&quot;@/components/NavHeader&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> getLesson <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/api/home&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> Lesson <span class="token keyword">from</span> <span class="token string">&quot;@/typings/lesson&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> StaticContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-router&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> LessonResult <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/typings/lesson&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token punctuation">{</span> Meta <span class="token punctuation">}</span> <span class="token operator">=</span> Card<span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">Props</span> <span class="token punctuation">{</span></span>
+<span class="line"></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Detail</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token punctuation">[</span>lesson<span class="token punctuation">,</span> setLesson<span class="token punctuation">]</span> <span class="token operator">=</span> useState<span class="token operator">&lt;</span>Lesson<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token keyword">as</span> Lesson<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token keyword">let</span> <span class="token literal-property property">lesson</span><span class="token operator">:</span> Lesson <span class="token operator">=</span> props<span class="token punctuation">.</span>location<span class="token punctuation">.</span>state<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>lesson<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">let</span> id <span class="token operator">=</span> props<span class="token punctuation">.</span>match<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">let</span> <span class="token literal-property property">result</span><span class="token operator">:</span> LessonResult <span class="token operator">=</span> <span class="token keyword">await</span> getLesson<span class="token operator">&lt;</span>LessonResult<span class="token operator">&gt;</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>success<span class="token punctuation">)</span> lesson <span class="token operator">=</span> result<span class="token punctuation">.</span>data<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">      <span class="token function">setLesson</span><span class="token punctuation">(</span>lesson<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token operator">&lt;</span><span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span>NavHeader<span class="token operator">&gt;</span>课程详情<span class="token operator">&lt;</span><span class="token operator">/</span>NavHeader<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span>Card</span>
+<span class="line">        hoverable</span>
+<span class="line">        style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token string">&quot;100%&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="line">        cover<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>video src<span class="token operator">=</span><span class="token punctuation">{</span>lesson<span class="token punctuation">.</span>video<span class="token punctuation">}</span> controls autoPlay<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">false</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">}</span></span>
+<span class="line">      <span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span>Meta title<span class="token operator">=</span><span class="token punctuation">{</span>lesson<span class="token punctuation">.</span>title<span class="token punctuation">}</span> description<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>价格<span class="token operator">:</span> <span class="token punctuation">{</span>lesson<span class="token punctuation">.</span>price<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span><span class="token operator">/</span>Card<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">  <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Detail<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_11-下拉刷新" tabindex="-1"><a class="header-anchor" href="#_11-下拉刷新"><span>11. 下拉刷新</span></a></h2><h3 id="_11-1-参考" tabindex="-1"><a class="header-anchor" href="#_11-1-参考"><span>11.1 参考</span></a></h3><h4 id="_11-1-1-目录结构" tabindex="-1"><a class="header-anchor" href="#_11-1-1-目录结构"><span>11.1.1 目录结构</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── README.md</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── api</span>
+<span class="line">│   │   ├── home.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── profile.tsx</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   ├── css</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   ├── NavHeader</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Detail</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   ├── HomeHeader</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   ├── HomeSliders</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   └── LessonList</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Login</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Profile</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Register</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   ├── home.tsx</span>
+<span class="line">│   │   │   └── profile.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   ├── typings</span>
+<span class="line">│   │   ├── images.d.ts</span>
+<span class="line">│   │   ├── lesson.tsx</span>
+<span class="line">│   │   ├── login-types.tsx</span>
+<span class="line">│   │   ├── slider.tsx</span>
+<span class="line">│   │   └── user.tsx</span>
+<span class="line">│   └── utils.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_11-2-src-utils-tsx" tabindex="-1"><a class="header-anchor" href="#_11-2-src-utils-tsx"><span>11.2 src\\utils.tsx</span></a></h3><p>src\\utils.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">//element 要实现此功能DOM对象 callback加载更多的方法</span>
+<span class="line">export function loadMore(element: HTMLElement, callback: Function) {</span>
+<span class="line">    function _loadMore() {</span>
+<span class="line">      let clientHeight = element.clientHeight;</span>
+<span class="line">      let scrollTop = element.scrollTop;</span>
+<span class="line">      let scrollHeight = element.scrollHeight;</span>
+<span class="line">      if (clientHeight + scrollTop + 10 &gt;= scrollHeight) {</span>
+<span class="line">        callback();</span>
+<span class="line">      }</span>
+<span class="line">    }</span>
+<span class="line">    element.addEventListener(&quot;scroll&quot;, debounce(_loadMore, 300));</span>
+<span class="line">}</span>
+<span class="line">export function debounce(fn: any, wait: number) {</span>
+<span class="line">  var timeout: any = null;</span>
+<span class="line">  return function () {</span>
+<span class="line">    if (timeout !== null) clearTimeout(timeout);</span>
+<span class="line">    timeout = setTimeout(fn, wait);</span>
+<span class="line">  };</span>
+<span class="line">}</span>
+<span class="line"></span>
+<span class="line">+export function downRefresh(element: HTMLDivElement, callback: Function) {</span>
+<span class="line">+  let startY: number; //变量，存储接下时候的纵坐标</span>
+<span class="line">+  let distance: number; //本次下拉的距离</span>
+<span class="line">+  let originalTop = element.offsetTop; //最初此元素距离顶部的距离 top=50</span>
+<span class="line">+  let startTop: number;</span>
+<span class="line">+  let $timer: any = null;</span>
+<span class="line">+  element.addEventListener(&quot;touchstart&quot;, function (event: TouchEvent) {</span>
+<span class="line">+    if ($timer) clearInterval($timer);</span>
+<span class="line">+    let touchMove = throttle(_touchMove, 30);</span>
+<span class="line">+    //只有当此元素处于原始位置才能下拉，如果处于回弹的过程则不能拉了.并且此元素向上卷去的高度==0</span>
+<span class="line">+    if (element.scrollTop === 0) {</span>
+<span class="line">+      startTop = element.offsetTop;</span>
+<span class="line">+      startY = event.touches[0].pageY; //记录当前点击的纵坐标</span>
+<span class="line">+      element.addEventListener(&quot;touchmove&quot;, touchMove);</span>
+<span class="line">+      element.addEventListener(&quot;touchend&quot;, touchEnd);</span>
+<span class="line">+    }</span>
+<span class="line">+</span>
+<span class="line">+    function _touchMove(event: TouchEvent) {</span>
+<span class="line">+      let pageY = event.touches[0].pageY; //拿到最新的纵坐标</span>
+<span class="line">+      if (pageY &gt; startY) {</span>
+<span class="line">+        distance = pageY - startY;</span>
+<span class="line">+        element.style.top = startTop + distance + &quot;px&quot;;</span>
+<span class="line">+      } else {</span>
+<span class="line">+        element.removeEventListener(&quot;touchmove&quot;, touchMove);</span>
+<span class="line">+        element.removeEventListener(&quot;touchend&quot;, touchEnd);</span>
+<span class="line">+      }</span>
+<span class="line">+    }</span>
+<span class="line">+</span>
+<span class="line">+    function touchEnd(_event: TouchEvent) {</span>
+<span class="line">+      element.removeEventListener(&quot;touchmove&quot;, touchMove);</span>
+<span class="line">+      element.removeEventListener(&quot;touchend&quot;, touchEnd);</span>
+<span class="line">+      if (distance &gt; 30) {</span>
+<span class="line">+        callback();</span>
+<span class="line">+      }</span>
+<span class="line">+      $timer = setInterval(() =&gt; {</span>
+<span class="line">+         let currentTop = domElement.offsetTop;</span>
+<span class="line">+         if (currentTop - originalTop &gt;= 1) {</span>
+<span class="line">+             //如果距离最原始的顶部多于1个像素，回弹一个像素</span>
+<span class="line">+             domElement.style.top = currentTop - 1 + &#39;px&#39;;</span>
+<span class="line">+         } else {</span>
+<span class="line">+             backTimer &amp;&amp; clearInterval(backTimer)</span>
+<span class="line">+             domElement.style.top = originalTop + &#39;px&#39;;</span>
+<span class="line">+         }</span>
+<span class="line">+       }, 16);</span>
+<span class="line">+    }</span>
+<span class="line">+  });</span>
+<span class="line">+}</span>
+<span class="line">+</span>
+<span class="line">+export function throttle(func: any, delay: number) {</span>
+<span class="line">+  var prev = Date.now();</span>
+<span class="line">+  return function () {</span>
+<span class="line">+    var context = this;</span>
+<span class="line">+    var args = arguments;</span>
+<span class="line">+    var now = Date.now();</span>
+<span class="line">+    if (now - prev &gt;= delay) {</span>
+<span class="line">+      func.apply(context, args);</span>
+<span class="line">+      prev = now;</span>
+<span class="line">+    }</span>
+<span class="line">+  };</span>
+<span class="line">+}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_11-3-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_11-3-action-types-tsx"><span>11.3 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export const ADD = &quot;ADD&quot;;</span>
+<span class="line">export const SET_CURRENT_CATEGORY = &#39;SET_CURRENT_CATEGORY&#39;;</span>
+<span class="line">export const VALIDATE = &#39;VALIDATE&#39;;</span>
+<span class="line">export const LOGOUT = &#39;LOGOUT&#39;;</span>
+<span class="line">export const CHANGE_AVATAR = &quot;CHANGE_AVATAR&quot;;</span>
+<span class="line">export const GET_SLIDERS = &quot;GET_SLIDERS&quot;;</span>
+<span class="line">export const GET_LESSONS = &quot;GET_LESSONS&quot;;</span>
+<span class="line">export const SET_LESSONS_LOADING = &quot;SET_LESSONS_LOADING&quot;;</span>
+<span class="line">export const SET_LESSONS = &quot;SET_LESSONS&quot;;</span>
+<span class="line">+export const REFRESH_LESSONS = &quot;REFRESH_LESSONS&quot;;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_11-4-reducers-home-tsx" tabindex="-1"><a class="header-anchor" href="#_11-4-reducers-home-tsx"><span>11.4 reducers\\home.tsx</span></a></h3><p>src\\store\\reducers\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { AnyAction } from &quot;redux&quot;;</span>
+<span class="line">import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">import Slider from &quot;@/typings/slider&quot;;</span>
+<span class="line">import Lesson from &quot;@/typings/Lesson&quot;;</span>
+<span class="line">export interface Lessons {</span>
+<span class="line">  loading: boolean;</span>
+<span class="line">  list: Lesson[];</span>
+<span class="line">  hasMore: boolean;</span>
+<span class="line">  offset: number;</span>
+<span class="line">  limit: number;</span>
+<span class="line">}</span>
+<span class="line">export interface HomeState {</span>
+<span class="line">  currentCategory: string;</span>
+<span class="line">  sliders: Slider[];</span>
+<span class="line">  lessons: Lessons;</span>
+<span class="line">}</span>
+<span class="line">let initialState: HomeState = {</span>
+<span class="line">  currentCategory: &#39;all&#39;,</span>
+<span class="line">  sliders: [],</span>
+<span class="line">  lessons: {</span>
+<span class="line">    loading: false,</span>
+<span class="line">    list: [],</span>
+<span class="line">    hasMore: true,</span>
+<span class="line">    offset: 0,</span>
+<span class="line">    limit: 5,</span>
+<span class="line">  },</span>
+<span class="line">};</span>
+<span class="line">export default function (state: HomeState = initialState, action: AnyAction): HomeState {</span>
+<span class="line">  switch (action.type) {</span>
+<span class="line">    case actionTypes.SET_CURRENT_CATEGORY:</span>
+<span class="line">      return { ...state, currentCategory: action.payload };</span>
+<span class="line">    case actionTypes.GET_SLIDERS:</span>
+<span class="line">      return { ...state, sliders: action.payload.data };</span>
+<span class="line">    case actionTypes.SET_LESSONS_LOADING:</span>
+<span class="line">      return {</span>
+<span class="line">        ...state,</span>
+<span class="line">        lessons: { ...state.lessons, loading: action.payload },</span>
+<span class="line">      };</span>
+<span class="line">    case actionTypes.SET_LESSONS:</span>
+<span class="line">      return {</span>
+<span class="line">        ...state,</span>
+<span class="line">        lessons: {</span>
+<span class="line">          ...state.lessons,</span>
+<span class="line">          loading: false,</span>
+<span class="line">          hasMore: action.payload.hasMore,</span>
+<span class="line">          list: [...state.lessons.list, ...action.payload.list],</span>
+<span class="line">          offset: state.lessons.offset + action.payload.list.length,</span>
+<span class="line">        },</span>
+<span class="line">      };</span>
+<span class="line">+   case actionTypes.REFRESH_LESSONS:</span>
+<span class="line">+       return {</span>
+<span class="line">+         ...state,</span>
+<span class="line">+         lessons: {</span>
+<span class="line">+           ...state.lessons,</span>
+<span class="line">+           loading: false,</span>
+<span class="line">+           hasMore: action.payload.hasMore,</span>
+<span class="line">+           list: action.payload.list,</span>
+<span class="line">+           offset: action.payload.list.length,</span>
+<span class="line">+         },</span>
+<span class="line">+       };</span>
+<span class="line">    default:</span>
+<span class="line">      return state;</span>
+<span class="line">  }</span>
+<span class="line">}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_11-5-home-index-tsx" tabindex="-1"><a class="header-anchor" href="#_11-5-home-index-tsx"><span>11.5 Home\\index.tsx</span></a></h3><p>src\\routes\\Home\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React, { PropsWithChildren, useRef, useEffect } from &quot;react&quot;;</span>
+<span class="line">import { connect } from &#39;react-redux&#39;;</span>
+<span class="line">import actionCreators from &#39;@/store/actionCreators/home&#39;;</span>
+<span class="line">import HomeHeader from &#39;./components/HomeHeader&#39;;</span>
+<span class="line">import { CombinedState } from &#39;@/store/reducers&#39;;</span>
+<span class="line">import { HomeState } from &#39;@/store/reducers/home&#39;;</span>
+<span class="line">import &#39;./index.less&#39;;</span>
+<span class="line">import HomeSliders from &quot;./components/HomeSliders&quot;;</span>
+<span class="line">import LessonList from &quot;./components/LessonList&quot;;</span>
+<span class="line">+import { loadMore,downRefresh} from &quot;@/utils&quot;;</span>
+<span class="line">+import {Spin} from &#39;antd&#39;;</span>
+<span class="line">type StateProps = ReturnType&lt;typeof mapStateToProps&gt;;</span>
+<span class="line">type DispatchProps = typeof actionCreators;</span>
+<span class="line">type Props = PropsWithChildren&lt;StateProps &amp; DispatchProps&gt;;</span>
+<span class="line">function Home(props: Props) {</span>
+<span class="line">    const homeContainerRef = useRef(null);</span>
+<span class="line">    useEffect(() =&gt; {</span>
+<span class="line">        loadMore(homeContainerRef.current, props.getLessons);</span>
+<span class="line">+       downRefresh(homeContainerRef.current, props.refreshLessons);</span>
+<span class="line">    }, []);</span>
+<span class="line">    return (</span>
+<span class="line">        &lt;&gt;</span>
+<span class="line">+           &lt;Spin size=&quot;large&quot;/&gt;</span>
+<span class="line">            &lt;HomeHeader</span>
+<span class="line">                currentCategory={props.currentCategory}</span>
+<span class="line">                setCurrentCategory={props.setCurrentCategory}</span>
+<span class="line">                refreshLessons={props.refreshLessons}</span>
+<span class="line">            /&gt;</span>
+<span class="line">            &lt;div className=&quot;home-container&quot; ref={homeContainerRef}&gt;</span>
+<span class="line">             &lt;HomeSliders sliders={props.sliders} getSliders={props.getSliders} /&gt;</span>
+<span class="line">             &lt;LessonList</span>
+<span class="line">                  lessons={props.lessons}</span>
+<span class="line">                  getLessons={props.getLessons}</span>
+<span class="line">             /&gt;</span>
+<span class="line">            &lt;/div&gt;</span>
+<span class="line">        &lt;/&gt;</span>
+<span class="line">    )</span>
+<span class="line">}</span>
+<span class="line">let mapStateToProps = (state: CombinedState): HomeState =&gt; state.home;</span>
+<span class="line">export default connect(</span>
+<span class="line">    mapStateToProps,</span>
+<span class="line">    actionCreators</span>
+<span class="line">)(Home);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_11-6-home-index-less" tabindex="-1"><a class="header-anchor" href="#_11-6-home-index-less"><span>11.6 Home\\index.less</span></a></h3><p>src\\routes\\Home\\index.less</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">+.ant-spin-spinning{</span>
+<span class="line">+  margin-top:20px;</span>
+<span class="line">+  margin-left:360px;</span>
+<span class="line">+}</span>
+<span class="line">.home-container {</span>
+<span class="line">  position: fixed;</span>
+<span class="line">  top: 100px;</span>
+<span class="line">  left: 0;</span>
+<span class="line">  width: 100%;</span>
+<span class="line">  overflow-y: auto;</span>
+<span class="line">  height: calc(100vh - 222px);</span>
+<span class="line">}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_11-7-homeheader-index-tsx" tabindex="-1"><a class="header-anchor" href="#_11-7-homeheader-index-tsx"><span>11.7 HomeHeader\\index.tsx</span></a></h3><p>src\\routes\\Home\\components\\HomeHeader\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">interface Props {</span>
+<span class="line">    currentCategory: string;//当前选中的分类 此数据会放在redux仓库中</span>
+<span class="line">    setCurrentCategory: (currentCategory: string) =&gt; any;// 改变仓库中的分类</span>
+<span class="line">+   refreshLessons: Function;</span>
+<span class="line">}</span>
+<span class="line">function HomeHeader(props: Props) {</span>
+<span class="line">    let [isMenuVisible, setIsMenuVisible] = useState(false);//设定标识位表示菜单是否显示</span>
+<span class="line">    //设置当前分类,把当前选中的分类传递给redux仓库</span>
+<span class="line">    const setCurrentCategory = (event: React.MouseEvent&lt;HTMLUListElement&gt;) =&gt; {</span>
+<span class="line">        let target: HTMLUListElement = event.target as HTMLUListElement;</span>
+<span class="line">        let category = target.dataset.category;//获取用户选择的分类名称</span>
+<span class="line">        props.setCurrentCategory(category);//设置分类名称</span>
+<span class="line">+       props.refreshLessons();</span>
+<span class="line">        setIsMenuVisible(false);//关闭分类选择层</span>
+<span class="line">    }</span>
+<span class="line">}</span>
+<span class="line">export default HomeHeader;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_12-虚拟列表" tabindex="-1"><a class="header-anchor" href="#_12-虚拟列表"><span>12. 虚拟列表</span></a></h2><h3 id="_12-1-参考" tabindex="-1"><a class="header-anchor" href="#_12-1-参考"><span>12.1 参考</span></a></h3><h4 id="_12-1-1-目录结构" tabindex="-1"><a class="header-anchor" href="#_12-1-1-目录结构"><span>12.1.1 目录结构</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── public</span>
+<span class="line">│   └── index.html</span>
+<span class="line">├── README.md</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── api</span>
+<span class="line">│   │   ├── home.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── profile.tsx</span>
+<span class="line">│   ├── assets</span>
+<span class="line">│   │   ├── css</span>
+<span class="line">│   │   │   └── common.less</span>
+<span class="line">│   │   └── images</span>
+<span class="line">│   │       └── logo.png</span>
+<span class="line">│   ├── components</span>
+<span class="line">│   │   ├── NavHeader</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Tabs</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── index.tsx</span>
+<span class="line">│   ├── routes</span>
+<span class="line">│   │   ├── Detail</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Home</span>
+<span class="line">│   │   │   ├── components</span>
+<span class="line">│   │   │   │   ├── HomeHeader</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   ├── HomeSliders</span>
+<span class="line">│   │   │   │   │   ├── index.less</span>
+<span class="line">│   │   │   │   │   └── index.tsx</span>
+<span class="line">│   │   │   │   └── LessonList</span>
+<span class="line">│   │   │   │       ├── index.less</span>
+<span class="line">│   │   │   │       └── index.tsx</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Login</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Cart</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   ├── Profile</span>
+<span class="line">│   │   │   ├── index.less</span>
+<span class="line">│   │   │   └── index.tsx</span>
+<span class="line">│   │   └── Register</span>
+<span class="line">│   │       ├── index.less</span>
+<span class="line">│   │       └── index.tsx</span>
+<span class="line">│   ├── store</span>
+<span class="line">│   │   ├── actionCreators</span>
+<span class="line">│   │   │   ├── home.tsx</span>
+<span class="line">│   │   │   └── profile.tsx</span>
+<span class="line">│   │   ├── action-types.tsx</span>
+<span class="line">│   │   ├── history.tsx</span>
+<span class="line">│   │   ├── index.tsx</span>
+<span class="line">│   │   └── reducers</span>
+<span class="line">│   │       ├── home.tsx</span>
+<span class="line">│   │       ├── index.tsx</span>
+<span class="line">│   │       ├── cart.tsx</span>
+<span class="line">│   │       └── profile.tsx</span>
+<span class="line">│   ├── typings</span>
+<span class="line">│   │   ├── images.d.ts</span>
+<span class="line">│   │   ├── lesson.tsx</span>
+<span class="line">│   │   ├── login-types.tsx</span>
+<span class="line">│   │   ├── slider.tsx</span>
+<span class="line">│   │   └── user.tsx</span>
+<span class="line">│   └── utils.tsx</span>
+<span class="line">├── tsconfig.json</span>
+<span class="line">├── webpack.config.js</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_12-2-home-index-tsx" tabindex="-1"><a class="header-anchor" href="#_12-2-home-index-tsx"><span>12.2 Home\\index.tsx</span></a></h3><p>src\\routes\\Home\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React, { PropsWithChildren, useRef, useEffect } from &quot;react&quot;;</span>
+<span class="line">import { connect } from &#39;react-redux&#39;;</span>
+<span class="line">import actionCreators from &#39;@/store/actionCreators/home&#39;;</span>
+<span class="line">import HomeHeader from &#39;./components/HomeHeader&#39;;</span>
+<span class="line">import { CombinedState } from &#39;@/store/reducers&#39;;</span>
+<span class="line">import { HomeState } from &#39;@/store/reducers/home&#39;;</span>
+<span class="line">import &#39;./index.less&#39;;</span>
+<span class="line">import HomeSliders from &quot;./components/HomeSliders&quot;;</span>
+<span class="line">import LessonList from &quot;./components/LessonList&quot;;</span>
+<span class="line">+import { loadMore,downRefresh,debounce, throttle} from &quot;@/utils&quot;;</span>
+<span class="line">import {Spin} from &#39;antd&#39;;</span>
+<span class="line">type StateProps = ReturnType&lt;typeof mapStateToProps&gt;;</span>
+<span class="line">type DispatchProps = typeof actionCreators;</span>
+<span class="line">type Props = PropsWithChildren&lt;StateProps &amp; DispatchProps&gt;;</span>
+<span class="line">function Home(props: Props) {</span>
+<span class="line">    const homeContainerRef = useRef(null);</span>
+<span class="line">+   const lessonListRef = useRef(null);</span>
+<span class="line">    useEffect(() =&gt; {</span>
+<span class="line">        loadMore(homeContainerRef.current, props.getLessons);</span>
+<span class="line">        downRefresh(homeContainerRef.current, props.refreshLessons);</span>
+<span class="line">+       lessonListRef.current();</span>
+<span class="line">+       homeContainerRef.current.addEventListener(&quot;scroll&quot;, throttle(lessonListRef.current,13));</span>
+<span class="line">+       homeContainerRef.current.addEventListener(&#39;scroll&#39;, () =&gt; {</span>
+<span class="line">+           sessionStorage.setItem(&#39;scrollTop&#39;, homeContainerRef.current.scrollTop);</span>
+<span class="line">+       });</span>
+<span class="line">    }, []);</span>
+<span class="line">+    useEffect(() =&gt; {</span>
+<span class="line">+       //保持滚动条的位置</span>
+<span class="line">+       let scrollTop = sessionStorage.getItem(&#39;scrollTop&#39;);</span>
+<span class="line">+       if (scrollTop) {</span>
+<span class="line">+           homeContainerRef.current.scrollTop = scrollTop;</span>
+<span class="line">+       }</span>
+<span class="line">+   });</span>
+<span class="line">    return (</span>
+<span class="line">        &lt;&gt;</span>
+<span class="line">            &lt;Spin size=&quot;large&quot;/&gt;</span>
+<span class="line">            &lt;HomeHeader</span>
+<span class="line">                currentCategory={props.currentCategory}</span>
+<span class="line">                setCurrentCategory={props.setCurrentCategory}</span>
+<span class="line">                refreshLessons={props.refreshLessons}</span>
+<span class="line">            /&gt;</span>
+<span class="line">            &lt;div className=&quot;home-container&quot; ref={homeContainerRef}&gt;</span>
+<span class="line">             &lt;HomeSliders sliders={props.sliders} getSliders={props.getSliders} /&gt;</span>
+<span class="line">             &lt;LessonList</span>
+<span class="line">                  lessons={props.lessons}</span>
+<span class="line">                  getLessons={props.getLessons}</span>
+<span class="line">+                 ref={lessonListRef}</span>
+<span class="line">+                 homeContainerRef={homeContainerRef}</span>
+<span class="line">             /&gt;</span>
+<span class="line">            &lt;/div&gt;</span>
+<span class="line">        &lt;/&gt;</span>
+<span class="line">    )</span>
+<span class="line">}</span>
+<span class="line">let mapStateToProps = (state: CombinedState): HomeState =&gt; state.home;</span>
+<span class="line">export default connect(</span>
+<span class="line">    mapStateToProps,</span>
+<span class="line">    actionCreators</span>
+<span class="line">)(Home);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_12-3-lessonlist-index-tsx" tabindex="-1"><a class="header-anchor" href="#_12-3-lessonlist-index-tsx"><span>12.3 LessonList\\index.tsx</span></a></h3><p>src\\routes\\Home\\components\\LessonList\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React, { useEffect, forwardRef, useState } from &quot;react&quot;;</span>
+<span class="line">import &quot;./index.less&quot;;</span>
+<span class="line">import { Card, Skeleton, Button, Alert, Menu } from &quot;antd&quot;;</span>
+<span class="line">import { Link } from &quot;react-router-dom&quot;;</span>
+<span class="line">import Lesson from &quot;@/typings/lesson&quot;;</span>
+<span class="line">import { MenuOutlined } from &quot;@ant-design/icons&quot;;</span>
+<span class="line">interface Props {</span>
+<span class="line">  children?: any;</span>
+<span class="line">  lessons?: any;</span>
+<span class="line">  getLessons?: any;</span>
+<span class="line">+ homeContainerRef: any</span>
+<span class="line">}</span>
+<span class="line">+interface VisibleLesson extends Lesson {</span>
+<span class="line">+  index: number</span>
+<span class="line">+}</span>
+<span class="line">function LessonList(props: Props, lessonListRef: any) {</span>
+<span class="line">+  const [, forceUpdate] = React.useReducer(x =&gt; x + 1, 0);</span>
+<span class="line">  useEffect(() =&gt; {</span>
+<span class="line">    if (props.lessons.list.length == 0) {</span>
+<span class="line">      props.getLessons();</span>
+<span class="line">    }</span>
+<span class="line">+   lessonListRef.current = forceUpdate;</span>
+<span class="line">  }, []);</span>
+<span class="line">+  const remSize: number = parseFloat(document.documentElement.style.fontSize);</span>
+<span class="line">+  const itemSize: number = (650 / 75) * remSize;</span>
+<span class="line">+  const screenHeight = window.innerHeight - (222 / 75) * remSize;</span>
+<span class="line">+  const homeContainer = props.homeContainerRef.current;</span>
+<span class="line">+  let start = 0, end = 0;</span>
+<span class="line">+  if (homeContainer) {</span>
+<span class="line">+    //卷去的高度要减去 轮播图和全部课程这个H1标签的高度</span>
+<span class="line">+    const scrollTop = homeContainer.scrollTop - ((320+65)/75)*remSize;;</span>
+<span class="line">+    start = Math.floor(scrollTop / itemSize);</span>
+<span class="line">+    end = start + Math.floor(screenHeight / itemSize);</span>
+<span class="line">+    start-=2,end+=2;</span>
+<span class="line">+    start = start &lt; 0 ? 0 : start;</span>
+<span class="line">+    end = end &gt; props.lessons.list.length ? props.lessons.list.length : end;</span>
+<span class="line">+  }</span>
+<span class="line">+  const visibleList: Array&lt;VisibleLesson&gt; = props.lessons.list.map((item: Lesson, index: number) =&gt; ({ ...item, index })).slice(start, end);</span>
+<span class="line">+  const style: React.CSSProperties = { position: &#39;absolute&#39;, top: 0, left: 0, width: &#39;100%&#39;, height: itemSize };</span>
+<span class="line">+  const bottomTop = (props.lessons.list.length)*itemSize;</span>
+<span class="line">+  return (</span>
+<span class="line">+    &lt;section className=&quot;lesson-list&quot;&gt;</span>
+<span class="line">      &lt;Skeleton</span>
+<span class="line">        loading={props.lessons.list.length == 0 &amp;&amp; props.lessons.loading}</span>
+<span class="line">        active</span>
+<span class="line">        paragraph={{ rows: 8 }}</span>
+<span class="line">      &gt;</span>
+<span class="line">+      &lt;h2&gt;</span>
+<span class="line">+        &lt;MenuOutlined /&gt; 全部课程</span>
+<span class="line">+      &lt;/h2&gt;</span>
+<span class="line">+      &lt;div style={{position:&#39;relative&#39;, width: &#39;100%&#39;, height: \`\${props.lessons.list.length * itemSize}px\`}}&gt;</span>
+<span class="line">+       {</span>
+<span class="line">+         visibleList.map((lesson: VisibleLesson) =&gt; (</span>
+<span class="line">+           &lt;Link</span>
+<span class="line">+             key={lesson.id}</span>
+<span class="line">+             style={{ ...style, top: \`\${itemSize * lesson.index}px\` }}</span>
+<span class="line">+             to={{ pathname: \`/detail/\${lesson.id}\`, state: lesson }}</span>
+<span class="line">+           &gt;</span>
+<span class="line">+             &lt;Card</span>
+<span class="line">+               hoverable={true}</span>
+<span class="line">+               cover={&lt;img alt={lesson.title} src={lesson.poster} /&gt;}</span>
+<span class="line">+             &gt;</span>
+<span class="line">+               &lt;Card.Meta</span>
+<span class="line">+                 title={lesson.title}</span>
+<span class="line">+                 description={\`价格: ¥\${lesson.price}元\`}</span>
+<span class="line">+               /&gt;</span>
+<span class="line">+             &lt;/Card&gt;</span>
+<span class="line">+           &lt;/Link&gt;</span>
+<span class="line">+         ))</span>
+<span class="line">+       }</span>
+<span class="line">       {props.lessons.hasMore ? (</span>
+<span class="line">         &lt;Button</span>
+<span class="line">+          style={{ textAlign: &quot;center&quot; ,top: \`\${bottomTop}px\`}}</span>
+<span class="line">            onClick={props.getLessons}</span>
+<span class="line">            loading={props.lessons.loading}</span>
+<span class="line">            type=&quot;primary&quot;</span>
+<span class="line">            block</span>
+<span class="line">          &gt;</span>
+<span class="line">            {props.lessons.loading ? &quot;&quot; : &quot;加载更多&quot;}</span>
+<span class="line">          &lt;/Button&gt;</span>
+<span class="line">        ) : (</span>
+<span class="line">            &lt;Alert</span>
+<span class="line">+             style={{ textAlign: &quot;center&quot;,top: \`\${bottomTop}px\` }}</span>
+<span class="line">              message=&quot;到底了&quot;</span>
+<span class="line">              type=&quot;warning&quot;</span>
+<span class="line">            /&gt;</span>
+<span class="line">          )}</span>
+<span class="line">      &lt;/div&gt;</span>
+<span class="line">      &lt;/Skeleton&gt;</span>
+<span class="line">    &lt;/section&gt;</span>
+<span class="line">  );</span>
+<span class="line">}</span>
+<span class="line">+export default React.forwardRef(LessonList);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_13-路由懒加载" tabindex="-1"><a class="header-anchor" href="#_13-路由懒加载"><span>13. 路由懒加载</span></a></h2><h3 id="_13-1-src-index-tsx" tabindex="-1"><a class="header-anchor" href="#_13-1-src-index-tsx"><span>13.1 src\\index.tsx</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React from &quot;react&quot;;</span>
+<span class="line">import ReactDOM from &quot;react-dom&quot;;</span>
+<span class="line">import { Switch, Route, Redirect } from &quot;react-router-dom&quot;;</span>
+<span class="line">import { Provider } from &quot;react-redux&quot;;</span>
+<span class="line">import store from &quot;./store&quot;;</span>
+<span class="line">import { ConfigProvider } from &quot;antd&quot;;</span>
+<span class="line">import zh_CN from &quot;antd/lib/locale-provider/zh_CN&quot;;</span>
+<span class="line">import &quot;./assets/css/common.less&quot;;</span>
+<span class="line">import Tabs from &quot;./components/Tabs&quot;;</span>
+<span class="line">import {Spin} from &#39;antd&#39;;</span>
+<span class="line">+const Home = React.lazy(() =&gt; import(&quot;./routes/Home&quot;));</span>
+<span class="line">+const Cart = React.lazy(() =&gt; import(&quot;./routes/Cart&quot;));</span>
+<span class="line">+const Profile = React.lazy(() =&gt; import(&quot;./routes/Profile&quot;));</span>
+<span class="line">+const Register = React.lazy(() =&gt; import(&quot;./routes/Register&quot;));</span>
+<span class="line">+const Login = React.lazy(() =&gt; import(&quot;./routes/Login&quot;));</span>
+<span class="line">+const Detail = React.lazy(() =&gt; import(&quot;./routes/Detail&quot;));</span>
+<span class="line">import { ConnectedRouter } from &quot;redux-first-history&quot;;</span>
+<span class="line">import history from &quot;./store/history&quot;;</span>
+<span class="line">ReactDOM.render(</span>
+<span class="line">  &lt;Provider store={store}&gt;</span>
+<span class="line">    &lt;ConnectedRouter history={history}&gt;</span>
+<span class="line">      &lt;ConfigProvider locale={zh_CN}&gt;</span>
+<span class="line">+      &lt;React.Suspense fallback={&lt;Spin /&gt;}&gt;</span>
+<span class="line">        &lt;main className=&quot;main-container&quot;&gt;</span>
+<span class="line">          &lt;Switch&gt;</span>
+<span class="line">            &lt;Route path=&quot;/&quot; exact component={Home} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/cart&quot; component={Cart} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/profile&quot; component={Profile} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/register&quot; component={Register} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/login&quot; component={Login} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/detail/:id&quot; component={Detail} /&gt;</span>
+<span class="line">            &lt;Redirect to=&quot;/&quot; /&gt;</span>
+<span class="line">          &lt;/Switch&gt;</span>
+<span class="line">        &lt;/main&gt;</span>
+<span class="line">        &lt;Tabs /&gt;</span>
+<span class="line">+       &lt;/React.Suspense&gt;</span>
+<span class="line">      &lt;/ConfigProvider&gt;</span>
+<span class="line">    &lt;/ConnectedRouter&gt;</span>
+<span class="line">  &lt;/Provider&gt;,</span>
+<span class="line">  document.getElementById(&quot;root&quot;)</span>
+<span class="line">);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_14-购物车" tabindex="-1"><a class="header-anchor" href="#_14-购物车"><span>14. 购物车</span></a></h2><ul><li><a href="https://github.com/salvoravida/redux-immer" target="_blank" rel="noopener noreferrer">redux-immer</a>is used to create an equivalent function of Redux combineReducers that works with immer state.</li><li><a href="https://github.com/rt2zz/redux-persist" target="_blank" rel="noopener noreferrer">redux-persist</a>Persist and rehydrate a redux store.</li></ul><h3 id="_14-1-src-index-tsx" tabindex="-1"><a class="header-anchor" href="#_14-1-src-index-tsx"><span>14.1 src\\index.tsx</span></a></h3><p>src\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import React from &quot;react&quot;;</span>
+<span class="line">import ReactDOM from &quot;react-dom&quot;;</span>
+<span class="line">import { Switch, Route, Redirect } from &quot;react-router-dom&quot;;</span>
+<span class="line">import { Provider } from &quot;react-redux&quot;;</span>
+<span class="line">+import {store,persistor} from &quot;./store&quot;;</span>
+<span class="line">import &quot;./assets/css/common.less&quot;;</span>
+<span class="line">import Tabs from &quot;./components/Tabs&quot;;</span>
+<span class="line">import {Spin} from &#39;antd&#39;;</span>
+<span class="line">const Home = React.lazy(() =&gt; import(&quot;./routes/Home&quot;));</span>
+<span class="line">const Profile = React.lazy(() =&gt; import(&quot;./routes/Profile&quot;));</span>
+<span class="line">const Register = React.lazy(() =&gt; import(&quot;./routes/Register&quot;));</span>
+<span class="line">const Login = React.lazy(() =&gt; import(&quot;./routes/Login&quot;));</span>
+<span class="line">const Detail = React.lazy(() =&gt; import(&quot;./routes/Detail&quot;));</span>
+<span class="line">+const Cart = React.lazy(() =&gt; import(&quot;./routes/Cart&quot;));</span>
+<span class="line">+import { PersistGate } from &#39;redux-persist/integration/react&#39;</span>
+<span class="line">import { ConnectedRouter } from &quot;redux-first-history&quot;;</span>
+<span class="line"></span>
+<span class="line">import history from &quot;./store/history&quot;;</span>
+<span class="line">ReactDOM.render(</span>
+<span class="line">  &lt;Provider store={store}&gt;</span>
+<span class="line">+   &lt;PersistGate loading={&lt;Spin /&gt;} persistor={persistor}&gt;</span>
+<span class="line">    &lt;ConnectedRouter history={history}&gt;</span>
+<span class="line">       &lt;React.Suspense fallback={&lt;Spin /&gt;}&gt;</span>
+<span class="line">        &lt;main className=&quot;main-container&quot;&gt;</span>
+<span class="line">          &lt;Switch&gt;</span>
+<span class="line">            &lt;Route path=&quot;/&quot; exact component={Home} /&gt;</span>
+<span class="line">+           &lt;Route path=&quot;/cart&quot; component={Cart} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/profile&quot; component={Profile} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/register&quot; component={Register} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/login&quot; component={Login} /&gt;</span>
+<span class="line">            &lt;Route path=&quot;/detail/:id&quot; component={Detail} /&gt;</span>
+<span class="line">            &lt;Redirect to=&quot;/&quot; /&gt;</span>
+<span class="line">          &lt;/Switch&gt;</span>
+<span class="line">        &lt;/main&gt;</span>
+<span class="line">        &lt;Tabs /&gt;</span>
+<span class="line">        &lt;/React.Suspense&gt;</span>
+<span class="line">    &lt;/ConnectedRouter&gt;</span>
+<span class="line">+   &lt;/PersistGate&gt;</span>
+<span class="line">  &lt;/Provider&gt;,</span>
+<span class="line">  document.getElementById(&quot;root&quot;)</span>
+<span class="line">);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-2-detail-index-tsx" tabindex="-1"><a class="header-anchor" href="#_14-2-detail-index-tsx"><span>14.2 Detail\\index.tsx</span></a></h3><p>src\\routes\\Detail\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">+import React, { useState, useEffect,PropsWithChildren } from &quot;react&quot;;</span>
+<span class="line">import { connect } from &quot;react-redux&quot;;</span>
+<span class="line">import { Card, Button } from &quot;antd&quot;;</span>
+<span class="line">import NavHeader from &quot;@/components/NavHeader&quot;;</span>
+<span class="line">import { getLesson } from &quot;@/api/home&quot;;</span>
+<span class="line">import Lesson from &quot;@/typings/lesson&quot;;</span>
+<span class="line">import { StaticContext } from &quot;react-router&quot;;</span>
+<span class="line">import { LessonResult } from &quot;@/typings/lesson&quot;;</span>
+<span class="line">+import { CombinedState } from &#39;@/store/reducers&#39;;</span>
+<span class="line">+import actionCreators from &#39;@/store/actionCreators/cart&#39;;</span>
+<span class="line">const { Meta } = Card;</span>
+<span class="line">interface Params {</span>
+<span class="line">  id: string;</span>
+<span class="line">}</span>
+<span class="line">+type StateProps = ReturnType&lt;typeof mapStateToProps&gt;;</span>
+<span class="line">+type DispatchProps = typeof actionCreators;</span>
+<span class="line">+type Props = PropsWithChildren&lt;StateProps &amp; DispatchProps&gt;;</span>
+<span class="line"></span>
+<span class="line">function Detail(props: Props) {</span>
+<span class="line">  let [lesson, setLesson] = useState&lt;Lesson&gt;({} as Lesson);</span>
+<span class="line">  useEffect(() =&gt; {</span>
+<span class="line">    (async () =&gt; {</span>
+<span class="line">      let lesson: Lesson = props.location.state;</span>
+<span class="line">      if (!lesson) {</span>
+<span class="line">        let id = props.match.params.id;</span>
+<span class="line">        let result: LessonResult = await getLesson&lt;LessonResult&gt;(id);</span>
+<span class="line">        if (result.success) lesson = result.data;</span>
+<span class="line">      }</span>
+<span class="line">      setLesson(lesson);</span>
+<span class="line">    })();</span>
+<span class="line">  }, []);</span>
+<span class="line">+ const addCartItem = (lesson: Lesson) =&gt; {</span>
+<span class="line">+  //https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect</span>
+<span class="line"> +  let video: HTMLVideoElement = document.querySelector(&#39;</span>
+<span class="line">+  let cart: HTMLSpanElement = document.querySelector(&#39;.anticon.anticon-shopping-cart&#39;);</span>
+<span class="line">+  let clonedVideo: HTMLVideoElement = video.cloneNode(true) as HTMLVideoElement;</span>
+<span class="line">+  let videoWith = video.offsetWidth;</span>
+<span class="line">+  let videoHeight = video.offsetHeight;</span>
+<span class="line">+  let cartWith = cart.offsetWidth;</span>
+<span class="line">+  let cartHeight = cart.offsetHeight;</span>
+<span class="line">+  let videoLeft = video.getBoundingClientRect().left;</span>
+<span class="line">+  let videoTop = video.getBoundingClientRect().top;</span>
+<span class="line">+  let cartRight = cart.getBoundingClientRect().right;</span>
+<span class="line">+  let cartBottom = cart.getBoundingClientRect().bottom;</span>
+<span class="line">+  clonedVideo.style.cssText = \`</span>
+<span class="line">+    z-index: 1000;</span>
+<span class="line">+    opacity:0.8;</span>
+<span class="line">+    position:fixed;</span>
+<span class="line">+    width:\${videoWith}px;</span>
+<span class="line">+    height:\${videoHeight}px;</span>
+<span class="line">+    top:\${videoTop}px;</span>
+<span class="line">+    left:\${videoLeft}px;</span>
+<span class="line">+    transition: all 2s ease-in-out;</span>
+<span class="line">+  \`;</span>
+<span class="line">+  document.body.appendChild(clonedVideo);</span>
+<span class="line">+  setTimeout(function () {</span>
+<span class="line">+      clonedVideo.style.left = (cartRight - (cartWith / 2)) + &#39;px&#39;;</span>
+<span class="line">+      clonedVideo.style.top = (cartBottom - (cartHeight / 2)) + &#39;px&#39;;</span>
+<span class="line">+      clonedVideo.style.width = \`0px\`;</span>
+<span class="line">+      clonedVideo.style.height = \`0px\`;</span>
+<span class="line">+      clonedVideo.style.opacity = &#39;50&#39;;</span>
+<span class="line">+  }, 0);</span>
+<span class="line">+  props.addCartItem(lesson);</span>
+<span class="line">+ }</span>
+<span class="line">  return (</span>
+<span class="line">    &lt;&gt;</span>
+<span class="line">      &lt;NavHeader&gt;课程详情&lt;/NavHeader&gt;</span>
+<span class="line">      &lt;Card</span>
+<span class="line">        hoverable</span>
+<span class="line">        style={{ width: &quot;100%&quot; }}</span>
+<span class="line">+       cover={&lt;video src={lesson.video} id=&quot;lesson-video&quot; controls autoPlay={false} /&gt;}</span>
+<span class="line">      &gt;</span>
+<span class="line">        &lt;Meta title={lesson.title} description={</span>
+<span class="line">+         &lt;&gt;</span>
+<span class="line">+           &lt;p&gt;价格: {lesson.price}&lt;/p&gt;</span>
+<span class="line">+           &lt;p&gt;</span>
+<span class="line">+             &lt;Button </span>
+<span class="line">+               className=&quot;add-cart&quot;</span>
+<span class="line">+               onClick={() =&gt; addCartItem(lesson)}</span>
+<span class="line">+             &gt;加入购物车&lt;/Button&gt;&lt;/p&gt;</span>
+<span class="line">+         &lt;/&gt;</span>
+<span class="line">+       } /&gt;</span>
+<span class="line">+     &lt;/Card&gt;</span>
+<span class="line">+   &lt;/&gt;</span>
+<span class="line">  );</span>
+<span class="line">}</span>
+<span class="line">+let mapStateToProps = (state: CombinedState): CombinedState =&gt; state;</span>
+<span class="line">export default connect(</span>
+<span class="line">+  mapStateToProps,</span>
+<span class="line">+  actionCreators</span>
+<span class="line">)(Detail);</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-3-action-types-tsx" tabindex="-1"><a class="header-anchor" href="#_14-3-action-types-tsx"><span>14.3 action-types.tsx</span></a></h3><p>src\\store\\action-types.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export const ADD = &quot;ADD&quot;;</span>
+<span class="line"></span>
+<span class="line">export const SET_CURRENT_CATEGORY = &#39;SET_CURRENT_CATEGORY&#39;;</span>
+<span class="line"></span>
+<span class="line">export const VALIDATE = &#39;VALIDATE&#39;;</span>
+<span class="line"></span>
+<span class="line">export const LOGOUT = &#39;LOGOUT&#39;;</span>
+<span class="line"></span>
+<span class="line">export const CHANGE_AVATAR = &quot;CHANGE_AVATAR&quot;;</span>
+<span class="line"></span>
+<span class="line">export const GET_SLIDERS = &quot;GET_SLIDERS&quot;;</span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line">export const GET_LESSONS = &quot;GET_LESSONS&quot;;</span>
+<span class="line">export const SET_LESSONS_LOADING = &quot;SET_LESSONS_LOADING&quot;;</span>
+<span class="line">export const SET_LESSONS = &quot;SET_LESSONS&quot;;</span>
+<span class="line">export const REFRESH_LESSONS = &quot;REFRESH_LESSONS&quot;;</span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line">+export const ADD_CART_ITEM = &#39;ADD_CART_ITEM&#39;;//向购物车中增一个商品</span>
+<span class="line">+export const REMOVE_CART_ITEM = &#39;REMOVE_CART_ITEM&#39;;//从购物车中删除一个商品</span>
+<span class="line">+export const CLEAR_CART_ITEMS = &#39;CLEAR_CART_ITEMS&#39;;//清空购物车</span>
+<span class="line">+export const CHANGE_CART_ITEM_COUNT = &#39;CHANGE_CART_ITEM_COUNT&#39;;//直接修改购物车商品的数量减1</span>
+<span class="line">+export const CHANGE_CHECKED_CART_ITEMS = &#39;CHANGE_CHECKED_CART_ITEMS&#39;;//选中商品</span>
+<span class="line">+export const SETTLE = &#39;SETTLE&#39;;//结算</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-4-typings-cart-tsx" tabindex="-1"><a class="header-anchor" href="#_14-4-typings-cart-tsx"><span>14.4 typings\\cart.tsx</span></a></h3><p>src\\typings\\cart.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Lesson <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./lesson&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">CartItem</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">lesson</span><span class="token operator">:</span> Lesson<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">count</span><span class="token operator">:</span> number<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">checked</span><span class="token operator">:</span> boolean<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> type CartState <span class="token operator">=</span> CartItem<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-5-cart-tsx" tabindex="-1"><a class="header-anchor" href="#_14-5-cart-tsx"><span>14.5 cart.tsx</span></a></h3><p>src\\store\\reducers\\cart.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> AnyAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> CartState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/typings/cart&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> actionTypes <span class="token keyword">from</span> <span class="token string">&quot;@/store/action-types&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">let</span> <span class="token literal-property property">initialState</span><span class="token operator">:</span> CartState <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span></span>
+<span class="line">  <span class="token parameter"><span class="token literal-property property">state</span><span class="token operator">:</span> CartState <span class="token operator">=</span> initialState<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">action</span><span class="token operator">:</span> AnyAction</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token operator">:</span> CartState <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">case</span> actionTypes<span class="token punctuation">.</span><span class="token constant">ADD_CART_ITEM</span><span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>增加条目</span>
+<span class="line">      <span class="token keyword">let</span> oldIndex <span class="token operator">=</span> state<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span></span>
+<span class="line">        <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>id <span class="token operator">===</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>id</span>
+<span class="line">      <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">if</span> <span class="token punctuation">(</span>oldIndex <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        state<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">          <span class="token literal-property property">checked</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></span>
+<span class="line">          <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span></span>
+<span class="line">          <span class="token literal-property property">lesson</span><span class="token operator">:</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">,</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">        state<span class="token punctuation">[</span>oldIndex<span class="token punctuation">]</span><span class="token punctuation">.</span>count <span class="token operator">+=</span><span class="token number">1</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token punctuation">}</span></span>
+<span class="line">      <span class="token keyword">break</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">case</span> actionTypes<span class="token punctuation">.</span><span class="token constant">REMOVE_CART_ITEM</span><span class="token operator">:</span></span>
+<span class="line">      <span class="token keyword">let</span> removeIndex <span class="token operator">=</span> state<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span></span>
+<span class="line">        <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>id <span class="token operator">===</span> action<span class="token punctuation">.</span>payload</span>
+<span class="line">      <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      state<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>removeIndex<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">break</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">case</span> actionTypes<span class="token punctuation">.</span><span class="token constant">CLEAR_CART_ITEMS</span><span class="token operator">:</span></span>
+<span class="line">      state<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">break</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">case</span> actionTypes<span class="token punctuation">.</span><span class="token constant">CHANGE_CART_ITEM_COUNT</span><span class="token operator">:</span></span>
+<span class="line">      <span class="token keyword">let</span> index <span class="token operator">=</span> state<span class="token punctuation">.</span><span class="token function">findIndex</span><span class="token punctuation">(</span></span>
+<span class="line">        <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>id <span class="token operator">===</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>id</span>
+<span class="line">      <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      state<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>count<span class="token operator">=</span>action<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>count<span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">break</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">case</span> actionTypes<span class="token punctuation">.</span><span class="token constant">CHANGE_CHECKED_CART_ITEMS</span><span class="token operator">:</span></span>
+<span class="line">      <span class="token keyword">let</span> checkedIds <span class="token operator">=</span> action<span class="token punctuation">.</span>payload<span class="token punctuation">;</span></span>
+<span class="line">      state<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">item</span><span class="token operator">:</span>any</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">if</span><span class="token punctuation">(</span>checkedIds<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span></span>
+<span class="line">          item<span class="token punctuation">.</span>checked <span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">break</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">case</span> actionTypes<span class="token punctuation">.</span><span class="token constant">SETTLE</span><span class="token operator">:</span></span>
+<span class="line">      state <span class="token operator">=</span> state<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token operator">!</span>item<span class="token punctuation">.</span>checked<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token keyword">break</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">default</span><span class="token operator">:</span></span>
+<span class="line">      <span class="token keyword">break</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token keyword">return</span> state<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-6-reducers-home-tsx" tabindex="-1"><a class="header-anchor" href="#_14-6-reducers-home-tsx"><span>14.6 reducers\\home.tsx</span></a></h3><p>src\\store\\reducers\\home.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { AnyAction } from &quot;redux&quot;;</span>
+<span class="line">import * as actionTypes from &quot;../action-types&quot;;</span>
+<span class="line">import Slider from &quot;@/typings/slider&quot;;</span>
+<span class="line">import Lesson from &quot;@/typings/Lesson&quot;;</span>
+<span class="line">export interface Lessons {</span>
+<span class="line">  loading: boolean;</span>
+<span class="line">  list: Lesson[];</span>
+<span class="line">  hasMore: boolean;</span>
+<span class="line">  offset: number;</span>
+<span class="line">  limit: number;</span>
+<span class="line">}</span>
+<span class="line">export interface HomeState {</span>
+<span class="line">  currentCategory: string;</span>
+<span class="line">  sliders: Slider[];</span>
+<span class="line">  lessons: Lessons;</span>
+<span class="line">}</span>
+<span class="line">let initialState: HomeState = {</span>
+<span class="line">  currentCategory: &#39;all&#39;,</span>
+<span class="line">  sliders: [],</span>
+<span class="line">  lessons: {</span>
+<span class="line">    loading: false,</span>
+<span class="line">    list: [],</span>
+<span class="line">    hasMore: true,</span>
+<span class="line">    offset: 0,</span>
+<span class="line">    limit: 5,</span>
+<span class="line">  },</span>
+<span class="line">};</span>
+<span class="line">export default function (state: HomeState = initialState, action: AnyAction): HomeState {</span>
+<span class="line">+ switch (action.type) {</span>
+<span class="line">+   case actionTypes.SET_CURRENT_CATEGORY:</span>
+<span class="line">+     state.currentCategory=action.payload;</span>
+<span class="line">+     break;</span>
+<span class="line">+   case actionTypes.GET_SLIDERS:</span>
+<span class="line">+     state.sliders = action.payload.data;</span>
+<span class="line">+     break;</span>
+<span class="line">+   case actionTypes.SET_LESSONS_LOADING:</span>
+<span class="line">+     state.lessons.loading = action.payload;</span>
+<span class="line">+     break;</span>
+<span class="line">+   case actionTypes.SET_LESSONS:</span>
+<span class="line">+     state.lessons.loading = false;</span>
+<span class="line">+     state.lessons.hasMore =  action.payload.hasMore;</span>
+<span class="line">+     state.lessons.list=[...state.lessons.list,...action.payload.list];</span>
+<span class="line">+     state.lessons.offset += action.payload.list.length;</span>
+<span class="line">+     break;</span>
+<span class="line">+   case actionTypes.REFRESH_LESSONS:</span>
+<span class="line">+     state.lessons.loading = false;</span>
+<span class="line">+     state.lessons.hasMore =  action.payload.hasMore;</span>
+<span class="line">+     state.lessons.list=action.payload.list;</span>
+<span class="line">+     state.lessons.offset = action.payload.list.length;</span>
+<span class="line">+     break;</span>
+<span class="line">+   default:</span>
+<span class="line">+     break;</span>
+<span class="line">+  }</span>
+<span class="line">+   return state;</span>
+<span class="line">}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-7-reducers-index-tsx" tabindex="-1"><a class="header-anchor" href="#_14-7-reducers-index-tsx"><span>14.7 reducers\\index.tsx</span></a></h3><p>src\\store\\reducers\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { ReducersMapObject, Reducer } from &#39;redux&#39;;</span>
+<span class="line">import { connectRouter } from &#39;redux-first-history&#39;;</span>
+<span class="line">import history from &#39;../history&#39;;</span>
+<span class="line">import home from &#39;./home&#39;;</span>
+<span class="line">import cart from &#39;./cart&#39;;</span>
+<span class="line">import profile from &#39;./profile&#39;;</span>
+<span class="line">+import cart from &#39;./cart&#39;;</span>
+<span class="line">+import { combineReducers } from &#39;redux-immer&#39;;</span>
+<span class="line">+import produce from &#39;immer&#39;;</span>
+<span class="line">let reducers: ReducersMapObject = {</span>
+<span class="line">    router: connectRouter(history),</span>
+<span class="line">    home,</span>
+<span class="line">    cart,</span>
+<span class="line">    profile,</span>
+<span class="line">+   cart</span>
+<span class="line">};</span>
+<span class="line">type CombinedState = {</span>
+<span class="line">    [key in keyof typeof reducers]: ReturnType&lt;typeof reducers[key]&gt;</span>
+<span class="line">}</span>
+<span class="line">+let reducer: Reducer&lt;CombinedState&gt; = combineReducers(produce,reducers);</span>
+<span class="line"></span>
+<span class="line">export { CombinedState }</span>
+<span class="line">export default reducer;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-8-store-index-tsx" tabindex="-1"><a class="header-anchor" href="#_14-8-store-index-tsx"><span>14.8 store\\index.tsx</span></a></h3><p>src\\store\\index.tsx</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import { createStore, applyMiddleware} from &#39;redux&#39;;</span>
+<span class="line">import reducers from &#39;./reducers&#39;;</span>
+<span class="line">import logger from &#39;redux-logger&#39;;</span>
+<span class="line">import thunk from &#39;redux-thunk&#39;;</span>
+<span class="line">import promise from &#39;redux-promise&#39;;</span>
+<span class="line">import { routerMiddleware } from &#39;redux-first-history&#39;;</span>
+<span class="line">+import { persistStore, persistReducer } from &#39;redux-persist&#39;;</span>
+<span class="line">+import storage from &#39;redux-persist/lib/storage&#39;;</span>
+<span class="line">import history from &#39;./history&#39;;</span>
+<span class="line">+const persistConfig = {</span>
+<span class="line">+  key: &#39;root&#39;,</span>
+<span class="line">+  storage,</span>
+<span class="line">+  whitelist: [&#39;cart&#39;]</span>
+<span class="line">+}</span>
+<span class="line">+const persistedReducer = persistReducer(persistConfig, reducers)</span>
+<span class="line"></span>
+<span class="line">+let store = applyMiddleware(thunk, routerMiddleware(history), promise, logger)(createStore)(persistedReducer);</span>
+<span class="line">+let persistor = persistStore(store);</span>
+<span class="line">+export  { store, persistor };</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-9-actioncreators-cart-tsx" tabindex="-1"><a class="header-anchor" href="#_14-9-actioncreators-cart-tsx"><span>14.9 actionCreators\\cart.tsx</span></a></h3><p>src\\store\\actionCreators\\cart.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> actionTypes <span class="token keyword">from</span> <span class="token string">&quot;../action-types&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Lesson <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/typings/lesson&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> message <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;antd&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> push <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;redux-first-history&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> StoreGetState<span class="token punctuation">,</span> StoreDispatch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../index&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">addCartItem</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">lesson</span><span class="token operator">:</span> Lesson</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">dispatch</span><span class="token operator">:</span> StoreDispatch</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">type</span><span class="token operator">:</span> actionTypes<span class="token punctuation">.</span><span class="token constant">ADD_CART_ITEM</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">payload</span><span class="token operator">:</span> lesson<span class="token punctuation">,</span></span>
+<span class="line">      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      message<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;添加课程成功&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token function">removeCartItem</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">id</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">type</span><span class="token operator">:</span> actionTypes<span class="token punctuation">.</span><span class="token constant">REMOVE_CART_ITEM</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token literal-property property">payload</span><span class="token operator">:</span> id<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token function">clearCartItems</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">type</span><span class="token operator">:</span> actionTypes<span class="token punctuation">.</span><span class="token constant">CLEAR_CART_ITEMS</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token function">changeCartItemCount</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">id</span><span class="token operator">:</span> string<span class="token punctuation">,</span> <span class="token literal-property property">count</span><span class="token operator">:</span> number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">type</span><span class="token operator">:</span> actionTypes<span class="token punctuation">.</span><span class="token constant">CHANGE_CART_ITEM_COUNT</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token literal-property property">payload</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">        id<span class="token punctuation">,</span></span>
+<span class="line">        count<span class="token punctuation">,</span></span>
+<span class="line">      <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token function">changeCheckedCartItems</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">checkedIds</span><span class="token operator">:</span> string<span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">type</span><span class="token operator">:</span> actionTypes<span class="token punctuation">.</span><span class="token constant">CHANGE_CHECKED_CART_ITEMS</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token literal-property property">payload</span><span class="token operator">:</span> checkedIds<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token function">settle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">dispatch</span><span class="token operator">:</span> StoreDispatch<span class="token punctuation">,</span> <span class="token literal-property property">getState</span><span class="token operator">:</span> StoreGetState</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">type</span><span class="token operator">:</span> actionTypes<span class="token punctuation">.</span><span class="token constant">SETTLE</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_14-10-cart-index-tsx" tabindex="-1"><a class="header-anchor" href="#_14-10-cart-index-tsx"><span>14.10 Cart\\index.tsx</span></a></h3><p>src\\routes\\Cart\\index.tsx</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> PropsWithChildren<span class="token punctuation">,</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-redux&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span></span>
+<span class="line">  Table<span class="token punctuation">,</span></span>
+<span class="line">  Button<span class="token punctuation">,</span></span>
+<span class="line">  InputNumber<span class="token punctuation">,</span></span>
+<span class="line">  Popconfirm<span class="token punctuation">,</span></span>
+<span class="line">  Icon<span class="token punctuation">,</span></span>
+<span class="line">  Row<span class="token punctuation">,</span></span>
+<span class="line">  Col<span class="token punctuation">,</span></span>
+<span class="line">  Badge<span class="token punctuation">,</span></span>
+<span class="line">  Modal<span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;antd&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> CombinedState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/store/reducers&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> NavHeader <span class="token keyword">from</span> <span class="token string">&quot;@/components/NavHeader&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Lesson <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/typings/lesson&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> StaticContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;react-router&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> actionCreators <span class="token keyword">from</span> <span class="token string">&quot;@/store/actionCreators/cart&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> CartItem <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@/typings/cart&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">type StateProps <span class="token operator">=</span> ReturnType<span class="token operator">&lt;</span><span class="token keyword">typeof</span> mapStateToProps<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line">type DispatchProps <span class="token operator">=</span> <span class="token keyword">typeof</span> actionCreators<span class="token punctuation">;</span></span>
+<span class="line">type Props <span class="token operator">=</span> PropsWithChildren<span class="token operator">&lt;</span>StateProps <span class="token operator">&amp;</span> DispatchProps<span class="token operator">&gt;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">function</span> <span class="token function">Cart</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> Props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token punctuation">[</span>settleVisible<span class="token punctuation">,</span> setSettleVisible<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">const</span> <span class="token function-variable function">confirmSettle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">setSettleVisible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">const</span> <span class="token function-variable function">handleOk</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">setSettleVisible</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    props<span class="token punctuation">.</span><span class="token function">settle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">const</span> <span class="token function-variable function">handleCancel</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">setSettleVisible</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">const</span> columns <span class="token operator">=</span> <span class="token punctuation">[</span></span>
+<span class="line">    <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">&quot;商品&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token literal-property property">dataIndex</span><span class="token operator">:</span> <span class="token string">&quot;lesson&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">val</span><span class="token operator">:</span> Lesson<span class="token punctuation">,</span> <span class="token literal-property property">row</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">&gt;</span></span>
+<span class="line">          <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token punctuation">{</span>val<span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span></span>
+<span class="line">          <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>单价<span class="token operator">:</span><span class="token punctuation">{</span>val<span class="token punctuation">.</span>price<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">&quot;数量&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token literal-property property">dataIndex</span><span class="token operator">:</span> <span class="token string">&quot;count&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">val</span><span class="token operator">:</span> number<span class="token punctuation">,</span> <span class="token literal-property property">row</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span>InputNumber</span>
+<span class="line">          size<span class="token operator">=</span><span class="token string">&quot;small&quot;</span></span>
+<span class="line">          min<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span></span>
+<span class="line">          max<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span></span>
+<span class="line">          value<span class="token operator">=</span><span class="token punctuation">{</span>val<span class="token punctuation">}</span></span>
+<span class="line">          onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">value</span><span class="token operator">:</span>any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> props<span class="token punctuation">.</span><span class="token function">changeCartItemCount</span><span class="token punctuation">(</span>row<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>id<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+<span class="line">        <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">{</span></span>
+<span class="line">      <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">&quot;操作&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">      <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">val</span><span class="token operator">:</span> any<span class="token punctuation">,</span> <span class="token literal-property property">row</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span></span>
+<span class="line">        <span class="token operator">&lt;</span>Popconfirm</span>
+<span class="line">          title<span class="token operator">=</span><span class="token string">&quot;是否要删除商品?&quot;</span></span>
+<span class="line">          onConfirm<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> props<span class="token punctuation">.</span><span class="token function">removeCartItem</span><span class="token punctuation">(</span>row<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+<span class="line">          okText<span class="token operator">=</span><span class="token string">&quot;是&quot;</span></span>
+<span class="line">          cancelText<span class="token operator">=</span><span class="token string">&quot;否&quot;</span></span>
+<span class="line">        <span class="token operator">&gt;</span></span>
+<span class="line">          <span class="token operator">&lt;</span>Button size<span class="token operator">=</span><span class="token string">&quot;small&quot;</span> type<span class="token operator">=</span><span class="token string">&quot;danger&quot;</span><span class="token operator">&gt;</span></span>
+<span class="line">            删除</span>
+<span class="line">          <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>Popconfirm<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">const</span> rowSelection <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">selectedRowKeys</span><span class="token operator">:</span> props<span class="token punctuation">.</span>cart</span>
+<span class="line">      <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">item</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>checked<span class="token punctuation">)</span></span>
+<span class="line">      <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">item</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token function-variable function">onChange</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">selectedRowKeys</span><span class="token operator">:</span> string<span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">      props<span class="token punctuation">.</span><span class="token function">changeCheckedCartItems</span><span class="token punctuation">(</span>selectedRowKeys<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token literal-property property">totalCount</span><span class="token operator">:</span> number <span class="token operator">=</span> props<span class="token punctuation">.</span>cart</span>
+<span class="line">    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">item</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>checked<span class="token punctuation">)</span></span>
+<span class="line">    <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">total</span><span class="token operator">:</span> number<span class="token punctuation">,</span> <span class="token literal-property property">item</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> total <span class="token operator">+</span> item<span class="token punctuation">.</span>count<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">let</span> totalPrice <span class="token operator">=</span> props<span class="token punctuation">.</span>cart</span>
+<span class="line">    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">item</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>checked<span class="token punctuation">)</span></span>
+<span class="line">    <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span></span>
+<span class="line">      <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">total</span><span class="token operator">:</span> number<span class="token punctuation">,</span> <span class="token literal-property property">item</span><span class="token operator">:</span> CartItem</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span></span>
+<span class="line">        total <span class="token operator">+</span> <span class="token function">parseFloat</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>price<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[^0-9\\.]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span><span class="token string">&#39;&#39;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> item<span class="token punctuation">.</span>count<span class="token punctuation">,</span></span>
+<span class="line">      <span class="token number">0</span></span>
+<span class="line">    <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">(</span></span>
+<span class="line">    <span class="token operator">&lt;</span><span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span>NavHeader<span class="token operator">&gt;</span>购物车<span class="token operator">&lt;</span><span class="token operator">/</span>NavHeader<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span>Table</span>
+<span class="line">        rowKey<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">row</span><span class="token operator">:</span>any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> row<span class="token punctuation">.</span>lesson<span class="token punctuation">.</span>id<span class="token punctuation">}</span></span>
+<span class="line">        rowSelection<span class="token operator">=</span><span class="token punctuation">{</span>rowSelection<span class="token punctuation">}</span></span>
+<span class="line">        columns<span class="token operator">=</span><span class="token punctuation">{</span>columns<span class="token punctuation">}</span></span>
+<span class="line">        dataSource<span class="token operator">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>cart<span class="token punctuation">}</span></span>
+<span class="line">        pagination<span class="token operator">=</span><span class="token punctuation">{</span><span class="token boolean">false</span><span class="token punctuation">}</span></span>
+<span class="line">        size<span class="token operator">=</span><span class="token string">&quot;small&quot;</span></span>
+<span class="line">      <span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span>Row style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">padding</span><span class="token operator">:</span> <span class="token string">&quot;5px&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span>Col span<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">          <span class="token operator">&lt;</span>Button type<span class="token operator">=</span><span class="token string">&quot;danger&quot;</span> size<span class="token operator">=</span><span class="token string">&quot;small&quot;</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>clearCartItems<span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">            清空</span>
+<span class="line">          <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>Col<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span>Col span<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">          已经选择<span class="token punctuation">{</span>totalCount <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">&lt;</span>Badge count<span class="token operator">=</span><span class="token punctuation">{</span>totalCount<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span>件商品</span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>Col<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span>Col span<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>总价<span class="token operator">:</span> ¥<span class="token punctuation">{</span>totalPrice<span class="token punctuation">}</span>元<span class="token operator">&lt;</span><span class="token operator">/</span>Col<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span>Col span<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">          <span class="token operator">&lt;</span>Button type<span class="token operator">=</span><span class="token string">&quot;danger&quot;</span> size<span class="token operator">=</span><span class="token string">&quot;small&quot;</span> onClick<span class="token operator">=</span><span class="token punctuation">{</span>confirmSettle<span class="token punctuation">}</span><span class="token operator">&gt;</span></span>
+<span class="line">            去结算</span>
+<span class="line">          <span class="token operator">&lt;</span><span class="token operator">/</span>Button<span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span><span class="token operator">/</span>Col<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span><span class="token operator">/</span>Row<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span>Modal</span>
+<span class="line">        title<span class="token operator">=</span><span class="token string">&quot;去结算&quot;</span></span>
+<span class="line">        visible<span class="token operator">=</span><span class="token punctuation">{</span>settleVisible<span class="token punctuation">}</span></span>
+<span class="line">        onOk<span class="token operator">=</span><span class="token punctuation">{</span>handleOk<span class="token punctuation">}</span></span>
+<span class="line">        onCancel<span class="token operator">=</span><span class="token punctuation">{</span>handleCancel<span class="token punctuation">}</span></span>
+<span class="line">      <span class="token operator">&gt;</span></span>
+<span class="line">        <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>请问你是否要结算<span class="token operator">?</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span></span>
+<span class="line">      <span class="token operator">&lt;</span><span class="token operator">/</span>Modal<span class="token operator">&gt;</span></span>
+<span class="line">    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span></span>
+<span class="line">  <span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">let</span> mapStateToProps <span class="token operator">=</span> <span class="token punctuation">(</span>state<span class="token operator">:</span> CombinedState<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter">CombinedState</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>mapStateToProps<span class="token punctuation">,</span> actionCreators<span class="token punctuation">)</span><span class="token punctuation">(</span>Cart<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><a href="https://gitee.com/zhufengpeixun/zhufengketang-client" target="_blank" rel="noopener noreferrer">zhufengketang-client</a> <a href="https://www.yuque.com/ninesean/blog/qh5x7f" target="_blank" rel="noopener noreferrer">复盘</a></p><h2 id="_1-创建服务器端项目" tabindex="-1"><a class="header-anchor" href="#_1-创建服务器端项目"><span>1. 创建服务器端项目</span></a></h2><ul><li><a href="https://robomongo.org/download" target="_blank" rel="noopener noreferrer">安装客户端工具 Robo 3T</a></li><li>[安装 api 测试工具 Insomnia Core](https://insomnia.rest/download/</li></ul><h3 id="_1-1-目录结构" tabindex="-1"><a class="header-anchor" href="#_1-1-目录结构"><span>1.1 目录结构</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── src</span>
+<span class="line">│   └── index.ts</span>
+<span class="line">└── tsconfig.json</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-2-生成项目" tabindex="-1"><a class="header-anchor" href="#_1-2-生成项目"><span>1.2 生成项目</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">mkdir zfkt2020-api</span>
+<span class="line">cd zfkt2020-api</span>
+<span class="line">cnpm init -y</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-3-安装依赖" tabindex="-1"><a class="header-anchor" href="#_1-3-安装依赖"><span>1.3 安装依赖</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">cnpm i express mongoose body-parser bcryptjs jsonwebtoken morgan cors validator helmet dotenv multer http-status-codes -S</span>
+<span class="line">cnpm i typescript  @types/node @types/express @types/mongoose @types/bcryptjs @types/jsonwebtoken  @types/morgan @types/cors @types/validator ts-node-dev nodemon  @types/helmet @types/multer cross-env -D</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div></div></div><table><thead><tr><th style="text-align:left;">模块名</th><th style="text-align:left;">英文</th><th style="text-align:left;">中文</th></tr></thead><tbody><tr><td style="text-align:left;">express</td><td style="text-align:left;">Fast, unopinionated, minimalist web framework for node.</td><td style="text-align:left;">基于 Node.js 平台，快速、开放、极简的 Web 开发框架</td></tr><tr><td style="text-align:left;">@types/express</td><td style="text-align:left;">This package contains type definitions for Express</td><td style="text-align:left;">express 的类型声明</td></tr><tr><td style="text-align:left;">mongoose</td><td style="text-align:left;">Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks.</td><td style="text-align:left;">Mongoose 为模型提供了一种直接的，基于 scheme 结构去定义你的数据模型。它内置数据验证， 查询构建，业务逻辑钩子等，开箱即用</td></tr><tr><td style="text-align:left;">@types/mongoose</td><td style="text-align:left;">This package contains type definitions for Mongoose</td><td style="text-align:left;">mongoose 的类型声明</td></tr><tr><td style="text-align:left;">body-parser</td><td style="text-align:left;">Node.js body parsing middleware.</td><td style="text-align:left;">body-parser 是一个 HTTP 请求体解析中间件，使用这个模块可以解析 JSON、Raw、文本、URL-encoded 格式的请求体，Express 框架中就是使用这个模块做为请求体解析中间件</td></tr><tr><td style="text-align:left;">bcryptjs</td><td style="text-align:left;">Optimized bcrypt in JavaScript with zero dependencies. Compatible to the C++ bcrypt binding on node.js and also working in the browser.</td><td style="text-align:left;">bcryptjs 是一个第三方加密库，用来实现在 Node 环境下的 bcrypt 加密</td></tr><tr><td style="text-align:left;">@types/bcryptjs</td><td style="text-align:left;"></td><td style="text-align:left;"></td></tr><tr><td style="text-align:left;">jsonwebtoken</td><td style="text-align:left;">An implementation of JSON Web Tokens</td><td style="text-align:left;">JSON Web Token（JWT）是一个非常轻巧的规范。这个规范允许我们使用 JWT 在用户和服务器之间传递安全可靠的信息</td></tr><tr><td style="text-align:left;">@types/jsonwebtoken</td><td style="text-align:left;">This package contains type definitions for jsonwebtoken</td><td style="text-align:left;">jsonwebtoken 的类型声明</td></tr><tr><td style="text-align:left;">morgan</td><td style="text-align:left;">HTTP request logger middleware for node.js</td><td style="text-align:left;">morgan 是 express 默认的日志中间件，也可以脱离 express，作为 node.js 的日志组件单独使用</td></tr><tr><td style="text-align:left;">@types/morgan</td><td style="text-align:left;">This package contains type definitions for morgan</td><td style="text-align:left;">morgan 的类型声明</td></tr><tr><td style="text-align:left;">cors</td><td style="text-align:left;">CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.</td><td style="text-align:left;">CORS 是用于提供 Connect / Express 中间件的 node.js 程序包，可用于启用具有各种选项的 CORS</td></tr><tr><td style="text-align:left;">@types/cors</td><td style="text-align:left;">This package contains type definitions for cors</td><td style="text-align:left;">cors 的类型声明</td></tr><tr><td style="text-align:left;">validator</td><td style="text-align:left;">A library of string validators and sanitizers</td><td style="text-align:left;">一个用于字符串验证和净化的库</td></tr><tr><td style="text-align:left;">@types/validator</td><td style="text-align:left;">This package contains type definitions for validator.js</td><td style="text-align:left;">validator 的类型声明</td></tr><tr><td style="text-align:left;">helmet</td><td style="text-align:left;">Helmet helps you secure your Express apps by setting various HTTP headers. It&#39;s not a silver bullet, but it can help!</td><td style="text-align:left;">Helmet 可通过设置各种 HTTP 标头来帮助您保护 Express 应用程序</td></tr><tr><td style="text-align:left;">@types/helmet</td><td style="text-align:left;">This package contains type definitions for helmet</td><td style="text-align:left;">helmet 的类型声明</td></tr><tr><td style="text-align:left;">dotenv</td><td style="text-align:left;">Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code is based on The Twelve-Factor App methodology.</td><td style="text-align:left;">Dotenv 是一个零依赖模块，可将环境变量从.env 文件加载到 process.env 中</td></tr><tr><td style="text-align:left;">multer</td><td style="text-align:left;">Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.</td><td style="text-align:left;">Multer 是用于处理<code>multyparty/formdata</code>类型请求体的 node.js 中间件，主要用于上传文件。 它是在 busboy 之上编写的，以实现最大效率。</td></tr><tr><td style="text-align:left;">@types/multer</td><td style="text-align:left;">This package contains type definitions for multer</td><td style="text-align:left;">multer 的类型声明</td></tr><tr><td style="text-align:left;">typescript</td><td style="text-align:left;">TypeScript is a language for application-scale JavaScript</td><td style="text-align:left;">ypeScript 是用于应用程序级 JavaScript 的语言</td></tr><tr><td style="text-align:left;">@types/node</td><td style="text-align:left;">This package contains type definitions for Node.js</td><td style="text-align:left;">该软件包包含 Node.js 的类型定义</td></tr><tr><td style="text-align:left;">ts-node-dev</td><td style="text-align:left;">Tweaked version of node-dev that uses ts-node under the hood.</td><td style="text-align:left;">调整后的版本，在后台使用 ts-node</td></tr><tr><td style="text-align:left;">nodemon</td><td style="text-align:left;">nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.</td><td style="text-align:left;">nodemon 是一种工具，可在检测到目录中的文件更改时通过自动重新启动应用程序来帮助开发基于 node.js 的应用程序。</td></tr></tbody></table><h3 id="_1-4-初始化-tsconfig-json" tabindex="-1"><a class="header-anchor" href="#_1-4-初始化-tsconfig-json"><span>1.4 初始化 tsconfig.json</span></a></h3><ul><li>执行以下命令并选择<code>node</code></li></ul><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">npx tsconfig.json</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h3 id="_1-5-gitignore" tabindex="-1"><a class="header-anchor" href="#_1-5-gitignore"><span>1.5 .gitignore</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">node_modules</span>
+<span class="line">src/public/upload/</span>
+<span class="line">.env</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-6-env" tabindex="-1"><a class="header-anchor" href="#_1-6-env"><span>1.6 .env</span></a></h3><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token constant">JWT_SECRET_KEY</span><span class="token operator">=</span>zhufeng</span>
+<span class="line"><span class="token constant">MONGODB_URL</span><span class="token operator">=</span>mongodb<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">/</span>zhufengketang</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-7-src-index-ts" tabindex="-1"><a class="header-anchor" href="#_1-7-src-index-ts"><span>1.7 src\\index.ts</span></a></h3><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> express<span class="token punctuation">,</span> <span class="token punctuation">{</span> Express <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;express&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token literal-property property">app</span><span class="token operator">:</span> Express <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token constant">PORT</span><span class="token operator">:</span> number <span class="token operator">=</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span> <span class="token operator">&amp;&amp;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">8000</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token constant">PORT</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">Running on http://localhost:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token constant">PORT</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-8-package-json" tabindex="-1"><a class="header-anchor" href="#_1-8-package-json"><span>1.8 package.json</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">+  &quot;scripts&quot;: {</span>
+<span class="line">+    &quot;build&quot;: &quot;tsc&quot;,</span>
+<span class="line">+    &quot;start&quot;: &quot;cross-env PORT=8000  ts-node-dev --respawn src/index.ts&quot;,</span>
+<span class="line">+    &quot;dev&quot;: &quot;cross-env PORT=8000 nodemon --exec ts-node --files src/index.ts&quot;</span>
+<span class="line">+  }</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_1-9-测试" tabindex="-1"><a class="header-anchor" href="#_1-9-测试"><span>1.9 测试</span></a></h3><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">npm run build</span>
+<span class="line">npm run dev </span>
+<span class="line">npm run start</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_2-用户管理" tabindex="-1"><a class="header-anchor" href="#_2-用户管理"><span>2. 用户管理</span></a></h2><h3 id="_2-1-参考" tabindex="-1"><a class="header-anchor" href="#_2-1-参考"><span>2.1 参考</span></a></h3><h4 id="_2-1-1-介绍" tabindex="-1"><a class="header-anchor" href="#_2-1-1-介绍"><span>2.1.1 介绍</span></a></h4><ul><li>本章的是编写用户管理相关的接口</li><li>本章需要编写以下接口 <ul><li>用户注册</li><li>用户登录</li><li>验证用户是否登录</li><li>上传头像</li></ul></li></ul><h4 id="_2-1-2-本章目录" tabindex="-1"><a class="header-anchor" href="#_2-1-2-本章目录"><span>2.1.2 本章目录</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── controller</span>
+<span class="line">│   │   ├── slider.ts</span>
+<span class="line">│   │   └── user.ts</span>
+<span class="line">│   ├── exceptions</span>
+<span class="line">│   │   └── HttpException.ts</span>
+<span class="line">│   ├── index.ts</span>
+<span class="line">│   ├── middlewares</span>
+<span class="line">│   │   └── errorMiddleware.ts</span>
+<span class="line">│   ├── models</span>
+<span class="line">│   │   ├── index.ts</span>
+<span class="line">│   │   ├── slider.ts</span>
+<span class="line">│   │   └── user.ts</span>
+<span class="line">│   ├── public</span>
+<span class="line">│   ├── typings</span>
+<span class="line">│   │   ├── express.d.ts</span>
+<span class="line">│   │   └── jwt.ts</span>
+<span class="line">│   └── utils</span>
+<span class="line">│       └── validator.ts</span>
+<span class="line">└── tsconfig.json</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_2-1-3-本章效果" tabindex="-1"><a class="header-anchor" href="#_2-1-3-本章效果"><span>2.1.3 本章效果</span></a></h4><p><img src="http://img.zhufengpeixun.cn/userinterface.gif" alt="userinterface"></p><h3 id="_2-2-src-index-ts" tabindex="-1"><a class="header-anchor" href="#_2-2-src-index-ts"><span>2.2 src/index.ts</span></a></h3><p>src/index.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> express<span class="token punctuation">,</span> <span class="token punctuation">{</span> Express<span class="token punctuation">,</span> Request<span class="token punctuation">,</span> Response<span class="token punctuation">,</span> NextFunction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;express&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> mongoose <span class="token keyword">from</span> <span class="token string">&quot;mongoose&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> HttpException <span class="token keyword">from</span> <span class="token string">&quot;./exceptions/HttpException&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> cors <span class="token keyword">from</span> <span class="token string">&quot;cors&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> morgan <span class="token keyword">from</span> <span class="token string">&quot;morgan&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> helmet <span class="token keyword">from</span> <span class="token string">&quot;helmet&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> errorMiddleware <span class="token keyword">from</span> <span class="token string">&quot;./middlewares/errorMiddleware&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> userController <span class="token keyword">from</span> <span class="token string">&quot;./controller/user&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token string">&quot;dotenv/config&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> multer <span class="token keyword">from</span> <span class="token string">&quot;multer&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">&quot;path&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> storage <span class="token operator">=</span> multer<span class="token punctuation">.</span><span class="token function">diskStorage</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">destination</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;public&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;uploads&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token function">filename</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">_req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">file</span><span class="token operator">:</span> Express<span class="token punctuation">.</span>Multer<span class="token punctuation">.</span>File<span class="token punctuation">,</span> cb</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">cb</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> path<span class="token punctuation">.</span><span class="token function">extname</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>originalname<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> upload <span class="token operator">=</span> <span class="token function">multer</span><span class="token punctuation">(</span><span class="token punctuation">{</span> storage <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token literal-property property">app</span><span class="token operator">:</span> Express <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">morgan</span><span class="token punctuation">(</span><span class="token string">&quot;dev&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">cors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">helmet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;public&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">urlencoded</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">extended</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">_req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">res</span><span class="token operator">:</span> Response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">&quot;hello world&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/user/validate&quot;</span><span class="token punctuation">,</span> userController<span class="token punctuation">.</span>validate<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&quot;/user/register&quot;</span><span class="token punctuation">,</span> userController<span class="token punctuation">.</span>register<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&quot;/user/login&quot;</span><span class="token punctuation">,</span> userController<span class="token punctuation">.</span>login<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span></span>
+<span class="line">  <span class="token string">&quot;/user/uploadAvatar&quot;</span><span class="token punctuation">,</span></span>
+<span class="line">  upload<span class="token punctuation">.</span><span class="token function">single</span><span class="token punctuation">(</span><span class="token string">&quot;avatar&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span></span>
+<span class="line">  userController<span class="token punctuation">.</span>uploadAvatar</span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">_req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">_res</span><span class="token operator">:</span> Response<span class="token punctuation">,</span> <span class="token literal-property property">next</span><span class="token operator">:</span> NextFunction</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">const</span> <span class="token literal-property property">error</span><span class="token operator">:</span> HttpException <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpException</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">,</span> <span class="token string">&quot;Route not found&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token function">next</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>errorMiddleware<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token constant">PORT</span><span class="token operator">:</span> number <span class="token operator">=</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span> <span class="token operator">&amp;&amp;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">8000</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  mongoose<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;useNewUrlParser&quot;</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  mongoose<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;useUnifiedTopology&quot;</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">await</span> mongoose<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token string">&quot;mongodb://localhost/zhufengketang&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token constant">PORT</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">Running on http://localhost:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token constant">PORT</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-3-httpexception-ts" tabindex="-1"><a class="header-anchor" href="#_2-3-httpexception-ts"><span>2.3 HttpException.ts</span></a></h3><p>src/exceptions/HttpException.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">class</span> <span class="token class-name">HttpException</span> <span class="token keyword">extends</span> <span class="token class-name">Error</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">public</span> <span class="token literal-property property">status</span><span class="token operator">:</span> number<span class="token punctuation">,</span> <span class="token keyword">public</span> <span class="token literal-property property">message</span><span class="token operator">:</span> string<span class="token punctuation">,</span> <span class="token keyword">public</span> errors<span class="token operator">?</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">super</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> HttpException<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-4-errormiddleware-ts" tabindex="-1"><a class="header-anchor" href="#_2-4-errormiddleware-ts"><span>2.4 errorMiddleware.ts</span></a></h3><p>src/middlewares/errorMiddleware.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> HttpException <span class="token keyword">from</span> <span class="token string">&quot;../exceptions/HttpException&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Request<span class="token punctuation">,</span> Response<span class="token punctuation">,</span> NextFunction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;express&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> statusCodes <span class="token keyword">from</span> <span class="token string">&quot;http-status-codes&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token function-variable function">errorMiddleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span></span>
+<span class="line">  <span class="token parameter"><span class="token literal-property property">error</span><span class="token operator">:</span> HttpException<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">_request</span><span class="token operator">:</span> Request<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">response</span><span class="token operator">:</span> Response<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">_next</span><span class="token operator">:</span> NextFunction</span></span>
+<span class="line"><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  response<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>status <span class="token operator">||</span> statusCodes<span class="token punctuation">.</span><span class="token constant">INTERNAL_SERVER_ERROR</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">message</span><span class="token operator">:</span> error<span class="token punctuation">.</span>message<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">errors</span><span class="token operator">:</span> error<span class="token punctuation">.</span>errors<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">default</span> errorMiddleware<span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-5-src-utils-validator-ts" tabindex="-1"><a class="header-anchor" href="#_2-5-src-utils-validator-ts"><span>2.5 src/utils/validator.ts</span></a></h3><p>src/utils/validator.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> validator <span class="token keyword">from</span> <span class="token string">&quot;validator&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> IUserDocument <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../models/user&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">RegisterInput</span> <span class="token keyword">extends</span> <span class="token class-name">Partial</span><span class="token operator">&lt;</span>IUserDocument<span class="token operator">&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  confirmPassword<span class="token operator">?</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">RegisterInputValidateResult</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">errors</span><span class="token operator">:</span> RegisterInput<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token literal-property property">valid</span><span class="token operator">:</span> boolean<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> validateRegisterInput <span class="token operator">=</span> <span class="token punctuation">(</span></span>
+<span class="line">  <span class="token literal-property property">username</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">password</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">confirmPassword</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">email</span><span class="token operator">:</span> string</span>
+<span class="line"><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token parameter">RegisterInputValidateResult</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token literal-property property">errors</span><span class="token operator">:</span> RegisterInput <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>username <span class="token operator">==</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> validator<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    errors<span class="token punctuation">.</span>username <span class="token operator">=</span> <span class="token string">&quot;用户名不能为空&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>password <span class="token operator">==</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> validator<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    errors<span class="token punctuation">.</span>password <span class="token operator">=</span> <span class="token string">&quot;密码不能为空&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>confirmPassword <span class="token operator">==</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> validator<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>confirmPassword<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    errors<span class="token punctuation">.</span>password <span class="token operator">=</span> <span class="token string">&quot;确认密码不能为空&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>validator<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>password<span class="token punctuation">,</span> confirmPassword<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    errors<span class="token punctuation">.</span>confirmPassword <span class="token operator">=</span> <span class="token string">&quot;确认密码和密码不相等&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>email <span class="token operator">==</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> validator<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    errors<span class="token punctuation">.</span>email <span class="token operator">=</span> <span class="token string">&quot;邮箱不能为空&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>validator<span class="token punctuation">.</span><span class="token function">isEmail</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    errors<span class="token punctuation">.</span>email <span class="token operator">=</span> <span class="token string">&quot;邮箱格式必须合法&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line">  <span class="token keyword">return</span> <span class="token punctuation">{</span> errors<span class="token punctuation">,</span> <span class="token literal-property property">valid</span><span class="token operator">:</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>errors<span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-6-src-typings-jwt-ts" tabindex="-1"><a class="header-anchor" href="#_2-6-src-typings-jwt-ts"><span>2.6 src/typings/jwt.ts</span></a></h3><p>src/typings/jwt.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> IUserDocument <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../models/user&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">UserPayload</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">id</span><span class="token operator">:</span> IUserDocument<span class="token punctuation">[</span><span class="token string">&#39;_id&#39;</span><span class="token punctuation">]</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-7-src-models-index-ts" tabindex="-1"><a class="header-anchor" href="#_2-7-src-models-index-ts"><span>2.7 src\\models\\index.ts</span></a></h3><p>src\\models\\index.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">export</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token string">&quot;./user&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div></div></div><h3 id="_2-8-src-models-user-ts" tabindex="-1"><a class="header-anchor" href="#_2-8-src-models-user-ts"><span>2.8 src/models/user.ts</span></a></h3><p>src/models/user.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> mongoose<span class="token punctuation">,</span> <span class="token punctuation">{</span> Schema<span class="token punctuation">,</span> Model<span class="token punctuation">,</span> Document <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;mongoose&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> validator <span class="token keyword">from</span> <span class="token string">&#39;validator&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> jwt <span class="token keyword">from</span> <span class="token string">&#39;jsonwebtoken&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> UserPayload <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;../typings/jwt&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> bcrypt <span class="token keyword">from</span> <span class="token string">&#39;bcryptjs&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">IUserDocument</span> <span class="token keyword">extends</span> <span class="token class-name">Document</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">username</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">password</span><span class="token operator">:</span> string<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">email</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token literal-property property">avatar</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token function-variable function">generateToken</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> string</span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token literal-property property">UserSchema</span><span class="token operator">:</span> Schema<span class="token operator">&lt;</span>IUserDocument<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">type</span><span class="token operator">:</span> String<span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">required</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string">&#39;用户名不能为空&#39;</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">minlength</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">&#39;最小长度不能少于6位&#39;</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">maxlength</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token string">&#39;最大长度不能大于12位&#39;</span><span class="token punctuation">]</span></span>
+<span class="line">    <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">password</span><span class="token operator">:</span> String<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">avatar</span><span class="token operator">:</span> String<span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token literal-property property">type</span><span class="token operator">:</span> String<span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">validate</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token literal-property property">validator</span><span class="token operator">:</span> validator<span class="token punctuation">.</span>isEmail</span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">        <span class="token literal-property property">trim</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">timestamps</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><span class="token literal-property property">toJSON</span><span class="token operator">:</span><span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">transform</span><span class="token punctuation">(</span><span class="token parameter">_doc<span class="token punctuation">,</span>ret</span><span class="token punctuation">)</span><span class="token punctuation">{</span></span>
+<span class="line">        ret<span class="token punctuation">.</span>id<span class="token operator">=</span>ret<span class="token punctuation">.</span>_id<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">delete</span> ret<span class="token punctuation">.</span>_id<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">delete</span> ret<span class="token punctuation">.</span>__v<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">delete</span> ret<span class="token punctuation">.</span>password<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">return</span> ret<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line">UserSchema<span class="token punctuation">.</span>methods<span class="token punctuation">.</span><span class="token function-variable function">generateToken</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> string <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">let</span> <span class="token literal-property property">payload</span><span class="token operator">:</span> UserPayload <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_id <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">return</span> jwt<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span>payload<span class="token punctuation">,</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">JWT_SECRET_KEY</span><span class="token operator">!</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">expiresIn</span><span class="token operator">:</span> <span class="token string">&#39;1h&#39;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line">UserSchema<span class="token punctuation">.</span>pre<span class="token operator">&lt;</span>IUserDocument<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token string">&#39;save&#39;</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">next</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">isModified</span><span class="token punctuation">(</span><span class="token string">&#39;password&#39;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">this</span><span class="token punctuation">.</span>password <span class="token operator">=</span> <span class="token keyword">await</span> bcrypt<span class="token punctuation">.</span><span class="token function">hash</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>password<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token function">next</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">UserSchema<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span><span class="token string">&#39;login&#39;</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">this</span><span class="token operator">:</span> any<span class="token punctuation">,</span> <span class="token literal-property property">username</span><span class="token operator">:</span> string<span class="token punctuation">,</span> <span class="token literal-property property">password</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span><span class="token operator">:</span> Promise<span class="token operator">&lt;</span>IUserDocument <span class="token operator">|</span> <span class="token keyword">null</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">let</span> <span class="token literal-property property">user</span><span class="token operator">:</span> IUserDocument <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span> username <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">const</span> matched <span class="token operator">=</span> <span class="token keyword">await</span> bcrypt<span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>password<span class="token punctuation">,</span> user<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>matched<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token keyword">return</span> user<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token keyword">return</span> user<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">interface</span> <span class="token class-name">IUserModel</span><span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword">extends</span> <span class="token class-name">Document</span><span class="token operator">&gt;</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function-variable function">login</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">username</span><span class="token operator">:</span> string<span class="token punctuation">,</span> <span class="token literal-property property">password</span><span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> IUserDocument <span class="token operator">|</span> <span class="token keyword">null</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token literal-property property">User</span><span class="token operator">:</span> IUserModel<span class="token operator">&lt;</span>IUserDocument<span class="token operator">&gt;</span> <span class="token operator">=</span> mongoose<span class="token punctuation">.</span>model<span class="token operator">&lt;</span>IUserDocument<span class="token punctuation">,</span> IUserModel<span class="token operator">&lt;</span>IUserDocument<span class="token operator">&gt;&gt;</span><span class="token punctuation">(</span><span class="token string">&#39;User&#39;</span><span class="token punctuation">,</span> UserSchema<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-9-src-controller-user-ts" tabindex="-1"><a class="header-anchor" href="#_2-9-src-controller-user-ts"><span>2.9 src\\controller\\user.ts</span></a></h3><p>src\\controller\\user.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Request<span class="token punctuation">,</span> Response<span class="token punctuation">,</span> NextFunction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;express&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> validateRegisterInput <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;../utils/validator&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> HttpException <span class="token keyword">from</span> <span class="token string">&#39;../exceptions/HttpException&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> StatusCodes <span class="token keyword">from</span> <span class="token string">&#39;http-status-codes&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> IUserDocument<span class="token punctuation">,</span> User <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;../models/user&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> UserPayload <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;../typings/jwt&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> jwt <span class="token keyword">from</span> <span class="token string">&#39;jsonwebtoken&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">validate</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">res</span><span class="token operator">:</span> Response<span class="token punctuation">,</span> <span class="token literal-property property">next</span><span class="token operator">:</span> NextFunction</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">const</span> authorization <span class="token operator">=</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">&#39;authorization&#39;</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>authorization<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">const</span> token <span class="token operator">=</span> authorization<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">&#39; &#39;</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>token<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+<span class="line">                <span class="token keyword">const</span> <span class="token literal-property property">payload</span><span class="token operator">:</span> UserPayload <span class="token operator">=</span> jwt<span class="token punctuation">.</span><span class="token function">verify</span><span class="token punctuation">(</span>token<span class="token punctuation">,</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">JWT_SECRET_KEY</span><span class="token operator">!</span><span class="token punctuation">)</span> <span class="token keyword">as</span> UserPayload<span class="token punctuation">;</span></span>
+<span class="line">                <span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> User<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>payload<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">                <span class="token keyword">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">                    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">                        <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">                        <span class="token literal-property property">data</span><span class="token operator">:</span> user<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="line">                    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">                    <span class="token function">next</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HttpException</span><span class="token punctuation">(</span>StatusCodes<span class="token punctuation">.</span><span class="token constant">UNAUTHORIZED</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">用户不合法!</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">                <span class="token punctuation">}</span></span>
+<span class="line">            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">                <span class="token function">next</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HttpException</span><span class="token punctuation">(</span>StatusCodes<span class="token punctuation">.</span><span class="token constant">UNAUTHORIZED</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">token不合法!</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">            <span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line">        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token function">next</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HttpException</span><span class="token punctuation">(</span>StatusCodes<span class="token punctuation">.</span><span class="token constant">UNAUTHORIZED</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">token未提供!</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token function">next</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">HttpException</span><span class="token punctuation">(</span>StatusCodes<span class="token punctuation">.</span><span class="token constant">UNAUTHORIZED</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">authorization未提供!</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">register</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">res</span><span class="token operator">:</span> Response<span class="token punctuation">,</span> <span class="token literal-property property">next</span><span class="token operator">:</span> NextFunction</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">let</span> <span class="token punctuation">{</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> confirmPassword<span class="token punctuation">,</span> email<span class="token punctuation">,</span> addresses <span class="token punctuation">}</span> <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">const</span> <span class="token punctuation">{</span> valid<span class="token punctuation">,</span> errors <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">validateRegisterInput</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> confirmPassword<span class="token punctuation">,</span> email<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>valid<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">HttpException</span><span class="token punctuation">(</span>StatusCodes<span class="token punctuation">.</span><span class="token constant">UNPROCESSABLE_ENTITY</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">参数验证失败!</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">,</span> errors<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">        <span class="token keyword">let</span> <span class="token literal-property property">user</span><span class="token operator">:</span> IUserDocument <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">            username<span class="token punctuation">,</span></span>
+<span class="line">            email<span class="token punctuation">,</span></span>
+<span class="line">            password<span class="token punctuation">,</span></span>
+<span class="line">            addresses</span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">let</span> <span class="token literal-property property">oldUser</span><span class="token operator">:</span> IUserDocument <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> <span class="token keyword">await</span> User<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">username</span><span class="token operator">:</span> user<span class="token punctuation">.</span>username <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>oldUser<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">HttpException</span><span class="token punctuation">(</span>StatusCodes<span class="token punctuation">.</span><span class="token constant">UNPROCESSABLE_ENTITY</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">用户名重复!</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">        <span class="token keyword">await</span> user<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">let</span> token <span class="token operator">=</span> user<span class="token punctuation">.</span><span class="token function">generateToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">            <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">            <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> token <span class="token punctuation">}</span></span>
+<span class="line">        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token function">next</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">login</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">res</span><span class="token operator">:</span> Response<span class="token punctuation">,</span> <span class="token literal-property property">next</span><span class="token operator">:</span> NextFunction</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">try</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">let</span> <span class="token punctuation">{</span> username<span class="token punctuation">,</span> password <span class="token punctuation">}</span> <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">let</span> user <span class="token operator">=</span> <span class="token keyword">await</span> User<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token keyword">let</span> token <span class="token operator">=</span> user<span class="token punctuation">.</span><span class="token function">generateToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">            res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span></span>
+<span class="line">                <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span></span>
+<span class="line">                <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">                    token</span>
+<span class="line">                <span class="token punctuation">}</span></span>
+<span class="line">            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">HttpException</span><span class="token punctuation">(</span>StatusCodes<span class="token punctuation">.</span><span class="token constant">UNAUTHORIZED</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">登录失败</span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token function">next</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">uploadAvatar</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">res</span><span class="token operator">:</span> Response<span class="token punctuation">,</span> <span class="token literal-property property">_next</span><span class="token operator">:</span> NextFunction</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token keyword">let</span> <span class="token punctuation">{</span> userId <span class="token punctuation">}</span> <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">let</span> domain <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DOMAIN</span> <span class="token operator">||</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>req<span class="token punctuation">.</span>protocol<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>req<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>host<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">let</span> avatar <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>domain<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/uploads/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>req<span class="token punctuation">.</span>file<span class="token punctuation">.</span>filename<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span></span>
+<span class="line">    <span class="token keyword">await</span> User<span class="token punctuation">.</span><span class="token function">updateOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">_id</span><span class="token operator">:</span> userId <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> avatar <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">    res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">data</span><span class="token operator">:</span> avatar <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-10-typings-express-d-ts" tabindex="-1"><a class="header-anchor" href="#_2-10-typings-express-d-ts"><span>2.10 typings\\express.d.ts</span></a></h3><p>src\\typings\\express.d.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> IUserDocument <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../models/user&quot;</span><span class="token punctuation">;</span></span>
+<span class="line">declare global <span class="token punctuation">{</span></span>
+<span class="line">    namespace Express <span class="token punctuation">{</span></span>
+<span class="line">        <span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">Request</span> <span class="token punctuation">{</span></span>
+<span class="line">            currentUser<span class="token operator">?</span><span class="token operator">:</span> IUserDocument <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">;</span></span>
+<span class="line">            <span class="token literal-property property">file</span><span class="token operator">:</span> Multer<span class="token punctuation">.</span>File</span>
+<span class="line">        <span class="token punctuation">}</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_2-11-env" tabindex="-1"><a class="header-anchor" href="#_2-11-env"><span>2.11 .env</span></a></h3><p>.env</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token constant">JWT_SECRET_KEY</span><span class="token operator">=</span>zhufeng</span>
+<span class="line"><span class="token constant">MONGODB_URL</span><span class="token operator">=</span>mongodb<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">27017</span><span class="token operator">/</span>zhufengketang</span>
+<span class="line"><span class="token constant">PORT</span><span class="token operator">=</span><span class="token number">8899</span></span>
+<span class="line"><span class="token constant">DOMAIN</span><span class="token operator">=</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">8899</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_3-后台轮播图轮播图接口" tabindex="-1"><a class="header-anchor" href="#_3-后台轮播图轮播图接口"><span>3. 后台轮播图轮播图接口</span></a></h2><ul><li>本章是编写轮播图接口</li></ul><h3 id="_3-1-参考-1" tabindex="-1"><a class="header-anchor" href="#_3-1-参考-1"><span>3.1 参考</span></a></h3><h4 id="_3-1-1-本章目录" tabindex="-1"><a class="header-anchor" href="#_3-1-1-本章目录"><span>3.1.1 本章目录</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── src</span>
+<span class="line">│   ├── controller</span>
+<span class="line">│   │   ├── slider.ts</span>
+<span class="line">│   │   └── user.ts</span>
+<span class="line">│   ├── exceptions</span>
+<span class="line">│   │   └── HttpException.ts</span>
+<span class="line">│   ├── index.ts</span>
+<span class="line">│   ├── middlewares</span>
+<span class="line">│   │   └── errorMiddleware.ts</span>
+<span class="line">│   ├── models</span>
+<span class="line">│   │   ├── index.ts</span>
+<span class="line">│   │   ├── slider.ts</span>
+<span class="line">│   │   └── user.ts</span>
+<span class="line">│   ├── public</span>
+<span class="line">│   ├── typings</span>
+<span class="line">│   │   ├── express.d.ts</span>
+<span class="line">│   │   └── jwt.ts</span>
+<span class="line">│   └── utils</span>
+<span class="line">│       └── validator.ts</span>
+<span class="line">└── tsconfig.json</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>本章效果 <img src="http://img.zhufengpeixun.cn/getslidersapi.png" alt="getslidersapi"></p><h3 id="_3-2-src-index-ts" tabindex="-1"><a class="header-anchor" href="#_3-2-src-index-ts"><span>3.2 src\\index.ts</span></a></h3><p>src\\index.ts</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import express, { Express, Request, Response, NextFunction } from &#39;express&#39;;</span>
+<span class="line">import mongoose from &#39;mongoose&#39;;</span>
+<span class="line">import HttpException from &#39;./exceptions/HttpException&#39;;</span>
+<span class="line">import cors from &#39;cors&#39;;</span>
+<span class="line">import morgan from &#39;morgan&#39;;</span>
+<span class="line">import helmet from &#39;helmet&#39;;</span>
+<span class="line">import errorMiddleware from &#39;./middlewares/errorMiddleware&#39;;</span>
+<span class="line">import *  as userController from &#39;./controller/user&#39;;</span>
+<span class="line">+import *  as sliderController from &#39;./controller/slider&#39;;</span>
+<span class="line">import &quot;dotenv/config&quot;;</span>
+<span class="line">import multer from &#39;multer&#39;;</span>
+<span class="line">import path from &#39;path&#39;;</span>
+<span class="line">+import { Slider } from &#39;./models&#39;;</span>
+<span class="line">const storage = multer.diskStorage({</span>
+<span class="line">    destination: path.join(__dirname, &#39;public&#39;, &#39;uploads&#39;),</span>
+<span class="line">    filename(_req: Request, file: Express.Multer.File, cb) {</span>
+<span class="line">        cb(null, Date.now() + path.extname(file.originalname));</span>
+<span class="line">    }</span>
+<span class="line">});</span>
+<span class="line">const upload = multer({ storage });</span>
+<span class="line">const app: Express = express();</span>
+<span class="line">app.use(morgan(&quot;dev&quot;));</span>
+<span class="line">app.use(cors());</span>
+<span class="line">app.use(helmet());</span>
+<span class="line">app.use(express.static(path.resolve(__dirname, &#39;public&#39;)));</span>
+<span class="line">app.use(express.json());</span>
+<span class="line">app.use(express.urlencoded({ extended: false }));</span>
+<span class="line">app.get(&#39;/&#39;, (_req: Request, res: Response) =&gt; {</span>
+<span class="line">    res.json({ success: true, message: &#39;hello world&#39; });</span>
+<span class="line">});</span>
+<span class="line">app.get(&#39;/user/validate&#39;, userController.validate);</span>
+<span class="line">app.post(&#39;/user/register&#39;, userController.register);</span>
+<span class="line">app.post(&#39;/user/login&#39;, userController.login);</span>
+<span class="line">app.post(&#39;/user/uploadAvatar&#39;, upload.single(&#39;avatar&#39;), userController.uploadAvatar);</span>
+<span class="line">+app.get(&#39;/slider/list&#39;, sliderController.list);</span>
+<span class="line">app.use((_req: Request, _res: Response, next: NextFunction) =&gt; {</span>
+<span class="line">    const error: HttpException = new HttpException(404, &#39;Route not found&#39;);</span>
+<span class="line">    next(error);</span>
+<span class="line">});</span>
+<span class="line">app.use(errorMiddleware);</span>
+<span class="line">const PORT: number = (process.env.PORT &amp;&amp; parseInt(process.env.PORT)) || 8000;</span>
+<span class="line">(async function () {</span>
+<span class="line">    mongoose.set(&#39;useNewUrlParser&#39;, true);</span>
+<span class="line">    mongoose.set(&#39;useUnifiedTopology&#39;, true);</span>
+<span class="line">    await mongoose.connect(process.env.MONGODB_URL!);</span>
+<span class="line">+    await createSliders();</span>
+<span class="line">    app.listen(PORT, () =&gt; {</span>
+<span class="line">        console.log(\`Running on http://localhost:\${PORT}\`);</span>
+<span class="line">    });</span>
+<span class="line">})();</span>
+<span class="line"></span>
+<span class="line">+async function createSliders() {</span>
+<span class="line">+    const sliders = await Slider.find();</span>
+<span class="line">+    if (sliders.length == 0) {</span>
+<span class="line">+        const sliders:any = [</span>
+<span class="line">+            { url: &#39;http://img.zhufengpeixun.cn/post_reactnative.png&#39; },</span>
+<span class="line">+            { url: &#39;http://img.zhufengpeixun.cn/post_react.png&#39; },</span>
+<span class="line">+            { url: &#39;http://img.zhufengpeixun.cn/post_vue.png&#39; },</span>
+<span class="line">+            { url: &#39;http://img.zhufengpeixun.cn/post_wechat.png&#39; },</span>
+<span class="line">+            { url: &#39;http://img.zhufengpeixun.cn/post_architect.jpg&#39; }</span>
+<span class="line">+        ];</span>
+<span class="line">+        Slider.create(sliders);</span>
+<span class="line">+    }</span>
+<span class="line">+}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-3-controller-slider-ts" tabindex="-1"><a class="header-anchor" href="#_3-3-controller-slider-ts"><span>3.3 controller\\slider.ts</span></a></h3><p>src\\controller\\slider.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Request<span class="token punctuation">,</span> Response <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;express&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ISliderDocument<span class="token punctuation">,</span> Slider <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../models&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">list</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">_req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">res</span><span class="token operator">:</span> Response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token literal-property property">sliders</span><span class="token operator">:</span> ISliderDocument<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> Slider<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">data</span><span class="token operator">:</span> sliders <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-4-models-slider-ts" tabindex="-1"><a class="header-anchor" href="#_3-4-models-slider-ts"><span>3.4 models\\slider.ts</span></a></h3><p>src\\models\\slider.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> mongoose<span class="token punctuation">,</span> <span class="token punctuation">{</span> Schema<span class="token punctuation">,</span> Document <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;mongoose&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ISliderDocument</span> <span class="token keyword">extends</span> <span class="token class-name">Document</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">url</span><span class="token operator">:</span> string<span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token literal-property property">SliderSchema</span><span class="token operator">:</span> Schema<span class="token operator">&lt;</span>ISliderDocument<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema</span><span class="token punctuation">(</span></span>
+<span class="line">  <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">url</span><span class="token operator">:</span> String<span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">{</span> <span class="token literal-property property">timestamps</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> Slider <span class="token operator">=</span></span>
+<span class="line">  mongoose<span class="token punctuation">.</span>model <span class="token operator">&lt;</span> ISliderDocument <span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token string">&quot;Slider&quot;</span><span class="token punctuation">,</span> SliderSchema<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_3-5-src-models-index-ts" tabindex="-1"><a class="header-anchor" href="#_3-5-src-models-index-ts"><span>3.5 src\\models\\index.ts</span></a></h3><p>src\\models\\index.ts</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export * from &#39;./user&#39;;</span>
+<span class="line">+export * from &#39;./slider&#39;;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_4-课程管理后端接口" tabindex="-1"><a class="header-anchor" href="#_4-课程管理后端接口"><span>4. 课程管理后端接口</span></a></h2><ul><li>本章主要编写课程管理的后台接口</li></ul><h3 id="_4-1-参考-1" tabindex="-1"><a class="header-anchor" href="#_4-1-参考-1"><span>4.1 参考</span></a></h3><h4 id="_4-1-1-本章目录" tabindex="-1"><a class="header-anchor" href="#_4-1-1-本章目录"><span>4.1.1 本章目录</span></a></h4><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">.</span>
+<span class="line">├── package.json</span>
+<span class="line">├── src</span>
+<span class="line">│ ├── controller</span>
+<span class="line">│ │ ├── lesson.ts</span>
+<span class="line">│ │ ├── slider.ts</span>
+<span class="line">│ │ └── user.ts</span>
+<span class="line">│ ├── exceptions</span>
+<span class="line">│ │ └── HttpException.ts</span>
+<span class="line">│ ├── index.ts</span>
+<span class="line">│ ├── middlewares</span>
+<span class="line">│ │ └── errorMiddleware.ts</span>
+<span class="line">│ ├── models</span>
+<span class="line">│ │ ├── index.ts</span>
+<span class="line">│ │ ├── lesson.ts</span>
+<span class="line">│ │ ├── slider.ts</span>
+<span class="line">│ │ └── user.ts</span>
+<span class="line">│ ├── public</span>
+<span class="line">│ ├── typings</span>
+<span class="line">│ │ ├── express.d.ts</span>
+<span class="line">│ │ └── jwt.ts</span>
+<span class="line">│ └── utils</span>
+<span class="line">│     └── validator.ts</span>
+<span class="line">└── tsconfig.json</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="_4-1-2-本章效果" tabindex="-1"><a class="header-anchor" href="#_4-1-2-本章效果"><span>4.1.2 本章效果</span></a></h4><p><img src="http://img.zhufengpeixun.cn/lessonlistinterface.gif" alt="lessonlistinterface"></p><h3 id="_4-2-src-index-ts" tabindex="-1"><a class="header-anchor" href="#_4-2-src-index-ts"><span>4.2 src\\index.ts</span></a></h3><p>src\\index.ts</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">import express, { Express, Request, Response, NextFunction } from &quot;express&quot;;</span>
+<span class="line">import mongoose from &quot;mongoose&quot;;</span>
+<span class="line">import HttpException from &quot;./exceptions/HttpException&quot;;</span>
+<span class="line">import cors from &quot;cors&quot;;</span>
+<span class="line">import morgan from &quot;morgan&quot;;</span>
+<span class="line">import helmet from &quot;helmet&quot;;</span>
+<span class="line">import errorMiddleware from &quot;./middlewares/errorMiddleware&quot;;</span>
+<span class="line">import * as userController from &quot;./controller/user&quot;;</span>
+<span class="line">import * as sliderController from &quot;./controller/slider&quot;;</span>
+<span class="line">+import * as lessonController from &quot;./controller/lesson&quot;;</span>
+<span class="line">import &quot;dotenv/config&quot;;</span>
+<span class="line">import multer from &quot;multer&quot;;</span>
+<span class="line">import path from &quot;path&quot;;</span>
+<span class="line">+import { Slider, Lesson } from &quot;./models&quot;;</span>
+<span class="line">const storage = multer.diskStorage({</span>
+<span class="line">  destination: path.join(__dirname, &quot;public&quot;, &quot;uploads&quot;),</span>
+<span class="line">  filename(_req: Request, file: Express.Multer.File, cb) {</span>
+<span class="line">    cb(null, Date.now() + path.extname(file.originalname));</span>
+<span class="line">  },</span>
+<span class="line">});</span>
+<span class="line">const upload = multer({ storage });</span>
+<span class="line">const app: Express = express();</span>
+<span class="line">app.use(morgan(&quot;dev&quot;));</span>
+<span class="line">app.use(cors());</span>
+<span class="line">app.use(helmet());</span>
+<span class="line">app.use(express.static(path.resolve(__dirname, &quot;public&quot;)));</span>
+<span class="line">app.use(express.json());</span>
+<span class="line">app.use(express.urlencoded({ extended: false }));</span>
+<span class="line">app.get(&quot;/&quot;, (_req: Request, res: Response) =&gt; {</span>
+<span class="line">  res.json({ success: true, message: &quot;hello world&quot; });</span>
+<span class="line">});</span>
+<span class="line">app.get(&quot;/user/validate&quot;, userController.validate);</span>
+<span class="line">app.post(&quot;/user/register&quot;, userController.register);</span>
+<span class="line">app.post(&quot;/user/login&quot;, userController.login);</span>
+<span class="line">app.post(</span>
+<span class="line">  &quot;/user/uploadAvatar&quot;,</span>
+<span class="line">  upload.single(&quot;avatar&quot;),</span>
+<span class="line">  userController.uploadAvatar</span>
+<span class="line">);</span>
+<span class="line">app.get(&quot;/slider/list&quot;, sliderController.list);</span>
+<span class="line">+app.get(&quot;/lesson/list&quot;, lessonController.list);</span>
+<span class="line">+app.get(&quot;/lesson/:id&quot;, lessonController.get);</span>
+<span class="line">app.use((_req: Request, _res: Response, next: NextFunction) =&gt; {</span>
+<span class="line">  const error: HttpException = new HttpException(404, &quot;Route not found&quot;);</span>
+<span class="line">  next(error);</span>
+<span class="line">});</span>
+<span class="line">app.use(errorMiddleware);</span>
+<span class="line">const PORT: number = (process.env.PORT &amp;&amp; parseInt(process.env.PORT)) || 8000;</span>
+<span class="line">(async function () {</span>
+<span class="line">  mongoose.set(&quot;useNewUrlParser&quot;, true);</span>
+<span class="line">  mongoose.set(&quot;useUnifiedTopology&quot;, true);</span>
+<span class="line">  await mongoose.connect(&quot;mongodb://localhost/zhufengketang&quot;);</span>
+<span class="line">  await createSliders();</span>
+<span class="line">+  await createLessons();</span>
+<span class="line">  app.listen(PORT, () =&gt; {</span>
+<span class="line">    console.log(\`Running on http://localhost:\${PORT}\`);</span>
+<span class="line">  });</span>
+<span class="line">})();</span>
+<span class="line"></span>
+<span class="line">async function createSliders() {</span>
+<span class="line">  const sliders = await Slider.find();</span>
+<span class="line">  if (sliders.length == 0) {</span>
+<span class="line">    const initSliders: any = [</span>
+<span class="line">      { url: &quot;http://img.zhufengpeixun.cn/post_reactnative.png&quot; },</span>
+<span class="line">      { url: &quot;http://img.zhufengpeixun.cn/post_react.png&quot; },</span>
+<span class="line">      { url: &quot;http://img.zhufengpeixun.cn/post_vue.png&quot; },</span>
+<span class="line">      { url: &quot;http://img.zhufengpeixun.cn/post_wechat.png&quot; },</span>
+<span class="line">      { url: &quot;http://img.zhufengpeixun.cn/post_architect.jpg&quot; },</span>
+<span class="line">    ];</span>
+<span class="line">    Slider.create(initSliders);</span>
+<span class="line">  }</span>
+<span class="line">}</span>
+<span class="line"></span>
+<span class="line">+async function createLessons() {</span>
+<span class="line">+  const lessons = await Lesson.find();</span>
+<span class="line">+  if (lessons.length == 0) {</span>
+<span class="line">+    const lessons: any = [</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 1,</span>
+<span class="line">+        title: &quot;1.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥100.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 2,</span>
+<span class="line">+        title: &quot;2.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥200.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 3,</span>
+<span class="line">+        title: &quot;3.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥300.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 4,</span>
+<span class="line">+        title: &quot;4.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥400.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 5,</span>
+<span class="line">+        title: &quot;5.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥500.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 6,</span>
+<span class="line">+        title: &quot;6.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥100.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 7,</span>
+<span class="line">+        title: &quot;7.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥200.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 8,</span>
+<span class="line">+        title: &quot;8.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥300.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 9,</span>
+<span class="line">+        title: &quot;9.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥400.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 10,</span>
+<span class="line">+        title: &quot;10.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥500.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 11,</span>
+<span class="line">+        title: &quot;11.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥600.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 12,</span>
+<span class="line">+        title: &quot;12.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥700.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 13,</span>
+<span class="line">+        title: &quot;13.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥800.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 14,</span>
+<span class="line">+        title: &quot;14.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥900.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 15,</span>
+<span class="line">+        title: &quot;15.React全栈架构&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/react_poster.jpg&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/react_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥1000.00元&quot;,</span>
+<span class="line">+        category: &quot;react&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 16,</span>
+<span class="line">+        title: &quot;16.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥600.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 17,</span>
+<span class="line">+        title: &quot;17.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥700.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 18,</span>
+<span class="line">+        title: &quot;18.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥800.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 19,</span>
+<span class="line">+        title: &quot;19.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥900.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+      {</span>
+<span class="line">+        order: 20,</span>
+<span class="line">+        title: &quot;20.Vue从入门到项目实战&quot;,</span>
+<span class="line">+        video: &quot;http://img.zhufengpeixun.cn/gee2.mp4&quot;,</span>
+<span class="line">+        poster: &quot;http://img.zhufengpeixun.cn/vue_poster.png&quot;,</span>
+<span class="line">+        url: &quot;http://img.zhufengpeixun.cn/vue_url.png&quot;,</span>
+<span class="line">+        price: &quot;¥1000.00元&quot;,</span>
+<span class="line">+        category: &quot;vue&quot;,</span>
+<span class="line">+      },</span>
+<span class="line">+    ];</span>
+<span class="line">+    Lesson.create(lessons);</span>
+<span class="line">+  }</span>
+<span class="line">+}</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-3-src-models-index-ts" tabindex="-1"><a class="header-anchor" href="#_4-3-src-models-index-ts"><span>4.3 src\\models\\index.ts</span></a></h3><p>src\\models\\index.ts</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code class="language-text"><span class="line">export * from &#39;./user&#39;;</span>
+<span class="line">export * from &#39;./slider&#39;;</span>
+<span class="line">+export * from &#39;./lesson&#39;;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-4-controller-lesson-ts" tabindex="-1"><a class="header-anchor" href="#_4-4-controller-lesson-ts"><span>4.4 controller\\lesson.ts</span></a></h3><p>src\\controller\\lesson.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> Request<span class="token punctuation">,</span> Response <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;express&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> ILessonDocument<span class="token punctuation">,</span> Lesson <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../models&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>FilterQuery<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;mongoose&#39;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">list</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">res</span><span class="token operator">:</span> Response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token punctuation">{</span> category <span class="token punctuation">}</span> <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token literal-property property">offset</span><span class="token operator">:</span> any <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>offset<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token literal-property property">limit</span><span class="token operator">:</span> any <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>limit<span class="token punctuation">;</span></span>
+<span class="line">  offset <span class="token operator">=</span> <span class="token function">isNaN</span><span class="token punctuation">(</span>offset<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>offset<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//偏移量</span></span>
+<span class="line">  limit <span class="token operator">=</span> <span class="token function">isNaN</span><span class="token punctuation">(</span>limit<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">5</span> <span class="token operator">:</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>limit<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//每页条数</span></span>
+<span class="line">  <span class="token keyword">let</span> <span class="token literal-property property">query</span><span class="token operator">:</span> FilterQuery<span class="token operator">&lt;</span>ILessonDocument<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">if</span> <span class="token punctuation">(</span>category <span class="token operator">&amp;&amp;</span> category <span class="token operator">!=</span> <span class="token string">&quot;all&quot;</span><span class="token punctuation">)</span> query<span class="token punctuation">.</span>category <span class="token operator">=</span> category <span class="token keyword">as</span> string<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">let</span> total <span class="token operator">=</span> <span class="token keyword">await</span> Lesson<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">let</span> list <span class="token operator">=</span> <span class="token keyword">await</span> Lesson<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span></span>
+<span class="line">    <span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">order</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">    <span class="token punctuation">.</span><span class="token function">skip</span><span class="token punctuation">(</span>offset<span class="token punctuation">)</span></span>
+<span class="line">    <span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span>limit<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  list <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">item</span><span class="token operator">:</span>ILessonDocument</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span>item<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  </span>
+<span class="line">  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> list<span class="token punctuation">,</span> <span class="token literal-property property">hasMore</span><span class="token operator">:</span> total <span class="token operator">&gt;</span> offset <span class="token operator">+</span> limit <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">get</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">req</span><span class="token operator">:</span> Request<span class="token punctuation">,</span> <span class="token literal-property property">res</span><span class="token operator">:</span> Response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token keyword">let</span> id <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">;</span></span>
+<span class="line">  <span class="token keyword">let</span> lesson <span class="token operator">=</span> <span class="token keyword">await</span> Lesson<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">success</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">data</span><span class="token operator">:</span> lesson <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="_4-5-models-lesson-ts" tabindex="-1"><a class="header-anchor" href="#_4-5-models-lesson-ts"><span>4.5 models\\lesson.ts</span></a></h3><p>src\\models\\lesson.ts</p><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">import</span> mongoose<span class="token punctuation">,</span> <span class="token punctuation">{</span> Schema<span class="token punctuation">,</span> Document <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;mongoose&quot;</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">ILessonDocument</span> <span class="token keyword">extends</span> <span class="token class-name">Document</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">order</span><span class="token operator">:</span> number<span class="token punctuation">;</span> <span class="token comment">//顺序</span></span>
+<span class="line">  <span class="token literal-property property">title</span><span class="token operator">:</span> string<span class="token punctuation">;</span> <span class="token comment">//标题</span></span>
+<span class="line">  <span class="token literal-property property">video</span><span class="token operator">:</span> string<span class="token punctuation">;</span> <span class="token comment">//视频</span></span>
+<span class="line">  <span class="token literal-property property">poster</span><span class="token operator">:</span> string<span class="token punctuation">;</span> <span class="token comment">//海报</span></span>
+<span class="line">  <span class="token literal-property property">url</span><span class="token operator">:</span> string<span class="token punctuation">;</span> <span class="token comment">//url地址</span></span>
+<span class="line">  <span class="token literal-property property">price</span><span class="token operator">:</span> string<span class="token punctuation">;</span> <span class="token comment">//价格</span></span>
+<span class="line">  <span class="token literal-property property">category</span><span class="token operator">:</span> string<span class="token punctuation">;</span> <span class="token comment">//分类</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">const</span> <span class="token literal-property property">LessonSchema</span><span class="token operator">:</span> Schema<span class="token operator">&lt;</span>ILessonDocument<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema</span><span class="token punctuation">(</span></span>
+<span class="line">  <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">order</span><span class="token operator">:</span> Number<span class="token punctuation">,</span> <span class="token comment">//顺序</span></span>
+<span class="line">    <span class="token literal-property property">title</span><span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token comment">//标题</span></span>
+<span class="line">    <span class="token literal-property property">video</span><span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token comment">//视频</span></span>
+<span class="line">    <span class="token literal-property property">poster</span><span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token comment">//海报</span></span>
+<span class="line">    <span class="token literal-property property">url</span><span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token comment">//url地址</span></span>
+<span class="line">    <span class="token literal-property property">price</span><span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token comment">//价格</span></span>
+<span class="line">    <span class="token literal-property property">category</span><span class="token operator">:</span> String<span class="token punctuation">,</span> <span class="token comment">//分类</span></span>
+<span class="line">  <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token punctuation">{</span> <span class="token literal-property property">timestamps</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span><span class="token literal-property property">toJSON</span><span class="token operator">:</span><span class="token punctuation">{</span></span>
+<span class="line">    <span class="token function">transform</span><span class="token punctuation">(</span><span class="token parameter">_doc<span class="token punctuation">,</span>ret</span><span class="token punctuation">)</span><span class="token punctuation">{</span></span>
+<span class="line">        ret<span class="token punctuation">.</span>id<span class="token operator">=</span>ret<span class="token punctuation">.</span>_id<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">delete</span> ret<span class="token punctuation">.</span>_id<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">delete</span> ret<span class="token punctuation">.</span>__v<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">delete</span> ret<span class="token punctuation">.</span>password<span class="token punctuation">;</span></span>
+<span class="line">        <span class="token keyword">return</span> ret<span class="token punctuation">;</span></span>
+<span class="line">    <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span> <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">export</span> <span class="token keyword">const</span> Lesson <span class="token operator">=</span> mongoose<span class="token punctuation">.</span>model <span class="token operator">&lt;</span> ILessonDocument <span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token string">&quot;Lesson&quot;</span><span class="token punctuation">,</span> LessonSchema<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_5-immer" tabindex="-1"><a class="header-anchor" href="#_5-immer"><span>5.immer</span></a></h2><ul><li>immer 是 mobx 的作者写的一个 immutable 库</li><li>核心实现是利用 ES6 的 proxy,几乎以最小的成本实现了 js 的不可变数据结构</li></ul><h3 id="_5-1-produce" tabindex="-1"><a class="header-anchor" href="#_5-1-produce"><span>5.1 produce</span></a></h3><ul><li>对 <code>draftState</code> 的修改都会反应到 <code>nextState</code> 上</li><li>而 <code>immer</code> 使用的结构是共享的，<code>nextState</code> 在结构上又与 <code>currentState</code> 共享未修改的部分</li></ul><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">let</span> <span class="token punctuation">{</span> produce <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#39;immer&#39;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">let</span> baseState <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">let</span> nextState <span class="token operator">=</span> <span class="token function">produce</span><span class="token punctuation">(</span>baseState<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">draft</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line"></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token operator">===</span>nextState<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">let</span> <span class="token punctuation">{</span> produce <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#39;immer&#39;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">let</span> baseState <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">ids</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span></span>
+<span class="line">  <span class="token literal-property property">pos</span><span class="token operator">:</span> <span class="token punctuation">{</span></span>
+<span class="line">    <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span></span>
+<span class="line">    <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">1</span> </span>
+<span class="line">  <span class="token punctuation">}</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">let</span> nextState <span class="token operator">=</span> <span class="token function">produce</span><span class="token punctuation">(</span>baseState<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">draft</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  draft<span class="token punctuation">.</span>ids<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">.</span>ids <span class="token operator">===</span> nextState<span class="token punctuation">.</span>ids<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//false</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">.</span>pos <span class="token operator">===</span> nextState<span class="token punctuation">.</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//true</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-javascript line-numbers-mode" data-highlighter="prismjs" data-ext="js"><pre><code class="language-javascript"><span class="line"><span class="token keyword">let</span> <span class="token punctuation">{</span> produce <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&#39;immer&#39;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">const</span> baseState <span class="token operator">=</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token literal-property property">list</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&#39;1&#39;</span><span class="token punctuation">,</span> <span class="token string">&#39;2&#39;</span><span class="token punctuation">]</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">produce</span><span class="token punctuation">(</span>baseState<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">draft</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span></span>
+<span class="line">  draft<span class="token punctuation">.</span>list<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&#39;3&#39;</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">}</span><span class="token punctuation">)</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseState<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><img src="https://img.zhufengpeixun.com/immergraph.gif" alt="immergraph.gif"></p>`,486)])])}const c=n(t,[["render",l]]),r=JSON.parse('{"path":"/strong/106.10.ketang.html","title":"","lang":"en-US","frontmatter":{},"git":{"updatedTime":1681290319000,"contributors":[{"name":"yutao","username":"yutao","email":"642231346@qq.com","commits":1,"url":"https://github.com/yutao"}],"changelog":[{"hash":"f5ab8c9d34991ec274f7f652439afe5b2afb6147","time":1681290319000,"email":"642231346@qq.com","author":"yutao","message":"modify"}]},"filePathRelative":"strong/106.10.ketang.md"}');export{c as comp,r as data};
