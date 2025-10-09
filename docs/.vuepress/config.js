@@ -5,7 +5,7 @@ import { viteBundler } from '@vuepress/bundler-vite';
 
 
 export default defineUserConfig({
-  base: '/',
+  base: '/note/',
   title: 'jiaHang前端学习笔记',
   description: '专注前端技术栈分享，做一个爱折腾的前端',
   theme: defaultTheme({
