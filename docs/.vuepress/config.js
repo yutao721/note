@@ -3,6 +3,7 @@ import { defineUserConfig } from 'vuepress';
 import { defaultTheme } from '@vuepress/theme-default';
 import { viteBundler } from '@vuepress/bundler-vite';
 
+import { noticePlugin } from '@vuepress/plugin-notice'
 
 export default defineUserConfig({
   base: '/note/',
@@ -14,6 +15,7 @@ export default defineUserConfig({
       { text: '前端', link: '/web/' },
       { text: 'node', link: '/node/' },
       { text: '前端架构', link: '/strong/' },
+      { text: '工具', link: '/tool/' },
       // { text: '面试问题', link: '/interview/' }
     ],
 
@@ -199,7 +201,6 @@ export default defineUserConfig({
       //   ['', '目录']
       // ],
 
-      // strong sidebar
       '/strong/': [
         {
           text: '前端',
@@ -1722,4 +1723,15 @@ export default defineUserConfig({
     repo: 'https://github.com/yutao721/note'
   }),
   bundler: viteBundler(),
+  plugins: [
+    // noticePlugin({
+    //   config: [
+    //     {
+    //       path: '/',
+    //       title: '重要通知',
+    //       content: '重要通知内容',
+    //     },
+    //   ]
+    // })
+  ]
 })

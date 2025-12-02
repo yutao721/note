@@ -912,6 +912,16 @@
     medium-zoom "^1.1.0"
     vue "^3.5.17"
 
+"@vuepress/plugin-notice@^2.0.0-rc.112":
+  version "2.0.0-rc.112"
+  resolved "https://registry.npmmirror.com/@vuepress/plugin-notice/-/plugin-notice-2.0.0-rc.112.tgz#3263aa8b4acdf325f77afba69713babc2080b5c1"
+  integrity sha512-v6QRqWuH/42WNufosxu0FBUvGXh34j81Wiuio37DqSbMcgATkrPPEdXhMI27bg+zbXhms9UTukKJ4X8JJsN9Rg==
+  dependencies:
+    "@vuepress/helper" "2.0.0-rc.112"
+    "@vueuse/core" "^13.5.0"
+    chokidar "^4.0.3"
+    vue "^3.5.17"
+
 "@vuepress/plugin-nprogress@2.0.0-rc.112":
   version "2.0.0-rc.112"
   resolved "https://registry.npmmirror.com/@vuepress/plugin-nprogress/-/plugin-nprogress-2.0.0-rc.112.tgz#9b4aa1dbc061e34eb7d72e2a6d8989b13735eab3"
