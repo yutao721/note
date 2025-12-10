@@ -7,7 +7,8 @@
     "docs:dev": "vuepress dev docs",
     "dev": "vuepress dev docs --temp .temp",
     "docs:build": "cross-env NODE_OPTIONS=--max-old-space-size=8192 vuepress build docs --temp .temp",
-    "deploy": "bash deploy.sh"
+    "deploy": "bash deploy.sh",
+    "generate": "node scripts/generate.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "@vuepress/bundler-vite": "^2.0.0-rc.24",
     "@vuepress/plugin-notice": "^2.0.0-rc.112",
     "@vuepress/theme-default": "^2.0.0-rc.112",
+    "commander": "^14.0.2",
     "cross-env": "^10.1.0",
     "sass-embedded": "^1.93.2",
     "vuepress": "^2.0.0-rc.24"

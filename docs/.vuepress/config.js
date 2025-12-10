@@ -1718,6 +1718,24 @@ export default defineUserConfig({
             }
           ]
         }
+      ],
+      '/tool/':[
+        {
+          text: '办公工具',
+          prefix: '/tool/office',
+          link: '/tool/office/',
+          collapsible: true,
+          children: [
+            {
+              text: '如何使用一套键鼠控制两台电脑',
+              link: '如何使用一套键鼠控制两台电脑'
+            },
+            {
+              text: '局域网内共享文件',
+              link: '局域网内共享文件'
+            },
+          ],
+        },
       ]
     },
     repo: 'https://github.com/yutao721/note'
