@@ -17,3 +17,4 @@ console.log(path.join('/path', 'example', './index.js'));
 console.log(path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif'));
 
 console.log(path.relative('/path/example/index.js', '/path'));
+

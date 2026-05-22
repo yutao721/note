@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Filters</title>
+    <style>
+      /* 添加一些基本样式，让布局更美观 */
+      body {
+        font-family: sans-serif;
+      }
+
+      img {
+        max-width: 500px;
+        margin-top: 20px;
+        border: 1px solid #ccc;
+      }
+
+      div {
+        margin: 10px 0;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <input type="file" accept="image/*" />
+    <div>
+      <button id="btn-grayscale">黑白</button>
+      <button id="btn-sepia">复古</button>
+      <button id="btn-invert">反色</button>
+      <button id="btn-brightness">增亮</button>
+      <button id="btn-contrast">高对比度</button>
+    </div>
+
+    <script>
+      // --- 滤镜函数定义 ---
+
+      function grayscaleFilter(data) {
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i]
+          const g = data[i + 1]
+          const b = data[i + 2]
+          const gray = Math.floor((r + g + b) / 3)
+          data[i] = gray
+          data[i + 1] = gray
+          data[i + 2] = gray
+        }
+      }
+
+      function sepiaFilter(data) {
+        for (let i = 0; i < data.length; i += 4) {
+          const r = data[i]
+          const g = data[i + 1]
+          const b = data[i + 2]
+
+          data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
+          data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
+          data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
+        }
+      }
+
+      function invertFilter(data) {
+        for (let i = 0; i < data.length; i += 4) {
+          data[i] = 255 - data[i];
+          data[i + 1] = 255 - data[i + 1];
+          data[i + 2] = 255 - data[i + 2];
+        }
+      }
+
+      function brightnessFilter(data, adjustment) {
+        for (let i = 0; i < data.length; i += 4) {
+          data[i] = Math.min(255, Math.max(0, data[i] + adjustment));
+          data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + adjustment));
+          data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + adjustment));
+        }
+      }
+
+      function contrastFilter(data, contrast) {
+        const factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+        for (let i = 0; i < data.length; i += 4) {
+          data[i] = Math.min(255, Math.max(0, factor * (data[i] - 128) + 128));
+          data[i + 1] = Math.min(255, Math.max(0, factor * (data[i + 1] - 128) + 128));
+          data[i + 2] = Math.min(255, Math.max(0, factor * (data[i + 2] - 128) + 128));
+        }
+      }
+
+      // --- 主要逻辑 ---
+
+      const fileInput = document.querySelector('input[type="file"]')
+      fileInput.addEventListener('change', function (e) {
+        // 1. 在事件处理函数顶层获取文件信息
+        const file = e.target.files[0];
+        if (!file) {
+          return; // 用户未选择文件
+        }
+        const mimeType = file.type;
+
+        // 用于保存当前显示的图片元素
+        let currentImage = null;
+
+        // 2. 创建 Image 对象并设置加载完成后的回调
+        const img = new Image();
+        img.onload = function () {
+          // 创建一个与图片尺寸相同的 canvas
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+
+          // 将原始图片绘制到 canvas 上
+          ctx.drawImage(img, 0, 0);
+
+          // 定义应用滤镜的函数
+          function applyFilter(filterFunction) {
+            // 每次应用滤镜前，都从原始图片重新绘制，以恢复数据
+            ctx.drawImage(img, 0, 0);
+            let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            let data = imageData.data;
+
+            // 调用传入的滤镜函数来修改像素数据
+            filterFunction(data);
+
+            // 将处理后的数据放回 canvas
+            ctx.putImageData(imageData, 0, 0);
+
+            // 从 canvas 生成新的图片 URL 并显示
+            if (currentImage && currentImage.src.startsWith('blob:')) {
+              URL.revokeObjectURL(currentImage.src); // 释放旧 URL
+            }
+            canvas.toBlob((blob) => {
+              if (!currentImage) {
+                currentImage = document.createElement('img');
+                document.body.appendChild(currentImage);
+              }
+              currentImage.src = URL.createObjectURL(blob);
+            }, mimeType);
+          }
+
+          // 3. 绑定按钮事件，点击时调用 applyFilter
+          document.getElementById('btn-grayscale').addEventListener('click', () => applyFilter(grayscaleFilter));
+          document.getElementById('btn-sepia').addEventListener('click', () => applyFilter(sepiaFilter));
+          document.getElementById('btn-invert').addEventListener('click', () => applyFilter(invertFilter));
+          document.getElementById('btn-brightness').addEventListener('click', () => applyFilter((data) => brightnessFilter(data, 30)));
+          document.getElementById('btn-contrast').addEventListener('click', () => applyFilter((data) => contrastFilter(data, 30)));
+
+          // 4. 默认加载原图
+          applyFilter((data) => { }); // 传入一个空函数，仅用于显示原图
+        };
+
+        // 5. 启动图片加载
+        img.src = URL.createObjectURL(file);
+      })
+    </script>
+
+    <script type="module">
+      import { swap16, swap32, ab2str, str2ab } from './util.js';
+      console.log(swap16(0x1234))
+      console.log(swap32(0x12345678))
+      console.log(ab2str(new Uint8Array([0x68, 0x65, 0x6c, 0x6c, 0x6f])))
+      console.log(str2ab('hello'))
+    </script>
+    <script src="./ArrayBuffer.js"></script>
+  </body>
+
+</html>
