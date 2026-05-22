@@ -1,3 +1,5 @@
+# 【Node学习】（4）fs — 文件系统
+
 ## Node.js 文件系统
 
 Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法如下所示：
@@ -595,3 +597,187 @@ console.log(exports.find(/file.*/, `${__dirname}/dir-a`, console.log));
 
 ```
 
+---
+
+## fs/promises — 现代 async/await 写法
+
+Node.js 10+ 提供 `fs/promises`，所有操作返回 Promise，无需回调：
+
+```js
+const fs = require('fs/promises')
+// ESM: import fs from 'fs/promises'
+
+// 读文件
+const content = await fs.readFile('file.txt', 'utf8')
+
+// 写文件
+await fs.writeFile('output.txt', '内容')
+
+// 追加
+await fs.appendFile('log.txt', '新日志\n')
+
+// 拷贝
+await fs.copyFile('a.txt', 'b.txt')
+
+// 删除文件
+await fs.unlink('file.txt')
+
+// 重命名 / 移动
+await fs.rename('old.txt', 'new.txt')
+await fs.rename('file.txt', '/other/dir/file.txt')  // 跨目录移动
+
+// 创建目录（recursive: true 相当于 mkdir -p）
+await fs.mkdir('./a/b/c', { recursive: true })
+
+// 删除目录（recursive: true 相当于 rm -rf）
+await fs.rm('./dir', { recursive: true, force: true })
+
+// 读取目录
+const entries = await fs.readdir('./src', { withFileTypes: true })
+for (const entry of entries) {
+  console.log(entry.name, entry.isDirectory() ? '[dir]' : '[file]')
+}
+```
+
+> `fs.rm` 是 Node 14.14+ 新增，可同时删除文件和目录，推荐替代 `unlink` + `rmdir`。
+
+---
+
+## fs.stat / fs.access — 文件信息与存在检查
+
+### stat — 获取文件元信息
+
+```js
+const fs = require('fs/promises')
+
+const stat = await fs.stat('file.txt')
+
+stat.isFile()         // true
+stat.isDirectory()    // false
+stat.isSymbolicLink() // false
+
+stat.size             // 文件大小（字节）
+stat.birthtime        // 创建时间
+stat.mtime            // 最后修改时间
+stat.atime            // 最后访问时间
+stat.mode             // 权限位（八进制）
+
+// lstat：不跟随符号链接（返回链接本身的信息）
+const lstat = await fs.lstat('symlink')
+lstat.isSymbolicLink()  // true
+```
+
+### access — 检查文件是否可访问
+
+```js
+const fs = require('fs/promises')
+const { constants } = require('fs')
+
+// 检查文件是否存在
+async function exists(path) {
+  try {
+    await fs.access(path)
+    return true
+  } catch {
+    return false
+  }
+}
+
+// 检查读/写权限
+await fs.access('file.txt', constants.R_OK)                    // 可读
+await fs.access('file.txt', constants.W_OK)                    // 可写
+await fs.access('file.txt', constants.R_OK | constants.W_OK)  // 可读写
+```
+
+> 不推荐用 access 判断"文件存在再操作"——两步操作间文件状态可能变化（TOCTOU 竞态）。直接操作，catch 错误更安全。
+
+---
+
+## fs.watch — 文件监听
+
+```js
+const fs = require('fs')
+
+// 监听文件或目录变化
+const watcher = fs.watch('./src', { recursive: true }, (eventType, filename) => {
+  // eventType: 'rename'（新增/删除/重命名）或 'change'（内容变化）
+  console.log(`[${eventType}] ${filename}`)
+})
+
+// 停止监听
+watcher.close()
+
+// Promise 版（Node 16+，for-await 持续监听）
+const { watch } = require('fs/promises')
+const ac = new AbortController()
+
+for await (const event of watch('./src', { signal: ac.signal })) {
+  console.log(event.eventType, event.filename)
+}
+
+// 停止：ac.abort()
+```
+
+> `fs.watch` 底层依赖操作系统事件，跨平台行为有差异；大量文件监听推荐用 [chokidar](https://github.com/paulmillr/chokidar)。
+
+---
+
+## 流式读写 — createReadStream / createWriteStream
+
+处理大文件时，避免一次性读入内存：
+
+```js
+const fs = require('fs')
+const { pipeline } = require('stream/promises')
+const zlib = require('zlib')
+
+// 读流
+const rs = fs.createReadStream('big.txt', {
+  encoding: 'utf8',       // 不设则返回 Buffer
+  highWaterMark: 64*1024, // 每次读取 64KB
+  start: 0,               // 从第0字节开始
+  end: 1023,              // 到第1023字节（包含）
+})
+
+rs.on('data', chunk => console.log('chunk size:', chunk.length))
+rs.on('end', () => console.log('读完了'))
+
+// 写流
+const ws = fs.createWriteStream('output.txt', {
+  flags: 'a',      // 追加模式
+  encoding: 'utf8',
+})
+
+ws.write('第一行\n')
+ws.end('最后一行\n')
+ws.on('finish', () => console.log('写完了'))
+
+// 实战：压缩大文件（pipeline 自动处理背压和错误）
+await pipeline(
+  fs.createReadStream('big.log'),
+  zlib.createGzip(),
+  fs.createWriteStream('big.log.gz')
+)
+console.log('压缩完成')
+```
+
+---
+
+## 总结
+
+| 操作 | 推荐 API（fs/promises） |
+| --- | --- |
+| 读文件 | `fs.readFile(path, 'utf8')` |
+| 写文件 | `fs.writeFile(path, data)` |
+| 追加 | `fs.appendFile(path, data)` |
+| 拷贝 | `fs.copyFile(src, dest)` |
+| 删除文件/目录 | `fs.rm(path, { recursive, force })` |
+| 重命名/移动 | `fs.rename(old, new)` |
+| 创建目录 | `fs.mkdir(path, { recursive: true })` |
+| 读取目录 | `fs.readdir(path, { withFileTypes: true })` |
+| 文件信息 | `fs.stat(path)` |
+| 存在性检查 | `fs.access(path)` + try/catch |
+| 文件监听 | `fs.watch(path, { recursive })` |
+| 大文件读写 | `fs.createReadStream` + `pipeline` |
+
+> **核心原则**：优先使用 `fs/promises` 的 async/await 写法；大文件用流而非 `readFile`；删除统一用 `fs.rm`；不要用 `access` 做 TOCTOU 检查，直接操作 + catch 错误。

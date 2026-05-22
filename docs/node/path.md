@@ -1,3 +1,5 @@
+# 【Node学习】（3）path — 路径处理
+
 ## 前言
 
 **path**模块是Node的核心模块之一，特别是在前端项目构建，打包等操作中，是使用比较频繁的API。
@@ -176,6 +178,62 @@ path.relative(from, to) 获取 from 到 to 的相对路径。,如果 from、to �
 path.relative('/path/example/index.js', '/path') // ../..
 ```
 
+## path.sep / path.delimiter — 跨平台分隔符
+
+```js
+// path.sep：路径段分隔符
+path.sep   // Linux/Mac: '/'，Windows: '\\'
+
+'a/b/c'.split(path.sep)  // Linux: ['a','b','c']
+
+// path.delimiter：环境变量 PATH 的分隔符
+path.delimiter   // Linux/Mac: ':'，Windows: ';'
+
+process.env.PATH.split(path.delimiter)
+// Linux:   ['/usr/local/bin', '/usr/bin', '/bin']
+// Windows: ['C:\\Windows\\system32', 'C:\\Windows', ...]
+
+// path.posix / path.win32：强制使用指定平台风格
+path.posix.join('a', 'b', 'c')   // 'a/b/c'（任何平台）
+path.win32.join('a', 'b', 'c')   // 'a\\b\\c'（任何平台）
+```
+
+---
+
+## ESM 中替代 `__dirname`
+
+CommonJS 中有 `__dirname` 和 `__filename`，但 ESM（`type: "module"` 或 `.mjs`）中没有。
+
+```js
+// ESM 替代方案
+import { fileURLToPath } from 'url'
+import { dirname, join, resolve } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// 之后用法与 CJS 完全一致
+const configPath = join(__dirname, 'config.json')
+const distPath = resolve(__dirname, '../dist')
+```
+
+---
+
 ## 总结
 
-关于路径的知识就说到这里，基础很重要的，既能节约开发时间，又能减少报错。
+| 方法 | 说明 |
+| --- | --- |
+| `path.join(...paths)` | 拼接路径，跨平台规范化 |
+| `path.resolve(...paths)` | 解析为绝对路径（模拟 cd） |
+| `path.relative(from, to)` | 获取相对路径 |
+| `path.dirname(p)` | 获取目录名 |
+| `path.basename(p, ext)` | 获取文件名（可去掉扩展名） |
+| `path.extname(p)` | 获取扩展名 |
+| `path.parse(p)` | 解析为 {root, dir, base, name, ext} |
+| `path.format(obj)` | 对象 → 路径字符串（parse 的逆操作） |
+| `path.normalize(p)` | 规范化多余的 `//`、`..` |
+| `path.isAbsolute(p)` | 判断是否为绝对路径 |
+| `path.sep` | 路径段分隔符（`/` 或 `\`） |
+| `path.delimiter` | PATH 环境变量分隔符（`:` 或 `;`） |
+
+> **核心原则**：拼接路径始终用 `path.join`，生成绝对路径用 `path.resolve`，不要手动拼字符串；ESM 中用 `fileURLToPath(import.meta.url)` 替代 `__dirname`。
